@@ -20,30 +20,33 @@ mixin _$ValueFailure<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) invalidImageType,
+    required TResult Function(File failedValue) invalidImageType,
     required TResult Function(T failedValue) invalidId,
     required TResult Function(T failedvalue) invalidQuantity,
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int max)? exceedingLength,
-    TResult? Function(T failedValue)? invalidImageType,
+    TResult? Function(File failedValue)? invalidImageType,
     TResult? Function(T failedValue)? invalidId,
     TResult? Function(T failedvalue)? invalidQuantity,
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? invalidImageType,
+    TResult Function(File failedValue)? invalidImageType,
     TResult Function(T failedValue)? invalidId,
     TResult Function(T failedvalue)? invalidQuantity,
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(_InvalidId<T> value) invalidId,
     required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$ValueFailure<T> {
     TResult? Function(_InvalidId<T> value)? invalidId,
     TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$ValueFailure<T> {
     TResult Function(_InvalidId<T> value)? invalidId,
     TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,10 +171,11 @@ class _$_Empty<T> implements _Empty<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) invalidImageType,
+    required TResult Function(File failedValue) invalidImageType,
     required TResult Function(T failedValue) invalidId,
     required TResult Function(T failedvalue) invalidQuantity,
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
   }) {
     return empty(failedValue);
   }
@@ -178,10 +185,11 @@ class _$_Empty<T> implements _Empty<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int max)? exceedingLength,
-    TResult? Function(T failedValue)? invalidImageType,
+    TResult? Function(File failedValue)? invalidImageType,
     TResult? Function(T failedValue)? invalidId,
     TResult? Function(T failedvalue)? invalidQuantity,
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
   }) {
     return empty?.call(failedValue);
   }
@@ -191,10 +199,11 @@ class _$_Empty<T> implements _Empty<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? invalidImageType,
+    TResult Function(File failedValue)? invalidImageType,
     TResult Function(T failedValue)? invalidId,
     TResult Function(T failedvalue)? invalidQuantity,
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -212,6 +221,7 @@ class _$_Empty<T> implements _Empty<T> {
     required TResult Function(_InvalidId<T> value) invalidId,
     required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
   }) {
     return empty(this);
   }
@@ -225,6 +235,7 @@ class _$_Empty<T> implements _Empty<T> {
     TResult? Function(_InvalidId<T> value)? invalidId,
     TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
   }) {
     return empty?.call(this);
   }
@@ -238,6 +249,7 @@ class _$_Empty<T> implements _Empty<T> {
     TResult Function(_InvalidId<T> value)? invalidId,
     TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -333,10 +345,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) invalidImageType,
+    required TResult Function(File failedValue) invalidImageType,
     required TResult Function(T failedValue) invalidId,
     required TResult Function(T failedvalue) invalidQuantity,
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
   }) {
     return exceedingLength(failedValue, max);
   }
@@ -346,10 +359,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int max)? exceedingLength,
-    TResult? Function(T failedValue)? invalidImageType,
+    TResult? Function(File failedValue)? invalidImageType,
     TResult? Function(T failedValue)? invalidId,
     TResult? Function(T failedvalue)? invalidQuantity,
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
   }) {
     return exceedingLength?.call(failedValue, max);
   }
@@ -359,10 +373,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? invalidImageType,
+    TResult Function(File failedValue)? invalidImageType,
     TResult Function(T failedValue)? invalidId,
     TResult Function(T failedvalue)? invalidQuantity,
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -380,6 +395,7 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     required TResult Function(_InvalidId<T> value) invalidId,
     required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
   }) {
     return exceedingLength(this);
   }
@@ -393,6 +409,7 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     TResult? Function(_InvalidId<T> value)? invalidId,
     TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
   }) {
     return exceedingLength?.call(this);
   }
@@ -406,6 +423,7 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     TResult Function(_InvalidId<T> value)? invalidId,
     TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -433,7 +451,7 @@ abstract class _$$_InvalidImageTypeCopyWith<T, $Res> {
           $Res Function(_$_InvalidImageType<T>) then) =
       __$$_InvalidImageTypeCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({T failedValue});
+  $Res call({File failedValue});
 }
 
 /// @nodoc
@@ -447,13 +465,13 @@ class __$$_InvalidImageTypeCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failedValue = freezed,
+    Object? failedValue = null,
   }) {
     return _then(_$_InvalidImageType<T>(
-      failedValue: freezed == failedValue
+      failedValue: null == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
+              as File,
     ));
   }
 }
@@ -464,7 +482,7 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
   const _$_InvalidImageType({required this.failedValue});
 
   @override
-  final T failedValue;
+  final File failedValue;
 
   @override
   String toString() {
@@ -476,13 +494,12 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InvalidImageType<T> &&
-            const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+            (identical(other.failedValue, failedValue) ||
+                other.failedValue == failedValue));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
+  int get hashCode => Object.hash(runtimeType, failedValue);
 
   @JsonKey(ignore: true)
   @override
@@ -496,10 +513,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) invalidImageType,
+    required TResult Function(File failedValue) invalidImageType,
     required TResult Function(T failedValue) invalidId,
     required TResult Function(T failedvalue) invalidQuantity,
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
   }) {
     return invalidImageType(failedValue);
   }
@@ -509,10 +527,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int max)? exceedingLength,
-    TResult? Function(T failedValue)? invalidImageType,
+    TResult? Function(File failedValue)? invalidImageType,
     TResult? Function(T failedValue)? invalidId,
     TResult? Function(T failedvalue)? invalidQuantity,
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
   }) {
     return invalidImageType?.call(failedValue);
   }
@@ -522,10 +541,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? invalidImageType,
+    TResult Function(File failedValue)? invalidImageType,
     TResult Function(T failedValue)? invalidId,
     TResult Function(T failedvalue)? invalidQuantity,
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
     required TResult orElse(),
   }) {
     if (invalidImageType != null) {
@@ -543,6 +563,7 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     required TResult Function(_InvalidId<T> value) invalidId,
     required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
   }) {
     return invalidImageType(this);
   }
@@ -556,6 +577,7 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     TResult? Function(_InvalidId<T> value)? invalidId,
     TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
   }) {
     return invalidImageType?.call(this);
   }
@@ -569,6 +591,7 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     TResult Function(_InvalidId<T> value)? invalidId,
     TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
     required TResult orElse(),
   }) {
     if (invalidImageType != null) {
@@ -579,10 +602,10 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
 }
 
 abstract class _InvalidImageType<T> implements ValueFailure<T> {
-  const factory _InvalidImageType({required final T failedValue}) =
+  const factory _InvalidImageType({required final File failedValue}) =
       _$_InvalidImageType<T>;
 
-  T get failedValue;
+  File get failedValue;
   @JsonKey(ignore: true)
   _$$_InvalidImageTypeCopyWith<T, _$_InvalidImageType<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -656,10 +679,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) invalidImageType,
+    required TResult Function(File failedValue) invalidImageType,
     required TResult Function(T failedValue) invalidId,
     required TResult Function(T failedvalue) invalidQuantity,
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
   }) {
     return invalidId(failedValue);
   }
@@ -669,10 +693,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int max)? exceedingLength,
-    TResult? Function(T failedValue)? invalidImageType,
+    TResult? Function(File failedValue)? invalidImageType,
     TResult? Function(T failedValue)? invalidId,
     TResult? Function(T failedvalue)? invalidQuantity,
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
   }) {
     return invalidId?.call(failedValue);
   }
@@ -682,10 +707,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? invalidImageType,
+    TResult Function(File failedValue)? invalidImageType,
     TResult Function(T failedValue)? invalidId,
     TResult Function(T failedvalue)? invalidQuantity,
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
     required TResult orElse(),
   }) {
     if (invalidId != null) {
@@ -703,6 +729,7 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     required TResult Function(_InvalidId<T> value) invalidId,
     required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
   }) {
     return invalidId(this);
   }
@@ -716,6 +743,7 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     TResult? Function(_InvalidId<T> value)? invalidId,
     TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
   }) {
     return invalidId?.call(this);
   }
@@ -729,6 +757,7 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     TResult Function(_InvalidId<T> value)? invalidId,
     TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
     required TResult orElse(),
   }) {
     if (invalidId != null) {
@@ -816,10 +845,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) invalidImageType,
+    required TResult Function(File failedValue) invalidImageType,
     required TResult Function(T failedValue) invalidId,
     required TResult Function(T failedvalue) invalidQuantity,
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
   }) {
     return invalidQuantity(failedvalue);
   }
@@ -829,10 +859,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int max)? exceedingLength,
-    TResult? Function(T failedValue)? invalidImageType,
+    TResult? Function(File failedValue)? invalidImageType,
     TResult? Function(T failedValue)? invalidId,
     TResult? Function(T failedvalue)? invalidQuantity,
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
   }) {
     return invalidQuantity?.call(failedvalue);
   }
@@ -842,10 +873,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? invalidImageType,
+    TResult Function(File failedValue)? invalidImageType,
     TResult Function(T failedValue)? invalidId,
     TResult Function(T failedvalue)? invalidQuantity,
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
     required TResult orElse(),
   }) {
     if (invalidQuantity != null) {
@@ -863,6 +895,7 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     required TResult Function(_InvalidId<T> value) invalidId,
     required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
   }) {
     return invalidQuantity(this);
   }
@@ -876,6 +909,7 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     TResult? Function(_InvalidId<T> value)? invalidId,
     TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
   }) {
     return invalidQuantity?.call(this);
   }
@@ -889,6 +923,7 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     TResult Function(_InvalidId<T> value)? invalidId,
     TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
     required TResult orElse(),
   }) {
     if (invalidQuantity != null) {
@@ -994,10 +1029,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(T failedValue) empty,
     required TResult Function(T failedValue, int max) exceedingLength,
-    required TResult Function(T failedValue) invalidImageType,
+    required TResult Function(File failedValue) invalidImageType,
     required TResult Function(T failedValue) invalidId,
     required TResult Function(T failedvalue) invalidQuantity,
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
   }) {
     return exceedingPrice(failedValue, min, max);
   }
@@ -1007,10 +1043,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T failedValue)? empty,
     TResult? Function(T failedValue, int max)? exceedingLength,
-    TResult? Function(T failedValue)? invalidImageType,
+    TResult? Function(File failedValue)? invalidImageType,
     TResult? Function(T failedValue)? invalidId,
     TResult? Function(T failedvalue)? invalidQuantity,
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
   }) {
     return exceedingPrice?.call(failedValue, min, max);
   }
@@ -1020,10 +1057,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T failedValue)? empty,
     TResult Function(T failedValue, int max)? exceedingLength,
-    TResult Function(T failedValue)? invalidImageType,
+    TResult Function(File failedValue)? invalidImageType,
     TResult Function(T failedValue)? invalidId,
     TResult Function(T failedvalue)? invalidQuantity,
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
     required TResult orElse(),
   }) {
     if (exceedingPrice != null) {
@@ -1041,6 +1079,7 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     required TResult Function(_InvalidId<T> value) invalidId,
     required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
   }) {
     return exceedingPrice(this);
   }
@@ -1054,6 +1093,7 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     TResult? Function(_InvalidId<T> value)? invalidId,
     TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
   }) {
     return exceedingPrice?.call(this);
   }
@@ -1067,6 +1107,7 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     TResult Function(_InvalidId<T> value)? invalidId,
     TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
     required TResult orElse(),
   }) {
     if (exceedingPrice != null) {
@@ -1087,5 +1128,182 @@ abstract class _ExceedingPrice<T> implements ValueFailure<T> {
   int get max;
   @JsonKey(ignore: true)
   _$$_ExceedingPriceCopyWith<T, _$_ExceedingPrice<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ExceedingImagesCopyWith<T, $Res> {
+  factory _$$_ExceedingImagesCopyWith(_$_ExceedingImages<T> value,
+          $Res Function(_$_ExceedingImages<T>) then) =
+      __$$_ExceedingImagesCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T failedValue, int max});
+}
+
+/// @nodoc
+class __$$_ExceedingImagesCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$_ExceedingImages<T>>
+    implements _$$_ExceedingImagesCopyWith<T, $Res> {
+  __$$_ExceedingImagesCopyWithImpl(
+      _$_ExceedingImages<T> _value, $Res Function(_$_ExceedingImages<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? max = null,
+  }) {
+    return _then(_$_ExceedingImages<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+      max: null == max
+          ? _value.max
+          : max // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ExceedingImages<T> implements _ExceedingImages<T> {
+  const _$_ExceedingImages({required this.failedValue, required this.max});
+
+  @override
+  final T failedValue;
+  @override
+  final int max;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.exceedingImages(failedValue: $failedValue, max: $max)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ExceedingImages<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            (identical(other.max, max) || other.max == max));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue), max);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ExceedingImagesCopyWith<T, _$_ExceedingImages<T>> get copyWith =>
+      __$$_ExceedingImagesCopyWithImpl<T, _$_ExceedingImages<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(File failedValue) invalidImageType,
+    required TResult Function(T failedValue) invalidId,
+    required TResult Function(T failedvalue) invalidQuantity,
+    required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
+  }) {
+    return exceedingImages(failedValue, max);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(File failedValue)? invalidImageType,
+    TResult? Function(T failedValue)? invalidId,
+    TResult? Function(T failedvalue)? invalidQuantity,
+    TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
+  }) {
+    return exceedingImages?.call(failedValue, max);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(File failedValue)? invalidImageType,
+    TResult Function(T failedValue)? invalidId,
+    TResult Function(T failedvalue)? invalidQuantity,
+    TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
+    required TResult orElse(),
+  }) {
+    if (exceedingImages != null) {
+      return exceedingImages(failedValue, max);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Empty<T> value) empty,
+    required TResult Function(_ExceedingLength<T> value) exceedingLength,
+    required TResult Function(_InvalidImageType<T> value) invalidImageType,
+    required TResult Function(_InvalidId<T> value) invalidId,
+    required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
+    required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
+  }) {
+    return exceedingImages(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Empty<T> value)? empty,
+    TResult? Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult? Function(_InvalidId<T> value)? invalidId,
+    TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
+  }) {
+    return exceedingImages?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Empty<T> value)? empty,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult Function(_InvalidId<T> value)? invalidId,
+    TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
+    required TResult orElse(),
+  }) {
+    if (exceedingImages != null) {
+      return exceedingImages(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ExceedingImages<T> implements ValueFailure<T> {
+  const factory _ExceedingImages(
+      {required final T failedValue,
+      required final int max}) = _$_ExceedingImages<T>;
+
+  T get failedValue;
+  int get max;
+  @JsonKey(ignore: true)
+  _$$_ExceedingImagesCopyWith<T, _$_ExceedingImages<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

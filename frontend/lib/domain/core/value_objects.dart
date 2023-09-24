@@ -2,12 +2,18 @@ import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/core/failures.dart';
 import 'package:uuid/uuid.dart';
 
+import 'error.dart';
+
 abstract class ValueObjects<T> {
   const ValueObjects();
   Either<ValueFailure<T>, T> get value;
 
   Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
     return value.fold((l) => left(l), (r) => right(unit));
+  }
+
+  T getOrCrash() {
+    return value.fold((f) => throw UnExpectedValueError(f), id);
   }
 
   @override

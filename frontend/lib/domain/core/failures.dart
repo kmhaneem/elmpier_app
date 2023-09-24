@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'failures.freezed.dart';
 
@@ -6,7 +8,7 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.empty({required T failedValue}) = _Empty<T>;
   const factory ValueFailure.exceedingLength(
       {required T failedValue, required int max}) = _ExceedingLength<T>;
-  const factory ValueFailure.invalidImageType({required T failedValue}) =
+  const factory ValueFailure.invalidImageType({required File failedValue}) =
       _InvalidImageType<T>;
   const factory ValueFailure.invalidId({required T failedValue}) =
       _InvalidId<T>;
@@ -16,4 +18,6 @@ class ValueFailure<T> with _$ValueFailure<T> {
       {required T failedValue,
       required int min,
       required int max}) = _ExceedingPrice<T>;
+  const factory ValueFailure.exceedingImages(
+      {required T failedValue, required int max}) = _ExceedingImages<T>;
 }

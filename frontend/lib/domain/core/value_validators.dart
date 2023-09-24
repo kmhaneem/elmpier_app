@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
+import 'package:mime/mime.dart';
 
 import 'failures.dart';
 
@@ -21,14 +24,6 @@ Either<ValueFailure<String>, String> validateValueMaxStringLength(
   }
 }
 
-Either<ValueFailure<String>, String> validateImageType(String input) {
-  RegExp pattern = RegExp(r'(.*).(jpg|jpeg|png)$', caseSensitive: false);
-  if (pattern.hasMatch(input)) {
-    return right(input);
-  } else {
-    return left(ValueFailure.invalidImageType(failedValue: input));
-  }
-}
 
 Either<ValueFailure<int>, int> validateId(int input) {
   if (input > 0) {
@@ -55,5 +50,27 @@ Either<ValueFailure<int>, int> validatePrice(int input) {
   } else {
     return left(
         ValueFailure.exceedingPrice(failedValue: input, min: min, max: max));
+  }
+}
+
+Either<ValueFailure<File>, File> validateImageType(File input) {
+  var allowedMimeTypes = {'image/jpeg', 'image/jpg', 'image/png'};
+
+  var mimeType = lookupMimeType(input.path);
+  if (allowedMimeTypes.contains(mimeType)) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidImageType(failedValue: input));
+  }
+}
+
+Either<ValueFailure<List<File>>, List<File>> validateMaxImages(
+    List<File> input) {
+  const maxImages = 6;
+  if (input.length <= maxImages) {
+    return right(input);
+  } else {
+    return left(
+        ValueFailure.exceedingImages(failedValue: input, max: maxImages));
   }
 }

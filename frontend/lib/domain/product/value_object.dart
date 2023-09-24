@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/core/failures.dart';
 import 'package:frontend/domain/core/value_objects.dart';
@@ -35,6 +37,7 @@ class ProductCategory extends ValueObjects<int> {
   }
 
   ProductCategory._(this.value);
+  factory ProductCategory.empty() => ProductCategory(-1);
 }
 
 class ProductBrand extends ValueObjects<int> {
@@ -45,6 +48,7 @@ class ProductBrand extends ValueObjects<int> {
   }
 
   ProductBrand._(this.value);
+  factory ProductBrand.empty() => ProductBrand(-1);
 }
 
 class ProductModel extends ValueObjects<int> {
@@ -55,6 +59,7 @@ class ProductModel extends ValueObjects<int> {
   }
 
   ProductModel._(this.value);
+  factory ProductModel.empty() => ProductModel(-1);
 }
 
 class ProductQuantity extends ValueObjects<int> {
@@ -76,3 +81,35 @@ class ProductPrice extends ValueObjects<int> {
 
   ProductPrice._(this.value);
 }
+
+class ProductImage extends ValueObjects<File> {
+  final Either<ValueFailure<File>, File> value;
+
+  factory ProductImage(File input) {
+    return ProductImage._(validateImageType(input));
+  }
+
+  ProductImage._(this.value);
+}
+
+class ProductImages extends ValueObjects<List<File>> {
+  final Either<ValueFailure<List<File>>, List<File>> value;
+
+  static const maxImages = 6;
+
+  factory ProductImages(List<File> input) {
+    return ProductImages._(validateMaxImages(input));
+  }
+
+  ProductImages._(this.value);
+}
+
+// class ProductImageUrl extends ValueObjects<List<String>> {
+//   final Either<ValueFailure<List<String>>, List<String>> value;
+
+//   factory ProductImageUrl(List<String> input){
+//     return ProductImageUrl._()
+//   }
+
+//   ProductImageUrl._(this.value)
+// }
