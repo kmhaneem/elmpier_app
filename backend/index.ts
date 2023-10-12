@@ -1,10 +1,14 @@
 import express from "express";
 import pool from "./database/pg-connection";
 import userRoutes from "./api/user-api";
+import productRoutes from "./api/product-api";
+import adminRoutes from "./api/admin-api"
 
 const app = express();
 app.use(express.json());
 
+adminRoutes(app);
+productRoutes(app);
 userRoutes(app);
 
 app.use((req, res) => {

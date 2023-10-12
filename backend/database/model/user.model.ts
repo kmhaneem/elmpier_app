@@ -14,10 +14,19 @@ export class User {
   salt: string;
   firstname: string;
   lastname: string;
-  address: string;
-  postalcode: string;
+  profile: string;
   verified: boolean;
   otp: number;
+}
+
+export class UserAddress {
+  id?: number;
+  user_id?: number;
+  address_lane_1: string;
+  address_lane_2: string;
+  city: string;
+  postal_code: number;
+  province: string;
 }
 
 export interface UserPayload {

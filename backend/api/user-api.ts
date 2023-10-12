@@ -1,6 +1,6 @@
 import { plainToInstance } from "class-transformer";
 import { Application, Request, Response, NextFunction } from "express";
-import { User, UserPayload } from "../database/model/user.model";
+import { User, UserAddress, UserPayload } from "../database/model/user.model";
 import { validate } from "class-validator";
 import { BadRequestError } from "../utils/app-errors";
 import { UserService } from "../service/user-service";
@@ -90,8 +90,10 @@ export default (app: Application) => {
       try {
         const currentUser: UserPayload = req.user;
         const userInputs: User = req.body;
+        const userAddress: UserAddress = req.body;
         const response = await userService.UpdateUserProfile(
           userInputs,
+          userAddress,
           currentUser
         );
         return res.status(200).json({ response });

@@ -6,7 +6,7 @@ CREATE TABLE users (
     salt VARCHAR(255),
     firstname VARCHAR(255),
     lastname VARCHAR(255),
-    address TEXT,
+    profile TEXT,
     postalcode VARCHAR(10),
     verified BOOLEAN DEFAULT FALSE,
     otp INTEGER

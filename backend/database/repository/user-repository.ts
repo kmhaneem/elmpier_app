@@ -1,4 +1,4 @@
-import { User } from "../model/user.model";
+import { User, UserAddress } from "../model/user.model";
 import { writeQuery } from "../pg-connection";
 
 export class UserRepository {
@@ -12,13 +12,12 @@ export class UserRepository {
             salt, 
             firstname, 
             lastname, 
-            address, 
-            postalcode, 
+            profile, 
             verified, 
             otp
           ) VALUES (
-            $1, $2, $3, $4, $5, $6, $7, $8, $9, $10
-          )
+            $1, $2, $3, $4, $5, $6, $7, $8, $9
+          ) RETURNING id
         `;
       const params = [
         email,
@@ -28,13 +27,18 @@ export class UserRepository {
         "",
         "",
         "",
-        "",
         verified,
         otp,
       ];
 
-      const { rowCount } = await writeQuery(sql, params);
-      return rowCount;
+      const result = await writeQuery(sql, params);
+
+      if(result.rows && result.rows.length > 0){
+        const userId = result.rows[0].id;
+        const sql1 = `INSERT INTO user_address (user_id) VALUES ($1)`;
+        await writeQuery(sql1, [userId]);
+      }
+      return result.rowCount;
     } catch (error) {
       console.error("Error in UserCreate:", error);
       throw error;
@@ -116,16 +120,15 @@ export class UserRepository {
     }
   }
 
-  async UserProfileUpdate(
-    { firstname, lastname, address, postalcode }: User,
-    id: number
-  ) {
+  async UserProfileUpdate({ firstname, lastname, profile }: User, {user_id, address_lane_1, address_lane_2, city, postal_code, province}: UserAddress, id: number) {
     try {
       const sql =
-        "UPDATE users SET firstname = $1, lastname = $2, address = $3, postalcode = $4 WHERE id = $5 RETURNING *";
-      const params = [firstname, lastname, address, postalcode, id];
+        "UPDATE users SET firstname = $1, lastname = $2, profile = $3 WHERE id = $4 RETURNING *";
+      const params = [firstname, lastname, profile, id];
       const result = await writeQuery(sql, params);
       return result;
-    } catch (error) {}
+    } catch (error) {
+      throw error;
+    }
   }
 }

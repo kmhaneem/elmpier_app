@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import { UserPayload } from "../database/model/user.model";
 import dotenv from "dotenv";
 import path from "path";
+import { AdminPayload } from "../database/model/admin.model";
 dotenv.config({ path: path.resolve(__dirname, "../config/.env") });
 
 export const GenerateSalt = async () => {
@@ -23,6 +24,10 @@ export const ValidatePassword = async (
 };
 
 export const GenerateToken = async (payload: UserPayload) => {
+  return jwt.sign(payload, process.env.APP_SECRET);
+};
+
+export const GenerateTokenAdmin = async (payload: AdminPayload) => {
   return jwt.sign(payload, process.env.APP_SECRET);
 };
 

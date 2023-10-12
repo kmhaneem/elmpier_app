@@ -1,4 +1,4 @@
-import { User, UserPayload } from "../database/model/user.model";
+import { User, UserAddress, UserPayload } from "../database/model/user.model";
 import { UserRepository } from "../database/repository/user-repository";
 import {
   GeneratePassword,
@@ -149,11 +149,12 @@ export class UserService {
     }
   }
 
-  async UpdateUserProfile(userInputs: User, currentUser: UserPayload) {
+  async UpdateUserProfile(userInputs: User, userAddress: UserAddress, currentUser: UserPayload) {
     try {
       const userId = currentUser._id;
       const result = await this.repository.UserProfileUpdate(
         userInputs,
+        userAddress,
         userId
       );
       const { id, email, phone, password, salt, verified, otp, ...userInfo } =
