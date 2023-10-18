@@ -13,6 +13,16 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
   }
 }
 
+Either<ValueFailure<String>, String> validateUrl(String input) {
+  final urlPattern = r'^http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+$';
+  final urlRegex = RegExp(urlPattern);
+  if (urlRegex.hasMatch(input)) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidUrl(failedValue: input));
+  }
+}
+
 Either<ValueFailure<String>, String> validateValueMaxStringLength(
     String input, int maxLength) {
   bool stringLength = input.length > maxLength;
@@ -33,13 +43,14 @@ Either<ValueFailure<int>, int> validateId(int input) {
   }
 }
 
-Either<ValueFailure<int>, int> validateQuantity(int input) {
+Either<ValueFailure<int>, int> validateStock(int input) {
   if (input > 0) {
     return right(input);
   } else {
     return left(ValueFailure.invalidQuantity(failedvalue: input));
   }
 }
+
 
 Either<ValueFailure<int>, int> validatePrice(int input) {
   int min = 0;

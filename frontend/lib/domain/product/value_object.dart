@@ -6,103 +6,124 @@ import 'package:frontend/domain/core/value_objects.dart';
 import 'package:frontend/domain/core/value_validators.dart';
 import 'package:kt_dart/collection.dart';
 
-class ProductName extends ValueObjects<String> {
+class UserId extends ValueObjects<int> {
+  final Either<ValueFailure<int>, int> value;
+  factory UserId(int input) {
+    return UserId._(validateId(input));
+  }
+
+  UserId._(this.value);
+}
+
+class Name extends ValueObjects<String> {
   final Either<ValueFailure<String>, String> value;
   static const maxLength = 100;
 
-  factory ProductName(String input) {
-    return ProductName._(validateValueMaxStringLength(input, maxLength)
+  factory Name(String input) {
+    return Name._(validateValueMaxStringLength(input, maxLength)
         .flatMap((a) => validateStringNotEmpty(a)));
   }
-  ProductName._(this.value);
+  Name._(this.value);
 }
 
-class ProductDescription extends ValueObjects<String> {
+class Description extends ValueObjects<String> {
   final Either<ValueFailure<String>, String> value;
   static const maxLength = 2000;
 
-  factory ProductDescription(String input) {
-    return ProductDescription._(validateValueMaxStringLength(input, maxLength)
+  factory Description(String input) {
+    return Description._(validateValueMaxStringLength(input, maxLength)
         .flatMap((a) => validateStringNotEmpty(a)));
   }
 
-  ProductDescription._(this.value);
+  Description._(this.value);
 }
 
-class ProductCategory extends ValueObjects<int> {
+class Category extends ValueObjects<int> {
   final Either<ValueFailure<int>, int> value;
 
-  factory ProductCategory(int input) {
-    return ProductCategory._(validateId(input));
+  factory Category(int input) {
+    return Category._(validateId(input));
   }
 
-  ProductCategory._(this.value);
-  factory ProductCategory.empty() => ProductCategory(-1);
+  Category._(this.value);
 }
 
-class ProductBrand extends ValueObjects<int> {
+class Brand extends ValueObjects<int> {
   final Either<ValueFailure<int>, int> value;
 
-  factory ProductBrand(int input) {
-    return ProductBrand._(validateId(input));
+  factory Brand(int input) {
+    return Brand._(validateId(input));
   }
 
-  ProductBrand._(this.value);
-  factory ProductBrand.empty() => ProductBrand(-1);
+  Brand._(this.value);
 }
 
-class ProductModel extends ValueObjects<int> {
+class Model extends ValueObjects<int> {
   final Either<ValueFailure<int>, int> value;
 
-  factory ProductModel(int input) {
-    return ProductModel._(validateId(input));
+  factory Model(int input) {
+    return Model._(validateId(input));
   }
 
-  ProductModel._(this.value);
-  factory ProductModel.empty() => ProductModel(-1);
+  Model._(this.value);
 }
 
-class ProductQuantity extends ValueObjects<int> {
+class Stock extends ValueObjects<int> {
   final Either<ValueFailure<int>, int> value;
 
-  factory ProductQuantity(int input) {
-    return ProductQuantity._(validateQuantity(input));
+  factory Stock(int input) {
+    return Stock._(validateStock(input));
   }
 
-  ProductQuantity._(this.value);
+  Stock._(this.value);
 }
 
-class ProductPrice extends ValueObjects<int> {
+class Price extends ValueObjects<int> {
   final Either<ValueFailure<int>, int> value;
 
-  factory ProductPrice(int input) {
-    return ProductPrice._(validatePrice(input));
+  factory Price(int input) {
+    return Price._(validatePrice(input));
   }
 
-  ProductPrice._(this.value);
+  Price._(this.value);
 }
 
-class ProductImage extends ValueObjects<File> {
+class ImageUrl extends ValueObjects<String> {
+  final Either<ValueFailure<String>, String> value;
+
+  factory ImageUrl(String input) {
+    return ImageUrl._(
+      validateStringNotEmpty(input).flatMap(validateUrl),
+    );
+  }
+
+  ImageUrl._(this.value);
+}
+
+
+class Image extends ValueObjects<File> {
   final Either<ValueFailure<File>, File> value;
 
-  factory ProductImage(File input) {
-    return ProductImage._(validateImageType(input));
+  factory Image(File input) {
+    return Image._(validateImageType(input));
   }
 
-  ProductImage._(this.value);
+  Image._(this.value);
 }
 
-class ProductImages extends ValueObjects<List<File>> {
+class Images extends ValueObjects<List<File>> {
   final Either<ValueFailure<List<File>>, List<File>> value;
 
   static const maxImages = 6;
 
-  factory ProductImages(List<File> input) {
-    return ProductImages._(validateMaxImages(input));
+  factory Images(List<File> input) {
+    return Images._(validateMaxImages(input));
   }
 
-  ProductImages._(this.value);
+  Images._(this.value);
 }
+
+
 
 // class ProductImageUrl extends ValueObjects<List<String>> {
 //   final Either<ValueFailure<List<String>>, List<String>> value;

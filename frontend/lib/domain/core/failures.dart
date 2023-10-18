@@ -20,4 +20,8 @@ class ValueFailure<T> with _$ValueFailure<T> {
       required int max}) = _ExceedingPrice<T>;
   const factory ValueFailure.exceedingImages(
       {required T failedValue, required int max}) = _ExceedingImages<T>;
+
+  const factory ValueFailure.invalidUrl({required T failedValue}) =
+      _InvalidUrl<T>;
+
 }
