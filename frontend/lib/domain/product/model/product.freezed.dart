@@ -25,7 +25,8 @@ mixin _$Product {
   Brand get brand => throw _privateConstructorUsedError;
   Model get model => throw _privateConstructorUsedError;
   Stock get stock => throw _privateConstructorUsedError;
-  Price get price => throw _privateConstructorUsedError;
+  Price get price =>
+      throw _privateConstructorUsedError; // required String price,
   List<String> get imageUrls => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -241,7 +242,9 @@ class _$_Product extends _Product {
   final Stock stock;
   @override
   final Price price;
+// required String price,
   final List<String> _imageUrls;
+// required String price,
   @override
   List<String> get imageUrls {
     if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
@@ -327,7 +330,7 @@ abstract class _Product extends Product {
   Stock get stock;
   @override
   Price get price;
-  @override
+  @override // required String price,
   List<String> get imageUrls;
   @override
   @JsonKey(ignore: true)

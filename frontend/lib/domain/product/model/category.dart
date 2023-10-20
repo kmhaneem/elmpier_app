@@ -9,7 +9,7 @@ abstract class ProductCategory with _$ProductCategory {
     required String name,
   }) = _ProductCategory;
 
-  factory ProductCategory.empty() => ProductCategory(
+  factory ProductCategory.empty() => const ProductCategory(
         id: 0,
         name: "",
       );

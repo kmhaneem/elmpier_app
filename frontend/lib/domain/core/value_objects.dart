@@ -4,8 +4,8 @@ import 'package:uuid/uuid.dart';
 
 import 'error.dart';
 
-abstract class ValueObjects<T> {
-  const ValueObjects();
+abstract class ValueObject<T> {
+  const ValueObject();
   Either<ValueFailure<T>, T> get value;
 
   Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
@@ -16,10 +16,12 @@ abstract class ValueObjects<T> {
     return value.fold((f) => throw UnExpectedValueError(f), id);
   }
 
+  bool isValid() => value.isRight();
+
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
-    return o is ValueObjects<T> && o.value == value;
+    return o is ValueObject<T> && o.value == value;
   }
 
   @override
@@ -29,7 +31,7 @@ abstract class ValueObjects<T> {
   String toString() => "Value($value)";
 }
 
-class UniqueId extends ValueObjects<String> {
+class UniqueId extends ValueObject<String> {
   Either<ValueFailure<String>, String> value;
 
   factory UniqueId() {

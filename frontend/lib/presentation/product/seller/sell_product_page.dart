@@ -4,12 +4,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/domain/core/value_objects.dart';
+import 'package:frontend/domain/product/model/brand.dart';
 import 'package:frontend/domain/product/model/product.dart';
 import 'package:frontend/domain/product/value_object.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../application/product/add_product/add_product_state.dart';
 import '../../../domain/product/model/category.dart';
+import '../../../domain/product/model/model.dart';
 import '../../../shared/providers.dart';
 
 class SellProductPage extends ConsumerStatefulWidget {
@@ -30,6 +32,8 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
   final _priceController = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   ProductCategory? _selectedCategory;
+  ProductBrand? _selectedBrand;
+  ProductModel? _selectedModel;
 
   @override
   void dispose() {
@@ -54,6 +58,8 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(categoryProvider.notifier).fetchCategories();
+      ref.read(brandProvider.notifier).fetchBrands();
+      ref.read(modelProvider.notifier).fetchModels();
     });
   }
 
@@ -63,7 +69,6 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
     final addProductState = ref.read(addProductProvider);
 
     final selectedImagesController = ref.watch(selectedImagesProvider.notifier);
-    // var _selectedImages = ref.watch(selectedImagesProvider.notifier).state;
     var _selectedImages = ref.watch(selectedImagesProvider);
 
     ref.listen<AddProductState>(addProductProvider, (prevState, nextState) {
@@ -147,6 +152,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                         }).toList(),
                         onChanged: (ProductCategory? newValue) {
                           setState(() {
+                            _selectedBrand = null;
                             _selectedCategory = newValue;
                           });
                           _categoryController.text = newValue!.id.toString();
@@ -163,21 +169,101 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                   );
                 },
               ),
+              Consumer(builder:
+                  (BuildContext context, WidgetRef ref, Widget? child) {
+                final brandState = ref.watch(brandProvider);
+                return brandState.when(
+                  initial: () => _buildDisabledBrandDropdown(),
+                  loadInProgress: () => CircularProgressIndicator(),
+                  loadSuccess: (brands) {
+                    if (_selectedCategory == null) {
+                      return _buildDisabledBrandDropdown();
+                    }
+                    final filteredBrands = brands
+                        .where((brand) =>
+                            brand.categoryId == _selectedCategory!.id)
+                        .toList();
+                    return DropdownButtonFormField<ProductBrand>(
+                      value: _selectedBrand,
+                      items: filteredBrands.map((ProductBrand brand) {
+                        return DropdownMenuItem<ProductBrand>(
+                          value: brand,
+                          child: Text(brand.name),
+                        );
+                      }).toList(),
+                      onChanged: (ProductBrand? newValue) {
+                        setState(() {
+                          _selectedBrand = newValue;
+                        });
+                        _brandController.text = newValue!.id.toString();
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'Product Brand',
+                      ),
+                    );
+                  },
+                  loadFailure: (err) {
+                    print('Error Detail: $err');
+                    return Text('Error loading brands');
+                  },
+                );
+              }),
 
-              const SizedBox(height: 1),
-              TextFormField(
-                controller: _brandController,
-                decoration: const InputDecoration(
-                  labelText: 'Product Brand',
-                ),
-              ),
-              const SizedBox(height: 1),
-              TextFormField(
-                controller: _modelController,
-                decoration: const InputDecoration(
-                  labelText: 'Product Model',
-                ),
-              ),
+              // const SizedBox(height: 1),
+              // TextFormField(
+              //   controller: _brandController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Product Brand',
+              //   ),
+              // ),
+              Consumer(builder:
+                  (BuildContext context, WidgetRef ref, Widget? child) {
+                final modelState = ref.watch(modelProvider);
+                return modelState.when(
+                  initial: () => _buildDisabledModelDropdown(),
+                  loadInProgress: () => CircularProgressIndicator(),
+                  loadSuccess: (models) {
+                    if (_selectedCategory == null) {
+                      return _buildDisabledBrandDropdown();
+                    }
+                    if (_selectedBrand == null) {
+                      return _buildDisabledModelDropdown();
+                    }
+                    final filteredModels = models
+                        .where((model) => model.brandId == _selectedBrand!.id)
+                        .toList();
+                    return DropdownButtonFormField<ProductModel>(
+                      value: _selectedModel,
+                      items: filteredModels.map((ProductModel model) {
+                        return DropdownMenuItem<ProductModel>(
+                          value: model,
+                          child: Text(model.name),
+                        );
+                      }).toList(),
+                      onChanged: (ProductModel? newValue) {
+                        setState(() {
+                          _selectedModel = newValue;
+                        });
+                        _modelController.text = newValue!.id.toString();
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'Product Model',
+                      ),
+                    );
+                  },
+                  loadFailure: (err) {
+                    print('Error Detail: $err');
+                    return Text('Error loading models');
+                  },
+                );
+              }),
+              // const SizedBox(height: 1),
+              // TextFormField(
+              //   controller: _modelController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Product Model',
+              //   ),
+              // ),
               const SizedBox(height: 1),
               TextFormField(
                 controller: _stockController,
@@ -263,4 +349,26 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
       ),
     );
   }
+}
+
+Widget _buildDisabledBrandDropdown() {
+  return DropdownButtonFormField<ProductBrand>(
+    items: [],
+    onChanged: null, // Disabled dropdown, making it non-interactive
+    decoration: const InputDecoration(
+      labelText: 'Product Brand',
+      hintText: 'Please select a category first',
+    ),
+  );
+}
+
+Widget _buildDisabledModelDropdown() {
+  return DropdownButtonFormField<ProductModel>(
+    items: [],
+    onChanged: null, // Disabled dropdown, making it non-interactive
+    decoration: const InputDecoration(
+      labelText: 'Product Model',
+      hintText: 'Please select a brand first',
+    ),
+  );
 }

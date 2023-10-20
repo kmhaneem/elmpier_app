@@ -26,6 +26,11 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +43,11 @@ mixin _$ValueFailure<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +60,11 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +78,11 @@ mixin _$ValueFailure<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +95,11 @@ mixin _$ValueFailure<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +112,11 @@ mixin _$ValueFailure<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -183,6 +213,11 @@ class _$_Empty<T> implements _Empty<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) {
     return empty(failedValue);
   }
@@ -198,6 +233,11 @@ class _$_Empty<T> implements _Empty<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) {
     return empty?.call(failedValue);
   }
@@ -213,6 +253,11 @@ class _$_Empty<T> implements _Empty<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -232,6 +277,11 @@ class _$_Empty<T> implements _Empty<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) {
     return empty(this);
   }
@@ -247,6 +297,11 @@ class _$_Empty<T> implements _Empty<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) {
     return empty?.call(this);
   }
@@ -262,6 +317,11 @@ class _$_Empty<T> implements _Empty<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -363,6 +423,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) {
     return exceedingLength(failedValue, max);
   }
@@ -378,6 +443,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) {
     return exceedingLength?.call(failedValue, max);
   }
@@ -393,6 +463,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -412,6 +487,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) {
     return exceedingLength(this);
   }
@@ -427,6 +507,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) {
     return exceedingLength?.call(this);
   }
@@ -442,6 +527,11 @@ class _$_ExceedingLength<T> implements _ExceedingLength<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -537,6 +627,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) {
     return invalidImageType(failedValue);
   }
@@ -552,6 +647,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) {
     return invalidImageType?.call(failedValue);
   }
@@ -567,6 +667,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) {
     if (invalidImageType != null) {
@@ -586,6 +691,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) {
     return invalidImageType(this);
   }
@@ -601,6 +711,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) {
     return invalidImageType?.call(this);
   }
@@ -616,6 +731,11 @@ class _$_InvalidImageType<T> implements _InvalidImageType<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) {
     if (invalidImageType != null) {
@@ -709,6 +829,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) {
     return invalidId(failedValue);
   }
@@ -724,6 +849,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) {
     return invalidId?.call(failedValue);
   }
@@ -739,6 +869,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) {
     if (invalidId != null) {
@@ -758,6 +893,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) {
     return invalidId(this);
   }
@@ -773,6 +913,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) {
     return invalidId?.call(this);
   }
@@ -788,6 +933,11 @@ class _$_InvalidId<T> implements _InvalidId<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) {
     if (invalidId != null) {
@@ -881,6 +1031,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) {
     return invalidQuantity(failedvalue);
   }
@@ -896,6 +1051,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) {
     return invalidQuantity?.call(failedvalue);
   }
@@ -911,6 +1071,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) {
     if (invalidQuantity != null) {
@@ -930,6 +1095,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) {
     return invalidQuantity(this);
   }
@@ -945,6 +1115,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) {
     return invalidQuantity?.call(this);
   }
@@ -960,6 +1135,11 @@ class _$_InvalidQuantity<T> implements _InvalidQuantity<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) {
     if (invalidQuantity != null) {
@@ -1071,6 +1251,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) {
     return exceedingPrice(failedValue, min, max);
   }
@@ -1086,6 +1271,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) {
     return exceedingPrice?.call(failedValue, min, max);
   }
@@ -1101,6 +1291,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) {
     if (exceedingPrice != null) {
@@ -1120,6 +1315,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) {
     return exceedingPrice(this);
   }
@@ -1135,6 +1335,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) {
     return exceedingPrice?.call(this);
   }
@@ -1150,6 +1355,11 @@ class _$_ExceedingPrice<T> implements _ExceedingPrice<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) {
     if (exceedingPrice != null) {
@@ -1256,6 +1466,11 @@ class _$_ExceedingImages<T> implements _ExceedingImages<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) {
     return exceedingImages(failedValue, max);
   }
@@ -1271,6 +1486,11 @@ class _$_ExceedingImages<T> implements _ExceedingImages<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) {
     return exceedingImages?.call(failedValue, max);
   }
@@ -1286,6 +1506,11 @@ class _$_ExceedingImages<T> implements _ExceedingImages<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) {
     if (exceedingImages != null) {
@@ -1305,6 +1530,11 @@ class _$_ExceedingImages<T> implements _ExceedingImages<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) {
     return exceedingImages(this);
   }
@@ -1320,6 +1550,11 @@ class _$_ExceedingImages<T> implements _ExceedingImages<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) {
     return exceedingImages?.call(this);
   }
@@ -1335,6 +1570,11 @@ class _$_ExceedingImages<T> implements _ExceedingImages<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) {
     if (exceedingImages != null) {
@@ -1430,6 +1670,11 @@ class _$_InvalidUrl<T> implements _InvalidUrl<T> {
     required TResult Function(T failedValue, int min, int max) exceedingPrice,
     required TResult Function(T failedValue, int max) exceedingImages,
     required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
   }) {
     return invalidUrl(failedValue);
   }
@@ -1445,6 +1690,11 @@ class _$_InvalidUrl<T> implements _InvalidUrl<T> {
     TResult? Function(T failedValue, int min, int max)? exceedingPrice,
     TResult? Function(T failedValue, int max)? exceedingImages,
     TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
   }) {
     return invalidUrl?.call(failedValue);
   }
@@ -1460,6 +1710,11 @@ class _$_InvalidUrl<T> implements _InvalidUrl<T> {
     TResult Function(T failedValue, int min, int max)? exceedingPrice,
     TResult Function(T failedValue, int max)? exceedingImages,
     TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
     required TResult orElse(),
   }) {
     if (invalidUrl != null) {
@@ -1479,6 +1734,11 @@ class _$_InvalidUrl<T> implements _InvalidUrl<T> {
     required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
     required TResult Function(_ExceedingImages<T> value) exceedingImages,
     required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
   }) {
     return invalidUrl(this);
   }
@@ -1494,6 +1754,11 @@ class _$_InvalidUrl<T> implements _InvalidUrl<T> {
     TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult? Function(_ExceedingImages<T> value)? exceedingImages,
     TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
   }) {
     return invalidUrl?.call(this);
   }
@@ -1509,6 +1774,11 @@ class _$_InvalidUrl<T> implements _InvalidUrl<T> {
     TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
     TResult Function(_ExceedingImages<T> value)? exceedingImages,
     TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
     required TResult orElse(),
   }) {
     if (invalidUrl != null) {
@@ -1524,5 +1794,1014 @@ abstract class _InvalidUrl<T> implements ValueFailure<T> {
   T get failedValue;
   @JsonKey(ignore: true)
   _$$_InvalidUrlCopyWith<T, _$_InvalidUrl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InvalidEmailCopyWith<T, $Res> {
+  factory _$$_InvalidEmailCopyWith(
+          _$_InvalidEmail<T> value, $Res Function(_$_InvalidEmail<T>) then) =
+      __$$_InvalidEmailCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class __$$_InvalidEmailCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$_InvalidEmail<T>>
+    implements _$$_InvalidEmailCopyWith<T, $Res> {
+  __$$_InvalidEmailCopyWithImpl(
+      _$_InvalidEmail<T> _value, $Res Function(_$_InvalidEmail<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$_InvalidEmail<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_InvalidEmail<T> implements _InvalidEmail<T> {
+  const _$_InvalidEmail({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidEmail(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvalidEmail<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InvalidEmailCopyWith<T, _$_InvalidEmail<T>> get copyWith =>
+      __$$_InvalidEmailCopyWithImpl<T, _$_InvalidEmail<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(File failedValue) invalidImageType,
+    required TResult Function(T failedValue) invalidId,
+    required TResult Function(T failedvalue) invalidQuantity,
+    required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
+    required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
+  }) {
+    return invalidEmail(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(File failedValue)? invalidImageType,
+    TResult? Function(T failedValue)? invalidId,
+    TResult? Function(T failedvalue)? invalidQuantity,
+    TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
+    TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
+  }) {
+    return invalidEmail?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(File failedValue)? invalidImageType,
+    TResult Function(T failedValue)? invalidId,
+    TResult Function(T failedvalue)? invalidQuantity,
+    TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
+    TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (invalidEmail != null) {
+      return invalidEmail(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Empty<T> value) empty,
+    required TResult Function(_ExceedingLength<T> value) exceedingLength,
+    required TResult Function(_InvalidImageType<T> value) invalidImageType,
+    required TResult Function(_InvalidId<T> value) invalidId,
+    required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
+    required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
+    required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
+  }) {
+    return invalidEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Empty<T> value)? empty,
+    TResult? Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult? Function(_InvalidId<T> value)? invalidId,
+    TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
+  }) {
+    return invalidEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Empty<T> value)? empty,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult Function(_InvalidId<T> value)? invalidId,
+    TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (invalidEmail != null) {
+      return invalidEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidEmail<T> implements ValueFailure<T> {
+  const factory _InvalidEmail({required final T failedValue}) =
+      _$_InvalidEmail<T>;
+
+  T get failedValue;
+  @JsonKey(ignore: true)
+  _$$_InvalidEmailCopyWith<T, _$_InvalidEmail<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ShortPasswordCopyWith<T, $Res> {
+  factory _$$_ShortPasswordCopyWith(
+          _$_ShortPassword<T> value, $Res Function(_$_ShortPassword<T>) then) =
+      __$$_ShortPasswordCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class __$$_ShortPasswordCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$_ShortPassword<T>>
+    implements _$$_ShortPasswordCopyWith<T, $Res> {
+  __$$_ShortPasswordCopyWithImpl(
+      _$_ShortPassword<T> _value, $Res Function(_$_ShortPassword<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$_ShortPassword<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ShortPassword<T> implements _ShortPassword<T> {
+  const _$_ShortPassword({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.shortPassword(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ShortPassword<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ShortPasswordCopyWith<T, _$_ShortPassword<T>> get copyWith =>
+      __$$_ShortPasswordCopyWithImpl<T, _$_ShortPassword<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(File failedValue) invalidImageType,
+    required TResult Function(T failedValue) invalidId,
+    required TResult Function(T failedvalue) invalidQuantity,
+    required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
+    required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
+  }) {
+    return shortPassword(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(File failedValue)? invalidImageType,
+    TResult? Function(T failedValue)? invalidId,
+    TResult? Function(T failedvalue)? invalidQuantity,
+    TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
+    TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
+  }) {
+    return shortPassword?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(File failedValue)? invalidImageType,
+    TResult Function(T failedValue)? invalidId,
+    TResult Function(T failedvalue)? invalidQuantity,
+    TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
+    TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (shortPassword != null) {
+      return shortPassword(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Empty<T> value) empty,
+    required TResult Function(_ExceedingLength<T> value) exceedingLength,
+    required TResult Function(_InvalidImageType<T> value) invalidImageType,
+    required TResult Function(_InvalidId<T> value) invalidId,
+    required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
+    required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
+    required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
+  }) {
+    return shortPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Empty<T> value)? empty,
+    TResult? Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult? Function(_InvalidId<T> value)? invalidId,
+    TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
+  }) {
+    return shortPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Empty<T> value)? empty,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult Function(_InvalidId<T> value)? invalidId,
+    TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (shortPassword != null) {
+      return shortPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShortPassword<T> implements ValueFailure<T> {
+  const factory _ShortPassword({required final T failedValue}) =
+      _$_ShortPassword<T>;
+
+  T get failedValue;
+  @JsonKey(ignore: true)
+  _$$_ShortPasswordCopyWith<T, _$_ShortPassword<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InvalidPhoneCopyWith<T, $Res> {
+  factory _$$_InvalidPhoneCopyWith(
+          _$_InvalidPhone<T> value, $Res Function(_$_InvalidPhone<T>) then) =
+      __$$_InvalidPhoneCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class __$$_InvalidPhoneCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$_InvalidPhone<T>>
+    implements _$$_InvalidPhoneCopyWith<T, $Res> {
+  __$$_InvalidPhoneCopyWithImpl(
+      _$_InvalidPhone<T> _value, $Res Function(_$_InvalidPhone<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$_InvalidPhone<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_InvalidPhone<T> implements _InvalidPhone<T> {
+  const _$_InvalidPhone({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidPhone(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvalidPhone<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InvalidPhoneCopyWith<T, _$_InvalidPhone<T>> get copyWith =>
+      __$$_InvalidPhoneCopyWithImpl<T, _$_InvalidPhone<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(File failedValue) invalidImageType,
+    required TResult Function(T failedValue) invalidId,
+    required TResult Function(T failedvalue) invalidQuantity,
+    required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
+    required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
+  }) {
+    return invalidPhone(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(File failedValue)? invalidImageType,
+    TResult? Function(T failedValue)? invalidId,
+    TResult? Function(T failedvalue)? invalidQuantity,
+    TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
+    TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
+  }) {
+    return invalidPhone?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(File failedValue)? invalidImageType,
+    TResult Function(T failedValue)? invalidId,
+    TResult Function(T failedvalue)? invalidQuantity,
+    TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
+    TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (invalidPhone != null) {
+      return invalidPhone(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Empty<T> value) empty,
+    required TResult Function(_ExceedingLength<T> value) exceedingLength,
+    required TResult Function(_InvalidImageType<T> value) invalidImageType,
+    required TResult Function(_InvalidId<T> value) invalidId,
+    required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
+    required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
+    required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
+  }) {
+    return invalidPhone(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Empty<T> value)? empty,
+    TResult? Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult? Function(_InvalidId<T> value)? invalidId,
+    TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
+  }) {
+    return invalidPhone?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Empty<T> value)? empty,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult Function(_InvalidId<T> value)? invalidId,
+    TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (invalidPhone != null) {
+      return invalidPhone(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidPhone<T> implements ValueFailure<T> {
+  const factory _InvalidPhone({required final T failedValue}) =
+      _$_InvalidPhone<T>;
+
+  T get failedValue;
+  @JsonKey(ignore: true)
+  _$$_InvalidPhoneCopyWith<T, _$_InvalidPhone<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InvalidOtpCopyWith<T, $Res> {
+  factory _$$_InvalidOtpCopyWith(
+          _$_InvalidOtp<T> value, $Res Function(_$_InvalidOtp<T>) then) =
+      __$$_InvalidOtpCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class __$$_InvalidOtpCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$_InvalidOtp<T>>
+    implements _$$_InvalidOtpCopyWith<T, $Res> {
+  __$$_InvalidOtpCopyWithImpl(
+      _$_InvalidOtp<T> _value, $Res Function(_$_InvalidOtp<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$_InvalidOtp<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_InvalidOtp<T> implements _InvalidOtp<T> {
+  const _$_InvalidOtp({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidOtp(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvalidOtp<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InvalidOtpCopyWith<T, _$_InvalidOtp<T>> get copyWith =>
+      __$$_InvalidOtpCopyWithImpl<T, _$_InvalidOtp<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(File failedValue) invalidImageType,
+    required TResult Function(T failedValue) invalidId,
+    required TResult Function(T failedvalue) invalidQuantity,
+    required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
+    required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
+  }) {
+    return invalidOtp(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(File failedValue)? invalidImageType,
+    TResult? Function(T failedValue)? invalidId,
+    TResult? Function(T failedvalue)? invalidQuantity,
+    TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
+    TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
+  }) {
+    return invalidOtp?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(File failedValue)? invalidImageType,
+    TResult Function(T failedValue)? invalidId,
+    TResult Function(T failedvalue)? invalidQuantity,
+    TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
+    TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (invalidOtp != null) {
+      return invalidOtp(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Empty<T> value) empty,
+    required TResult Function(_ExceedingLength<T> value) exceedingLength,
+    required TResult Function(_InvalidImageType<T> value) invalidImageType,
+    required TResult Function(_InvalidId<T> value) invalidId,
+    required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
+    required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
+    required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
+  }) {
+    return invalidOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Empty<T> value)? empty,
+    TResult? Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult? Function(_InvalidId<T> value)? invalidId,
+    TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
+  }) {
+    return invalidOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Empty<T> value)? empty,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult Function(_InvalidId<T> value)? invalidId,
+    TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (invalidOtp != null) {
+      return invalidOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidOtp<T> implements ValueFailure<T> {
+  const factory _InvalidOtp({required final T failedValue}) = _$_InvalidOtp<T>;
+
+  T get failedValue;
+  @JsonKey(ignore: true)
+  _$$_InvalidOtpCopyWith<T, _$_InvalidOtp<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InvalidNameCopyWith<T, $Res> {
+  factory _$$_InvalidNameCopyWith(
+          _$_InvalidName<T> value, $Res Function(_$_InvalidName<T>) then) =
+      __$$_InvalidNameCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class __$$_InvalidNameCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$_InvalidName<T>>
+    implements _$$_InvalidNameCopyWith<T, $Res> {
+  __$$_InvalidNameCopyWithImpl(
+      _$_InvalidName<T> _value, $Res Function(_$_InvalidName<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$_InvalidName<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_InvalidName<T> implements _InvalidName<T> {
+  const _$_InvalidName({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidName(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InvalidName<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InvalidNameCopyWith<T, _$_InvalidName<T>> get copyWith =>
+      __$$_InvalidNameCopyWithImpl<T, _$_InvalidName<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(File failedValue) invalidImageType,
+    required TResult Function(T failedValue) invalidId,
+    required TResult Function(T failedvalue) invalidQuantity,
+    required TResult Function(T failedValue, int min, int max) exceedingPrice,
+    required TResult Function(T failedValue, int max) exceedingImages,
+    required TResult Function(T failedValue) invalidUrl,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidPhone,
+    required TResult Function(T failedValue) invalidOtp,
+    required TResult Function(T failedValue) invalidName,
+  }) {
+    return invalidName(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(File failedValue)? invalidImageType,
+    TResult? Function(T failedValue)? invalidId,
+    TResult? Function(T failedvalue)? invalidQuantity,
+    TResult? Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult? Function(T failedValue, int max)? exceedingImages,
+    TResult? Function(T failedValue)? invalidUrl,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? shortPassword,
+    TResult? Function(T failedValue)? invalidPhone,
+    TResult? Function(T failedValue)? invalidOtp,
+    TResult? Function(T failedValue)? invalidName,
+  }) {
+    return invalidName?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(File failedValue)? invalidImageType,
+    TResult Function(T failedValue)? invalidId,
+    TResult Function(T failedvalue)? invalidQuantity,
+    TResult Function(T failedValue, int min, int max)? exceedingPrice,
+    TResult Function(T failedValue, int max)? exceedingImages,
+    TResult Function(T failedValue)? invalidUrl,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidPhone,
+    TResult Function(T failedValue)? invalidOtp,
+    TResult Function(T failedValue)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (invalidName != null) {
+      return invalidName(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Empty<T> value) empty,
+    required TResult Function(_ExceedingLength<T> value) exceedingLength,
+    required TResult Function(_InvalidImageType<T> value) invalidImageType,
+    required TResult Function(_InvalidId<T> value) invalidId,
+    required TResult Function(_InvalidQuantity<T> value) invalidQuantity,
+    required TResult Function(_ExceedingPrice<T> value) exceedingPrice,
+    required TResult Function(_ExceedingImages<T> value) exceedingImages,
+    required TResult Function(_InvalidUrl<T> value) invalidUrl,
+    required TResult Function(_InvalidEmail<T> value) invalidEmail,
+    required TResult Function(_ShortPassword<T> value) shortPassword,
+    required TResult Function(_InvalidPhone<T> value) invalidPhone,
+    required TResult Function(_InvalidOtp<T> value) invalidOtp,
+    required TResult Function(_InvalidName<T> value) invalidName,
+  }) {
+    return invalidName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Empty<T> value)? empty,
+    TResult? Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult? Function(_InvalidId<T> value)? invalidId,
+    TResult? Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult? Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult? Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult? Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult? Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(_ShortPassword<T> value)? shortPassword,
+    TResult? Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult? Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult? Function(_InvalidName<T> value)? invalidName,
+  }) {
+    return invalidName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Empty<T> value)? empty,
+    TResult Function(_ExceedingLength<T> value)? exceedingLength,
+    TResult Function(_InvalidImageType<T> value)? invalidImageType,
+    TResult Function(_InvalidId<T> value)? invalidId,
+    TResult Function(_InvalidQuantity<T> value)? invalidQuantity,
+    TResult Function(_ExceedingPrice<T> value)? exceedingPrice,
+    TResult Function(_ExceedingImages<T> value)? exceedingImages,
+    TResult Function(_InvalidUrl<T> value)? invalidUrl,
+    TResult Function(_InvalidEmail<T> value)? invalidEmail,
+    TResult Function(_ShortPassword<T> value)? shortPassword,
+    TResult Function(_InvalidPhone<T> value)? invalidPhone,
+    TResult Function(_InvalidOtp<T> value)? invalidOtp,
+    TResult Function(_InvalidName<T> value)? invalidName,
+    required TResult orElse(),
+  }) {
+    if (invalidName != null) {
+      return invalidName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidName<T> implements ValueFailure<T> {
+  const factory _InvalidName({required final T failedValue}) =
+      _$_InvalidName<T>;
+
+  T get failedValue;
+  @JsonKey(ignore: true)
+  _$$_InvalidNameCopyWith<T, _$_InvalidName<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -24,4 +24,14 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.invalidUrl({required T failedValue}) =
       _InvalidUrl<T>;
 
+  const factory ValueFailure.invalidEmail({required T failedValue}) =
+      _InvalidEmail<T>;
+  const factory ValueFailure.shortPassword({required T failedValue}) =
+      _ShortPassword<T>;
+  const factory ValueFailure.invalidPhone({required T failedValue}) =
+      _InvalidPhone<T>;
+  const factory ValueFailure.invalidOtp({required T failedValue}) =
+      _InvalidOtp<T>;
+  const factory ValueFailure.invalidName({required T failedValue}) =
+      _InvalidName<T>;
 }

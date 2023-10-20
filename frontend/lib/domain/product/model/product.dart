@@ -18,6 +18,7 @@ abstract class Product implements _$Product {
     required Model model,
     required Stock stock,
     required Price price,
+    // required String price,
     required List<String> imageUrls,
   }) = _Product;
 

@@ -6,9 +6,11 @@ import 'package:frontend/domain/product/value_object.dart';
 part 'product_dtos.freezed.dart';
 part 'product_dtos.g.dart';
 
-@JsonSerializable()
+// @JsonSerializable()
 @freezed
 class ProductDto with _$ProductDto {
+  const ProductDto._();
+
   const factory ProductDto({
     required int id,
     @JsonKey(name: 'user_id') required int userId,
@@ -22,6 +24,9 @@ class ProductDto with _$ProductDto {
     required int price,
   }) = _ProductDto;
 
+  factory ProductDto.fromJson(Map<String, dynamic> json) =>
+      _$ProductDtoFromJson(json);
+
   factory ProductDto.fromDomain(Product product) {
     return ProductDto(
       id: product.id,
@@ -34,52 +39,21 @@ class ProductDto with _$ProductDto {
       stock: product.stock.getOrCrash(),
       price: product.price.getOrCrash(),
       imageUrls: product.imageUrls,
-
     );
   }
 
-  factory ProductDto.fromJson(Map<String, dynamic> json) {
-    return ProductDto(
-      id: _toInt(json['id']),
-      // id: json['id'] as String,
-      userId: _toInt(json['user_id']),
-      name: json['name'] as String,
-      description: json['description'] as String,
-      category: _toInt(json['category_id']),
-      brand: _toInt(json['brand_id']),
-      model: _toInt(json['model_id']),
-      stock: _toInt(json['stock_unit']),
-      price: _toInt(json['price']),
-      imageUrls: List<String>.from(json['image_urls']),
-
-    );
-  }
-
-  // Helper method to safely convert dynamic value to int
-  static int _toInt(dynamic value) {
-    if (value is int) {
-      return value;
-    } else if (value is String) {
-      return int.parse(value);
-    } else {
-      throw ArgumentError('Expected int or String, got $value');
-    }
-  }
-}
-
-extension ProductDtoExtensions on ProductDto {
   Product toDomain() {
     return Product(
-        id: id,
-        userId: UserId(userId),
-        name: Name(name),
-        description: Description(description),
-        category: Category(category),
-        brand: Brand(brand),
-        model: Model(model),
-        stock: Stock(stock),
-        price: Price(price),
-        imageUrls: imageUrls
+      id: id,
+      userId: UserId(userId),
+      name: Name(name),
+      description: Description(description),
+      category: Category(category),
+      brand: Brand(brand),
+      model: Model(model),
+      stock: Stock(stock),
+      price: Price(price),
+      imageUrls: imageUrls,
     );
   }
 }

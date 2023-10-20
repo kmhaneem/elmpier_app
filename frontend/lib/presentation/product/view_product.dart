@@ -55,27 +55,6 @@ class ViewProduct extends ConsumerWidget {
                 loadInProgress: () => CircularProgressIndicator(),
                 loadSuccess: (products) => Column(
                   children: products.asMap().entries.map((e) {
-                    // print(
-                    //     'Product ID (${e.value.id.runtimeType}): ${e.value.id}');
-                    // print(
-                    //     'Product User Id (${e.value.userId.getOrCrash().runtimeType}): ${e.value.userId.getOrCrash()}');
-                    // print(
-                    //     'Product Name (${e.value.name.getOrCrash().runtimeType}): ${e.value.name.getOrCrash()}');
-                    // print(
-                    //     'Product Description (${e.value.description.getOrCrash().runtimeType}): ${e.value.description.getOrCrash()}');
-                    // print(
-                    //     'Product Category (${e.value.category.getOrCrash().runtimeType}): ${e.value.category.getOrCrash()}');
-                    // print(
-                    //     'Product Brand (${e.value.brand.getOrCrash().runtimeType}): ${e.value.brand.getOrCrash()}');
-                    // print(
-                    //     'Product Model (${e.value.model.getOrCrash().runtimeType}): ${e.value.model.getOrCrash()}');
-                    // print(
-                    //     'Product Price (${e.value.price.getOrCrash().runtimeType}): ${e.value.price.getOrCrash()}');
-                    // print(
-                    //     'Product Stock (${e.value.stock.getOrCrash().runtimeType}): ${e.value.stock.getOrCrash()}');
-
-                    // final url = e.value.imageUrls;
-                    // print("Image urls is $url");
                     return InkWell(
                       onTap: () {
                         context.router.push(ProductRoute(product: e.value));
@@ -133,6 +112,7 @@ class ViewProduct extends ConsumerWidget {
                                       padding: const EdgeInsets.only(top: 20),
                                       child: Text(
                                         "RS.${e.value.price.getOrCrash()}0",
+                                        // "RS.${e.value.price}0",
                                         style: const TextStyle(
                                           fontSize: 16,
                                           color: Colors.grey,
@@ -151,29 +131,6 @@ class ViewProduct extends ConsumerWidget {
                 ),
                 loadFailure: (failure) => Text(failure.toString()),
               ),
-              // productState.when(
-              //   initial: () => Container(),
-              //   loadInProgress: () => CircularProgressIndicator(),
-              //   loadSuccess: (products) {
-              //     products.forEach((product) {
-              //       print('Product ID: ${product.id.getOrCrash()}');
-              //       print('Product User Id: ${product.userId.getOrCrash()}');
-              //       print('Product Name: ${product.name.getOrCrash()}');
-              //       print(
-              //           'Product Description: ${product.description.getOrCrash()}');
-              //       print('Product Category: ${product.category.getOrCrash()}');
-              //       print('Product Brand: ${product.brand.getOrCrash()}');
-              //       print('Product Model: ${product.model.getOrCrash()}');
-              //       print('Product Price: ${product.price.getOrCrash()}');
-              //       print('Product Stock: ${product.stock.getOrCrash()}');
-              //     });
-              //     return Container();
-              //   },
-              //   loadFailure: (failure) {
-              //     print('Product failure: $failure');
-              //     return Text(failure.toString());
-              //   },
-              // ),
             ],
           ),
         ),

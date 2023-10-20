@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
+  return _ProductDto.fromJson(json);
+}
+
 /// @nodoc
 mixin _$ProductDto {
   int get id => throw _privateConstructorUsedError;
@@ -33,6 +37,7 @@ mixin _$ProductDto {
   List<String> get imageUrls => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductDtoCopyWith<ProductDto> get copyWith =>
       throw _privateConstructorUsedError;
@@ -215,8 +220,8 @@ class __$$_ProductDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$_ProductDto implements _ProductDto {
+@JsonSerializable()
+class _$_ProductDto extends _ProductDto {
   const _$_ProductDto(
       {required this.id,
       @JsonKey(name: 'user_id') required this.userId,
@@ -228,7 +233,11 @@ class _$_ProductDto implements _ProductDto {
       @JsonKey(name: 'stock_unit') required this.stock,
       @JsonKey(name: 'image_urls') required final List<String> imageUrls,
       required this.price})
-      : _imageUrls = imageUrls;
+      : _imageUrls = imageUrls,
+        super._();
+
+  factory _$_ProductDto.fromJson(Map<String, dynamic> json) =>
+      _$$_ProductDtoFromJson(json);
 
   @override
   final int id;
@@ -288,6 +297,7 @@ class _$_ProductDto implements _ProductDto {
             (identical(other.price, price) || other.price == price));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -307,9 +317,16 @@ class _$_ProductDto implements _ProductDto {
   @pragma('vm:prefer-inline')
   _$$_ProductDtoCopyWith<_$_ProductDto> get copyWith =>
       __$$_ProductDtoCopyWithImpl<_$_ProductDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ProductDtoToJson(
+      this,
+    );
+  }
 }
 
-abstract class _ProductDto implements ProductDto {
+abstract class _ProductDto extends ProductDto {
   const factory _ProductDto(
       {required final int id,
       @JsonKey(name: 'user_id') required final int userId,
@@ -321,6 +338,10 @@ abstract class _ProductDto implements ProductDto {
       @JsonKey(name: 'stock_unit') required final int stock,
       @JsonKey(name: 'image_urls') required final List<String> imageUrls,
       required final int price}) = _$_ProductDto;
+  const _ProductDto._() : super._();
+
+  factory _ProductDto.fromJson(Map<String, dynamic> json) =
+      _$_ProductDto.fromJson;
 
   @override
   int get id;

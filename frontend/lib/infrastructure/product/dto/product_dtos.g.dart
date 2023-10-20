@@ -6,7 +6,8 @@ part of 'product_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
+_$_ProductDto _$$_ProductDtoFromJson(Map<String, dynamic> json) =>
+    _$_ProductDto(
       id: json['id'] as int,
       userId: json['user_id'] as int,
       name: json['name'] as String,
@@ -21,7 +22,7 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
       price: json['price'] as int,
     );
 
-Map<String, dynamic> _$ProductDtoToJson(ProductDto instance) =>
+Map<String, dynamic> _$$_ProductDtoToJson(_$_ProductDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'user_id': instance.userId,

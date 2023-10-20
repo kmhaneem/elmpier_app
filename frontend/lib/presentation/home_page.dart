@@ -10,34 +10,29 @@ import 'package:frontend/presentation/routes/app_router.gr.dart';
 import 'package:frontend/presentation/setting_page.dart';
 import 'package:frontend/shared/providers.dart';
 
+import '../application/auth/auth_state.dart';
 import '../infrastructure/product/dto/product_dtos.dart';
 import 'core/widget/bottom_nav_item.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   int currentTab = 0;
   final List<Widget> screens = [
     ViewProduct(),
-    SearchProduct(),
+    ProductSearch(),
     UserProduct(),
     SettingPage()
   ];
   Widget currentScreen = const ViewProduct();
+
   @override
   Widget build(BuildContext context) {
-    // final productNotifier = ref.read(productProvider.notifier);
-    // final productState = ref.watch(productProvider);
-
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   productNotifier.watchAllStarted();
-    // });
-
     return Scaffold(
       body: currentScreen,
       floatingActionButton: FloatingActionButton(
@@ -81,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                     tab: 1,
                     onTap: () {
                       setState(() {
-                        currentScreen = SearchProduct();
+                        currentScreen = ProductSearch();
                         currentTab = 1;
                       });
                     },
@@ -121,32 +116,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-
-      // children: [
-      //   productState.when(
-      //     initial: () => Container(),
-      //     loadInProgress: () => CircularProgressIndicator(),
-      //     loadSuccess: (products) {
-      //       products.forEach((product) {
-      //         print('Product ID: ${product.id.getOrCrash()}');
-      //         print('Product User Id: ${product.userId.getOrCrash()}');
-      //         print('Product Name: ${product.name.getOrCrash()}');
-      //         print(
-      //             'Product Description: ${product.description.getOrCrash()}');
-      //         print('Product Category: ${product.category.getOrCrash()}');
-      //         print('Product Brand: ${product.brand.getOrCrash()}');
-      //         print('Product Model: ${product.model.getOrCrash()}');
-      //         print('Product Price: ${product.price.getOrCrash()}');
-      //         print('Product Stock: ${product.stock.getOrCrash()}');
-      //       });
-      //       return Container();
-      //     },
-      //     loadFailure: (failure) {
-      //       print('Product failure: $failure');
-      //       return Text(failure.toString());
-      //     },
-      //   ),
-      // ],
     );
   }
 }

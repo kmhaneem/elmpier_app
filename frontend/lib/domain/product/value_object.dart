@@ -6,7 +6,7 @@ import 'package:frontend/domain/core/value_objects.dart';
 import 'package:frontend/domain/core/value_validators.dart';
 import 'package:kt_dart/collection.dart';
 
-class UserId extends ValueObjects<int> {
+class UserId extends ValueObject<int> {
   final Either<ValueFailure<int>, int> value;
   factory UserId(int input) {
     return UserId._(validateId(input));
@@ -15,7 +15,7 @@ class UserId extends ValueObjects<int> {
   UserId._(this.value);
 }
 
-class Name extends ValueObjects<String> {
+class Name extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
   static const maxLength = 100;
 
@@ -26,7 +26,7 @@ class Name extends ValueObjects<String> {
   Name._(this.value);
 }
 
-class Description extends ValueObjects<String> {
+class Description extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
   static const maxLength = 2000;
 
@@ -38,7 +38,7 @@ class Description extends ValueObjects<String> {
   Description._(this.value);
 }
 
-class Category extends ValueObjects<int> {
+class Category extends ValueObject<int> {
   final Either<ValueFailure<int>, int> value;
 
   factory Category(int input) {
@@ -48,7 +48,7 @@ class Category extends ValueObjects<int> {
   Category._(this.value);
 }
 
-class Brand extends ValueObjects<int> {
+class Brand extends ValueObject<int> {
   final Either<ValueFailure<int>, int> value;
 
   factory Brand(int input) {
@@ -58,7 +58,7 @@ class Brand extends ValueObjects<int> {
   Brand._(this.value);
 }
 
-class Model extends ValueObjects<int> {
+class Model extends ValueObject<int> {
   final Either<ValueFailure<int>, int> value;
 
   factory Model(int input) {
@@ -68,7 +68,7 @@ class Model extends ValueObjects<int> {
   Model._(this.value);
 }
 
-class Stock extends ValueObjects<int> {
+class Stock extends ValueObject<int> {
   final Either<ValueFailure<int>, int> value;
 
   factory Stock(int input) {
@@ -78,7 +78,7 @@ class Stock extends ValueObjects<int> {
   Stock._(this.value);
 }
 
-class Price extends ValueObjects<int> {
+class Price extends ValueObject<int> {
   final Either<ValueFailure<int>, int> value;
 
   factory Price(int input) {
@@ -88,7 +88,7 @@ class Price extends ValueObjects<int> {
   Price._(this.value);
 }
 
-class ImageUrl extends ValueObjects<String> {
+class ImageUrl extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory ImageUrl(String input) {
@@ -101,7 +101,7 @@ class ImageUrl extends ValueObjects<String> {
 }
 
 
-class Image extends ValueObjects<File> {
+class Image extends ValueObject<File> {
   final Either<ValueFailure<File>, File> value;
 
   factory Image(File input) {
@@ -111,7 +111,7 @@ class Image extends ValueObjects<File> {
   Image._(this.value);
 }
 
-class Images extends ValueObjects<List<File>> {
+class Images extends ValueObject<List<File>> {
   final Either<ValueFailure<List<File>>, List<File>> value;
 
   static const maxImages = 6;

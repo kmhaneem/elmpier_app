@@ -1,4 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:frontend/domain/product/model/brand.dart';
+import 'package:frontend/domain/product/model/model.dart';
+import 'package:frontend/domain/product/model/search.dart';
+import 'package:frontend/infrastructure/product/dto/brand_dtos.dart';
+import 'package:frontend/infrastructure/product/dto/model_dtos.dart';
+import 'package:frontend/infrastructure/product/dto/search_dtos.dart';
 // import 'package:cross_file/src/types/interface.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
@@ -31,16 +37,20 @@ class ProductRepository implements IProductRepository {
       // print("Response Data: ${response.data}");
 
       if (response.statusCode == 200) {
-        final Map<String, dynamic> responseData =
-            response.data as Map<String, dynamic>;
-        final List<dynamic> productList =
-            responseData['response'] as List<dynamic>;
+        // final Map<String, dynamic> responseData =
+        //     response.data as Map<String, dynamic>;
+        // final List<dynamic> productList =
+        //     responseData['response'] as List<dynamic>;
 
-        final products = productList.map((product) {
-          final productDto =
-              ProductDto.fromJson(product as Map<String, dynamic>);
-          return productDto.toDomain();
-        }).toList();
+        // final products = productList.map((product) {
+        //   final productDto =
+        //       ProductDto.fromJson(product as Map<String, dynamic>);
+        //   return productDto.toDomain();
+        // }).toList();
+
+        final productDto = (response.data['response'] as List)
+            .map((e) => ProductDto.fromJson(e));
+        final products = productDto.map((dto) => dto.toDomain()).toList();
 
         return right(products);
       } else {
@@ -86,9 +96,6 @@ class ProductRepository implements IProductRepository {
             await MultipartFile.fromFile(image.path, filename: image.name)));
       }
 
-      final token =
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjIzLCJlbWFpbCI6InRlc3RAdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNjk3NTM2MjI5fQ.ssfnIMIbc1zAqAbtT6scNH3EFUMmBZlAHPS2NrKU62o";
-
       final response = await _dio.post(
         "$api2/product/create",
         data: formData,
@@ -122,13 +129,79 @@ class ProductRepository implements IProductRepository {
         final categories = categoriesDto.map((dto) => dto.toDomain()).toList();
         return right(categories);
       } else {
-        return left(ProductFailure.notFound());
+        return left(const ProductFailure.notFound());
       }
     } catch (e) {
       print('Repository Error: $e');
       return left(ProductFailure.serverError());
     }
   }
+
+  @override
+  Future<Either<ProductFailure, List<ProductBrand>>> getAllBrands() async {
+    try {
+      final response = await Dio().get('$api2/product/brand');
+
+      if (response.statusCode == 200) {
+        final brandsDto = (response.data['response'] as List)
+            .map((e) => ProductBrandDto.fromJson(e));
+        final brands = brandsDto.map((dto) => dto.toDomain()).toList();
+        print('Suceess to get BRANDS');
+        return right(brands);
+      } else {
+        return left(const ProductFailure.notFound());
+      }
+    } catch (e) {
+      print('Repository Error: $e');
+      return left(const ProductFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ProductFailure, List<ProductModel>>> getAllModels() async {
+    try {
+      final response = await Dio().get('$api2/product/model');
+
+      if (response.statusCode == 200) {
+        final modelDto = (response.data['response'] as List)
+            .map((e) => ProductModelDto.fromJson(e));
+        final models = modelDto.map((dto) => dto.toDomaon()).toList();
+
+        return right(models);
+      } else {
+        return left(const ProductFailure.notFound());
+      }
+    } catch (e) {
+      print('Repository Error: $e');
+      return left(const ProductFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<ProductFailure, List<Product>>> getAllSearchedProducts(
+      String query) async {
+    try {
+      final response = await Dio()
+          .get('$api2/product/search', queryParameters: {'query': query});
+      print('Response Data: ${response.data}');
+
+      if (response.statusCode == 200) {
+        // final productDto = (response.data['response'] as List)
+        //     .map((e) => ProductDto.fromJson(e));
+        final productDto =
+            (response.data as List).map((e) => ProductDto.fromJson(e));
+        final products = productDto.map((dto) => dto.toDomain()).toList();
+
+        return right(products);
+      } else {
+        return left(const ProductFailure.notFound());
+      }
+    } catch (e) {
+      print('Repository Errorxxx: $e');
+      return left(const ProductFailure.serverError());
+    }
+  }
+
   // @override
   // Future<Either<ProductFailure, List<ProductCategory>>>
   //     getAllCategories() async {
