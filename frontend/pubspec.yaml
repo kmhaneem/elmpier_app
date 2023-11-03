@@ -49,6 +49,12 @@ dependencies:
   json_annotation: ^4.8.0
   carousel_slider: ^4.2.1
   another_flushbar: ^1.12.30
+  payhere_mobilesdk_flutter: ^3.0.1
+  cached_network_image: ^3.2.3
+  url_launcher: ^6.1.11
+  firebase_core: ^2.20.0
+  cloud_firestore: ^4.12.1
+  tuple: ^2.0.2
 
 dev_dependencies:
   flutter_test:

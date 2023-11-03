@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Product {
 // required UniqueId id,
-  int get id => throw _privateConstructorUsedError;
-  UserId get userId => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError; // required UserId userId,
   Name get name => throw _privateConstructorUsedError;
   Description get description => throw _privateConstructorUsedError;
   Category get category => throw _privateConstructorUsedError;
@@ -40,7 +39,6 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      UserId userId,
       Name name,
       Description description,
       Category category,
@@ -65,7 +63,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
     Object? name = null,
     Object? description = null,
     Object? category = null,
@@ -80,10 +77,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as UserId,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -129,7 +122,6 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      UserId userId,
       Name name,
       Description description,
       Category category,
@@ -151,7 +143,6 @@ class __$$_ProductCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
     Object? name = null,
     Object? description = null,
     Object? category = null,
@@ -166,10 +157,6 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as UserId,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -211,7 +198,6 @@ class __$$_ProductCopyWithImpl<$Res>
 class _$_Product extends _Product {
   const _$_Product(
       {required this.id,
-      required this.userId,
       required this.name,
       required this.description,
       required this.category,
@@ -226,8 +212,7 @@ class _$_Product extends _Product {
 // required UniqueId id,
   @override
   final int id;
-  @override
-  final UserId userId;
+// required UserId userId,
   @override
   final Name name;
   @override
@@ -254,7 +239,7 @@ class _$_Product extends _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, userId: $userId, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, price: $price, imageUrls: $imageUrls)';
+    return 'Product(id: $id, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, price: $price, imageUrls: $imageUrls)';
   }
 
   @override
@@ -263,7 +248,6 @@ class _$_Product extends _Product {
         (other.runtimeType == runtimeType &&
             other is _$_Product &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -281,7 +265,6 @@ class _$_Product extends _Product {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      userId,
       name,
       description,
       category,
@@ -301,7 +284,6 @@ class _$_Product extends _Product {
 abstract class _Product extends Product {
   const factory _Product(
       {required final int id,
-      required final UserId userId,
       required final Name name,
       required final Description description,
       required final Category category,
@@ -314,9 +296,7 @@ abstract class _Product extends Product {
 
   @override // required UniqueId id,
   int get id;
-  @override
-  UserId get userId;
-  @override
+  @override // required UserId userId,
   Name get name;
   @override
   Description get description;

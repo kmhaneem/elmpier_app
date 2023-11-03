@@ -8,20 +8,41 @@ import '../shared/providers.dart';
 import 'core/widget/colors.dart';
 
 class AppWidget extends ConsumerWidget {
-  AppWidget({super.key});
-
+  const AppWidget({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _appRouter = ref.watch(appRouterProvider);
+    final appRouter = AppRouter();
+    final authState = ref.watch(authProvider);
+    final authNotifier = ref.read(authProvider.notifier);
+    authNotifier.authCheckRequested();
+
+    Future.delayed(const Duration(seconds: 2), (){
+      authState.map(
+      initial: (_) {
+        print("Initial");
+      },
+      authenticated: (_) {
+        appRouter.replace(HomeRoute());
+        print("Authenticated");
+      },
+      unauthenticated: (_) {
+        appRouter.replace(SignInRoute());
+        print("Unauthenticated");
+      },
+    );
+    });
+    appRouter.replace(SplashRoute());
 
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: customColor,
       ),
-      title: "ELMPIER",
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+      title: "ELMP",
+      routerDelegate: appRouter.delegate(),
+      routeInformationParser: appRouter.defaultRouteParser(),
     );
   }
 }
+
+

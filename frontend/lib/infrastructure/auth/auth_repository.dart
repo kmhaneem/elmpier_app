@@ -1,11 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:frontend/domain/auth/auth_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/auth/i_auth_repository.dart';
-import 'package:frontend/domain/auth/model/auth.dart';
 import 'package:frontend/domain/core/user.dart';
-import 'package:frontend/domain/auth/value_objects.dart';
-import 'package:frontend/infrastructure/auth/dto/auth_dtos.dart';
 import 'package:frontend/infrastructure/auth/dto/otp_dtos.dart';
 import 'package:frontend/infrastructure/auth/dto/sign_in_dtos.dart';
 import 'package:frontend/infrastructure/auth/dto/sign_up_dtos.dart';
@@ -16,20 +14,10 @@ import 'secure_storage/secure_storage_service.dart';
 
 class AuthRepository implements IAuthFacade {
   final Dio _dio;
+  late final _firestore = FirebaseFirestore.instance;
+
   final SecureStorageService secureStorage = SecureStorageService();
   AuthRepository(this._dio);
-  // @override
-  // Future<Option<User>> getSignedInUser() async {
-  //   final String? authToken = await secureStorage.read("auth-token");
-  //   if (authToken != null) {
-  //     final String? userId = await secureStorage.read("user-id");
-
-  //     if (userId != null) {
-  //       return optionOf(User(id: UniqueId.fromUniqueString(userId)));
-  //     }
-  //   }
-  //   return none();
-  // }
 
   @override
   Future<Option<User>> getSignedInUser() async {
@@ -54,17 +42,10 @@ class AuthRepository implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> signUpUser(SignUpDto signUpData) async {
     try {
-      // final authDto = AuthDto.fromDomain(auth);
       FormData formData = FormData.fromMap({
         "email": signUpData.email.getOrCrash(),
         "phone": signUpData.phone.getOrCrash(),
         "password": signUpData.password.getOrCrash(),
-        // "salt": authDto.salt,
-        // "firstname": authDto.firstname,
-        // "lastname": authDto.lastname,
-        // "verified": authDto.verified,
-        // "otp": authDto.verified,
-        // "profile": authDto.profile
       });
       print("Sending data: ${formData.fields}");
 
@@ -73,13 +54,19 @@ class AuthRepository implements IAuthFacade {
         data: formData,
         options: Options(
           headers: <String, String>{
-            // 'Authorization': 'Bearer $token',
             'Content-Type': 'application/json; charset=UTF-8',
           },
         ),
       );
 
       if (response.statusCode == 201) {
+        final userId = response.data['response']['id'].toString();
+        final userEmail = response.data['response']['email'];
+        await _firestore
+            .collection('users')
+            .doc(userId)
+            .set({'uid': userId, 'email': userEmail});
+
         print("Token to write: ${response.data['response']['token']}");
         await secureStorage.write(
             "unverified-token", response.data['response']['token']);
@@ -99,12 +86,6 @@ class AuthRepository implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> signInUser(SignInDto signInData) async {
     try {
-      // final authDto = AuthDto.fromDomain(auth);
-      // FormData formData = FormData.fromMap({
-      //   "email": signInData.email.getOrCrash(),
-      //   "password": signInData.password.getOrCrash(),
-      // });
-      // print("Sending data: ${formData.fields}");
 
       final response = await Dio().post(
         "$api2/user/signin",
@@ -119,7 +100,15 @@ class AuthRepository implements IAuthFacade {
         ),
       );
 
+
       if (response.statusCode == 200) {
+        final userId = response.data['response']['id'].toString();
+        final userEmail = response.data['response']['email'];
+        await _firestore.collection('users').doc(userId).set({
+          'uid': userId,
+          'email': userEmail,
+        }, SetOptions(merge: true));
+        
         await secureStorage.write(
             "user-id", response.data['response']['id'].toString());
         await secureStorage.write("token", response.data['response']['token']);

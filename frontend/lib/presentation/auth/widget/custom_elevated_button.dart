@@ -5,12 +5,10 @@ import 'package:flutter/src/widgets/framework.dart';
 class CustomElevatedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Widget child;
-  // final ButtonStyle buttonStyle;
   const CustomElevatedButton({
     super.key,
     required this.onPressed,
     required this.child,
-    // this.buttonStyle = const ButtonStyle(),
   });
 
   @override

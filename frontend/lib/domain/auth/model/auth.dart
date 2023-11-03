@@ -7,33 +7,34 @@ part 'auth.freezed.dart';
 abstract class Auth implements _$Auth {
   const Auth._();
 
-  const factory Auth(
-      {required int id,
-      required EmailAddress email,
-      required PhoneNumber phone,
-      required Password password,
-      required OtpNumber otp,
-      required String salt,
-      required FirstName firstname,
-      required LastName lastname,
-      required String profile,
-      required bool verified}) = _Auth;
+  const factory Auth({
+    required int id,
+    required EmailAddress email,
+    required PhoneNumber phone,
+    required Password password,
+    required OtpNumber otp,
+    required String salt,
+    required FirstName firstname,
+    required LastName lastname,
+    required String profile,
+    required bool verified,
+  }) = _Auth;
 
   factory Auth.fromDetails(
           {required EmailAddress email,
           required PhoneNumber phone,
           required Password password}) =>
       Auth(
-        id: 0, // default value
+        id: 0, 
         email: email,
         phone: phone,
         password: password,
-        otp: OtpNumber(0), // default value
-        salt: "", // default value
-        firstname: FirstName(""), // default value
-        lastname: LastName(""), // default value
-        profile: "", // default value
-        verified: false, // default value
+        otp: OtpNumber(0), 
+        salt: "", 
+        firstname: FirstName(""),
+        lastname: LastName(""), 
+        profile: "", 
+        verified: false, 
       );
 
   factory Auth.empty() => Auth(

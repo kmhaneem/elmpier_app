@@ -5,7 +5,6 @@ import 'package:frontend/domain/auth/i_auth_repository.dart';
 import 'package:frontend/infrastructure/auth/dto/otp_dtos.dart';
 
 import '../../../domain/auth/auth_failures.dart';
-import '../../../domain/auth/model/auth.dart';
 import '../../../domain/auth/value_objects.dart';
 import '../../../infrastructure/auth/dto/sign_in_dtos.dart';
 import '../../../infrastructure/auth/dto/sign_up_dtos.dart';

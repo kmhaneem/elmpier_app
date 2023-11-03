@@ -10,9 +10,11 @@ class ProductNotifier extends StateNotifier<ProductState> {
   final IProductRepository _iProductRepository;
   bool _hasFetchedProducts = false;
   ProductNotifier(this._iProductRepository)
-      : super(const ProductState.initial());
+      : super(
+          const ProductState.initial(),
+        );
 
-  void watchAllStarted() async {
+  Future<void> watchAllStarted() async {
     if (_hasFetchedProducts) return;
     state = const ProductState.initial();
     final failureOrProducts = await _iProductRepository.watchAll();
@@ -25,10 +27,16 @@ class ProductNotifier extends StateNotifier<ProductState> {
         (products) => ProductState.loadSuccess(products));
   }
 
+  void getSellerProducts() async {
+    if (_hasFetchedProducts) return;
+    state = const ProductState.initial();
+    final failureOrProducts = await _iProductRepository.getSellerProduct();
+    productReceived(failureOrProducts);
+    _hasFetchedProducts = true;
+  }
+
   @override
   void dispose() {
     super.dispose();
   }
 }
-
-

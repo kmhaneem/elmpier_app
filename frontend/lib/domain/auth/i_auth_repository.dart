@@ -12,7 +12,6 @@ abstract class IAuthFacade {
   Future<Either<AuthFailure, Unit>> signInUser(SignInDto signInData);
   Future<Either<AuthFailure, Unit>> signUpUser(SignUpDto signUpData);
   Future<Either<AuthFailure, Unit>> verifyOtp(OtpDto otpData);
-  // Future<Option<User>> getSignedInUser();
   Future<void> signOut();
   Future<Option<User>> getSignedInUser();
 }

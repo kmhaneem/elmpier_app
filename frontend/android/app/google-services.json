@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "685235373108",
+    "project_id": "elmpier",
+    "storage_bucket": "elmpier.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685235373108:android:28ebf07f84f83001c3b661",
+        "android_client_info": {
+          "package_name": "com.example.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7p87fxowlm79AVpKN91srIPWFIOWw8jQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

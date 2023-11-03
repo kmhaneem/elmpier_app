@@ -8,9 +8,7 @@ abstract class Product implements _$Product {
   const Product._();
 
   const factory Product({
-    // required UniqueId id,
     required int id, 
-    required UserId userId,
     required Name name,
     required Description description,
     required Category category,
@@ -18,14 +16,11 @@ abstract class Product implements _$Product {
     required Model model,
     required Stock stock,
     required Price price,
-    // required String price,
     required List<String> imageUrls,
   }) = _Product;
 
   factory Product.empty() => Product(
-        // id: UniqueId(),
         id: 0,
-        userId: UserId(0),
         name: Name(""),
         description: Description(""),
         category: Category(0),

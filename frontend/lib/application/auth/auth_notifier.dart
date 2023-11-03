@@ -20,8 +20,4 @@ class AuthNotifier extends StateNotifier<AuthState> {
     );
   }
 
-  Future<void> signOut() async {
-    await _authFacade.signOut();
-    state = const AuthState.unauthenticated();
-  }
 }

@@ -1,11 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/product/model/brand.dart';
 import 'package:frontend/domain/product/model/model.dart';
-import 'package:frontend/domain/product/model/search.dart';
+
 import 'package:frontend/infrastructure/product/dto/brand_dtos.dart';
 import 'package:frontend/infrastructure/product/dto/model_dtos.dart';
-import 'package:frontend/infrastructure/product/dto/search_dtos.dart';
-// import 'package:cross_file/src/types/interface.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:frontend/domain/product/i_product_repository.dart';
@@ -26,31 +24,20 @@ class ProductRepository implements IProductRepository {
   @override
   Future<Either<ProductFailure, List<Product>>> watchAll() async {
     try {
-      final response = await _dio.get("$api2/products",
-          options: Options(
-            headers: <String, String>{
-              'Content-Type': 'application/json; charset=UTF-8',
-              // 'Authorization': 'Bearer ${await secureStorage.read("auth-token")}',
-            },
-          ));
-
-      // print("Response Data: ${response.data}");
-
+      final response = await _dio.get(
+        "$api2/products",
+        options: Options(
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+        ),
+      );
+      print(response);
       if (response.statusCode == 200) {
-        // final Map<String, dynamic> responseData =
-        //     response.data as Map<String, dynamic>;
-        // final List<dynamic> productList =
-        //     responseData['response'] as List<dynamic>;
-
-        // final products = productList.map((product) {
-        //   final productDto =
-        //       ProductDto.fromJson(product as Map<String, dynamic>);
-        //   return productDto.toDomain();
-        // }).toList();
-
         final productDto = (response.data['response'] as List)
             .map((e) => ProductDto.fromJson(e));
         final products = productDto.map((dto) => dto.toDomain()).toList();
+        // print(products);
 
         return right(products);
       } else {
@@ -78,10 +65,11 @@ class ProductRepository implements IProductRepository {
   Future<Either<ProductFailure, Unit>> create(
       Product product, List<XFile> images) async {
     try {
+      final String? token = await secureStorage.read("token");
       final productDto = ProductDto.fromDomain(product);
 
       FormData formData = FormData.fromMap({
-        "userId": productDto.userId,
+        // "userId": productDto.userId,
         "name": productDto.name,
         "description": productDto.description,
         "categoryId": productDto.category,
@@ -179,15 +167,18 @@ class ProductRepository implements IProductRepository {
 
   @override
   Future<Either<ProductFailure, List<Product>>> getAllSearchedProducts(
-      String query) async {
+      String query, int? userId) async {
     try {
-      final response = await Dio()
-          .get('$api2/product/search', queryParameters: {'query': query});
+      final response = await Dio().get(
+        '$api2/product/search',
+        data: {
+          "userId": userId,
+        },
+        queryParameters: {'query': query},
+      );
       print('Response Data: ${response.data}');
 
       if (response.statusCode == 200) {
-        // final productDto = (response.data['response'] as List)
-        //     .map((e) => ProductDto.fromJson(e));
         final productDto =
             (response.data as List).map((e) => ProductDto.fromJson(e));
         final products = productDto.map((dto) => dto.toDomain()).toList();
@@ -202,44 +193,30 @@ class ProductRepository implements IProductRepository {
     }
   }
 
-  // @override
-  // Future<Either<ProductFailure, List<ProductCategory>>>
-  //     getAllCategories() async {
-  //   try {
-  //     final token =
-  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjIzLCJlbWFpbCI6InRlc3RAdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNjk3NTM2MjI5fQ.ssfnIMIbc1zAqAbtT6scNH3EFUMmBZlAHPS2NrKU62o";
+  @override
+  Future<Either<ProductFailure, List<Product>>> getSellerProduct() async {
+    final String? token = await secureStorage.read("token");
+    try {
+      final response = await _dio.get("$api2/user/products",
+          options: Options(
+            headers: <String, String>{
+              'Authorization': 'Bearer $token',
+            },
+          ));
+      print("SELLER PRODUCT IS WORKING");
 
-  //     final response = await Dio().get(
-  //       '$api2/product/category',
-  //       options: Options(
-  //         headers: <String, String>{
-  //           'Authorization': 'Bearer $token',
-  //         },
-  //       ),
-  //     );
+      if (response.statusCode == 200) {
+        final productDto = (response.data['response'] as List)
+            .map((e) => ProductDto.fromJson(e));
+        final products = productDto.map((dto) => dto.toDomain()).toList();
 
-  //     if (response.statusCode == 200) {
-  //       final categoriesDto = (response.data['response'] as List)
-  //           .map((e) => ProductCategoryDto.fromJson(e))
-  //           .toList();
-  //       final categories = categoriesDto.map((dto) => dto.toDomain()).toList();
-  //       return right(categories);
-  //     } else {
-  //       return left(ProductFailure.notFound());
-  //     }
-  //   } catch (e) {
-  //     print('Repository Error in getAllCategories: $e');
-  //     return left(ProductFailure.serverError());
-  //   }
-  // }
+        return right(products);
+      } else {
+        return left(const ProductFailure.notFound());
+      }
+    } on DioException catch (e) {
+      print("Error Is FOR SELLER PRODUCT $e");
+      return left(const ProductFailure.serverError());
+    }
+  }
 }
-
-// required int id,
-    // @JsonKey(name: 'user_id') required int userId,
-    // required String name,
-    // required String description,
-    // @JsonKey(name: 'category_id') required int category,
-    // @JsonKey(name: 'brand_id') required int brand,
-    // @JsonKey(name: 'model_id') required int model,
-    // @JsonKey(name: 'stock_unit') required int stock,
-    // @JsonKey(name: 'image_urls') required List<String> imageUrls,

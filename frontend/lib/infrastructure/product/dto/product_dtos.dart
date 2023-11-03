@@ -13,7 +13,6 @@ class ProductDto with _$ProductDto {
 
   const factory ProductDto({
     required int id,
-    @JsonKey(name: 'user_id') required int userId,
     required String name,
     required String description,
     @JsonKey(name: 'category_id') required int category,
@@ -30,7 +29,6 @@ class ProductDto with _$ProductDto {
   factory ProductDto.fromDomain(Product product) {
     return ProductDto(
       id: product.id,
-      userId: product.userId.getOrCrash(),
       name: product.name.getOrCrash(),
       description: product.description.getOrCrash(),
       category: product.category.getOrCrash(),
@@ -45,7 +43,6 @@ class ProductDto with _$ProductDto {
   Product toDomain() {
     return Product(
       id: id,
-      userId: UserId(userId),
       name: Name(name),
       description: Description(description),
       category: Category(category),

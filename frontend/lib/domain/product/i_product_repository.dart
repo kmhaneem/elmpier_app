@@ -16,5 +16,6 @@ abstract class IProductRepository {
   Future<Either<ProductFailure, List<ProductCategory>>> getAllCategories();
   Future<Either<ProductFailure, List<ProductBrand>>> getAllBrands();
   Future<Either<ProductFailure, List<ProductModel>>> getAllModels();
-  Future<Either<ProductFailure, List<Product>>> getAllSearchedProducts(String query);
+  Future<Either<ProductFailure, List<Product>>> getAllSearchedProducts(String query, int? userId);
+  Future<Either<ProductFailure, List<Product>>> getSellerProduct();
 }

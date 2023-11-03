@@ -122,15 +122,3 @@ class Images extends ValueObject<List<File>> {
 
   Images._(this.value);
 }
-
-
-
-// class ProductImageUrl extends ValueObjects<List<String>> {
-//   final Either<ValueFailure<List<String>>, List<String>> value;
-
-//   factory ProductImageUrl(List<String> input){
-//     return ProductImageUrl._()
-//   }
-
-//   ProductImageUrl._(this.value)
-// }

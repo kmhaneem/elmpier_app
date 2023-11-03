@@ -20,9 +20,8 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductDto {
-  int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'user_id')
-  int get userId => throw _privateConstructorUsedError;
+  int get id =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'user_id') required int userId,
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'category_id')
@@ -51,7 +50,6 @@ abstract class $ProductDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      @JsonKey(name: 'user_id') int userId,
       String name,
       String description,
       @JsonKey(name: 'category_id') int category,
@@ -76,7 +74,6 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
     Object? name = null,
     Object? description = null,
     Object? category = null,
@@ -90,10 +87,6 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -141,7 +134,6 @@ abstract class _$$_ProductDtoCopyWith<$Res>
   @useResult
   $Res call(
       {int id,
-      @JsonKey(name: 'user_id') int userId,
       String name,
       String description,
       @JsonKey(name: 'category_id') int category,
@@ -164,7 +156,6 @@ class __$$_ProductDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
     Object? name = null,
     Object? description = null,
     Object? category = null,
@@ -178,10 +169,6 @@ class __$$_ProductDtoCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -224,7 +211,6 @@ class __$$_ProductDtoCopyWithImpl<$Res>
 class _$_ProductDto extends _ProductDto {
   const _$_ProductDto(
       {required this.id,
-      @JsonKey(name: 'user_id') required this.userId,
       required this.name,
       required this.description,
       @JsonKey(name: 'category_id') required this.category,
@@ -241,9 +227,7 @@ class _$_ProductDto extends _ProductDto {
 
   @override
   final int id;
-  @override
-  @JsonKey(name: 'user_id')
-  final int userId;
+// @JsonKey(name: 'user_id') required int userId,
   @override
   final String name;
   @override
@@ -274,7 +258,7 @@ class _$_ProductDto extends _ProductDto {
 
   @override
   String toString() {
-    return 'ProductDto(id: $id, userId: $userId, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, imageUrls: $imageUrls, price: $price)';
+    return 'ProductDto(id: $id, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, imageUrls: $imageUrls, price: $price)';
   }
 
   @override
@@ -283,7 +267,6 @@ class _$_ProductDto extends _ProductDto {
         (other.runtimeType == runtimeType &&
             other is _$_ProductDto &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -302,7 +285,6 @@ class _$_ProductDto extends _ProductDto {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      userId,
       name,
       description,
       category,
@@ -329,7 +311,6 @@ class _$_ProductDto extends _ProductDto {
 abstract class _ProductDto extends ProductDto {
   const factory _ProductDto(
       {required final int id,
-      @JsonKey(name: 'user_id') required final int userId,
       required final String name,
       required final String description,
       @JsonKey(name: 'category_id') required final int category,
@@ -345,10 +326,7 @@ abstract class _ProductDto extends ProductDto {
 
   @override
   int get id;
-  @override
-  @JsonKey(name: 'user_id')
-  int get userId;
-  @override
+  @override // @JsonKey(name: 'user_id') required int userId,
   String get name;
   @override
   String get description;

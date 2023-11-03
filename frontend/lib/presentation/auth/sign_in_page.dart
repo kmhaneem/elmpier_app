@@ -13,9 +13,6 @@ import '../routes/app_router.gr.dart';
 class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
 
-  // Add the callback
-  // final Function(bool) onResult;
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     TextEditingController passwordController = TextEditingController();
@@ -37,12 +34,10 @@ class SignInPage extends ConsumerWidget {
                             "Phone Number Already In Use",
                         invalidOtp: (_) => "Invalid OTP",
                         unExpectedError: (_) => "UnExpected Error",
-                        // orElse: () => "",
                       ),
                     ).show(context);
                   },
                   (r) {
-                    // if (onResult != null) onResult(true);
                     AutoRouter.of(context).replace(HomeRoute());
                   },
                 ));
@@ -125,6 +120,7 @@ class SignInPage extends ConsumerWidget {
                             signInNotifier.clearInputs();
                             // AutoRouter.of(context).replace(const SignUpRoute());
                             AutoRouter.of(context).replace(const SignUpRoute());
+                            // ref.refresh(userProvider);
                           },
                           child: const Text(
                             "Sign Up",

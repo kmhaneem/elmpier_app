@@ -31,7 +31,6 @@ class OtpVerifyPage extends ConsumerWidget {
                               "Phone Number Already In Use",
                           invalidOtp: (_) => "Invalid OTP",
                           unExpectedError: (_) => "Unexpected Error"
-                          // orElse: () => "",
                           ),
                     ).show(context);
                   },

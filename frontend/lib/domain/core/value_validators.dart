@@ -132,20 +132,3 @@ Either<ValueFailure<String>, String> validateName(String input) {
     return left(ValueFailure.invalidName(failedValue: input));
   }
 }
-
-// Either<ValueFailure<String>, String> validateSalt(String input) {
-//   final saltRegex = RegExp(r'^\$2[axyb]\$\d{2}\$[./A-Za-z0-9]{22}$');
-//   if (saltRegex.hasMatch(input)) {
-//     return right(input);
-//   } else {
-//     return left(ValueFailure.invalidName(failedValue: input));
-//   }
-// }
-
-
-
-
-//     required String salt,
-//     required String firstName,
-//     required String lastName,
-//     required String profile,

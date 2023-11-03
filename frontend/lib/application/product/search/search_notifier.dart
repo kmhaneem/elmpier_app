@@ -7,10 +7,10 @@ class SearchNotifier extends StateNotifier<SearchState> {
 
   SearchNotifier(this._iProductRepository) : super(const SearchState.initial());
 
-  void fetchProducts(String query) async {
+  void fetchProducts(String query, int? userId) async {
     state = const SearchState.loadInProgress();
     final failureOrProducts =
-        await _iProductRepository.getAllSearchedProducts(query);
+        await _iProductRepository.getAllSearchedProducts(query, userId);
     state = failureOrProducts.fold(
       (f) {
         print("Error fetching products: $f");

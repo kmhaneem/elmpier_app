@@ -1,17 +1,13 @@
-import 'dart:convert';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:frontend/presentation/product/search_product.dart';
-import 'package:frontend/presentation/product/user_product.dart';
-import 'package:frontend/presentation/product/view_product.dart';
+import 'package:frontend/presentation/orders.dart';
+import 'package:frontend/presentation/products/search_product.dart';
+import 'package:frontend/presentation/products/user_product.dart';
+import 'package:frontend/presentation/products/view_product.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
-import 'package:frontend/presentation/setting_page.dart';
+import 'package:frontend/presentation/profile_page.dart';
 import 'package:frontend/shared/providers.dart';
-
-import '../application/auth/auth_state.dart';
-import '../infrastructure/product/dto/product_dtos.dart';
 import 'core/widget/bottom_nav_item.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -26,8 +22,8 @@ class _HomePageState extends ConsumerState<HomePage> {
   final List<Widget> screens = [
     ViewProduct(),
     ProductSearch(),
-    UserProduct(),
-    SettingPage()
+    OrdersPage(),
+    ProfilePage()
   ];
   Widget currentScreen = const ViewProduct();
 
@@ -87,25 +83,26 @@ class _HomePageState extends ConsumerState<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   NavItem(
-                    icon: Icons.list,
-                    text: "Products",
+                    icon: Icons.shopping_bag,
+                    text: "Orders",
                     currentTab: currentTab,
                     tab: 3,
                     onTap: () {
                       setState(() {
-                        currentScreen = UserProduct();
+                        ref.refresh(orderItemProvider);
+                        currentScreen = OrdersPage();
                         currentTab = 3;
                       });
                     },
                   ),
                   NavItem(
-                    icon: Icons.settings,
-                    text: "Settings",
+                    icon: Icons.account_circle,
+                    text: "Profile",
                     currentTab: currentTab,
                     tab: 4,
                     onTap: () {
                       setState(() {
-                        currentScreen = SettingPage();
+                        currentScreen = ProfilePage();
                         currentTab = 4;
                       });
                     },

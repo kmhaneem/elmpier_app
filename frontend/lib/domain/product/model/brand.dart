@@ -12,5 +12,3 @@ abstract class ProductBrand with _$ProductBrand {
   factory ProductBrand.empty() =>
       const ProductBrand(id: 0, name: "", categoryId: 0);
 }
-
-// category_id
