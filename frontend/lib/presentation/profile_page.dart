@@ -88,9 +88,9 @@ class ProfilePage extends ConsumerWidget {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 100), 
+          SizedBox(height: 100),
           ListTile(
-            leading: Icon(Icons.account_box), 
+            leading: Icon(Icons.account_box),
             title: Text('User Info'),
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () {
@@ -101,8 +101,9 @@ class ProfilePage extends ConsumerWidget {
             leading: Icon(Icons.logout),
             title: Text('Logout'),
             trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              _logout(context, signInNotifier);
+            onTap: () async {
+              await _logout(context, signInNotifier);
+              ref.refresh(authProvider);
             },
           ),
         ],

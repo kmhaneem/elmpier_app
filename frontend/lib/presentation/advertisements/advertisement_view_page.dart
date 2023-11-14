@@ -10,6 +10,8 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../shared/providers.dart';
 import '../../shared/user.dart';
+import '../ads/popup.dart';
+import '../core/widget/colors.dart';
 import 'advertisement_details.dart';
 
 class AdvertisementViewPage extends ConsumerStatefulWidget {
@@ -86,58 +88,161 @@ class _AdvertisementViewPageState extends ConsumerState<AdvertisementViewPage> {
   Widget build(BuildContext context) {
     final userId = getLoggedInUserId(ref);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 90.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              ImageSlider(
-                height: imageHeight,
-                imageUrls: advertisement.imageUrls,
+      body: Column(
+        children: [
+          SizedBox(height: 50),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  final stack = AutoRouter.of(context).stack;
+                  if (stack.isNotEmpty && stack.last is PopupAds) {
+                    AutoRouter.of(context).replace(HomeRoute());
+                  } else {
+                    AutoRouter.of(context).pop();
+                  }
+                },
               ),
-              const SizedBox(height: 10),
-              AdvertisementDetails(advertisement: advertisement),
             ],
           ),
-        ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    ImageSlider(
+                      height: imageHeight,
+                      imageUrls: advertisement.imageUrls,
+                    ),
+                    const SizedBox(height: 10),
+                    AdvertisementDetails(advertisement: advertisement),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(
+            bottom: 25.0, left: 24.0, right: 24.0, top: 15),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 8),
             Row(
               children: [
-                ElevatedButton(
-                  onPressed: () => _makePhoneCall(advertisement.phone!),
-                  child: Text("Call Now"),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    String? userId = await getLoggedInUserIdFromStorage();
-                    String? email;
-                    if (userId != null) {
-                      email = await getEmailByUserId(userId);
-                    }
-                    if (email != null) {
-                      AutoRouter.of(context).push(ChatRoute(
-                          otherUserId: advertisement.userId.toString(),
-                          userId: userId!,
-                          email: email));
-                    } else {}
-                  },
-                  child: Text("Chat"),
-                ),
-                const SizedBox(width: 8),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () => _sendWhatsAppMessage(advertisement.phone!,
-                        "Hello! I'm interested in your advertisement."),
-                    child: const Text("WhatsApp"),
+                    onPressed: () => _makePhoneCall(advertisement.phone!),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: customColor[100],
+                      foregroundColor: customColor,
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
+                          topRight: Radius.circular(25),
+                        ),
+                      ),
+                      fixedSize: const Size(double.infinity, 50),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.call),
+                        SizedBox(width: 8),
+                        Text(
+                          "Call Now",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      String? userId = await getLoggedInUserIdFromStorage();
+                      String? email;
+                      if (userId != null) {
+                        email = await getEmailByUserId(userId);
+                      }
+                      if (email != null) {
+                        AutoRouter.of(context).push(ChatRoute(
+                            otherUserId: advertisement.userId.toString(),
+                            userId: userId!,
+                            email: email));
+                      } else {}
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: customColor[100],
+                      foregroundColor: customColor,
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25),
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
+                          topRight: Radius.circular(25),
+                        ),
+                      ),
+                      fixedSize: const Size(double.infinity, 50),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.chat),
+                        SizedBox(width: 8),
+                        Text(
+                          "Chat",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                // ElevatedButton(
+                //   onPressed: () => _makePhoneCall(advertisement.phone!),
+                //   child: Text("Call Now"),
+                // ),
+                // ElevatedButton(
+                // onPressed: () async {
+                //   String? userId = await getLoggedInUserIdFromStorage();
+                //   String? email;
+                //   if (userId != null) {
+                //     email = await getEmailByUserId(userId);
+                //   }
+                //   if (email != null) {
+                //     AutoRouter.of(context).push(ChatRoute(
+                //         otherUserId: advertisement.userId.toString(),
+                //         userId: userId!,
+                //         email: email));
+                //   } else {}
+                // },
+                //   child: Text("Chat"),
+                // ),
+                // const SizedBox(width: 8),
+                // Expanded(
+                //   child: ElevatedButton(
+                //     onPressed: () => _sendWhatsAppMessage(advertisement.phone!,
+                //         "Hello! I'm interested in your advertisement."),
+                //     child: const Text("WhatsApp"),
+                //   ),
+                // ),
               ],
             ),
           ],

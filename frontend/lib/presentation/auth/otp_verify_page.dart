@@ -2,8 +2,8 @@ import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:frontend/presentation/auth/widget/custom_elevated_button.dart';
-import 'package:frontend/presentation/auth/widget/custom_textform_field.dart';
+import 'package:frontend/presentation/widget/custom_elevated_button.dart';
+import 'package:frontend/presentation/widget/custom_textform_field.dart';
 
 import '../../shared/providers.dart';
 import '../routes/app_router.gr.dart';
@@ -86,10 +86,7 @@ class OtpVerifyPage extends ConsumerWidget {
                   onPressed: () async {
                     await signInNotifier.verifyOtpButtonPressed();
                   },
-                  child: const Text(
-                    "Verify OTP",
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  text: "Sign In",
                 ),
               ),
               if (signInState.isSubmitting) ...[

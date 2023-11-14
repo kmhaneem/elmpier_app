@@ -1,10 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/application/ads/ads_notifier.dart';
+import 'package:frontend/application/ads/ads_state.dart';
 import 'package:frontend/application/advertisement/advertisement_notifier.dart';
 import 'package:frontend/application/advertisement/advertisement_state.dart';
 import 'package:frontend/application/cart/cart_notifier.dart';
 import 'package:frontend/application/cart/cart_state.dart';
+import 'package:frontend/application/elmpier_plus/elmpier_plus_notifier.dart';
+import 'package:frontend/application/elmpier_plus/elmpier_plus_state.dart';
 import 'package:frontend/application/order/order_item_notifier.dart';
 import 'package:frontend/application/order/order_item_state.dart';
 import 'package:frontend/application/payment/payment_notifier.dart';
@@ -30,13 +34,18 @@ import 'package:frontend/application/user/profile/user_profile_notifier.dart';
 import 'package:frontend/application/user/profile/user_profile_state.dart';
 import 'package:frontend/application/user/user_notifier.dart';
 import 'package:frontend/application/user/user_state.dart';
+import 'package:frontend/application/wallet/wallet_notifier.dart';
+import 'package:frontend/application/wallet/wallet_state.dart';
+import 'package:frontend/infrastructure/ads/ads_repository.dart';
 import 'package:frontend/infrastructure/advertisement/advertisement_repository.dart';
 import 'package:frontend/infrastructure/auth/auth_repository.dart';
 import 'package:frontend/infrastructure/cart/cart_repository.dart';
+import 'package:frontend/infrastructure/elmpier_plus/elmpier_plus_repository.dart';
 import 'package:frontend/infrastructure/orders/order_item_repository.dart';
 import 'package:frontend/infrastructure/payment/payment_repository.dart';
 import 'package:frontend/infrastructure/product/product_repository.dart';
 import 'package:frontend/infrastructure/user/user_repository.dart';
+import 'package:frontend/infrastructure/wallet/wallet_repository.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tuple/tuple.dart';
 
@@ -60,16 +69,20 @@ final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final messageRepositoryProvider = Provider<MessageRepository>(
     (ref) => MessageRepository(FirebaseFirestore.instance));
 
-
 final messageNotifierProvider = StateNotifierProvider.family<MessageNotifier,
         MessageState, Tuple2<String, String>>(
     (ref, tuple) => MessageNotifier(
         ref.watch(messageRepositoryProvider), tuple.item1, tuple.item2));
 
 final authRepositoryProvider = Provider(((ref) => AuthRepository(Dio())));
+final elmpierPlusRepositoryProvider =
+    Provider((ref) => ElmpierPlusRepository(Dio()));
 
 final productRepositoryProvider =
     Provider<ProductRepository>(((ref) => ProductRepository(Dio())));
+
+final walletRepositoryProvider =
+    Provider<WalletRepository>(((ref) => WalletRepository(Dio())));
 
 final orderItemRepositoryProvider =
     Provider<OrderItemRepository>(((ref) => OrderItemRepository(Dio())));
@@ -83,11 +96,21 @@ final userRepositoryProvider =
 final PaymentRepositoryProvider =
     Provider<PaymentRepository>(((ref) => PaymentRepository(Dio())));
 
+final adsRepositoryProvider =
+    Provider<AdsRepository>(((ref) => AdsRepository(Dio())));
+
 final advertisementRepositoryProvider = Provider<AdvertisementRepository>(
     ((ref) => AdvertisementRepository(Dio())));
 
 final productProvider = StateNotifierProvider<ProductNotifier, ProductState>(
     ((ref) => ProductNotifier(ref.watch(productRepositoryProvider))));
+
+final elmpierPlusProvider =
+    StateNotifierProvider<ElmpierPlusNotifier, ElmpierPlusState>(
+        (ref) => ElmpierPlusNotifier(ref.watch(elmpierPlusRepositoryProvider)));
+
+final walletProvider = StateNotifierProvider<WalletNotifier, WalletState>(
+    ((ref) => WalletNotifier(ref.watch(walletRepositoryProvider))));
 
 final sellerProductProvider =
     StateNotifierProvider<SellerProductNotifier, SellerProductState>(
@@ -105,6 +128,9 @@ final selectedImagesProvider = StateProvider<List<XFile>>((ref) => []);
 
 final categoryProvider = StateNotifierProvider<CategoryNotifier, CategoryState>(
     (ref) => CategoryNotifier(ref.watch(productRepositoryProvider)));
+
+final adsProvider = StateNotifierProvider<AdsNotifier, AdsState>(
+    (ref) => AdsNotifier(ref.watch(adsRepositoryProvider)));
 
 final brandProvider = StateNotifierProvider<BrandNotifier, BrandState>(
     (ref) => BrandNotifier(ref.watch(productRepositoryProvider)));
@@ -148,7 +174,7 @@ final userNotifierProvider = StateNotifierProvider<UserNotifier, UserState>(
 final userProfileProvider =
     StateNotifierProvider<UserProfileNotifier, UserProfileState>((ref) =>
         UserProfileNotifier(ref.watch(userRepositoryProvider),
-            ref.watch(userNotifierProvider.notifier))); // 
+            ref.watch(userNotifierProvider.notifier))); //
 
 final paymentProvider = StateNotifierProvider<PaymentNotifier, PaymentState>(
     ((ref) => PaymentNotifier(ref.watch(PaymentRepositoryProvider))));
@@ -163,6 +189,7 @@ final selectedQtyProvider = StateProvider<int>((ref) => 1);
 
 final userIdProvider = FutureProvider<String?>((ref) async {
   final String? userId = await secureStorage.read("user-id");
+  print("My User ID is $userId");
   return userId;
 });
 

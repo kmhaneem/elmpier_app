@@ -23,8 +23,13 @@ class AdvertisementDto with _$AdvertisementDto {
     String? district,
     String? category,
     String? condition,
+    String? brand,
+    String? model,
     String? phone,
     @JsonKey(name: "user_id") int? userId,
+    @JsonKey(name: "advertiser_name") String? advertiserName,
+    @JsonKey(name: "create_date") String? createDate,
+
     @JsonKey(name: "image_urls") required List<String> imageUrls,
   }) = _AdvertisementDto;
 
@@ -47,8 +52,12 @@ class AdvertisementDto with _$AdvertisementDto {
       province: advertisement.province,
       district: advertisement.district,
       category: advertisement.category,
+      brand: advertisement.brand,
+      model: advertisement.model,
       condition: advertisement.condition,
       phone: advertisement.phone,
+      advertiserName: advertisement.advertiserName,
+      createDate: advertisement.createDate,
       userId: advertisement.userId
     );
   }
@@ -69,8 +78,12 @@ class AdvertisementDto with _$AdvertisementDto {
       province: province,
       district: district,
       category: category,
+      brand: brand,
+      model: model,
       condition: condition,
       phone: phone,
+      advertiserName: advertiserName,
+      createDate: createDate,
       userId: userId
     );
   }

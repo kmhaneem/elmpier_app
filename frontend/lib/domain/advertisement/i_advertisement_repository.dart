@@ -5,4 +5,6 @@ import 'package:frontend/domain/advertisement/model/advertisement.dart';
 abstract class IAdvertisementRepository {
   Future<Either<AdvertisementFailure, List<Advertisement>>>
       getAllAdvertisement();
+  Future<Either<AdvertisementFailure, List<Advertisement>>>
+      getAllSearchAdvertisement(String query, int? userId);
 }

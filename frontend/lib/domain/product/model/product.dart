@@ -16,6 +16,8 @@ abstract class Product implements _$Product {
     required Model model,
     required Stock stock,
     required Price price,
+    required int conditionId,
+    String? condition,
     required List<String> imageUrls,
   }) = _Product;
 
@@ -28,6 +30,8 @@ abstract class Product implements _$Product {
         model: Model(0),
         stock: Stock(0),
         price: Price(0),
+        conditionId: 0,
+        condition: "",
         imageUrls: [],
       );
 

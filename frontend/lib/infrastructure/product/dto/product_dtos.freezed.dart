@@ -20,8 +20,7 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductDto {
-  int get id =>
-      throw _privateConstructorUsedError; // @JsonKey(name: 'user_id') required int userId,
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'category_id')
@@ -32,6 +31,9 @@ mixin _$ProductDto {
   int get model => throw _privateConstructorUsedError;
   @JsonKey(name: 'stock_unit')
   int get stock => throw _privateConstructorUsedError;
+  @JsonKey(name: 'condition_id')
+  int get conditionId => throw _privateConstructorUsedError;
+  String? get condition => throw _privateConstructorUsedError;
   @JsonKey(name: 'image_urls')
   List<String> get imageUrls => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
@@ -56,6 +58,8 @@ abstract class $ProductDtoCopyWith<$Res> {
       @JsonKey(name: 'brand_id') int brand,
       @JsonKey(name: 'model_id') int model,
       @JsonKey(name: 'stock_unit') int stock,
+      @JsonKey(name: 'condition_id') int conditionId,
+      String? condition,
       @JsonKey(name: 'image_urls') List<String> imageUrls,
       int price});
 }
@@ -80,6 +84,8 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
     Object? brand = null,
     Object? model = null,
     Object? stock = null,
+    Object? conditionId = null,
+    Object? condition = freezed,
     Object? imageUrls = null,
     Object? price = null,
   }) {
@@ -112,6 +118,14 @@ class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
               as int,
+      conditionId: null == conditionId
+          ? _value.conditionId
+          : conditionId // ignore: cast_nullable_to_non_nullable
+              as int,
+      condition: freezed == condition
+          ? _value.condition
+          : condition // ignore: cast_nullable_to_non_nullable
+              as String?,
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -140,6 +154,8 @@ abstract class _$$_ProductDtoCopyWith<$Res>
       @JsonKey(name: 'brand_id') int brand,
       @JsonKey(name: 'model_id') int model,
       @JsonKey(name: 'stock_unit') int stock,
+      @JsonKey(name: 'condition_id') int conditionId,
+      String? condition,
       @JsonKey(name: 'image_urls') List<String> imageUrls,
       int price});
 }
@@ -162,6 +178,8 @@ class __$$_ProductDtoCopyWithImpl<$Res>
     Object? brand = null,
     Object? model = null,
     Object? stock = null,
+    Object? conditionId = null,
+    Object? condition = freezed,
     Object? imageUrls = null,
     Object? price = null,
   }) {
@@ -194,6 +212,14 @@ class __$$_ProductDtoCopyWithImpl<$Res>
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
               as int,
+      conditionId: null == conditionId
+          ? _value.conditionId
+          : conditionId // ignore: cast_nullable_to_non_nullable
+              as int,
+      condition: freezed == condition
+          ? _value.condition
+          : condition // ignore: cast_nullable_to_non_nullable
+              as String?,
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -217,6 +243,8 @@ class _$_ProductDto extends _ProductDto {
       @JsonKey(name: 'brand_id') required this.brand,
       @JsonKey(name: 'model_id') required this.model,
       @JsonKey(name: 'stock_unit') required this.stock,
+      @JsonKey(name: 'condition_id') required this.conditionId,
+      this.condition,
       @JsonKey(name: 'image_urls') required final List<String> imageUrls,
       required this.price})
       : _imageUrls = imageUrls,
@@ -227,7 +255,6 @@ class _$_ProductDto extends _ProductDto {
 
   @override
   final int id;
-// @JsonKey(name: 'user_id') required int userId,
   @override
   final String name;
   @override
@@ -244,6 +271,11 @@ class _$_ProductDto extends _ProductDto {
   @override
   @JsonKey(name: 'stock_unit')
   final int stock;
+  @override
+  @JsonKey(name: 'condition_id')
+  final int conditionId;
+  @override
+  final String? condition;
   final List<String> _imageUrls;
   @override
   @JsonKey(name: 'image_urls')
@@ -258,7 +290,7 @@ class _$_ProductDto extends _ProductDto {
 
   @override
   String toString() {
-    return 'ProductDto(id: $id, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, imageUrls: $imageUrls, price: $price)';
+    return 'ProductDto(id: $id, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, conditionId: $conditionId, condition: $condition, imageUrls: $imageUrls, price: $price)';
   }
 
   @override
@@ -275,6 +307,10 @@ class _$_ProductDto extends _ProductDto {
             (identical(other.brand, brand) || other.brand == brand) &&
             (identical(other.model, model) || other.model == model) &&
             (identical(other.stock, stock) || other.stock == stock) &&
+            (identical(other.conditionId, conditionId) ||
+                other.conditionId == conditionId) &&
+            (identical(other.condition, condition) ||
+                other.condition == condition) &&
             const DeepCollectionEquality()
                 .equals(other._imageUrls, _imageUrls) &&
             (identical(other.price, price) || other.price == price));
@@ -291,6 +327,8 @@ class _$_ProductDto extends _ProductDto {
       brand,
       model,
       stock,
+      conditionId,
+      condition,
       const DeepCollectionEquality().hash(_imageUrls),
       price);
 
@@ -317,6 +355,8 @@ abstract class _ProductDto extends ProductDto {
       @JsonKey(name: 'brand_id') required final int brand,
       @JsonKey(name: 'model_id') required final int model,
       @JsonKey(name: 'stock_unit') required final int stock,
+      @JsonKey(name: 'condition_id') required final int conditionId,
+      final String? condition,
       @JsonKey(name: 'image_urls') required final List<String> imageUrls,
       required final int price}) = _$_ProductDto;
   const _ProductDto._() : super._();
@@ -326,7 +366,7 @@ abstract class _ProductDto extends ProductDto {
 
   @override
   int get id;
-  @override // @JsonKey(name: 'user_id') required int userId,
+  @override
   String get name;
   @override
   String get description;
@@ -342,6 +382,11 @@ abstract class _ProductDto extends ProductDto {
   @override
   @JsonKey(name: 'stock_unit')
   int get stock;
+  @override
+  @JsonKey(name: 'condition_id')
+  int get conditionId;
+  @override
+  String? get condition;
   @override
   @JsonKey(name: 'image_urls')
   List<String> get imageUrls;

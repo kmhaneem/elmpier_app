@@ -28,6 +28,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSCameraUsageDescription</key>
+<string>Need camera access for taking pictures</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Need photo library access for selecting pictures</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -41,11 +45,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>tel</string>
+    <string>sms</string>
+    <string>whatsapp</string>
+  </array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>NSFileProtectionCompleteUntilFirstUserAuthentication</key>
 	<true/>
 </dict>
 </plist>

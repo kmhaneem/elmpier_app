@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Cart {
-// required int userId,
   int get productId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
@@ -140,7 +139,6 @@ class _$_Cart implements _Cart {
       required this.itemQty,
       required this.imageUrl});
 
-// required int userId,
   @override
   final int productId;
   @override
@@ -190,7 +188,7 @@ abstract class _Cart implements Cart {
       required final int itemQty,
       required final String imageUrl}) = _$_Cart;
 
-  @override // required int userId,
+  @override
   int get productId;
   @override
   String get name;

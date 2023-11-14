@@ -71,7 +71,7 @@ class UserRepository implements IUserRepository {
         final districtDto = (response.data["response"] as List)
             .map((e) => DistrictDto.fromJson(e));
         final district = districtDto.map((dto) => dto.toDomain()).toList();
-        print("district details $district");
+        // print("district details $district");
         return right(district);
       } else {
         return left(const UserFailure.notFound());

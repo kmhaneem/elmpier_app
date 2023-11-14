@@ -5,6 +5,7 @@ import 'package:frontend/domain/advertisement/i_advertisement_repository.dart';
 class AdvertisementNotifier extends StateNotifier<AdvertisementState> {
   final IAdvertisementRepository _advertisementRepository;
   bool _hasFetchedAdvertisements = false;
+  bool _hasFetchedSearchedAdvertisements = false;
 
   AdvertisementNotifier(this._advertisementRepository)
       : super(const AdvertisementState.initial());
@@ -23,6 +24,18 @@ class AdvertisementNotifier extends StateNotifier<AdvertisementState> {
     );
 
     _hasFetchedAdvertisements = true;
+  }
+
+  Future<void> getSearchedAdvertisement(String query, int? userId) async {
+    state = const AdvertisementState.loadInProgress();
+
+    final failureOrAdvertisement =
+        await _advertisementRepository.getAllSearchAdvertisement(query, userId);
+
+    state = failureOrAdvertisement.fold(
+      (failure) => AdvertisementState.loadFailure(failure),
+      (advertisements) => AdvertisementState.searchLoaded(advertisements),
+    );
   }
 
   @override

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
 
 import '../shared/providers.dart';
+import 'ads/popup.dart';
 import 'core/widget/colors.dart';
 
 class AppWidget extends ConsumerWidget {
@@ -16,20 +17,21 @@ class AppWidget extends ConsumerWidget {
     final authNotifier = ref.read(authProvider.notifier);
     authNotifier.authCheckRequested();
 
-    Future.delayed(const Duration(seconds: 2), (){
+    Future.delayed(const Duration(seconds: 2), () {
+      // appRouter.replace(HomeRoute());
       authState.map(
-      initial: (_) {
-        print("Initial");
-      },
-      authenticated: (_) {
-        appRouter.replace(HomeRoute());
-        print("Authenticated");
-      },
-      unauthenticated: (_) {
-        appRouter.replace(SignInRoute());
-        print("Unauthenticated");
-      },
-    );
+        initial: (_) {
+          print("Initial");
+        },
+        authenticated: (_) {
+          appRouter.replace(HomeRoute());
+          print("Authenticated");
+        },
+        unauthenticated: (_) {
+          appRouter.replace(SignInRoute());
+          print("Unauthenticated");
+        },
+      );
     });
     appRouter.replace(SplashRoute());
 
@@ -44,5 +46,3 @@ class AppWidget extends ConsumerWidget {
     );
   }
 }
-
-

@@ -40,9 +40,15 @@ mixin _$AdvertisementDto {
   String? get district => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
   String? get condition => throw _privateConstructorUsedError;
+  String? get brand => throw _privateConstructorUsedError;
+  String? get model => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   @JsonKey(name: "user_id")
   int? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: "advertiser_name")
+  String? get advertiserName => throw _privateConstructorUsedError;
+  @JsonKey(name: "create_date")
+  String? get createDate => throw _privateConstructorUsedError;
   @JsonKey(name: "image_urls")
   List<String> get imageUrls => throw _privateConstructorUsedError;
 
@@ -73,8 +79,12 @@ abstract class $AdvertisementDtoCopyWith<$Res> {
       String? district,
       String? category,
       String? condition,
+      String? brand,
+      String? model,
       String? phone,
       @JsonKey(name: "user_id") int? userId,
+      @JsonKey(name: "advertiser_name") String? advertiserName,
+      @JsonKey(name: "create_date") String? createDate,
       @JsonKey(name: "image_urls") List<String> imageUrls});
 }
 
@@ -105,8 +115,12 @@ class _$AdvertisementDtoCopyWithImpl<$Res, $Val extends AdvertisementDto>
     Object? district = freezed,
     Object? category = freezed,
     Object? condition = freezed,
+    Object? brand = freezed,
+    Object? model = freezed,
     Object? phone = freezed,
     Object? userId = freezed,
+    Object? advertiserName = freezed,
+    Object? createDate = freezed,
     Object? imageUrls = null,
   }) {
     return _then(_value.copyWith(
@@ -166,6 +180,14 @@ class _$AdvertisementDtoCopyWithImpl<$Res, $Val extends AdvertisementDto>
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
               as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String?,
+      model: freezed == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -174,6 +196,14 @@ class _$AdvertisementDtoCopyWithImpl<$Res, $Val extends AdvertisementDto>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
+      advertiserName: freezed == advertiserName
+          ? _value.advertiserName
+          : advertiserName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createDate: freezed == createDate
+          ? _value.createDate
+          : createDate // ignore: cast_nullable_to_non_nullable
+              as String?,
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -205,8 +235,12 @@ abstract class _$$_AdvertisementDtoCopyWith<$Res>
       String? district,
       String? category,
       String? condition,
+      String? brand,
+      String? model,
       String? phone,
       @JsonKey(name: "user_id") int? userId,
+      @JsonKey(name: "advertiser_name") String? advertiserName,
+      @JsonKey(name: "create_date") String? createDate,
       @JsonKey(name: "image_urls") List<String> imageUrls});
 }
 
@@ -235,8 +269,12 @@ class __$$_AdvertisementDtoCopyWithImpl<$Res>
     Object? district = freezed,
     Object? category = freezed,
     Object? condition = freezed,
+    Object? brand = freezed,
+    Object? model = freezed,
     Object? phone = freezed,
     Object? userId = freezed,
+    Object? advertiserName = freezed,
+    Object? createDate = freezed,
     Object? imageUrls = null,
   }) {
     return _then(_$_AdvertisementDto(
@@ -296,6 +334,14 @@ class __$$_AdvertisementDtoCopyWithImpl<$Res>
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
               as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String?,
+      model: freezed == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -304,6 +350,14 @@ class __$$_AdvertisementDtoCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
+      advertiserName: freezed == advertiserName
+          ? _value.advertiserName
+          : advertiserName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createDate: freezed == createDate
+          ? _value.createDate
+          : createDate // ignore: cast_nullable_to_non_nullable
+              as String?,
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -330,8 +384,12 @@ class _$_AdvertisementDto extends _AdvertisementDto {
       this.district,
       this.category,
       this.condition,
+      this.brand,
+      this.model,
       this.phone,
       @JsonKey(name: "user_id") this.userId,
+      @JsonKey(name: "advertiser_name") this.advertiserName,
+      @JsonKey(name: "create_date") this.createDate,
       @JsonKey(name: "image_urls") required final List<String> imageUrls})
       : _imageUrls = imageUrls,
         super._();
@@ -374,10 +432,20 @@ class _$_AdvertisementDto extends _AdvertisementDto {
   @override
   final String? condition;
   @override
+  final String? brand;
+  @override
+  final String? model;
+  @override
   final String? phone;
   @override
   @JsonKey(name: "user_id")
   final int? userId;
+  @override
+  @JsonKey(name: "advertiser_name")
+  final String? advertiserName;
+  @override
+  @JsonKey(name: "create_date")
+  final String? createDate;
   final List<String> _imageUrls;
   @override
   @JsonKey(name: "image_urls")
@@ -389,7 +457,7 @@ class _$_AdvertisementDto extends _AdvertisementDto {
 
   @override
   String toString() {
-    return 'AdvertisementDto(id: $id, name: $name, description: $description, price: $price, conditonId: $conditonId, categoryId: $categoryId, brandId: $brandId, modelId: $modelId, provinceId: $provinceId, districtId: $districtId, province: $province, district: $district, category: $category, condition: $condition, phone: $phone, userId: $userId, imageUrls: $imageUrls)';
+    return 'AdvertisementDto(id: $id, name: $name, description: $description, price: $price, conditonId: $conditonId, categoryId: $categoryId, brandId: $brandId, modelId: $modelId, provinceId: $provinceId, districtId: $districtId, province: $province, district: $district, category: $category, condition: $condition, brand: $brand, model: $model, phone: $phone, userId: $userId, advertiserName: $advertiserName, createDate: $createDate, imageUrls: $imageUrls)';
   }
 
   @override
@@ -420,33 +488,44 @@ class _$_AdvertisementDto extends _AdvertisementDto {
                 other.category == category) &&
             (identical(other.condition, condition) ||
                 other.condition == condition) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.model, model) || other.model == model) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.advertiserName, advertiserName) ||
+                other.advertiserName == advertiserName) &&
+            (identical(other.createDate, createDate) ||
+                other.createDate == createDate) &&
             const DeepCollectionEquality()
                 .equals(other._imageUrls, _imageUrls));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      description,
-      price,
-      conditonId,
-      categoryId,
-      brandId,
-      modelId,
-      provinceId,
-      districtId,
-      province,
-      district,
-      category,
-      condition,
-      phone,
-      userId,
-      const DeepCollectionEquality().hash(_imageUrls));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        name,
+        description,
+        price,
+        conditonId,
+        categoryId,
+        brandId,
+        modelId,
+        provinceId,
+        districtId,
+        province,
+        district,
+        category,
+        condition,
+        brand,
+        model,
+        phone,
+        userId,
+        advertiserName,
+        createDate,
+        const DeepCollectionEquality().hash(_imageUrls)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -478,8 +557,12 @@ abstract class _AdvertisementDto extends AdvertisementDto {
           final String? district,
           final String? category,
           final String? condition,
+          final String? brand,
+          final String? model,
           final String? phone,
           @JsonKey(name: "user_id") final int? userId,
+          @JsonKey(name: "advertiser_name") final String? advertiserName,
+          @JsonKey(name: "create_date") final String? createDate,
           @JsonKey(name: "image_urls") required final List<String> imageUrls}) =
       _$_AdvertisementDto;
   const _AdvertisementDto._() : super._();
@@ -522,10 +605,20 @@ abstract class _AdvertisementDto extends AdvertisementDto {
   @override
   String? get condition;
   @override
+  String? get brand;
+  @override
+  String? get model;
+  @override
   String? get phone;
   @override
   @JsonKey(name: "user_id")
   int? get userId;
+  @override
+  @JsonKey(name: "advertiser_name")
+  String? get advertiserName;
+  @override
+  @JsonKey(name: "create_date")
+  String? get createDate;
   @override
   @JsonKey(name: "image_urls")
   List<String> get imageUrls;

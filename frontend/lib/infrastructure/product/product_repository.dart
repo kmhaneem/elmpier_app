@@ -44,7 +44,7 @@ class ProductRepository implements IProductRepository {
         return left(const ProductFailure.notFound());
       }
     } on DioException catch (e) {
-      print("Error Is $e");
+      // print("Error Is $e");
       return left(const ProductFailure.serverError());
     }
   }
@@ -101,7 +101,12 @@ class ProductRepository implements IProductRepository {
       }
     } on DioException catch (e) {
       print("Error in create: $e");
-      return left(const ProductFailure.serverError());
+      if (e.response?.statusCode == 403) {
+        print("${e.response?.data['description']}");
+        return left(const ProductFailure.exceededLimit());
+      } else {
+        return left(const ProductFailure.serverError());
+      }
     }
   }
 
@@ -215,7 +220,7 @@ class ProductRepository implements IProductRepository {
         return left(const ProductFailure.notFound());
       }
     } on DioException catch (e) {
-      print("Error Is FOR SELLER PRODUCT $e");
+      // print("Error Is FOR SELLER PRODUCT $e");
       return left(const ProductFailure.serverError());
     }
   }

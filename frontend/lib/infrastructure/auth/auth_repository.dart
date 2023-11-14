@@ -77,8 +77,8 @@ class AuthRepository implements IAuthFacade {
         return left(const AuthFailure.unExpectedError());
       }
     } on DioException catch (e) {
-      print("Error details: ${e.response?.data}");
-      print("Error in create: $e");
+      // print("Error details: ${e.response?.data}");
+      // print("Error in create: $e");
       return left(const AuthFailure.serverError());
     }
   }
@@ -145,7 +145,7 @@ class AuthRepository implements IAuthFacade {
       if (response.statusCode == 200) {
         await secureStorage.delete("unverified-token");
         await secureStorage.write(
-            "auth-token", response.data['response']['token']);
+            "token", response.data['response']['token']);
         return right(unit);
       } else {
         return left(const AuthFailure.unExpectedError());

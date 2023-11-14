@@ -1,107 +1,184 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/domain/advertisement/model/advertisement.dart';
+import 'package:intl/intl.dart';
+
+import '../core/widget/colors.dart';
 
 class AdvertisementDetails extends StatelessWidget {
   final Advertisement advertisement;
 
-  const AdvertisementDetails({Key? key, required this.advertisement})
+  AdvertisementDetails({Key? key, required this.advertisement})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
+    String formattedPrice = NumberFormat('#,##0').format(advertisement.price);
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              Text(
+                "${advertisement.category!} >> ",
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+              Text(
+                "${advertisement.brand!} >> ",
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+              Text(
+                "${advertisement.model!}",
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
             advertisement.name,
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            "Price: RS.${advertisement.price}",
-            style: const TextStyle(
-              fontSize: 20,
-              color: Colors.green,
-            ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'LKR',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: customColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: formattedPrice,
+                      style: TextStyle(
+                        fontSize: 26,
+                        color: customColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: '.00',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: customColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            "Delivery Date: Nov 26 - Nov 30",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.green,
-            ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "For Sale By ",
+                style: TextStyle(fontSize: 18, color: Colors.grey[700]),
+              ),
+              Text(
+                "${advertisement.advertiserName!}",
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ],
           ),
-        ),
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            "Delivery Fee: Rs. 250.00",
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.green,
-            ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.location_on_rounded,
+                color: Colors.grey[500],
+              ),
+              Text(
+                " ${advertisement.province!} Province > ",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[500],
+                ),
+              ),
+              Text(
+                "${advertisement.district!}",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[500],
+                ),
+              ),
+            ],
           ),
-        ),
-        const SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            advertisement.description,
-            style: const TextStyle(fontSize: 16),
+          const SizedBox(
+            height: 5,
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            advertisement.province!,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.green,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                advertisement.condition!,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.green,
+                ),
+              ),
+            ],
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            advertisement.district!,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.green,
-            ),
+          const SizedBox(
+            height: 5,
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            advertisement.category!,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.green,
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            advertisement.condition!,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.green,
-            ),
-          ),
-        ),
-      ],
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const Text(
+                "Description",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              const Divider(
+                color: Colors.black,
+                thickness: 0.5,
+                height: 8,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                advertisement.description,
+                style: const TextStyle(fontSize: 16),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

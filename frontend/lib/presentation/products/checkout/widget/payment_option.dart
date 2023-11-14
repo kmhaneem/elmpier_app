@@ -37,8 +37,21 @@ class _PaymentOptionState extends State<PaymentOption> {
       child: Column(
         children: [
           RadioListTile<String>(
-            title: const Text("Card"),
+            title: const Text("💳 Card"),
             value: "Card",
+            groupValue: _selectedPaymentOption,
+            onChanged: (value) {
+              setState(() {
+                _selectedPaymentOption = value;
+              });
+              widget.onOptionSelected(value!);
+            },
+            // contentPadding: const EdgeInsets.symmetric(vertical: 1.0,),
+            contentPadding: const EdgeInsets.only(left: 1.0, right: 1),
+          ),
+          RadioListTile<String>(
+            title: const Text("💵 Cash on Delivery"),
+            value: "Cash on Delivery",
             groupValue: _selectedPaymentOption,
             onChanged: (value) {
               setState(() {
@@ -49,8 +62,8 @@ class _PaymentOptionState extends State<PaymentOption> {
             contentPadding: const EdgeInsets.symmetric(vertical: 1.0),
           ),
           RadioListTile<String>(
-            title: const Text("Cash on Delivery"),
-            value: "Cash on Delivery",
+            title: const Text("🪪 Wallet"),
+            value: "Wallet",
             groupValue: _selectedPaymentOption,
             onChanged: (value) {
               setState(() {

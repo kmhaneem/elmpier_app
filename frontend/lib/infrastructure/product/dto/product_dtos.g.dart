@@ -15,6 +15,8 @@ _$_ProductDto _$$_ProductDtoFromJson(Map<String, dynamic> json) =>
       brand: json['brand_id'] as int,
       model: json['model_id'] as int,
       stock: json['stock_unit'] as int,
+      conditionId: json['condition_id'] as int,
+      condition: json['condition'] as String?,
       imageUrls: (json['image_urls'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -30,6 +32,8 @@ Map<String, dynamic> _$$_ProductDtoToJson(_$_ProductDto instance) =>
       'brand_id': instance.brand,
       'model_id': instance.model,
       'stock_unit': instance.stock,
+      'condition_id': instance.conditionId,
+      'condition': instance.condition,
       'image_urls': instance.imageUrls,
       'price': instance.price,
     };

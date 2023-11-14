@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:frontend/presentation/routes/app_router.gr.dart';
 
 import '../../../shared/providers.dart';
 
@@ -13,7 +14,7 @@ class SellerProductPage extends ConsumerWidget {
     final productState = ref.watch(sellerProductProvider);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-        productNotifier.getSellerProducts(); 
+      productNotifier.getSellerProducts();
     });
 
     return Scaffold(
@@ -31,7 +32,8 @@ class SellerProductPage extends ConsumerWidget {
               final product = products[index];
               return InkWell(
                 onTap: () {
-
+                  AutoRouter.of(context)
+                      .push(SellerProductViewRoute(product: product));
                 },
                 child: Card(
                   elevation: 1,
@@ -65,7 +67,8 @@ class SellerProductPage extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top: 8.0, bottom: 4),
+                                padding:
+                                    const EdgeInsets.only(top: 8.0, bottom: 4),
                                 child: Text(
                                   product.name.getOrCrash(),
                                   maxLines: 2,

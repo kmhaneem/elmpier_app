@@ -20,7 +20,6 @@ UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserDto {
-// required int id,
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: "firstname")
@@ -234,7 +233,6 @@ class _$_UserDto extends _UserDto {
   factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
       _$$_UserDtoFromJson(json);
 
-// required int id,
   @override
   final String email;
   @override
@@ -335,7 +333,7 @@ abstract class _UserDto extends UserDto {
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
 
-  @override // required int id,
+  @override
   String get email;
   @override
   String get phone;

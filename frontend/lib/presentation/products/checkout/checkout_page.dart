@@ -9,11 +9,14 @@ import 'package:frontend/presentation/products/checkout/widget/address_section.d
 import 'package:frontend/presentation/products/checkout/widget/payment_option.dart';
 import 'package:frontend/presentation/products/checkout/widget/summary_section.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
+import 'package:intl/intl.dart';
 import 'package:payhere_mobilesdk_flutter/payhere_mobilesdk_flutter.dart';
 
 import '../../../domain/orders/model/orders.dart';
+import '../../../domain/wallet/model/wallet.dart';
 import '../../../shared/providers.dart';
 import '../../../shared/user.dart';
+import '../../core/widget/colors.dart';
 import 'widget/products_section.dart';
 
 class CheckoutPage extends ConsumerStatefulWidget {
@@ -124,7 +127,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
     final userId = getLoggedInUserId(ref);
     if (userId == null) {
       print("Error: User ID is null");
-      return; 
+      return;
     }
     try {
       Orders order = Orders(
@@ -143,6 +146,36 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
     }
   }
 
+  void initiateWalletPayment() async {
+    final userId = getLoggedInUserId(ref);
+    if (userId == null) {
+      print("Error: User ID is null");
+      return;
+    }
+    try {
+      Orders order = Orders(
+        userId: userId,
+        paymentMethod: "Wallet",
+        status: "Paid",
+        amount: calculatedTotalItemCost + calculatedTotalShipping,
+        paymentId: "W-${DateTime.now().millisecondsSinceEpoch}",
+        statusId: 1,
+      );
+
+      Wallet wallet = Wallet(
+        amount: -(calculatedTotalItemCost + calculatedTotalShipping),
+      );
+      print("WALLET ORDER DETAILS ***** $order");
+      ref.read(walletProvider.notifier).addWalletAmount(order, wallet);
+      await ref.read(paymentProvider.notifier).createPayment(order);
+      ref.read(cartProvider.notifier).deleteCartItems(order.userId);
+      ref.refresh(walletProvider);
+      AutoRouter.of(context).replace(OrderSuccessRoute());
+    } catch (e) {
+      print("Error while saving WALLET order: $e");
+    }
+  }
+
   var _currentUser;
   var _cartItem;
 
@@ -150,6 +183,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
   Widget build(BuildContext context) {
     final userState = ref.watch(userProvider);
     final cartItemsState = ref.watch(cartProvider);
+    final walletState = ref.watch(walletProvider);
 
     calculatedTotalItemCost = 0;
     calculatedTotalShipping = 0;
@@ -172,7 +206,9 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Checkout"),
+        title: Text("ELMPIER Checkout"),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: userState.when(
         initial: () => const Center(child: CircularProgressIndicator()),
@@ -203,9 +239,9 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                         orElse: () => Container(),
                       ),
                   SummarySection(
-                      totalItemCost: calculatedTotalItemCost,
-                      totalShipping:
-                          calculateShippingCost(calculatedTotalItemCost)),
+                    totalItemCost: calculatedTotalItemCost,
+                    totalShipping: calculatedTotalShipping,
+                  ),
                 ],
               ),
             ),
@@ -229,7 +265,8 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+          padding: const EdgeInsets.only(
+              bottom: 25.0, left: 24.0, right: 24.0, top: 15),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -242,7 +279,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                   ),
                   Text(
-                    "Rs. ${(calculatedTotalItemCost + calculatedTotalShipping).toStringAsFixed(2)}",
+                    "Rs. ${NumberFormat('#,##0').format(calculatedTotalItemCost + calculatedTotalShipping)}.00",
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                   ),
@@ -263,6 +300,8 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                     }
                     final itemName = _cartItem.first.name;
 
+                    final amount =
+                        calculatedTotalItemCost + calculatedTotalShipping;
                     if (_selectedPaymentMethod == "Card") {
                       PaymentDto paymentDetails = PaymentDto(
                         sandbox: true,
@@ -271,7 +310,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                         notifyUrl: "http://sample.com/notify",
                         orderId: "${DateTime.now().millisecondsSinceEpoch}",
                         items: "$itemName",
-                        amount: calculatedTotalItemCost.toDouble(),
+                        amount: amount.toDouble(),
                         currency: "LKR",
                         firstName: _currentUser.firstName,
                         lastName: _currentUser.lastName,
@@ -285,6 +324,20 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                         deliveryCountry: "Sri Lanka",
                       );
                       initiatePayment(paymentDetails);
+                    } else if (_selectedPaymentMethod == "Wallet") {
+                      walletState.maybeWhen(
+                        walletLoaded: (wallet) {
+                          if (wallet.amount < amount) {
+                            FlushbarHelper.createError(
+                                    message:
+                                        "Insufficent Wallet Balance Rs.${wallet.amount}.00, Please Top Up")
+                                .show(context);
+                            return;
+                          } else {}
+                          initiateWalletPayment();
+                        },
+                        orElse: () => "",
+                      );
                     } else {
                       initiateCODPayment();
                       AutoRouter.of(context).replace(OrderSuccessRoute());
@@ -292,14 +345,21 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                   },
                   child: Text(
                     "Place order",
-                    style: TextStyle(fontSize: 18.0),
+                    style: TextStyle(fontSize: 18.0, color: Colors.white),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Theme.of(context).primaryColor,
-                    onPrimary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                    backgroundColor: customColor[900],
+                    foregroundColor: customColor,
+                    elevation: 0,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(25),
+                        bottomLeft: Radius.circular(25),
+                        bottomRight: Radius.circular(25),
+                        topRight: Radius.circular(25),
+                      ),
                     ),
+                    fixedSize: const Size(double.infinity, 50),
                   ),
                 ),
               ),

@@ -30,9 +30,13 @@ mixin _$Advertisement {
   String? get province => throw _privateConstructorUsedError;
   String? get district => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
+  String? get brand => throw _privateConstructorUsedError;
+  String? get model => throw _privateConstructorUsedError;
   String? get condition => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   int? get userId => throw _privateConstructorUsedError;
+  String? get advertiserName => throw _privateConstructorUsedError;
+  String? get createDate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdvertisementCopyWith<Advertisement> get copyWith =>
@@ -60,9 +64,13 @@ abstract class $AdvertisementCopyWith<$Res> {
       String? province,
       String? district,
       String? category,
+      String? brand,
+      String? model,
       String? condition,
       String? phone,
-      int? userId});
+      int? userId,
+      String? advertiserName,
+      String? createDate});
 }
 
 /// @nodoc
@@ -92,9 +100,13 @@ class _$AdvertisementCopyWithImpl<$Res, $Val extends Advertisement>
     Object? province = freezed,
     Object? district = freezed,
     Object? category = freezed,
+    Object? brand = freezed,
+    Object? model = freezed,
     Object? condition = freezed,
     Object? phone = freezed,
     Object? userId = freezed,
+    Object? advertiserName = freezed,
+    Object? createDate = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -153,6 +165,14 @@ class _$AdvertisementCopyWithImpl<$Res, $Val extends Advertisement>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String?,
+      model: freezed == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String?,
       condition: freezed == condition
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
@@ -165,6 +185,14 @@ class _$AdvertisementCopyWithImpl<$Res, $Val extends Advertisement>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
+      advertiserName: freezed == advertiserName
+          ? _value.advertiserName
+          : advertiserName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createDate: freezed == createDate
+          ? _value.createDate
+          : createDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -192,9 +220,13 @@ abstract class _$$_AdvertisementCopyWith<$Res>
       String? province,
       String? district,
       String? category,
+      String? brand,
+      String? model,
       String? condition,
       String? phone,
-      int? userId});
+      int? userId,
+      String? advertiserName,
+      String? createDate});
 }
 
 /// @nodoc
@@ -222,9 +254,13 @@ class __$$_AdvertisementCopyWithImpl<$Res>
     Object? province = freezed,
     Object? district = freezed,
     Object? category = freezed,
+    Object? brand = freezed,
+    Object? model = freezed,
     Object? condition = freezed,
     Object? phone = freezed,
     Object? userId = freezed,
+    Object? advertiserName = freezed,
+    Object? createDate = freezed,
   }) {
     return _then(_$_Advertisement(
       id: null == id
@@ -283,6 +319,14 @@ class __$$_AdvertisementCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String?,
+      model: freezed == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String?,
       condition: freezed == condition
           ? _value.condition
           : condition // ignore: cast_nullable_to_non_nullable
@@ -295,6 +339,14 @@ class __$$_AdvertisementCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as int?,
+      advertiserName: freezed == advertiserName
+          ? _value.advertiserName
+          : advertiserName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createDate: freezed == createDate
+          ? _value.createDate
+          : createDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -317,9 +369,13 @@ class _$_Advertisement implements _Advertisement {
       this.province,
       this.district,
       this.category,
+      this.brand,
+      this.model,
       this.condition,
       this.phone,
-      this.userId})
+      this.userId,
+      this.advertiserName,
+      this.createDate})
       : _imageUrls = imageUrls;
 
   @override
@@ -357,15 +413,23 @@ class _$_Advertisement implements _Advertisement {
   @override
   final String? category;
   @override
+  final String? brand;
+  @override
+  final String? model;
+  @override
   final String? condition;
   @override
   final String? phone;
   @override
   final int? userId;
+  @override
+  final String? advertiserName;
+  @override
+  final String? createDate;
 
   @override
   String toString() {
-    return 'Advertisement(id: $id, name: $name, description: $description, price: $price, conditionId: $conditionId, categoryId: $categoryId, brandId: $brandId, modelId: $modelId, provinceId: $provinceId, districtId: $districtId, imageUrls: $imageUrls, province: $province, district: $district, category: $category, condition: $condition, phone: $phone, userId: $userId)';
+    return 'Advertisement(id: $id, name: $name, description: $description, price: $price, conditionId: $conditionId, categoryId: $categoryId, brandId: $brandId, modelId: $modelId, provinceId: $provinceId, districtId: $districtId, imageUrls: $imageUrls, province: $province, district: $district, category: $category, brand: $brand, model: $model, condition: $condition, phone: $phone, userId: $userId, advertiserName: $advertiserName, createDate: $createDate)';
   }
 
   @override
@@ -396,32 +460,43 @@ class _$_Advertisement implements _Advertisement {
                 other.district == district) &&
             (identical(other.category, category) ||
                 other.category == category) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.model, model) || other.model == model) &&
             (identical(other.condition, condition) ||
                 other.condition == condition) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.advertiserName, advertiserName) ||
+                other.advertiserName == advertiserName) &&
+            (identical(other.createDate, createDate) ||
+                other.createDate == createDate));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      description,
-      price,
-      conditionId,
-      categoryId,
-      brandId,
-      modelId,
-      provinceId,
-      districtId,
-      const DeepCollectionEquality().hash(_imageUrls),
-      province,
-      district,
-      category,
-      condition,
-      phone,
-      userId);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        name,
+        description,
+        price,
+        conditionId,
+        categoryId,
+        brandId,
+        modelId,
+        provinceId,
+        districtId,
+        const DeepCollectionEquality().hash(_imageUrls),
+        province,
+        district,
+        category,
+        brand,
+        model,
+        condition,
+        phone,
+        userId,
+        advertiserName,
+        createDate
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -446,9 +521,13 @@ abstract class _Advertisement implements Advertisement {
       final String? province,
       final String? district,
       final String? category,
+      final String? brand,
+      final String? model,
       final String? condition,
       final String? phone,
-      final int? userId}) = _$_Advertisement;
+      final int? userId,
+      final String? advertiserName,
+      final String? createDate}) = _$_Advertisement;
 
   @override
   int get id;
@@ -479,11 +558,19 @@ abstract class _Advertisement implements Advertisement {
   @override
   String? get category;
   @override
+  String? get brand;
+  @override
+  String? get model;
+  @override
   String? get condition;
   @override
   String? get phone;
   @override
   int? get userId;
+  @override
+  String? get advertiserName;
+  @override
+  String? get createDate;
   @override
   @JsonKey(ignore: true)
   _$$_AdvertisementCopyWith<_$_Advertisement> get copyWith =>

@@ -21,6 +21,7 @@ mixin _$ProductFailure {
     required TResult Function() unExpected,
     required TResult Function() notFound,
     required TResult Function() serverError,
+    required TResult Function() exceededLimit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$ProductFailure {
     TResult? Function()? unExpected,
     TResult? Function()? notFound,
     TResult? Function()? serverError,
+    TResult? Function()? exceededLimit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$ProductFailure {
     TResult Function()? unExpected,
     TResult Function()? notFound,
     TResult Function()? serverError,
+    TResult Function()? exceededLimit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$ProductFailure {
     required TResult Function(_UnExpected value) unExpected,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ExceededLimit value) exceededLimit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$ProductFailure {
     TResult? Function(_UnExpected value)? unExpected,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_ExceededLimit value)? exceededLimit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$ProductFailure {
     TResult Function(_UnExpected value)? unExpected,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_ExceededLimit value)? exceededLimit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$_UnExpected implements _UnExpected {
     required TResult Function() unExpected,
     required TResult Function() notFound,
     required TResult Function() serverError,
+    required TResult Function() exceededLimit,
   }) {
     return unExpected();
   }
@@ -131,6 +138,7 @@ class _$_UnExpected implements _UnExpected {
     TResult? Function()? unExpected,
     TResult? Function()? notFound,
     TResult? Function()? serverError,
+    TResult? Function()? exceededLimit,
   }) {
     return unExpected?.call();
   }
@@ -141,6 +149,7 @@ class _$_UnExpected implements _UnExpected {
     TResult Function()? unExpected,
     TResult Function()? notFound,
     TResult Function()? serverError,
+    TResult Function()? exceededLimit,
     required TResult orElse(),
   }) {
     if (unExpected != null) {
@@ -155,6 +164,7 @@ class _$_UnExpected implements _UnExpected {
     required TResult Function(_UnExpected value) unExpected,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ExceededLimit value) exceededLimit,
   }) {
     return unExpected(this);
   }
@@ -165,6 +175,7 @@ class _$_UnExpected implements _UnExpected {
     TResult? Function(_UnExpected value)? unExpected,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_ExceededLimit value)? exceededLimit,
   }) {
     return unExpected?.call(this);
   }
@@ -175,6 +186,7 @@ class _$_UnExpected implements _UnExpected {
     TResult Function(_UnExpected value)? unExpected,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_ExceededLimit value)? exceededLimit,
     required TResult orElse(),
   }) {
     if (unExpected != null) {
@@ -229,6 +241,7 @@ class _$_NotFound implements _NotFound {
     required TResult Function() unExpected,
     required TResult Function() notFound,
     required TResult Function() serverError,
+    required TResult Function() exceededLimit,
   }) {
     return notFound();
   }
@@ -239,6 +252,7 @@ class _$_NotFound implements _NotFound {
     TResult? Function()? unExpected,
     TResult? Function()? notFound,
     TResult? Function()? serverError,
+    TResult? Function()? exceededLimit,
   }) {
     return notFound?.call();
   }
@@ -249,6 +263,7 @@ class _$_NotFound implements _NotFound {
     TResult Function()? unExpected,
     TResult Function()? notFound,
     TResult Function()? serverError,
+    TResult Function()? exceededLimit,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -263,6 +278,7 @@ class _$_NotFound implements _NotFound {
     required TResult Function(_UnExpected value) unExpected,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ExceededLimit value) exceededLimit,
   }) {
     return notFound(this);
   }
@@ -273,6 +289,7 @@ class _$_NotFound implements _NotFound {
     TResult? Function(_UnExpected value)? unExpected,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_ExceededLimit value)? exceededLimit,
   }) {
     return notFound?.call(this);
   }
@@ -283,6 +300,7 @@ class _$_NotFound implements _NotFound {
     TResult Function(_UnExpected value)? unExpected,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_ExceededLimit value)? exceededLimit,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -337,6 +355,7 @@ class _$_ServerError implements _ServerError {
     required TResult Function() unExpected,
     required TResult Function() notFound,
     required TResult Function() serverError,
+    required TResult Function() exceededLimit,
   }) {
     return serverError();
   }
@@ -347,6 +366,7 @@ class _$_ServerError implements _ServerError {
     TResult? Function()? unExpected,
     TResult? Function()? notFound,
     TResult? Function()? serverError,
+    TResult? Function()? exceededLimit,
   }) {
     return serverError?.call();
   }
@@ -357,6 +377,7 @@ class _$_ServerError implements _ServerError {
     TResult Function()? unExpected,
     TResult Function()? notFound,
     TResult Function()? serverError,
+    TResult Function()? exceededLimit,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -371,6 +392,7 @@ class _$_ServerError implements _ServerError {
     required TResult Function(_UnExpected value) unExpected,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ExceededLimit value) exceededLimit,
   }) {
     return serverError(this);
   }
@@ -381,6 +403,7 @@ class _$_ServerError implements _ServerError {
     TResult? Function(_UnExpected value)? unExpected,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_ExceededLimit value)? exceededLimit,
   }) {
     return serverError?.call(this);
   }
@@ -391,6 +414,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(_UnExpected value)? unExpected,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_ServerError value)? serverError,
+    TResult Function(_ExceededLimit value)? exceededLimit,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -402,4 +426,118 @@ class _$_ServerError implements _ServerError {
 
 abstract class _ServerError implements ProductFailure {
   const factory _ServerError() = _$_ServerError;
+}
+
+/// @nodoc
+abstract class _$$_ExceededLimitCopyWith<$Res> {
+  factory _$$_ExceededLimitCopyWith(
+          _$_ExceededLimit value, $Res Function(_$_ExceededLimit) then) =
+      __$$_ExceededLimitCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ExceededLimitCopyWithImpl<$Res>
+    extends _$ProductFailureCopyWithImpl<$Res, _$_ExceededLimit>
+    implements _$$_ExceededLimitCopyWith<$Res> {
+  __$$_ExceededLimitCopyWithImpl(
+      _$_ExceededLimit _value, $Res Function(_$_ExceededLimit) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ExceededLimit implements _ExceededLimit {
+  const _$_ExceededLimit();
+
+  @override
+  String toString() {
+    return 'ProductFailure.exceededLimit()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ExceededLimit);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unExpected,
+    required TResult Function() notFound,
+    required TResult Function() serverError,
+    required TResult Function() exceededLimit,
+  }) {
+    return exceededLimit();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unExpected,
+    TResult? Function()? notFound,
+    TResult? Function()? serverError,
+    TResult? Function()? exceededLimit,
+  }) {
+    return exceededLimit?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unExpected,
+    TResult Function()? notFound,
+    TResult Function()? serverError,
+    TResult Function()? exceededLimit,
+    required TResult orElse(),
+  }) {
+    if (exceededLimit != null) {
+      return exceededLimit();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnExpected value) unExpected,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ExceededLimit value) exceededLimit,
+  }) {
+    return exceededLimit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UnExpected value)? unExpected,
+    TResult? Function(_NotFound value)? notFound,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_ExceededLimit value)? exceededLimit,
+  }) {
+    return exceededLimit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnExpected value)? unExpected,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ExceededLimit value)? exceededLimit,
+    required TResult orElse(),
+  }) {
+    if (exceededLimit != null) {
+      return exceededLimit(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ExceededLimit implements ProductFailure {
+  const factory _ExceededLimit() = _$_ExceededLimit;
 }

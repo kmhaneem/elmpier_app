@@ -16,16 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Product {
-// required UniqueId id,
-  int get id => throw _privateConstructorUsedError; // required UserId userId,
+  int get id => throw _privateConstructorUsedError;
   Name get name => throw _privateConstructorUsedError;
   Description get description => throw _privateConstructorUsedError;
   Category get category => throw _privateConstructorUsedError;
   Brand get brand => throw _privateConstructorUsedError;
   Model get model => throw _privateConstructorUsedError;
   Stock get stock => throw _privateConstructorUsedError;
-  Price get price =>
-      throw _privateConstructorUsedError; // required String price,
+  Price get price => throw _privateConstructorUsedError;
+  int get conditionId => throw _privateConstructorUsedError;
+  String? get condition => throw _privateConstructorUsedError;
   List<String> get imageUrls => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -46,6 +46,8 @@ abstract class $ProductCopyWith<$Res> {
       Model model,
       Stock stock,
       Price price,
+      int conditionId,
+      String? condition,
       List<String> imageUrls});
 }
 
@@ -70,6 +72,8 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? model = null,
     Object? stock = null,
     Object? price = null,
+    Object? conditionId = null,
+    Object? condition = freezed,
     Object? imageUrls = null,
   }) {
     return _then(_value.copyWith(
@@ -105,6 +109,14 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Price,
+      conditionId: null == conditionId
+          ? _value.conditionId
+          : conditionId // ignore: cast_nullable_to_non_nullable
+              as int,
+      condition: freezed == condition
+          ? _value.condition
+          : condition // ignore: cast_nullable_to_non_nullable
+              as String?,
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -129,6 +141,8 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       Model model,
       Stock stock,
       Price price,
+      int conditionId,
+      String? condition,
       List<String> imageUrls});
 }
 
@@ -150,6 +164,8 @@ class __$$_ProductCopyWithImpl<$Res>
     Object? model = null,
     Object? stock = null,
     Object? price = null,
+    Object? conditionId = null,
+    Object? condition = freezed,
     Object? imageUrls = null,
   }) {
     return _then(_$_Product(
@@ -185,6 +201,14 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as Price,
+      conditionId: null == conditionId
+          ? _value.conditionId
+          : conditionId // ignore: cast_nullable_to_non_nullable
+              as int,
+      condition: freezed == condition
+          ? _value.condition
+          : condition // ignore: cast_nullable_to_non_nullable
+              as String?,
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -205,14 +229,14 @@ class _$_Product extends _Product {
       required this.model,
       required this.stock,
       required this.price,
+      required this.conditionId,
+      this.condition,
       required final List<String> imageUrls})
       : _imageUrls = imageUrls,
         super._();
 
-// required UniqueId id,
   @override
   final int id;
-// required UserId userId,
   @override
   final Name name;
   @override
@@ -227,9 +251,11 @@ class _$_Product extends _Product {
   final Stock stock;
   @override
   final Price price;
-// required String price,
+  @override
+  final int conditionId;
+  @override
+  final String? condition;
   final List<String> _imageUrls;
-// required String price,
   @override
   List<String> get imageUrls {
     if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
@@ -239,7 +265,7 @@ class _$_Product extends _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, price: $price, imageUrls: $imageUrls)';
+    return 'Product(id: $id, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, price: $price, conditionId: $conditionId, condition: $condition, imageUrls: $imageUrls)';
   }
 
   @override
@@ -257,6 +283,10 @@ class _$_Product extends _Product {
             (identical(other.model, model) || other.model == model) &&
             (identical(other.stock, stock) || other.stock == stock) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.conditionId, conditionId) ||
+                other.conditionId == conditionId) &&
+            (identical(other.condition, condition) ||
+                other.condition == condition) &&
             const DeepCollectionEquality()
                 .equals(other._imageUrls, _imageUrls));
   }
@@ -272,6 +302,8 @@ class _$_Product extends _Product {
       model,
       stock,
       price,
+      conditionId,
+      condition,
       const DeepCollectionEquality().hash(_imageUrls));
 
   @JsonKey(ignore: true)
@@ -291,12 +323,14 @@ abstract class _Product extends Product {
       required final Model model,
       required final Stock stock,
       required final Price price,
+      required final int conditionId,
+      final String? condition,
       required final List<String> imageUrls}) = _$_Product;
   const _Product._() : super._();
 
-  @override // required UniqueId id,
+  @override
   int get id;
-  @override // required UserId userId,
+  @override
   Name get name;
   @override
   Description get description;
@@ -310,7 +344,11 @@ abstract class _Product extends Product {
   Stock get stock;
   @override
   Price get price;
-  @override // required String price,
+  @override
+  int get conditionId;
+  @override
+  String? get condition;
+  @override
   List<String> get imageUrls;
   @override
   @JsonKey(ignore: true)

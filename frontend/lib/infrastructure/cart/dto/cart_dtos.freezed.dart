@@ -20,7 +20,6 @@ CartDto _$CartDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartDto {
-// @JsonKey(name: "user_id") required int userId,
   @JsonKey(name: "product_id")
   int get productId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -162,7 +161,6 @@ class _$_CartDto extends _CartDto {
   factory _$_CartDto.fromJson(Map<String, dynamic> json) =>
       _$$_CartDtoFromJson(json);
 
-// @JsonKey(name: "user_id") required int userId,
   @override
   @JsonKey(name: "product_id")
   final int productId;
@@ -226,7 +224,7 @@ abstract class _CartDto extends CartDto {
 
   factory _CartDto.fromJson(Map<String, dynamic> json) = _$_CartDto.fromJson;
 
-  @override // @JsonKey(name: "user_id") required int userId,
+  @override
   @JsonKey(name: "product_id")
   int get productId;
   @override

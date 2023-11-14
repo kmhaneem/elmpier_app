@@ -5,13 +5,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/domain/user/model/user.dart';
 import 'package:frontend/domain/user/user_address/model/province.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
+import 'package:frontend/presentation/widget/custom_textform_field.dart';
 import 'package:frontend/shared/providers.dart';
 
 import '../../domain/user/user_address/model/district.dart';
+import '../widget/custom_dropdown_button_form_field.dart';
+import '../widget/custom_elevated_button.dart';
 
 class UserProfileAddPage extends ConsumerStatefulWidget {
   final String? previousPage;
-  const UserProfileAddPage({this.previousPage, super.key});
+  final String? initialMessage;
+
+  const UserProfileAddPage({Key? key, this.previousPage, this.initialMessage})
+      : super(key: key);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -60,6 +66,11 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(provinceProvider.notifier).fetchProvinces();
       ref.read(districtProvider.notifier).fetchDistricts();
+      if (widget.initialMessage != null) {
+        FlushbarHelper.createInformation(
+          message: widget.initialMessage!,
+        ).show(context);
+      }
     });
   }
 
@@ -79,137 +90,129 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
           // _provinceController.text = user.province;
           // _districtController.text = user.district;
         },
-        orElse:
-            () {} 
-        );
+        orElse: () {});
   }
 
   @override
   Widget build(BuildContext context) {
     final userProfileNotifier = ref.watch(userProfileProvider.notifier);
+    final provinceState = ref.watch(provinceProvider);
+    final brandState = ref.watch(districtProvider);
+
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Update Profile"),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
           child: ListView(
             children: [
               const SizedBox(height: 10),
-              TextFormField(
+              CustomTextFormField(
+                labelText: "First Name",
                 controller: _firstNameController,
-                decoration: const InputDecoration(
-                  labelText: 'First Name',
-                ),
+                obscureText: false,
               ),
-              const SizedBox(height: 1),
-              TextFormField(
+              const SizedBox(height: 15),
+              CustomTextFormField(
+                labelText: "Last Name",
                 controller: _lastNameController,
-                decoration: const InputDecoration(
-                  labelText: 'Last Name',
-                ),
+                obscureText: false,
               ),
-              const SizedBox(height: 1),
-              TextFormField(
+              const SizedBox(height: 15),
+              CustomTextFormField(
+                labelText: "Address Line 1",
                 controller: _addressLine1Controller,
-                decoration: const InputDecoration(
-                  labelText: 'Address Line 1',
-                ),
+                obscureText: false,
               ),
-              const SizedBox(height: 1),
-              TextFormField(
+              const SizedBox(height: 15),
+              CustomTextFormField(
+                labelText: "Address Line 2",
                 controller: _addressLine2Controller,
-                decoration: const InputDecoration(
-                  labelText: 'Address Line 2',
-                ),
+                obscureText: false,
               ),
-              const SizedBox(height: 1),
-              Consumer(
-                builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                  final provinceState = ref.watch(provinceProvider);
-                  return provinceState.when(
-                    initial: () => Text('Select a province.'),
-                    loadInProgress: () => CircularProgressIndicator(),
-                    loadSuccess: (provinces) {
-                      return DropdownButtonFormField<Province>(
-                        value: _selectedProvince,
-                        items: provinces.map((Province province) {
-                          return DropdownMenuItem<Province>(
-                            value: province,
-                            child: Text(province.name),
-                          );
-                        }).toList(),
-                        onChanged: (Province? newValue) {
-                          setState(() {
-                            _selectedDistrict = null;
-                            _selectedProvince = newValue;
-                          });
-                          _provinceController.text = newValue!.name;
-                        },
-                        decoration: const InputDecoration(
-                          labelText: 'Province',
-                        ),
+              const SizedBox(height: 15),
+              provinceState.when(
+                initial: () => Text('Select a province.'),
+                loadInProgress: () => CircularProgressIndicator(),
+                loadSuccess: (provinces) {
+                  return CustomDropdownButtonFormField<Province>(
+                    value: _selectedProvince,
+                    items: provinces.map((Province province) {
+                      return DropdownMenuItem<Province>(
+                        value: province,
+                        child: Text(province.name),
                       );
+                    }).toList(),
+                    onChanged: (Province? newValue) {
+                      setState(() {
+                        _selectedDistrict = null;
+                        _selectedProvince = newValue;
+                      });
+                      _provinceController.text = newValue!.name;
                     },
-                    loadFailure: (err) {
-                      print('Error Detail: $err');
-                      return Text('Error loading province');
-                    },
+                    labelText: 'Province',
+                    // Add prefixIcon if needed, for example:
+                    // prefixIcon: Icon(Icons.location_city),
                   );
                 },
+                loadFailure: (err) {
+                  print('Error Detail: $err');
+                  return Text('Error loading province');
+                },
               ),
-              Consumer(builder:
-                  (BuildContext context, WidgetRef ref, Widget? child) {
-                final brandState = ref.watch(districtProvider);
-                return brandState.when(
-                  initial: () => _buildDisabledDistrictDropdown(),
-                  loadInProgress: () => CircularProgressIndicator(),
-                  loadSuccess: (districts) {
-                    if (_selectedProvince == null) {
-                      return _buildDisabledDistrictDropdown();
-                    }
-                    final filteredDistricts = districts
-                        .where((district) =>
-                            district.provinceId == _selectedProvince!.id)
-                        .toList();
-                    return DropdownButtonFormField<District>(
-                      value: _selectedDistrict,
-                      items: filteredDistricts.map((District district) {
-                        return DropdownMenuItem<District>(
-                          value: district,
-                          child: Text(district.name),
-                        );
-                      }).toList(),
-                      onChanged: (District? newValue) {
-                        setState(() {
-                          _selectedDistrict = newValue;
-                        });
-                        _districtController.text = newValue!.name;
-                      },
-                      decoration: const InputDecoration(
-                        labelText: 'District',
-                      ),
-                    );
-                  },
-                  loadFailure: (err) {
-                    print('Error Detail: $err');
-                    return Text('Error loading district');
-                  },
-                );
-              }),
-              const SizedBox(height: 1),
-              TextFormField(
+              const SizedBox(height: 15),
+              brandState.when(
+                initial: () => _buildDisabledDistrictDropdown(),
+                loadInProgress: () => CircularProgressIndicator(),
+                loadSuccess: (districts) {
+                  if (_selectedProvince == null) {
+                    return _buildDisabledDistrictDropdown();
+                  }
+                  final filteredDistricts = districts
+                      .where((district) =>
+                          district.provinceId == _selectedProvince!.id)
+                      .toList();
+                  return CustomDropdownButtonFormField<District>(
+                    value: _selectedDistrict,
+                    items: filteredDistricts.map((District district) {
+                      return DropdownMenuItem<District>(
+                        value: district,
+                        child: Text(district.name),
+                      );
+                    }).toList(),
+                    onChanged: (District? newValue) {
+                      setState(() {
+                        _selectedDistrict = newValue;
+                      });
+                      _districtController.text = newValue!.name;
+                    },
+                    labelText: 'District',
+                  );
+                },
+                loadFailure: (err) {
+                  print('Error Detail: $err');
+                  return Text('Error loading district');
+                },
+              ),
+
+              const SizedBox(height: 15),
+              CustomTextFormField(
                 controller: _cityController,
-                decoration: const InputDecoration(
-                  labelText: 'City',
-                ),
+                labelText: "City",
+                obscureText: false,
               ),
-              TextFormField(
+              const SizedBox(height: 15),
+              CustomTextFormField(
                 controller: _postalCodeController,
-                decoration: const InputDecoration(
-                  labelText: 'Postal Code',
-                ),
+                labelText: "Postal Code",
+                obscureText: false,
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
+              CustomElevatedButton(
                 onPressed: () async {
                   if (_firstNameController.text.isNotEmpty &&
                       _lastNameController.text.isNotEmpty &&
@@ -242,10 +245,11 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                       AutoRouter.of(context).replace(CheckoutRoute());
                     } else if (widget.previousPage == "UserProfilePage") {
                       AutoRouter.of(context).replace(UserProfileRoute());
+                    } else if (widget.previousPage == "WalletPage") {
+                      AutoRouter.of(context).replace(WalletRoute());
                     } else {
                       AutoRouter.of(context).replace(UserProfileRoute());
                     }
-
                   } else {
                     // Using Flushbar:
                     FlushbarHelper.createError(
@@ -253,9 +257,8 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                     ).show(context);
                   }
                 },
-                child: Text('Update User'),
+                text: 'Update User',
               ),
-
               Consumer(
                 builder: (BuildContext context, WidgetRef ref, Widget? child) {
                   final userProfileState = ref.watch(userProfileProvider);
@@ -278,12 +281,11 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
 }
 
 Widget _buildDisabledDistrictDropdown() {
-  return DropdownButtonFormField<District>(
-    items: [],
+  return CustomDropdownButtonFormField<District>(
+    items: [], 
     onChanged: null, 
-    decoration: const InputDecoration(
-      labelText: 'District',
-      hintText: 'Please select a province first',
-    ),
+    labelText: 'District',
+    hintText: 'Please select a province first', 
   );
 }
+

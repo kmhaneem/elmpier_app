@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserModel {
-// required String id,
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
@@ -222,7 +221,6 @@ class _$_UserModel implements _UserModel {
       required this.district,
       required this.province});
 
-// required String id,
   @override
   final String email;
   @override
@@ -307,7 +305,7 @@ abstract class _UserModel implements UserModel {
       required final String district,
       required final String province}) = _$_UserModel;
 
-  @override // required String id,
+  @override
   String get email;
   @override
   String get phone;

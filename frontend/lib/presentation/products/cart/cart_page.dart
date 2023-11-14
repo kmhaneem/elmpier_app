@@ -4,8 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/application/cart/cart_state.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
 import 'package:frontend/shared/providers.dart';
+import 'package:intl/intl.dart';
 
 import '../../../shared/user.dart';
+import '../../core/widget/colors.dart';
 
 class CartPage extends ConsumerStatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -28,6 +30,7 @@ class _CartPageState extends ConsumerState<CartPage> {
     final cartState = ref.watch(cartProvider);
     final cartNotifier = ref.read(cartProvider.notifier);
     final userId = getLoggedInUserId(ref);
+    var _price;
 
     int numberOfItemsInCart() {
       return cartState.maybeWhen(
@@ -38,7 +41,9 @@ class _CartPageState extends ConsumerState<CartPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cart"),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: const Text("ELMPIER Cart"),
       ),
       body: cartState.maybeWhen(
         initial: () => const Center(child: Text("Start shopping!")),
@@ -95,7 +100,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                 ),
                               ),
                               Text(
-                                "Price: RS.${cartItem.price} x ${cartItem.itemQty}",
+                                "Rs.${NumberFormat('#,##0').format(cartItem.price)}.00 x ${cartItem.itemQty}",
                                 style: const TextStyle(
                                   fontSize: 15,
                                   color: Colors.grey,
@@ -105,7 +110,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                 padding:
                                     const EdgeInsets.only(top: 20, bottom: 20),
                                 child: Text(
-                                  "Total: RS.${cartItem.price * cartItem.itemQty}",
+                                  "Total: Rs.${NumberFormat('#,##0').format(cartItem.price)* cartItem.itemQty}.00",
                                   style: const TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey,
@@ -135,19 +140,46 @@ class _CartPageState extends ConsumerState<CartPage> {
         orElse: () => const Center(child: Text("Unknown State")),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.only(
+            bottom: 25.0, left: 24.0, right: 24.0, top: 15),
         child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             context.router.push(CheckoutRoute());
           },
-          child: Text("Checkout (${numberOfItemsInCart()})"),
           style: ElevatedButton.styleFrom(
-            primary: Theme.of(context).primaryColor,
-            onPrimary: Colors.white,
-            padding: EdgeInsets.symmetric(vertical: 12),
-            textStyle: TextStyle(fontSize: 20),
+            backgroundColor: customColor[100],
+            foregroundColor: customColor,
+            elevation: 0,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25),
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+                topRight: Radius.circular(25),
+              ),
+            ),
+            fixedSize: const Size(double.infinity, 50),
+          ),
+          child: Text(
+            "Checkout (${numberOfItemsInCart()})",
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
+        // child: ElevatedButton(
+        //   onPressed: () {
+        //     context.router.push(CheckoutRoute());
+        //   },
+        // child: Text("Checkout (${numberOfItemsInCart()})"),
+        //   style: ElevatedButton.styleFrom(
+        //     primary: Theme.of(context).primaryColor,
+        //     onPrimary: Colors.white,
+        //     padding: EdgeInsets.symmetric(vertical: 12),
+        //     textStyle: TextStyle(fontSize: 20),
+        //   ),
+        // ),
       ),
     );
   }

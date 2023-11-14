@@ -1,6 +1,8 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/presentation/ads/popup.dart';
 import 'package:frontend/presentation/orders.dart';
 import 'package:frontend/presentation/products/search_product.dart';
 import 'package:frontend/presentation/products/user_product.dart';
@@ -9,6 +11,8 @@ import 'package:frontend/presentation/routes/app_router.gr.dart';
 import 'package:frontend/presentation/profile_page.dart';
 import 'package:frontend/shared/providers.dart';
 import 'core/widget/bottom_nav_item.dart';
+
+bool _hasShownPopup = false;
 
 class HomePage extends ConsumerStatefulWidget {
   HomePage({super.key});
@@ -28,13 +32,42 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget currentScreen = const ViewProduct();
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_hasShownPopup) {
+        showPopupAds(context);
+        _hasShownPopup = true; // Set to true after showing the popup
+      }
+    });
+    ref.refresh(elmpierPlusProvider);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final userState = ref.watch(userProvider);
+    final userProfileState = ref.watch(userProfileProvider);
     return Scaffold(
       body: currentScreen,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
-          AutoRouter.of(context).push(const AddProductRoute());
+          // ref.refresh(userProfileProvider);
+          userState.maybeWhen(
+            loaded: (user) {
+              if (user.firstName.isEmpty) {
+                AutoRouter.of(context).push(
+                  UserProfileAddRoute(
+                      initialMessage:
+                          'Update your profile before add Product or Advertisement!'),
+                );
+                print("NEW USER EMAIL IS ${user.email}");
+              } else {
+                AutoRouter.of(context).push(const AddProductRoute());
+              }
+            },
+            orElse: () => "",
+          );
         },
         child: const Icon(
           Icons.add,
@@ -116,3 +149,11 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
   }
 }
+
+
+// plus user can do
+
+// == unlimited product & advertisement post
+// == priority to give product & advertisement approval
+// == 1D top ads
+// == 1D pop ads

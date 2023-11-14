@@ -1,7 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/domain/core/user.dart';
 import 'package:frontend/presentation/advertisements/advertisement_card.dart';
@@ -9,8 +7,6 @@ import 'package:frontend/presentation/products/product/product_card.dart';
 import 'package:frontend/presentation/products/widget/top_advertisement.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
 import 'package:frontend/shared/providers.dart';
-
-import '../../shared/user.dart';
 
 class ViewProduct extends ConsumerStatefulWidget {
   const ViewProduct({Key? key}) : super(key: key);
@@ -40,6 +36,7 @@ class _ViewProductState extends ConsumerState<ViewProduct> {
     final productNotifier = ref.read(productProvider.notifier);
     final advertisementNotifier = ref.read(advertisementProvider.notifier);
     productNotifier.watchAllStarted();
+    // WidgetsBinding.instance.addPostFrameCallback((_) => _showDialog());
     Future(() {
       advertisementNotifier.getAllAdvertisements();
     });
@@ -49,16 +46,43 @@ class _ViewProductState extends ConsumerState<ViewProduct> {
   Widget build(BuildContext context) {
     final productState = ref.watch(productProvider);
     final advertisementState = ref.watch(advertisementProvider);
+    final elmpierPlusState = ref.watch(elmpierPlusProvider);
 
     return Column(
       children: [
-        SizedBox(height: 30),
+        SizedBox(height: 50),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset("lib/assets/images/elmpier-logo.png", width: 130),
+            Image.asset(
+              elmpierPlusState.maybeWhen(
+                plusUserLoaded: (plusUser) {
+                  if (plusUser.isPlusUser == true) {
+                    return "lib/assets/images/elmpier-plus-logo.png";
+                  } else {
+                    return "lib/assets/images/elmpier-logo.png";
+                  }
+                },
+                orElse: () => "lib/assets/images/elmpier-logo.png",
+              ),
+              width: 130,
+            ),
             Row(
               children: [
+                IconButton(
+                  onPressed: () {
+                    // ref.refresh(elmpierPlusProvider);
+                    AutoRouter.of(context).push(const WalletRoute());
+                  },
+                  icon: Icon(Icons.wallet_outlined),
+                ),
+                IconButton(
+                  onPressed: () {
+                    ref.refresh(elmpierPlusProvider);
+                    AutoRouter.of(context).push(const ElmpierPlusRoute());
+                  },
+                  icon: Icon(Icons.workspace_premium),
+                ),
                 IconButton(
                   onPressed: () async {
                     String? userId = await getLoggedInUserIdFromStorage();
@@ -177,14 +201,12 @@ class _ViewProductState extends ConsumerState<ViewProduct> {
 
 class CategoryDisplay extends StatelessWidget {
   final List<String> categories = [
-    'Definitions',
-    'Sensitive Inferences',
-    'Rubrics',
-    'Actions',
-    'Definitions',
-    'Sensitive Inferences',
-    'Rubrics',
-    'Actions'
+    'Mobile Phones',
+    'Laptops',
+    'Headset',
+    'Watches',
+    'Speakers',
+    'TVs',
   ];
 
   @override
@@ -196,7 +218,7 @@ class CategoryDisplay extends StatelessWidget {
         itemCount: categories.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8),
             child: Chip(
               label: Text(categories[index]),
             ),

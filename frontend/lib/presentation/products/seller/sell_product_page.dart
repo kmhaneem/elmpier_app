@@ -58,9 +58,39 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
   Widget build(BuildContext context) {
     final addProductNotifier = ref.read(addProductProvider.notifier);
     final addProductState = ref.read(addProductProvider);
+    final productState = ref.watch(addProductProvider);
+    final brandState = ref.watch(brandProvider);
 
     final selectedImagesController = ref.watch(selectedImagesProvider.notifier);
     var _selectedImages = ref.watch(selectedImagesProvider);
+
+    // ref.listen<AddProductState>(addProductProvider, (prevState, nextState) {
+    //   print("State change detected: $nextState");
+    //   nextState.maybeWhen(
+    //     actionInProgress: () {},
+    //     actionFailure: (failure) {
+    //       FlushbarHelper.createError(
+    //         message: failure.toString(),
+    //       ).show(context);
+    //     },
+    //     createSuccess: () {
+    //       FlushbarHelper.createSuccess(message: 'Product created successfully!')
+    //           .show(context);
+    //       _nameController.clear();
+    //       _descriptionController.clear();
+    //       _categoryController.clear();
+    //       _brandController.clear();
+    //       _modelController.clear();
+    //       _stockController.clear();
+    //       _priceController.clear();
+    //       ref.read(selectedImagesProvider.notifier).state = [];
+    //       setState(() {
+    //         _selectedCategory = null;
+    //       });
+    //     },
+    //     orElse: () {},
+    //   );
+    // });
 
     ref.listen<AddProductState>(addProductProvider, (prevState, nextState) {
       print("State change detected: $nextState");
@@ -68,7 +98,12 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
         actionInProgress: () {},
         actionFailure: (failure) {
           FlushbarHelper.createError(
-            message: failure.toString(),
+            message: failure.maybeMap(
+              exceededLimit: (value) =>
+                  "YOU HAVE REACED THE PRODUCT CREATION LIMIT. TO CREATE UNLIMITED, UPGRATE ELMPIER PLUS",
+              serverError: (value) => "SERVER ERROR",
+              orElse: () => "",
+            ),
           ).show(context);
         },
         createSuccess: () {
@@ -147,46 +182,114 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                   );
                 },
               ),
-              Consumer(builder:
-                  (BuildContext context, WidgetRef ref, Widget? child) {
-                final brandState = ref.watch(brandProvider);
-                return brandState.when(
-                  initial: () => _buildDisabledBrandDropdown(),
-                  loadInProgress: () => CircularProgressIndicator(),
-                  loadSuccess: (brands) {
-                    if (_selectedCategory == null) {
-                      return _buildDisabledBrandDropdown();
-                    }
-                    final filteredBrands = brands
-                        .where((brand) =>
-                            brand.categoryId == _selectedCategory!.id)
-                        .toList();
-                    return DropdownButtonFormField<ProductBrand>(
-                      value: _selectedBrand,
-                      items: filteredBrands.map((ProductBrand brand) {
-                        return DropdownMenuItem<ProductBrand>(
-                          value: brand,
-                          child: Text(brand.name),
-                        );
-                      }).toList(),
-                      onChanged: (ProductBrand? newValue) {
-                        setState(() {
-                          _selectedBrand = newValue;
-                        });
-                        _brandController.text = newValue!.id.toString();
-                      },
-                      decoration: const InputDecoration(
-                        labelText: 'Product Brand',
-                      ),
-                    );
-                  },
-                  loadFailure: (err) {
-                    print('Error Detail: $err');
-                    return Text('Error loading brands');
-                  },
-                );
-              }),
-
+              // Consumer(builder:
+              //     (BuildContext context, WidgetRef ref, Widget? child) {
+              //   final brandState = ref.watch(brandProvider);
+              //   return brandState.when(
+              //     initial: () => _buildDisabledBrandDropdown(),
+              //     loadInProgress: () => CircularProgressIndicator(),
+              //     loadSuccess: (brands) {
+              //       if (_selectedCategory == null) {
+              //         return _buildDisabledBrandDropdown();
+              //       }
+              //       final filteredBrands = brands
+              //           .where((brand) =>
+              //               brand.categoryId == _selectedCategory!.id)
+              //           .toList();
+              //       return DropdownButtonFormField<ProductBrand>(
+              //         value: _selectedBrand,
+              //         items: filteredBrands.map((ProductBrand brand) {
+              //           return DropdownMenuItem<ProductBrand>(
+              //             value: brand,
+              //             child: Text(brand.name),
+              //           );
+              //         }).toList(),
+              //         onChanged: (ProductBrand? newValue) {
+              //           setState(() {
+              //             _selectedBrand = newValue;
+              //           });
+              //           _brandController.text = newValue!.id.toString();
+              //         },
+              //         decoration: const InputDecoration(
+              //           labelText: 'Product Brand',
+              //         ),
+              //       );
+              //     },
+              //     loadFailure: (err) {
+              //       print('Error Detail: $err');
+              //       return Text('Error loading brands');
+              //     },
+              //   );
+              // }),
+              brandState.maybeWhen(
+                loadSuccess: (brands) {
+                  if (_selectedCategory == null) {
+                    return _buildDisabledBrandDropdown();
+                  }
+                  final filteredBrands = brands
+                      .where(
+                          (brand) => brand.categoryId == _selectedCategory!.id)
+                      .toList();
+                  return DropdownButtonFormField<ProductBrand>(
+                    value: _selectedBrand,
+                    items: filteredBrands.map((ProductBrand brand) {
+                      return DropdownMenuItem<ProductBrand>(
+                        value: brand,
+                        child: Text(brand.name),
+                      );
+                    }).toList(),
+                    onChanged: (ProductBrand? newValue) {
+                      setState(() {
+                        _selectedBrand = newValue;
+                      });
+                      _brandController.text = newValue!.id.toString();
+                    },
+                    decoration: const InputDecoration(
+                      labelText: 'Product Brand',
+                    ),
+                  );
+                },
+                orElse: () => CircularProgressIndicator(),
+              ),
+              // Consumer(builder:
+              //     (BuildContext context, WidgetRef ref, Widget? child) {
+              //   final brandState = ref.watch(brandProvider);
+              //   return brandState.when(
+              //     initial: () => _buildDisabledBrandDropdown(),
+              //     loadInProgress: () => CircularProgressIndicator(),
+              //     loadSuccess: (brands) {
+              //       if (_selectedCategory == null) {
+              //         return _buildDisabledBrandDropdown();
+              //       }
+              //       final filteredBrands = brands
+              //           .where((brand) =>
+              //               brand.categoryId == _selectedCategory!.id)
+              //           .toList();
+              //       return DropdownButtonFormField<ProductBrand>(
+              //         value: _selectedBrand,
+              //         items: filteredBrands.map((ProductBrand brand) {
+              //           return DropdownMenuItem<ProductBrand>(
+              //             value: brand,
+              //             child: Text(brand.name),
+              //           );
+              //         }).toList(),
+              //         onChanged: (ProductBrand? newValue) {
+              //           setState(() {
+              //             _selectedBrand = newValue;
+              //           });
+              //           _brandController.text = newValue!.id.toString();
+              //         },
+              //         decoration: const InputDecoration(
+              //           labelText: 'Product Brand',
+              //         ),
+              //       );
+              //     },
+              //     loadFailure: (err) {
+              //       print('Error Detail: $err');
+              //       return Text('Error loading brands');
+              //     },
+              //   );
+              // }),
               Consumer(builder:
                   (BuildContext context, WidgetRef ref, Widget? child) {
                 final modelState = ref.watch(modelProvider);
@@ -245,7 +348,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
               const SizedBox(height: 20),
               Text(
                 '${ref.watch(selectedImagesProvider.notifier).state.length} images selected',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black54,
                 ),
@@ -265,8 +368,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  if (
-                      _nameController.text.isNotEmpty &&
+                  if (_nameController.text.isNotEmpty &&
                       _descriptionController.text.isNotEmpty &&
                       _categoryController.text.isNotEmpty &&
                       _brandController.text.isNotEmpty &&
@@ -284,6 +386,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                       stock: Stock(int.parse(_stockController.text)),
                       price: Price(int.parse(_priceController.text)),
                       imageUrls: [],
+                      conditionId: 0,
                     );
 
                     addProductNotifier.createProduct(product, _selectedImages);
@@ -328,7 +431,7 @@ Widget _buildDisabledBrandDropdown() {
 Widget _buildDisabledModelDropdown() {
   return DropdownButtonFormField<ProductModel>(
     items: [],
-    onChanged: null, 
+    onChanged: null,
     decoration: const InputDecoration(
       labelText: 'Product Model',
       hintText: 'Please select a brand first',

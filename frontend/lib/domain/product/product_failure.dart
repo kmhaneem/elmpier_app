@@ -6,4 +6,5 @@ abstract class ProductFailure implements _$ProductFailure {
   const factory ProductFailure.unExpected() = _UnExpected;
   const factory ProductFailure.notFound() = _NotFound;
   const factory ProductFailure.serverError() = _ServerError;
+  const factory ProductFailure.exceededLimit() = _ExceededLimit;
 }

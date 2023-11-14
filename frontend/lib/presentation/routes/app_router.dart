@@ -5,6 +5,8 @@ import 'package:frontend/presentation/auth/sign_in_page.dart';
 import 'package:frontend/presentation/auth/sign_up_page.dart';
 import 'package:frontend/presentation/chat/all_chat.dart';
 import 'package:frontend/presentation/chat/chat_page.dart';
+import 'package:frontend/presentation/elmpier_plus/elmpier_plus_page.dart';
+import 'package:frontend/presentation/elmpier_plus/elmpier_plus_success_page.dart';
 import 'package:frontend/presentation/home_page.dart';
 import 'package:frontend/presentation/orders.dart';
 import 'package:frontend/presentation/products/add_product.dart';
@@ -12,13 +14,18 @@ import 'package:frontend/presentation/products/advertiser/advertise_product_page
 import 'package:frontend/presentation/products/cart/cart_page.dart';
 import 'package:frontend/presentation/products/checkout/checkout_page.dart';
 import 'package:frontend/presentation/products/checkout/order_success.dart';
+import 'package:frontend/presentation/products/product/product_filter_page.dart';
 import 'package:frontend/presentation/products/product_page.dart';
 import 'package:frontend/presentation/products/seller/sell_product_page.dart';
 import 'package:frontend/presentation/products/seller/seller_page.dart';
 import 'package:frontend/presentation/products/seller/seller_product.dart';
+import 'package:frontend/presentation/products/seller/seller_product_view.dart';
 import 'package:frontend/presentation/splash/splash_page.dart';
 import 'package:frontend/presentation/user/user_profile.dart';
 import 'package:frontend/presentation/user/user_profile_add.dart';
+import 'package:frontend/presentation/wallet/wallet_amount_check_page.dart';
+import 'package:frontend/presentation/wallet/wallet_page.dart';
+import 'package:frontend/presentation/wallet/wallet_success_page.dart';
 
 @MaterialAutoRouter(routes: [
   MaterialRoute(page: HomePage, path: "/home"),
@@ -41,6 +48,13 @@ import 'package:frontend/presentation/user/user_profile_add.dart';
   MaterialRoute(page: SellerProductPage, path: "/seller-product"),
   MaterialRoute(page: AllChatPage, path: "/chats"),
   MaterialRoute(page: ChatPage, path: "/chat"),
+  MaterialRoute(page: SellerProductViewPage, path: "/seller-product-view"),
+  MaterialRoute(page: ElmpierPlusPage, path: "/elmpier-plus"),
+  MaterialRoute(page: ElmpierPlusSuccessPage, path: "/elmpier-plus-success"),
+  MaterialRoute(page: WalletPage, path: "/wallet"),
+  MaterialRoute(page: WalletSuccessPage, path: "/wallet-success"),
+  MaterialRoute(page: WalletAmountCheckPage, path: "/wallet-amount-check"),
+  MaterialRoute(page: ProductFilterPage, path: "/product-filter"),
 ], replaceInRouteName: 'Page,Route')
 
 class $AppRouter {

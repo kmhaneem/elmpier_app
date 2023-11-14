@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class SummarySection extends StatelessWidget {
   final int totalItemCost;
   final int totalShipping;
 
-  const SummarySection({Key? key, required this.totalItemCost, required this.totalShipping})
+  const SummarySection(
+      {Key? key, required this.totalItemCost, required this.totalShipping})
       : super(key: key);
 
   @override
@@ -22,30 +24,37 @@ class SummarySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Total Item costs
+          Text(
+            "Summery",
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+          SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Total Item costs",
+              Text("Total item costs",
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              Text("Rs. ${totalItemCost.toStringAsFixed(2)}"),
+              Text("Rs. ${NumberFormat('#,##0').format(totalItemCost)}.00"),
             ],
           ),
           SizedBox(height: 16.0),
 
-          // Promo Code (To be implemented later)
-          Text("Promo Code: To be implemented",
-              style: TextStyle(color: Colors.red)),
+          // // Promo Code (To be implemented later)
+          // Text("Promo Code: To be implemented",
+          //     style: TextStyle(color: Colors.red)),
 
-          SizedBox(height: 16.0),
+          // SizedBox(height: 16.0),
 
           // Total Shipping
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Total Shipping",
+              Text("Total shipping",
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              Text("Rs. ${totalShipping.toStringAsFixed(2)}"),
+              Text("Rs. ${NumberFormat('#,##0').format(totalShipping)}.00"),
             ],
           ),
         ],

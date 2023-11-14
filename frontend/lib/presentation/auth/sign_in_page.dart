@@ -1,16 +1,15 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:frontend/presentation/auth/widget/custom_elevated_button.dart';
-import 'package:frontend/presentation/auth/widget/custom_textform_field.dart';
+import 'package:frontend/presentation/widget/custom_elevated_button.dart';
+import 'package:frontend/presentation/widget/custom_textform_field.dart';
 
 import '../../shared/providers.dart';
 import '../routes/app_router.gr.dart';
 
 class SignInPage extends ConsumerWidget {
+  // final VoidCallback onSignUpTap;
   const SignInPage({super.key});
 
   @override
@@ -93,6 +92,7 @@ class SignInPage extends ConsumerWidget {
                         (r) => null,
                       )),
                   obscureText: true,
+                  
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
@@ -101,10 +101,7 @@ class SignInPage extends ConsumerWidget {
                     onPressed: () {
                       signInNotifier.signInButtonPressed();
                     },
-                    child: const Text(
-                      "Sign In",
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    text: "Sign In",
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -123,6 +120,7 @@ class SignInPage extends ConsumerWidget {
                             // ref.refresh(userProvider);
                           },
                           child: const Text(
+                            key: Key('signUpButton'),
                             "Sign Up",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ))

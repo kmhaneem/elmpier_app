@@ -19,8 +19,12 @@ class Advertisement with _$Advertisement {
     String? province,
     String? district,
     String? category,
+    String? brand,
+    String? model,
     String? condition,
     String? phone,
-    int? userId
+    int? userId,
+    String? advertiserName,
+    String? createDate
   }) = _Advertisement;
 }

@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
+import 'package:frontend/presentation/widget/custom_elevated_button.dart';
+import 'package:frontend/presentation/widget/custom_textform_field.dart';
 
 import '../../shared/providers.dart';
 
@@ -13,7 +15,6 @@ class UserProfilePage extends ConsumerStatefulWidget {
 }
 
 class _UserProfilePageState extends ConsumerState<UserProfilePage> {
-
   @override
   void initState() {
     super.initState();
@@ -24,130 +25,87 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
   Widget build(BuildContext context) {
     final userState = ref.watch(userProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: userState.when(
-        initial: () => const Center(child: CircularProgressIndicator()),
-        actionInProgress: () => const Center(child: LinearProgressIndicator()),
-        loaded: ((user) {
-          final userName = user.firstName;
-          print("USER NAME IS ######## $userName");
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Name
-                const Text(
-                  'Name',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: TextEditingController(
-                      text: "${user.firstName} ${user.lastName}"),
-                  enabled: false,
-                  style: const TextStyle(color: Colors.grey),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-
-                // Email
-                const Text(
-                  'Email',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: TextEditingController(text: user.email),
-                  enabled: false,
-                  style: const TextStyle(color: Colors.grey),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-
-                // Phone
-                const Text(
-                  'Phone',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: TextEditingController(text: user.phone),
-                  enabled: false,
-                  style: const TextStyle(color: Colors.grey),
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-
-                // Address
-                const Text(
-                  'Address',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: TextEditingController(
-                      text:
-                          "${user.addressLine1},\n${user.addressLine2},\n${user.city}, ${user.postalCode},\n${user.district},\n${"${user.province} Province"}"),
-                  enabled: false,
-                  style: const TextStyle(color: Colors.grey),
-                  maxLines: 6,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 30),
-
-                // Update Address Button
-                ElevatedButton(
-                  onPressed: () {
-
-                    AutoRouter.of(context).replace(
-                        UserProfileAddRoute(previousPage: "UserProfilePage"));
-                  },
-                  child: const Text(
-                    'Update Address',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16), // Making the text color white
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Theme.of(context)
-                        .primaryColor, // Set the background color
-                    onPrimary: Colors.white, // Set the color of the text
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    minimumSize: const Size(double.infinity,
-                        50), // Makes the button width touch both ends
-                  ),
-                ),
-              ],
-            ),
-          );
-        }),
-        actionFailure: (f) => Center(
-          child: Text(f.maybeMap(
-            serverError: (_) => "Server Error",
-            notFound: (_) => "User Not Found",
-            orElse: () => "An error occurred.",
-          )),
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: const Text('Profile'),
+          backgroundColor: Colors.white,
+          elevation: 0,
         ),
-      ),
-    );
+        body: ListView(
+          children: [
+            userState.when(
+              initial: () => const Center(child: CircularProgressIndicator()),
+              actionInProgress: () =>
+                  const Center(child: LinearProgressIndicator()),
+              loaded: ((user) {
+                final userName = user.firstName;
+                print("USER NAME IS ######## $userName");
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 8),
+                      CustomTextFormField(
+                        controller: TextEditingController(
+                            text: "${user.firstName} ${user.lastName}"),
+                        enabled: false,
+                        textColor: Colors.grey,
+                        obscureText: false,
+                        labelText: "Name",
+                      ),
+                      const SizedBox(height: 20),
+                      CustomTextFormField(
+                        controller: TextEditingController(text: user.email),
+                        enabled: false,
+                        textColor: Colors.grey,
+                        labelText: "Email",
+                        obscureText: false,
+                      ),
+                      const SizedBox(height: 20),
+                      CustomTextFormField(
+                        controller: TextEditingController(text: user.phone),
+                        enabled: false,
+                        textColor: Colors.grey,
+                        obscureText: false,
+                        labelText: "Phone",
+                      ),
+                      const SizedBox(height: 20),
+                      CustomTextFormField(
+                        controller: TextEditingController(
+                          text:
+                              "${user.addressLine1},\n${user.addressLine2},\n${user.city}, ${user.postalCode},\n${user.district},\n${user.province} Province",
+                        ),
+                        enabled: false,
+                        textColor: Colors.grey,
+                        maxLines: 6,
+                        labelText: "Address",
+                        obscureText: false,
+                      ),
+                      const SizedBox(height: 30),
+                      SizedBox(
+                        width: double.infinity, // Take full width
+                        child: CustomElevatedButton(
+                          onPressed: () {
+                            AutoRouter.of(context).replace(UserProfileAddRoute(
+                                previousPage: "UserProfilePage"));
+                          },
+                          text: "Update Address",
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+              actionFailure: (f) => Center(
+                child: Text(f.maybeMap(
+                  serverError: (_) => "Server Error",
+                  notFound: (_) => "User Not Found",
+                  orElse: () => "An error occurred.",
+                )),
+              ),
+            ),
+          ],
+        ));
   }
 }

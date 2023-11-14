@@ -19,6 +19,8 @@ class ProductDto with _$ProductDto {
     @JsonKey(name: 'brand_id') required int brand,
     @JsonKey(name: 'model_id') required int model,
     @JsonKey(name: 'stock_unit') required int stock,
+    @JsonKey(name: 'condition_id') required int conditionId,
+    String? condition,
     @JsonKey(name: 'image_urls') required List<String> imageUrls,
     required int price,
   }) = _ProductDto;
@@ -36,6 +38,8 @@ class ProductDto with _$ProductDto {
       model: product.model.getOrCrash(),
       stock: product.stock.getOrCrash(),
       price: product.price.getOrCrash(),
+      conditionId: product.conditionId,
+      condition: product.condition,
       imageUrls: product.imageUrls,
     );
   }
@@ -50,6 +54,8 @@ class ProductDto with _$ProductDto {
       model: Model(model),
       stock: Stock(stock),
       price: Price(price),
+      conditionId: conditionId,
+      condition: condition,
       imageUrls: imageUrls,
     );
   }

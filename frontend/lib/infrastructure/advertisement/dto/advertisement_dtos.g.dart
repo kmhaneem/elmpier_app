@@ -22,8 +22,12 @@ _$_AdvertisementDto _$$_AdvertisementDtoFromJson(Map<String, dynamic> json) =>
       district: json['district'] as String?,
       category: json['category'] as String?,
       condition: json['condition'] as String?,
+      brand: json['brand'] as String?,
+      model: json['model'] as String?,
       phone: json['phone'] as String?,
       userId: json['user_id'] as int?,
+      advertiserName: json['advertiser_name'] as String?,
+      createDate: json['create_date'] as String?,
       imageUrls: (json['image_urls'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
@@ -45,7 +49,11 @@ Map<String, dynamic> _$$_AdvertisementDtoToJson(_$_AdvertisementDto instance) =>
       'district': instance.district,
       'category': instance.category,
       'condition': instance.condition,
+      'brand': instance.brand,
+      'model': instance.model,
       'phone': instance.phone,
       'user_id': instance.userId,
+      'advertiser_name': instance.advertiserName,
+      'create_date': instance.createDate,
       'image_urls': instance.imageUrls,
     };

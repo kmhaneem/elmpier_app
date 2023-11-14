@@ -21,6 +21,7 @@ mixin _$AdvertisementState {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Advertisement> advertisement) loadSuccess,
+    required TResult Function(List<Advertisement> advertisement) searchLoaded,
     required TResult Function(AdvertisementFailure advertisementFailure)
         loadFailure,
   }) =>
@@ -30,6 +31,7 @@ mixin _$AdvertisementState {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult? Function(List<Advertisement> advertisement)? searchLoaded,
     TResult? Function(AdvertisementFailure advertisementFailure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,6 +40,7 @@ mixin _$AdvertisementState {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult Function(List<Advertisement> advertisement)? searchLoaded,
     TResult Function(AdvertisementFailure advertisementFailure)? loadFailure,
     required TResult orElse(),
   }) =>
@@ -47,6 +50,7 @@ mixin _$AdvertisementState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_SearchLoaded value) searchLoaded,
     required TResult Function(_LoadFailure value) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +59,7 @@ mixin _$AdvertisementState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_SearchLoaded value)? searchLoaded,
     TResult? Function(_LoadFailure value)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +68,7 @@ mixin _$AdvertisementState {
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_SearchLoaded value)? searchLoaded,
     TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) =>
@@ -127,6 +133,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Advertisement> advertisement) loadSuccess,
+    required TResult Function(List<Advertisement> advertisement) searchLoaded,
     required TResult Function(AdvertisementFailure advertisementFailure)
         loadFailure,
   }) {
@@ -139,6 +146,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult? Function(List<Advertisement> advertisement)? searchLoaded,
     TResult? Function(AdvertisementFailure advertisementFailure)? loadFailure,
   }) {
     return initial?.call();
@@ -150,6 +158,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult Function(List<Advertisement> advertisement)? searchLoaded,
     TResult Function(AdvertisementFailure advertisementFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -165,6 +174,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_SearchLoaded value) searchLoaded,
     required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return initial(this);
@@ -176,6 +186,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_SearchLoaded value)? searchLoaded,
     TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return initial?.call(this);
@@ -187,6 +198,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_SearchLoaded value)? searchLoaded,
     TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
@@ -242,6 +254,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Advertisement> advertisement) loadSuccess,
+    required TResult Function(List<Advertisement> advertisement) searchLoaded,
     required TResult Function(AdvertisementFailure advertisementFailure)
         loadFailure,
   }) {
@@ -254,6 +267,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult? Function(List<Advertisement> advertisement)? searchLoaded,
     TResult? Function(AdvertisementFailure advertisementFailure)? loadFailure,
   }) {
     return loadInProgress?.call();
@@ -265,6 +279,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult Function(List<Advertisement> advertisement)? searchLoaded,
     TResult Function(AdvertisementFailure advertisementFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -280,6 +295,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_SearchLoaded value) searchLoaded,
     required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return loadInProgress(this);
@@ -291,6 +307,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_SearchLoaded value)? searchLoaded,
     TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadInProgress?.call(this);
@@ -302,6 +319,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_SearchLoaded value)? searchLoaded,
     TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
@@ -391,6 +409,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Advertisement> advertisement) loadSuccess,
+    required TResult Function(List<Advertisement> advertisement) searchLoaded,
     required TResult Function(AdvertisementFailure advertisementFailure)
         loadFailure,
   }) {
@@ -403,6 +422,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult? Function(List<Advertisement> advertisement)? searchLoaded,
     TResult? Function(AdvertisementFailure advertisementFailure)? loadFailure,
   }) {
     return loadSuccess?.call(advertisement);
@@ -414,6 +434,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult Function(List<Advertisement> advertisement)? searchLoaded,
     TResult Function(AdvertisementFailure advertisementFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -429,6 +450,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_SearchLoaded value) searchLoaded,
     required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return loadSuccess(this);
@@ -440,6 +462,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_SearchLoaded value)? searchLoaded,
     TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadSuccess?.call(this);
@@ -451,6 +474,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_SearchLoaded value)? searchLoaded,
     TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
@@ -468,6 +492,167 @@ abstract class _LoadSuccess implements AdvertisementState {
   List<Advertisement> get advertisement;
   @JsonKey(ignore: true)
   _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SearchLoadedCopyWith<$Res> {
+  factory _$$_SearchLoadedCopyWith(
+          _$_SearchLoaded value, $Res Function(_$_SearchLoaded) then) =
+      __$$_SearchLoadedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Advertisement> advertisement});
+}
+
+/// @nodoc
+class __$$_SearchLoadedCopyWithImpl<$Res>
+    extends _$AdvertisementStateCopyWithImpl<$Res, _$_SearchLoaded>
+    implements _$$_SearchLoadedCopyWith<$Res> {
+  __$$_SearchLoadedCopyWithImpl(
+      _$_SearchLoaded _value, $Res Function(_$_SearchLoaded) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? advertisement = null,
+  }) {
+    return _then(_$_SearchLoaded(
+      null == advertisement
+          ? _value._advertisement
+          : advertisement // ignore: cast_nullable_to_non_nullable
+              as List<Advertisement>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SearchLoaded implements _SearchLoaded {
+  const _$_SearchLoaded(final List<Advertisement> advertisement)
+      : _advertisement = advertisement;
+
+  final List<Advertisement> _advertisement;
+  @override
+  List<Advertisement> get advertisement {
+    if (_advertisement is EqualUnmodifiableListView) return _advertisement;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_advertisement);
+  }
+
+  @override
+  String toString() {
+    return 'AdvertisementState.searchLoaded(advertisement: $advertisement)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SearchLoaded &&
+            const DeepCollectionEquality()
+                .equals(other._advertisement, _advertisement));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_advertisement));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SearchLoadedCopyWith<_$_SearchLoaded> get copyWith =>
+      __$$_SearchLoadedCopyWithImpl<_$_SearchLoaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(List<Advertisement> advertisement) loadSuccess,
+    required TResult Function(List<Advertisement> advertisement) searchLoaded,
+    required TResult Function(AdvertisementFailure advertisementFailure)
+        loadFailure,
+  }) {
+    return searchLoaded(advertisement);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult? Function(List<Advertisement> advertisement)? searchLoaded,
+    TResult? Function(AdvertisementFailure advertisementFailure)? loadFailure,
+  }) {
+    return searchLoaded?.call(advertisement);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult Function(List<Advertisement> advertisement)? searchLoaded,
+    TResult Function(AdvertisementFailure advertisementFailure)? loadFailure,
+    required TResult orElse(),
+  }) {
+    if (searchLoaded != null) {
+      return searchLoaded(advertisement);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_SearchLoaded value) searchLoaded,
+    required TResult Function(_LoadFailure value) loadFailure,
+  }) {
+    return searchLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_SearchLoaded value)? searchLoaded,
+    TResult? Function(_LoadFailure value)? loadFailure,
+  }) {
+    return searchLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_SearchLoaded value)? searchLoaded,
+    TResult Function(_LoadFailure value)? loadFailure,
+    required TResult orElse(),
+  }) {
+    if (searchLoaded != null) {
+      return searchLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchLoaded implements AdvertisementState {
+  const factory _SearchLoaded(final List<Advertisement> advertisement) =
+      _$_SearchLoaded;
+
+  List<Advertisement> get advertisement;
+  @JsonKey(ignore: true)
+  _$$_SearchLoadedCopyWith<_$_SearchLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -550,6 +735,7 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Advertisement> advertisement) loadSuccess,
+    required TResult Function(List<Advertisement> advertisement) searchLoaded,
     required TResult Function(AdvertisementFailure advertisementFailure)
         loadFailure,
   }) {
@@ -562,6 +748,7 @@ class _$_LoadFailure implements _LoadFailure {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult? Function(List<Advertisement> advertisement)? searchLoaded,
     TResult? Function(AdvertisementFailure advertisementFailure)? loadFailure,
   }) {
     return loadFailure?.call(advertisementFailure);
@@ -573,6 +760,7 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Advertisement> advertisement)? loadSuccess,
+    TResult Function(List<Advertisement> advertisement)? searchLoaded,
     TResult Function(AdvertisementFailure advertisementFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -588,6 +776,7 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_SearchLoaded value) searchLoaded,
     required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return loadFailure(this);
@@ -599,6 +788,7 @@ class _$_LoadFailure implements _LoadFailure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_SearchLoaded value)? searchLoaded,
     TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadFailure?.call(this);
@@ -610,6 +800,7 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_SearchLoaded value)? searchLoaded,
     TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
