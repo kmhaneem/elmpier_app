@@ -27,7 +27,7 @@ export class UserService {
         } else if (phoneExist) {
           message += "phone";
         }
-        return message;
+        throw new Error(message);
       }
 
       let otp = 123123;
@@ -44,9 +44,13 @@ export class UserService {
       });
       const rowCount = await this.repository.UserCreate(userInputs);
       if (!rowCount) {
-        return "User creation failed";
+        throw new Error("User creation failed");
       }
+
+      const userId = rowCount.rows[0];
+
       return {
+        id: userId.id,
         message: "User Created Successfully",
         token,
         email: userInputs.email,
@@ -64,7 +68,7 @@ export class UserService {
         return "User login failed";
       }
       if (result.rowCount === 0) {
-        return "User Not Found";
+        throw new Error("User Not Found");
       }
 
       const user = result.rows[0];
@@ -75,8 +79,9 @@ export class UserService {
       );
 
       if (!validation) {
-        return "Password does not match";
+        throw new Error("Password does not match");
       }
+
       userInputs.verified = user.verified;
       const token = await GenerateToken({
         _id: user.id,
@@ -84,6 +89,8 @@ export class UserService {
         verified: user.verified,
       });
       return {
+        id: user.id,
+        email: user.email,
         message: "User Login Successfully",
         token,
         verified: user.verified,
@@ -98,11 +105,11 @@ export class UserService {
       userInputs.email = currentUser.email;
       const user = await this.repository.UserLogin(userInputs);
       if (userInputs.otp !== user.rows[0].otp) {
-        return "Invalid OTP";
+        throw new Error("Invalid OTP");
       }
 
       if (user.rows[0].verified === true) {
-        return "You have already verified";
+        throw new Error("You have already verified");
       }
       userInputs.verified = true;
       const result = await this.repository.UserVerify(userInputs);
@@ -113,6 +120,7 @@ export class UserService {
         verified: updatedResult.verified,
       });
       return {
+        id: updatedResult.id,
         message: "OTP verified successfully",
         token,
         email: updatedResult.email,
@@ -142,24 +150,43 @@ export class UserService {
     try {
       const userId = currentUser._id;
       const result = await this.repository.UserProfileGet(userId);
-      const { id, password, salt, verified, otp, ...userInfo } = result.rows[0];
+      const { id, password, salt, verified, otp, user_id, ...userInfo } =
+        result.rows[0];
       return userInfo;
     } catch (error) {
       throw error;
     }
   }
 
-  async UpdateUserProfile(userInputs: User, userAddress: UserAddress, currentUser: UserPayload) {
+  async UpdateUserProfile(currentUser: UserPayload, userInputs: UserAddress) {
     try {
       const userId = currentUser._id;
       const result = await this.repository.UserProfileUpdate(
-        userInputs,
-        userAddress,
-        userId
+        userId,
+        userInputs
       );
-      const { id, email, phone, password, salt, verified, otp, ...userInfo } =
-        result.rows[0];
-      return userInfo;
-    } catch (error) {}
+
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetProvince() {
+    try {
+      const result = await this.repository.ProvinceGet();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetDistrict() {
+    try {
+      const result = await this.repository.DistrictGet();
+      return result;
+    } catch (error) {
+      throw error;
+    }
   }
 }

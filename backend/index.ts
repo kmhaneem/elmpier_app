@@ -3,13 +3,32 @@ import pool from "./database/pg-connection";
 import userRoutes from "./api/user-api";
 import productRoutes from "./api/product-api";
 import adminRoutes from "./api/admin-api"
+import cartRoutes from "./api/cart-api";
+import transactionRoutes from "./api/transaction-api";
+import orderRoutes from "./api/order-api"
+import advertisementRoutes from "./api/advertisement-api"
+import adsRoute from "./api/ads-api"
+import ePlusRoute from "./api/elmpierplus-api"
+import walletRoute from "./api/wallet-api"
+import { UserService } from "./service/user-service";
+import { ProductService } from "./service/product-service";
 
 const app = express();
+const userService = new UserService();
+const productService = new ProductService();
 app.use(express.json());
 
-adminRoutes(app);
+walletRoute(app)
+ePlusRoute(app)
+adsRoute(app)
+advertisementRoutes(app)
+orderRoutes(app)
+transactionRoutes(app);
+userRoutes(app, userService);
 productRoutes(app);
-userRoutes(app);
+
+adminRoutes(app);
+cartRoutes(app);
 
 app.use((req, res) => {
   pool.query("SELECT NOW()", (err, result) => {

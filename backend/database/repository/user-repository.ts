@@ -12,33 +12,26 @@ export class UserRepository {
             salt, 
             firstname, 
             lastname, 
-            profile, 
             verified, 
             otp
           ) VALUES (
-            $1, $2, $3, $4, $5, $6, $7, $8, $9
+            $1, $2, $3, $4, $5, $6, $7, $8
           ) RETURNING id
         `;
-      const params = [
-        email,
-        phone,
-        password,
-        salt,
-        "",
-        "",
-        "",
-        verified,
-        otp,
-      ];
+      const params = [email, phone, password, salt, "", "", verified, otp];
 
       const result = await writeQuery(sql, params);
 
-      if(result.rows && result.rows.length > 0){
+      if (result.rows && result.rows.length > 0) {
         const userId = result.rows[0].id;
         const sql1 = `INSERT INTO user_address (user_id) VALUES ($1)`;
         await writeQuery(sql1, [userId]);
+        const walletSql =
+          "INSERT INTO wallet (user_id, amount) values ($1, $2)";
+        await writeQuery(walletSql, [userId, 0]);
       }
-      return result.rowCount;
+
+      return result;
     } catch (error) {
       console.error("Error in UserCreate:", error);
       throw error;
@@ -111,22 +104,90 @@ export class UserRepository {
 
   async UserProfileGet(id: number) {
     try {
-      const sql = "SELECT * FROM users WHERE id = $1";
+      const sql = `
+            SELECT u.*, ua.* FROM users u
+            LEFT JOIN user_address ua ON u.id = ua.user_id
+            WHERE u.id = $1
+        `;
       const params = [id];
       const result = await writeQuery(sql, params);
-      return result;
+      if (result.rows && result.rows.length) {
+        return result;
+      }
+      throw new Error("User not found");
     } catch (error) {
       throw error;
     }
   }
 
-  async UserProfileUpdate({ firstname, lastname, profile }: User, {user_id, address_lane_1, address_lane_2, city, postal_code, province}: UserAddress, id: number) {
+  async UserProfileUpdate(
+    id: number,
+    {
+      firstName,
+      lastName,
+      addressLine1,
+      addressLine2,
+      city,
+      postalCode,
+      district,
+      province,
+    }: UserAddress
+  ) {
     try {
-      const sql =
-        "UPDATE users SET firstname = $1, lastname = $2, profile = $3 WHERE id = $4 RETURNING *";
-      const params = [firstname, lastname, profile, id];
-      const result = await writeQuery(sql, params);
-      return result;
+      const userSql =
+        "UPDATE users SET firstname = $1, lastname = $2 WHERE id = $3 RETURNING *";
+      const userParams = [firstName, lastName, id];
+      await writeQuery(userSql, userParams);
+
+      const addressSql =
+        "UPDATE user_address SET address_line_1 = $1, address_line_2 = $2, city = $3, postal_code = $4, district = $5, province = $6 WHERE user_id = $7 RETURNING *";
+      const addressParams = [
+        addressLine1,
+        addressLine2,
+        city,
+        postalCode,
+        district,
+        province,
+        id,
+      ];
+      await writeQuery(addressSql, addressParams);
+
+      const selectSql = `
+    SELECT 
+        u.firstname,
+        u.lastname,
+        a.address_line_1,
+        a.address_line_2,
+        a.city,
+        a.postal_code,
+        a.district,
+        a.province
+    FROM users u
+    JOIN user_address a ON u.id = a.user_id
+    WHERE u.id = $1
+`;
+      const result = await writeQuery(selectSql, [id]);
+      return result.rows;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async ProvinceGet() {
+    try {
+      const sql = "SELECT * FROM province";
+      const result = await writeQuery(sql, []);
+      return result.rows;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async DistrictGet() {
+    try {
+      const sql = "SELECT * FROM district";
+      const result = await writeQuery(sql, []);
+      return result.rows;
     } catch (error) {
       throw error;
     }

@@ -37,3 +37,14 @@ export class Model {
     brandId: number;
     name: string
 }
+
+export class ProductFilter {
+    categoryId?: number;
+    brandId?: number;
+    modelId?: number
+}
+
+export interface ProductSearchParams {
+  name?: string;
+  
+}
