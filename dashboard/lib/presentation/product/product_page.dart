@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dashboard/presentation/routes/auto_router.gr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../shared/provider.dart';
@@ -14,7 +12,6 @@ class ProductPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final productNotifier = ref.read(productProvider.notifier);
     final productState = ref.watch(productProvider);
-    // final userId = getLoggedInUserId(ref);
     final userId = 1;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       productNotifier.watchAllStarted();
@@ -38,14 +35,15 @@ class ProductPage extends ConsumerWidget {
                       horizontal: 20.0, vertical: 10),
                   child: Row(),
                 ),
-                productState.when(
+                productState.maybeWhen(
                   initial: () => Container(),
                   loadInProgress: () => CircularProgressIndicator(),
                   loadSuccess: (products) => Column(
                     children: products.asMap().entries.map((e) {
                       return InkWell(
                         onTap: () {
-                          context.router.push(ProductViewRoute(product: e.value));
+                          context.router
+                              .push(ProductViewRoute(product: e.value));
                         },
                         child: Card(
                           elevation: 1,
@@ -123,6 +121,7 @@ class ProductPage extends ConsumerWidget {
                     }).toList(),
                   ),
                   loadFailure: (failure) => Text(failure.toString()),
+                  orElse: () => Text("Error"),
                 ),
               ],
             ),

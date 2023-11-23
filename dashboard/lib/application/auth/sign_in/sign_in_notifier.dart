@@ -16,20 +16,15 @@ class SignInNotifier extends StateNotifier<SignInState> {
     failureOrSignIn = await _authRepository.signIn(auth);
 
     state = failureOrSignIn.fold(
-      (failure) => const SignInState.signInFailure(),
+      (failure) => SignInState.loadFailure(failure),
       (r) => const SignInState.signInSuccess(),
     );
   }
 
-  Future<void> signOut() async {
-    // state = state.copyWith(isSubmitting: true);
+  void signOut() {
     if (true) {
-      await _authRepository.signOut();
+      _authRepository.signOut();
       state = const SignInState.initial();
     }
-  }
-
-  void clearInputs() {
-    state = SignInState.initial();
   }
 }

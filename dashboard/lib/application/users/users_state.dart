@@ -11,4 +11,7 @@ class UserState with _$UserState {
   const factory UserState.loaded(List<User> user) = _Loaded;
   const factory UserState.actionFailure(UserFailure userFailure) =
       _ActionFailure;
+  const factory UserState.normalUsersLoaded(List<User> user) =
+      _NormalUsersLoaded;
+  const factory UserState.plusUsersLoaded(List<User> user) = _PlusUsersLoaded;
 }

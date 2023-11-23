@@ -22,6 +22,8 @@ mixin _$UserState {
     required TResult Function() actionInProgress,
     required TResult Function(List<User> user) loaded,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(List<User> user) normalUsersLoaded,
+    required TResult Function(List<User> user) plusUsersLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +32,8 @@ mixin _$UserState {
     TResult? Function()? actionInProgress,
     TResult? Function(List<User> user)? loaded,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(List<User> user)? normalUsersLoaded,
+    TResult? Function(List<User> user)? plusUsersLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +42,8 @@ mixin _$UserState {
     TResult Function()? actionInProgress,
     TResult Function(List<User> user)? loaded,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(List<User> user)? normalUsersLoaded,
+    TResult Function(List<User> user)? plusUsersLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +53,8 @@ mixin _$UserState {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_NormalUsersLoaded value) normalUsersLoaded,
+    required TResult Function(_PlusUsersLoaded value) plusUsersLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +63,8 @@ mixin _$UserState {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult? Function(_PlusUsersLoaded value)? plusUsersLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +73,8 @@ mixin _$UserState {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult Function(_PlusUsersLoaded value)? plusUsersLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,24 +98,25 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -113,7 +126,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -126,6 +139,8 @@ class _$_Initial implements _Initial {
     required TResult Function() actionInProgress,
     required TResult Function(List<User> user) loaded,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(List<User> user) normalUsersLoaded,
+    required TResult Function(List<User> user) plusUsersLoaded,
   }) {
     return initial();
   }
@@ -137,6 +152,8 @@ class _$_Initial implements _Initial {
     TResult? Function()? actionInProgress,
     TResult? Function(List<User> user)? loaded,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(List<User> user)? normalUsersLoaded,
+    TResult? Function(List<User> user)? plusUsersLoaded,
   }) {
     return initial?.call();
   }
@@ -148,6 +165,8 @@ class _$_Initial implements _Initial {
     TResult Function()? actionInProgress,
     TResult Function(List<User> user)? loaded,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(List<User> user)? normalUsersLoaded,
+    TResult Function(List<User> user)? plusUsersLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -163,6 +182,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_NormalUsersLoaded value) normalUsersLoaded,
+    required TResult Function(_PlusUsersLoaded value) plusUsersLoaded,
   }) {
     return initial(this);
   }
@@ -174,6 +195,8 @@ class _$_Initial implements _Initial {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult? Function(_PlusUsersLoaded value)? plusUsersLoaded,
   }) {
     return initial?.call(this);
   }
@@ -185,6 +208,8 @@ class _$_Initial implements _Initial {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult Function(_PlusUsersLoaded value)? plusUsersLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -195,29 +220,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements UserState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionInProgressCopyWith<$Res> {
-  factory _$$_ActionInProgressCopyWith(
-          _$_ActionInProgress value, $Res Function(_$_ActionInProgress) then) =
-      __$$_ActionInProgressCopyWithImpl<$Res>;
+abstract class _$$ActionInProgressImplCopyWith<$Res> {
+  factory _$$ActionInProgressImplCopyWith(_$ActionInProgressImpl value,
+          $Res Function(_$ActionInProgressImpl) then) =
+      __$$ActionInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$_ActionInProgress>
-    implements _$$_ActionInProgressCopyWith<$Res> {
-  __$$_ActionInProgressCopyWithImpl(
-      _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
+class __$$ActionInProgressImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$ActionInProgressImpl>
+    implements _$$ActionInProgressImplCopyWith<$Res> {
+  __$$ActionInProgressImplCopyWithImpl(_$ActionInProgressImpl _value,
+      $Res Function(_$ActionInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+class _$ActionInProgressImpl implements _ActionInProgress {
+  const _$ActionInProgressImpl();
 
   @override
   String toString() {
@@ -227,7 +252,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionInProgress);
+        (other.runtimeType == runtimeType && other is _$ActionInProgressImpl);
   }
 
   @override
@@ -240,6 +265,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     required TResult Function() actionInProgress,
     required TResult Function(List<User> user) loaded,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(List<User> user) normalUsersLoaded,
+    required TResult Function(List<User> user) plusUsersLoaded,
   }) {
     return actionInProgress();
   }
@@ -251,6 +278,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult? Function()? actionInProgress,
     TResult? Function(List<User> user)? loaded,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(List<User> user)? normalUsersLoaded,
+    TResult? Function(List<User> user)? plusUsersLoaded,
   }) {
     return actionInProgress?.call();
   }
@@ -262,6 +291,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult Function()? actionInProgress,
     TResult Function(List<User> user)? loaded,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(List<User> user)? normalUsersLoaded,
+    TResult Function(List<User> user)? plusUsersLoaded,
     required TResult orElse(),
   }) {
     if (actionInProgress != null) {
@@ -277,6 +308,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_NormalUsersLoaded value) normalUsersLoaded,
+    required TResult Function(_PlusUsersLoaded value) plusUsersLoaded,
   }) {
     return actionInProgress(this);
   }
@@ -288,6 +321,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult? Function(_PlusUsersLoaded value)? plusUsersLoaded,
   }) {
     return actionInProgress?.call(this);
   }
@@ -299,6 +334,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult Function(_PlusUsersLoaded value)? plusUsersLoaded,
     required TResult orElse(),
   }) {
     if (actionInProgress != null) {
@@ -309,22 +346,24 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements UserState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress() = _$ActionInProgressImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<User> user});
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -332,7 +371,7 @@ class __$$_LoadedCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
   }) {
-    return _then(_$_Loaded(
+    return _then(_$LoadedImpl(
       null == user
           ? _value._user
           : user // ignore: cast_nullable_to_non_nullable
@@ -343,8 +382,8 @@ class __$$_LoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<User> user) : _user = user;
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(final List<User> user) : _user = user;
 
   final List<User> _user;
   @override
@@ -363,7 +402,7 @@ class _$_Loaded implements _Loaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
+            other is _$LoadedImpl &&
             const DeepCollectionEquality().equals(other._user, _user));
   }
 
@@ -374,8 +413,8 @@ class _$_Loaded implements _Loaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -384,6 +423,8 @@ class _$_Loaded implements _Loaded {
     required TResult Function() actionInProgress,
     required TResult Function(List<User> user) loaded,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(List<User> user) normalUsersLoaded,
+    required TResult Function(List<User> user) plusUsersLoaded,
   }) {
     return loaded(user);
   }
@@ -395,6 +436,8 @@ class _$_Loaded implements _Loaded {
     TResult? Function()? actionInProgress,
     TResult? Function(List<User> user)? loaded,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(List<User> user)? normalUsersLoaded,
+    TResult? Function(List<User> user)? plusUsersLoaded,
   }) {
     return loaded?.call(user);
   }
@@ -406,6 +449,8 @@ class _$_Loaded implements _Loaded {
     TResult Function()? actionInProgress,
     TResult Function(List<User> user)? loaded,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(List<User> user)? normalUsersLoaded,
+    TResult Function(List<User> user)? plusUsersLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -421,6 +466,8 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_NormalUsersLoaded value) normalUsersLoaded,
+    required TResult Function(_PlusUsersLoaded value) plusUsersLoaded,
   }) {
     return loaded(this);
   }
@@ -432,6 +479,8 @@ class _$_Loaded implements _Loaded {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult? Function(_PlusUsersLoaded value)? plusUsersLoaded,
   }) {
     return loaded?.call(this);
   }
@@ -443,6 +492,8 @@ class _$_Loaded implements _Loaded {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult Function(_PlusUsersLoaded value)? plusUsersLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -453,19 +504,19 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements UserState {
-  const factory _Loaded(final List<User> user) = _$_Loaded;
+  const factory _Loaded(final List<User> user) = _$LoadedImpl;
 
   List<User> get user;
   @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ActionFailureCopyWith<$Res> {
-  factory _$$_ActionFailureCopyWith(
-          _$_ActionFailure value, $Res Function(_$_ActionFailure) then) =
-      __$$_ActionFailureCopyWithImpl<$Res>;
+abstract class _$$ActionFailureImplCopyWith<$Res> {
+  factory _$$ActionFailureImplCopyWith(
+          _$ActionFailureImpl value, $Res Function(_$ActionFailureImpl) then) =
+      __$$ActionFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UserFailure userFailure});
 
@@ -473,11 +524,11 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ActionFailureCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$_ActionFailure>
-    implements _$$_ActionFailureCopyWith<$Res> {
-  __$$_ActionFailureCopyWithImpl(
-      _$_ActionFailure _value, $Res Function(_$_ActionFailure) _then)
+class __$$ActionFailureImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$ActionFailureImpl>
+    implements _$$ActionFailureImplCopyWith<$Res> {
+  __$$ActionFailureImplCopyWithImpl(
+      _$ActionFailureImpl _value, $Res Function(_$ActionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -485,7 +536,7 @@ class __$$_ActionFailureCopyWithImpl<$Res>
   $Res call({
     Object? userFailure = null,
   }) {
-    return _then(_$_ActionFailure(
+    return _then(_$ActionFailureImpl(
       null == userFailure
           ? _value.userFailure
           : userFailure // ignore: cast_nullable_to_non_nullable
@@ -504,8 +555,8 @@ class __$$_ActionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionFailure implements _ActionFailure {
-  const _$_ActionFailure(this.userFailure);
+class _$ActionFailureImpl implements _ActionFailure {
+  const _$ActionFailureImpl(this.userFailure);
 
   @override
   final UserFailure userFailure;
@@ -519,7 +570,7 @@ class _$_ActionFailure implements _ActionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActionFailure &&
+            other is _$ActionFailureImpl &&
             (identical(other.userFailure, userFailure) ||
                 other.userFailure == userFailure));
   }
@@ -530,8 +581,8 @@ class _$_ActionFailure implements _ActionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
-      __$$_ActionFailureCopyWithImpl<_$_ActionFailure>(this, _$identity);
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      __$$ActionFailureImplCopyWithImpl<_$ActionFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -540,6 +591,8 @@ class _$_ActionFailure implements _ActionFailure {
     required TResult Function() actionInProgress,
     required TResult Function(List<User> user) loaded,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(List<User> user) normalUsersLoaded,
+    required TResult Function(List<User> user) plusUsersLoaded,
   }) {
     return actionFailure(userFailure);
   }
@@ -551,6 +604,8 @@ class _$_ActionFailure implements _ActionFailure {
     TResult? Function()? actionInProgress,
     TResult? Function(List<User> user)? loaded,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(List<User> user)? normalUsersLoaded,
+    TResult? Function(List<User> user)? plusUsersLoaded,
   }) {
     return actionFailure?.call(userFailure);
   }
@@ -562,6 +617,8 @@ class _$_ActionFailure implements _ActionFailure {
     TResult Function()? actionInProgress,
     TResult Function(List<User> user)? loaded,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(List<User> user)? normalUsersLoaded,
+    TResult Function(List<User> user)? plusUsersLoaded,
     required TResult orElse(),
   }) {
     if (actionFailure != null) {
@@ -577,6 +634,8 @@ class _$_ActionFailure implements _ActionFailure {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_NormalUsersLoaded value) normalUsersLoaded,
+    required TResult Function(_PlusUsersLoaded value) plusUsersLoaded,
   }) {
     return actionFailure(this);
   }
@@ -588,6 +647,8 @@ class _$_ActionFailure implements _ActionFailure {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult? Function(_PlusUsersLoaded value)? plusUsersLoaded,
   }) {
     return actionFailure?.call(this);
   }
@@ -599,6 +660,8 @@ class _$_ActionFailure implements _ActionFailure {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult Function(_PlusUsersLoaded value)? plusUsersLoaded,
     required TResult orElse(),
   }) {
     if (actionFailure != null) {
@@ -610,10 +673,339 @@ class _$_ActionFailure implements _ActionFailure {
 
 abstract class _ActionFailure implements UserState {
   const factory _ActionFailure(final UserFailure userFailure) =
-      _$_ActionFailure;
+      _$ActionFailureImpl;
 
   UserFailure get userFailure;
   @JsonKey(ignore: true)
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NormalUsersLoadedImplCopyWith<$Res> {
+  factory _$$NormalUsersLoadedImplCopyWith(_$NormalUsersLoadedImpl value,
+          $Res Function(_$NormalUsersLoadedImpl) then) =
+      __$$NormalUsersLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<User> user});
+}
+
+/// @nodoc
+class __$$NormalUsersLoadedImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$NormalUsersLoadedImpl>
+    implements _$$NormalUsersLoadedImplCopyWith<$Res> {
+  __$$NormalUsersLoadedImplCopyWithImpl(_$NormalUsersLoadedImpl _value,
+      $Res Function(_$NormalUsersLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$NormalUsersLoadedImpl(
+      null == user
+          ? _value._user
+          : user // ignore: cast_nullable_to_non_nullable
+              as List<User>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NormalUsersLoadedImpl implements _NormalUsersLoaded {
+  const _$NormalUsersLoadedImpl(final List<User> user) : _user = user;
+
+  final List<User> _user;
+  @override
+  List<User> get user {
+    if (_user is EqualUnmodifiableListView) return _user;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_user);
+  }
+
+  @override
+  String toString() {
+    return 'UserState.normalUsersLoaded(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NormalUsersLoadedImpl &&
+            const DeepCollectionEquality().equals(other._user, _user));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_user));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NormalUsersLoadedImplCopyWith<_$NormalUsersLoadedImpl> get copyWith =>
+      __$$NormalUsersLoadedImplCopyWithImpl<_$NormalUsersLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() actionInProgress,
+    required TResult Function(List<User> user) loaded,
+    required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(List<User> user) normalUsersLoaded,
+    required TResult Function(List<User> user) plusUsersLoaded,
+  }) {
+    return normalUsersLoaded(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function(List<User> user)? loaded,
+    TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(List<User> user)? normalUsersLoaded,
+    TResult? Function(List<User> user)? plusUsersLoaded,
+  }) {
+    return normalUsersLoaded?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function(List<User> user)? loaded,
+    TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(List<User> user)? normalUsersLoaded,
+    TResult Function(List<User> user)? plusUsersLoaded,
+    required TResult orElse(),
+  }) {
+    if (normalUsersLoaded != null) {
+      return normalUsersLoaded(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_NormalUsersLoaded value) normalUsersLoaded,
+    required TResult Function(_PlusUsersLoaded value) plusUsersLoaded,
+  }) {
+    return normalUsersLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult? Function(_PlusUsersLoaded value)? plusUsersLoaded,
+  }) {
+    return normalUsersLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult Function(_PlusUsersLoaded value)? plusUsersLoaded,
+    required TResult orElse(),
+  }) {
+    if (normalUsersLoaded != null) {
+      return normalUsersLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NormalUsersLoaded implements UserState {
+  const factory _NormalUsersLoaded(final List<User> user) =
+      _$NormalUsersLoadedImpl;
+
+  List<User> get user;
+  @JsonKey(ignore: true)
+  _$$NormalUsersLoadedImplCopyWith<_$NormalUsersLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PlusUsersLoadedImplCopyWith<$Res> {
+  factory _$$PlusUsersLoadedImplCopyWith(_$PlusUsersLoadedImpl value,
+          $Res Function(_$PlusUsersLoadedImpl) then) =
+      __$$PlusUsersLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<User> user});
+}
+
+/// @nodoc
+class __$$PlusUsersLoadedImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$PlusUsersLoadedImpl>
+    implements _$$PlusUsersLoadedImplCopyWith<$Res> {
+  __$$PlusUsersLoadedImplCopyWithImpl(
+      _$PlusUsersLoadedImpl _value, $Res Function(_$PlusUsersLoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$PlusUsersLoadedImpl(
+      null == user
+          ? _value._user
+          : user // ignore: cast_nullable_to_non_nullable
+              as List<User>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PlusUsersLoadedImpl implements _PlusUsersLoaded {
+  const _$PlusUsersLoadedImpl(final List<User> user) : _user = user;
+
+  final List<User> _user;
+  @override
+  List<User> get user {
+    if (_user is EqualUnmodifiableListView) return _user;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_user);
+  }
+
+  @override
+  String toString() {
+    return 'UserState.plusUsersLoaded(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlusUsersLoadedImpl &&
+            const DeepCollectionEquality().equals(other._user, _user));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_user));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlusUsersLoadedImplCopyWith<_$PlusUsersLoadedImpl> get copyWith =>
+      __$$PlusUsersLoadedImplCopyWithImpl<_$PlusUsersLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() actionInProgress,
+    required TResult Function(List<User> user) loaded,
+    required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(List<User> user) normalUsersLoaded,
+    required TResult Function(List<User> user) plusUsersLoaded,
+  }) {
+    return plusUsersLoaded(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function(List<User> user)? loaded,
+    TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(List<User> user)? normalUsersLoaded,
+    TResult? Function(List<User> user)? plusUsersLoaded,
+  }) {
+    return plusUsersLoaded?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function(List<User> user)? loaded,
+    TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(List<User> user)? normalUsersLoaded,
+    TResult Function(List<User> user)? plusUsersLoaded,
+    required TResult orElse(),
+  }) {
+    if (plusUsersLoaded != null) {
+      return plusUsersLoaded(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_NormalUsersLoaded value) normalUsersLoaded,
+    required TResult Function(_PlusUsersLoaded value) plusUsersLoaded,
+  }) {
+    return plusUsersLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult? Function(_PlusUsersLoaded value)? plusUsersLoaded,
+  }) {
+    return plusUsersLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_NormalUsersLoaded value)? normalUsersLoaded,
+    TResult Function(_PlusUsersLoaded value)? plusUsersLoaded,
+    required TResult orElse(),
+  }) {
+    if (plusUsersLoaded != null) {
+      return plusUsersLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PlusUsersLoaded implements UserState {
+  const factory _PlusUsersLoaded(final List<User> user) = _$PlusUsersLoadedImpl;
+
+  List<User> get user;
+  @JsonKey(ignore: true)
+  _$$PlusUsersLoadedImplCopyWith<_$PlusUsersLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -21,6 +21,7 @@ mixin _$Transaction {
   String get paymentMethod => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String get paymentId => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TransactionCopyWith<Transaction> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $TransactionCopyWith<$Res> {
       int userId,
       String paymentMethod,
       String status,
-      String paymentId});
+      String paymentId,
+      String? username});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
     Object? paymentMethod = null,
     Object? status = null,
     Object? paymentId = null,
+    Object? username = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -81,16 +84,20 @@ class _$TransactionCopyWithImpl<$Res, $Val extends Transaction>
           ? _value.paymentId
           : paymentId // ignore: cast_nullable_to_non_nullable
               as String,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_TransactionCopyWith<$Res>
+abstract class _$$TransactionImplCopyWith<$Res>
     implements $TransactionCopyWith<$Res> {
-  factory _$$_TransactionCopyWith(
-          _$_Transaction value, $Res Function(_$_Transaction) then) =
-      __$$_TransactionCopyWithImpl<$Res>;
+  factory _$$TransactionImplCopyWith(
+          _$TransactionImpl value, $Res Function(_$TransactionImpl) then) =
+      __$$TransactionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -98,15 +105,16 @@ abstract class _$$_TransactionCopyWith<$Res>
       int userId,
       String paymentMethod,
       String status,
-      String paymentId});
+      String paymentId,
+      String? username});
 }
 
 /// @nodoc
-class __$$_TransactionCopyWithImpl<$Res>
-    extends _$TransactionCopyWithImpl<$Res, _$_Transaction>
-    implements _$$_TransactionCopyWith<$Res> {
-  __$$_TransactionCopyWithImpl(
-      _$_Transaction _value, $Res Function(_$_Transaction) _then)
+class __$$TransactionImplCopyWithImpl<$Res>
+    extends _$TransactionCopyWithImpl<$Res, _$TransactionImpl>
+    implements _$$TransactionImplCopyWith<$Res> {
+  __$$TransactionImplCopyWithImpl(
+      _$TransactionImpl _value, $Res Function(_$TransactionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -117,8 +125,9 @@ class __$$_TransactionCopyWithImpl<$Res>
     Object? paymentMethod = null,
     Object? status = null,
     Object? paymentId = null,
+    Object? username = freezed,
   }) {
-    return _then(_$_Transaction(
+    return _then(_$TransactionImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -139,19 +148,24 @@ class __$$_TransactionCopyWithImpl<$Res>
           ? _value.paymentId
           : paymentId // ignore: cast_nullable_to_non_nullable
               as String,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Transaction implements _Transaction {
-  const _$_Transaction(
+class _$TransactionImpl implements _Transaction {
+  const _$TransactionImpl(
       {required this.id,
       required this.userId,
       required this.paymentMethod,
       required this.status,
-      required this.paymentId});
+      required this.paymentId,
+      this.username});
 
   @override
   final int id;
@@ -163,35 +177,39 @@ class _$_Transaction implements _Transaction {
   final String status;
   @override
   final String paymentId;
+  @override
+  final String? username;
 
   @override
   String toString() {
-    return 'Transaction(id: $id, userId: $userId, paymentMethod: $paymentMethod, status: $status, paymentId: $paymentId)';
+    return 'Transaction(id: $id, userId: $userId, paymentMethod: $paymentMethod, status: $status, paymentId: $paymentId, username: $username)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Transaction &&
+            other is _$TransactionImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.paymentId, paymentId) ||
-                other.paymentId == paymentId));
+                other.paymentId == paymentId) &&
+            (identical(other.username, username) ||
+                other.username == username));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, userId, paymentMethod, status, paymentId);
+  int get hashCode => Object.hash(
+      runtimeType, id, userId, paymentMethod, status, paymentId, username);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TransactionCopyWith<_$_Transaction> get copyWith =>
-      __$$_TransactionCopyWithImpl<_$_Transaction>(this, _$identity);
+  _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
+      __$$TransactionImplCopyWithImpl<_$TransactionImpl>(this, _$identity);
 }
 
 abstract class _Transaction implements Transaction {
@@ -200,7 +218,8 @@ abstract class _Transaction implements Transaction {
       required final int userId,
       required final String paymentMethod,
       required final String status,
-      required final String paymentId}) = _$_Transaction;
+      required final String paymentId,
+      final String? username}) = _$TransactionImpl;
 
   @override
   int get id;
@@ -213,7 +232,9 @@ abstract class _Transaction implements Transaction {
   @override
   String get paymentId;
   @override
+  String? get username;
+  @override
   @JsonKey(ignore: true)
-  _$$_TransactionCopyWith<_$_Transaction> get copyWith =>
+  _$$TransactionImplCopyWith<_$TransactionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

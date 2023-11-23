@@ -9,7 +9,8 @@ class Transaction with _$Transaction {
     required int userId,
     required String paymentMethod,
     required String status,
-    required String paymentId
+    required String paymentId,
+    String? username
   }) = _Transaction;
 }
 

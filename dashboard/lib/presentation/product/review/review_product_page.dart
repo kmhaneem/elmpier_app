@@ -13,7 +13,7 @@ class ReviewProductPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final productNotifier = ref.read(productProvider.notifier);
     final productState = ref.watch(productProvider);
-    
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       productNotifier.getProductsToReview();
     });
@@ -36,15 +36,15 @@ class ReviewProductPage extends ConsumerWidget {
                       horizontal: 20.0, vertical: 10),
                   child: Row(),
                 ),
-                productState.when(
+                productState.maybeWhen(
                   initial: () => Container(),
                   loadInProgress: () => CircularProgressIndicator(),
                   loadSuccess: (products) => Column(
                     children: products.asMap().entries.map((e) {
                       return InkWell(
                         onTap: () {
-                          context.router.push(ReviewProductViewRoute(product: e.value));
-                          // AutoRouter.of(context).push(ReviewProductViewPage(product: products))
+                          context.router
+                              .push(ReviewProductViewRoute(product: e.value));
                         },
                         child: Card(
                           elevation: 1,
@@ -122,6 +122,7 @@ class ReviewProductPage extends ConsumerWidget {
                     }).toList(),
                   ),
                   loadFailure: (failure) => Text(failure.toString()),
+                  orElse: () => Text("Error"),
                 ),
               ],
             ),

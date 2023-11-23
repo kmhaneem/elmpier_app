@@ -9,7 +9,7 @@ class SplashPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Center(
-        child: Image.asset("lib/assets/elmpier-logo.png"),
+        child: Image.asset("lib/assets/elmpier-admin-logo.png"),
       ),
     );
   }

@@ -7,39 +7,20 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final IAuthRepository _authRepository;
   AuthNotifier(this._authRepository) : super(const AuthState.initial());
 
-  // void authCheckRequested() async {
-  //   print("Checking authentication status...");
-  //   final adminOption = await _authRepository.getSignedInAdmin();
-  //   adminOption.fold(
-  //     () {
-  //       state = const AuthState.unauthenticated();
-  //     },
-  //     (_) {
-  //       state = const AuthState.authenticated();
-  //     },
-  //   );
-  // }
-
   void authCheckRequested() async {
-  print("Checking authentication status...");
-  
-  final adminOption = await _authRepository.getSignedInAdmin();
-  
-  adminOption.fold(
-    () {
-      print("Admin not found, transitioning to unauthenticated state.");
-      state = const AuthState.unauthenticated();
-    },
-    (_) {
-      print("Admin found, transitioning to authenticated state.");
-      state = const AuthState.authenticated();
-    },
-  );
-}
+    print("Checking authentication status...");
 
+    final adminOption = await _authRepository.getSignedInAdmin();
 
-  // Future<void> signOut() async {
-  //   await _authFacade.signOut();
-  //   state = const AuthState.unauthenticated();
-  // }
+    adminOption.fold(
+      () {
+        print("Admin not found, transitioning to unauthenticated state.");
+        state = const AuthState.unauthenticated();
+      },
+      (_) {
+        print("Admin found, transitioning to authenticated state.");
+        state = const AuthState.authenticated();
+      },
+    );
+  }
 }

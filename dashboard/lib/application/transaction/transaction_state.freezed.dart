@@ -20,7 +20,7 @@ mixin _$TransactionState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionInProgress,
-    required TResult Function(List<Transaction> user) loaded,
+    required TResult Function(List<Transaction> transactions) loaded,
     required TResult Function(TransactionFailure userFailure) actionFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$TransactionState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
-    TResult? Function(List<Transaction> user)? loaded,
+    TResult? Function(List<Transaction> transactions)? loaded,
     TResult? Function(TransactionFailure userFailure)? actionFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$TransactionState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
-    TResult Function(List<Transaction> user)? loaded,
+    TResult Function(List<Transaction> transactions)? loaded,
     TResult Function(TransactionFailure userFailure)? actionFailure,
     required TResult orElse(),
   }) =>
@@ -87,24 +87,25 @@ class _$TransactionStateCopyWithImpl<$Res, $Val extends TransactionState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$TransactionStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -114,7 +115,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -125,7 +126,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionInProgress,
-    required TResult Function(List<Transaction> user) loaded,
+    required TResult Function(List<Transaction> transactions) loaded,
     required TResult Function(TransactionFailure userFailure) actionFailure,
   }) {
     return initial();
@@ -136,7 +137,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
-    TResult? Function(List<Transaction> user)? loaded,
+    TResult? Function(List<Transaction> transactions)? loaded,
     TResult? Function(TransactionFailure userFailure)? actionFailure,
   }) {
     return initial?.call();
@@ -147,7 +148,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
-    TResult Function(List<Transaction> user)? loaded,
+    TResult Function(List<Transaction> transactions)? loaded,
     TResult Function(TransactionFailure userFailure)? actionFailure,
     required TResult orElse(),
   }) {
@@ -196,29 +197,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements TransactionState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionInProgressCopyWith<$Res> {
-  factory _$$_ActionInProgressCopyWith(
-          _$_ActionInProgress value, $Res Function(_$_ActionInProgress) then) =
-      __$$_ActionInProgressCopyWithImpl<$Res>;
+abstract class _$$ActionInProgressImplCopyWith<$Res> {
+  factory _$$ActionInProgressImplCopyWith(_$ActionInProgressImpl value,
+          $Res Function(_$ActionInProgressImpl) then) =
+      __$$ActionInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$TransactionStateCopyWithImpl<$Res, _$_ActionInProgress>
-    implements _$$_ActionInProgressCopyWith<$Res> {
-  __$$_ActionInProgressCopyWithImpl(
-      _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
+class __$$ActionInProgressImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$ActionInProgressImpl>
+    implements _$$ActionInProgressImplCopyWith<$Res> {
+  __$$ActionInProgressImplCopyWithImpl(_$ActionInProgressImpl _value,
+      $Res Function(_$ActionInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+class _$ActionInProgressImpl implements _ActionInProgress {
+  const _$ActionInProgressImpl();
 
   @override
   String toString() {
@@ -228,7 +229,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionInProgress);
+        (other.runtimeType == runtimeType && other is _$ActionInProgressImpl);
   }
 
   @override
@@ -239,7 +240,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionInProgress,
-    required TResult Function(List<Transaction> user) loaded,
+    required TResult Function(List<Transaction> transactions) loaded,
     required TResult Function(TransactionFailure userFailure) actionFailure,
   }) {
     return actionInProgress();
@@ -250,7 +251,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
-    TResult? Function(List<Transaction> user)? loaded,
+    TResult? Function(List<Transaction> transactions)? loaded,
     TResult? Function(TransactionFailure userFailure)? actionFailure,
   }) {
     return actionInProgress?.call();
@@ -261,7 +262,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
-    TResult Function(List<Transaction> user)? loaded,
+    TResult Function(List<Transaction> transactions)? loaded,
     TResult Function(TransactionFailure userFailure)? actionFailure,
     required TResult orElse(),
   }) {
@@ -310,33 +311,35 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements TransactionState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress() = _$ActionInProgressImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Transaction> user});
+  $Res call({List<Transaction> transactions});
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$TransactionStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? transactions = null,
   }) {
-    return _then(_$_Loaded(
-      null == user
-          ? _value._user
-          : user // ignore: cast_nullable_to_non_nullable
+    return _then(_$LoadedImpl(
+      null == transactions
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
               as List<Transaction>,
     ));
   }
@@ -344,49 +347,51 @@ class __$$_LoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<Transaction> user) : _user = user;
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(final List<Transaction> transactions)
+      : _transactions = transactions;
 
-  final List<Transaction> _user;
+  final List<Transaction> _transactions;
   @override
-  List<Transaction> get user {
-    if (_user is EqualUnmodifiableListView) return _user;
+  List<Transaction> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_user);
+    return EqualUnmodifiableListView(_transactions);
   }
 
   @override
   String toString() {
-    return 'TransactionState.loaded(user: $user)';
+    return 'TransactionState.loaded(transactions: $transactions)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
-            const DeepCollectionEquality().equals(other._user, _user));
+            other is _$LoadedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._transactions, _transactions));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_user));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_transactions));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionInProgress,
-    required TResult Function(List<Transaction> user) loaded,
+    required TResult Function(List<Transaction> transactions) loaded,
     required TResult Function(TransactionFailure userFailure) actionFailure,
   }) {
-    return loaded(user);
+    return loaded(transactions);
   }
 
   @override
@@ -394,10 +399,10 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
-    TResult? Function(List<Transaction> user)? loaded,
+    TResult? Function(List<Transaction> transactions)? loaded,
     TResult? Function(TransactionFailure userFailure)? actionFailure,
   }) {
-    return loaded?.call(user);
+    return loaded?.call(transactions);
   }
 
   @override
@@ -405,12 +410,12 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
-    TResult Function(List<Transaction> user)? loaded,
+    TResult Function(List<Transaction> transactions)? loaded,
     TResult Function(TransactionFailure userFailure)? actionFailure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(user);
+      return loaded(transactions);
     }
     return orElse();
   }
@@ -454,19 +459,19 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements TransactionState {
-  const factory _Loaded(final List<Transaction> user) = _$_Loaded;
+  const factory _Loaded(final List<Transaction> transactions) = _$LoadedImpl;
 
-  List<Transaction> get user;
+  List<Transaction> get transactions;
   @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ActionFailureCopyWith<$Res> {
-  factory _$$_ActionFailureCopyWith(
-          _$_ActionFailure value, $Res Function(_$_ActionFailure) then) =
-      __$$_ActionFailureCopyWithImpl<$Res>;
+abstract class _$$ActionFailureImplCopyWith<$Res> {
+  factory _$$ActionFailureImplCopyWith(
+          _$ActionFailureImpl value, $Res Function(_$ActionFailureImpl) then) =
+      __$$ActionFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TransactionFailure userFailure});
 
@@ -474,11 +479,11 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ActionFailureCopyWithImpl<$Res>
-    extends _$TransactionStateCopyWithImpl<$Res, _$_ActionFailure>
-    implements _$$_ActionFailureCopyWith<$Res> {
-  __$$_ActionFailureCopyWithImpl(
-      _$_ActionFailure _value, $Res Function(_$_ActionFailure) _then)
+class __$$ActionFailureImplCopyWithImpl<$Res>
+    extends _$TransactionStateCopyWithImpl<$Res, _$ActionFailureImpl>
+    implements _$$ActionFailureImplCopyWith<$Res> {
+  __$$ActionFailureImplCopyWithImpl(
+      _$ActionFailureImpl _value, $Res Function(_$ActionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -486,7 +491,7 @@ class __$$_ActionFailureCopyWithImpl<$Res>
   $Res call({
     Object? userFailure = null,
   }) {
-    return _then(_$_ActionFailure(
+    return _then(_$ActionFailureImpl(
       null == userFailure
           ? _value.userFailure
           : userFailure // ignore: cast_nullable_to_non_nullable
@@ -505,8 +510,8 @@ class __$$_ActionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionFailure implements _ActionFailure {
-  const _$_ActionFailure(this.userFailure);
+class _$ActionFailureImpl implements _ActionFailure {
+  const _$ActionFailureImpl(this.userFailure);
 
   @override
   final TransactionFailure userFailure;
@@ -520,7 +525,7 @@ class _$_ActionFailure implements _ActionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActionFailure &&
+            other is _$ActionFailureImpl &&
             (identical(other.userFailure, userFailure) ||
                 other.userFailure == userFailure));
   }
@@ -531,15 +536,15 @@ class _$_ActionFailure implements _ActionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
-      __$$_ActionFailureCopyWithImpl<_$_ActionFailure>(this, _$identity);
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      __$$ActionFailureImplCopyWithImpl<_$ActionFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionInProgress,
-    required TResult Function(List<Transaction> user) loaded,
+    required TResult Function(List<Transaction> transactions) loaded,
     required TResult Function(TransactionFailure userFailure) actionFailure,
   }) {
     return actionFailure(userFailure);
@@ -550,7 +555,7 @@ class _$_ActionFailure implements _ActionFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
-    TResult? Function(List<Transaction> user)? loaded,
+    TResult? Function(List<Transaction> transactions)? loaded,
     TResult? Function(TransactionFailure userFailure)? actionFailure,
   }) {
     return actionFailure?.call(userFailure);
@@ -561,7 +566,7 @@ class _$_ActionFailure implements _ActionFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionInProgress,
-    TResult Function(List<Transaction> user)? loaded,
+    TResult Function(List<Transaction> transactions)? loaded,
     TResult Function(TransactionFailure userFailure)? actionFailure,
     required TResult orElse(),
   }) {
@@ -611,10 +616,10 @@ class _$_ActionFailure implements _ActionFailure {
 
 abstract class _ActionFailure implements TransactionState {
   const factory _ActionFailure(final TransactionFailure userFailure) =
-      _$_ActionFailure;
+      _$ActionFailureImpl;
 
   TransactionFailure get userFailure;
   @JsonKey(ignore: true)
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -20,6 +20,7 @@ UserDto _$UserDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserDto {
+  int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: "firstname")
@@ -35,6 +36,7 @@ mixin _$UserDto {
   int? get postalCode => throw _privateConstructorUsedError;
   String? get district => throw _privateConstructorUsedError;
   String? get province => throw _privateConstructorUsedError;
+  bool? get verified => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +49,8 @@ abstract class $UserDtoCopyWith<$Res> {
       _$UserDtoCopyWithImpl<$Res, UserDto>;
   @useResult
   $Res call(
-      {String email,
+      {int id,
+      String email,
       String phone,
       @JsonKey(name: "firstname") String? firstName,
       @JsonKey(name: "lastname") String? lastName,
@@ -56,7 +59,8 @@ abstract class $UserDtoCopyWith<$Res> {
       String? city,
       @JsonKey(name: "postal_code") int? postalCode,
       String? district,
-      String? province});
+      String? province,
+      bool? verified});
 }
 
 /// @nodoc
@@ -72,6 +76,7 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? email = null,
     Object? phone = null,
     Object? firstName = freezed,
@@ -82,8 +87,13 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
     Object? postalCode = freezed,
     Object? district = freezed,
     Object? province = freezed,
+    Object? verified = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -124,19 +134,24 @@ class _$UserDtoCopyWithImpl<$Res, $Val extends UserDto>
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
+      verified: freezed == verified
+          ? _value.verified
+          : verified // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
-  factory _$$_UserDtoCopyWith(
-          _$_UserDto value, $Res Function(_$_UserDto) then) =
-      __$$_UserDtoCopyWithImpl<$Res>;
+abstract class _$$UserDtoImplCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
+  factory _$$UserDtoImplCopyWith(
+          _$UserDtoImpl value, $Res Function(_$UserDtoImpl) then) =
+      __$$UserDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String email,
+      {int id,
+      String email,
       String phone,
       @JsonKey(name: "firstname") String? firstName,
       @JsonKey(name: "lastname") String? lastName,
@@ -145,19 +160,22 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String? city,
       @JsonKey(name: "postal_code") int? postalCode,
       String? district,
-      String? province});
+      String? province,
+      bool? verified});
 }
 
 /// @nodoc
-class __$$_UserDtoCopyWithImpl<$Res>
-    extends _$UserDtoCopyWithImpl<$Res, _$_UserDto>
-    implements _$$_UserDtoCopyWith<$Res> {
-  __$$_UserDtoCopyWithImpl(_$_UserDto _value, $Res Function(_$_UserDto) _then)
+class __$$UserDtoImplCopyWithImpl<$Res>
+    extends _$UserDtoCopyWithImpl<$Res, _$UserDtoImpl>
+    implements _$$UserDtoImplCopyWith<$Res> {
+  __$$UserDtoImplCopyWithImpl(
+      _$UserDtoImpl _value, $Res Function(_$UserDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? email = null,
     Object? phone = null,
     Object? firstName = freezed,
@@ -168,8 +186,13 @@ class __$$_UserDtoCopyWithImpl<$Res>
     Object? postalCode = freezed,
     Object? district = freezed,
     Object? province = freezed,
+    Object? verified = freezed,
   }) {
-    return _then(_$_UserDto(
+    return _then(_$UserDtoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -210,15 +233,20 @@ class __$$_UserDtoCopyWithImpl<$Res>
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
+      verified: freezed == verified
+          ? _value.verified
+          : verified // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserDto extends _UserDto {
-  const _$_UserDto(
-      {required this.email,
+class _$UserDtoImpl extends _UserDto {
+  const _$UserDtoImpl(
+      {required this.id,
+      required this.email,
       required this.phone,
       @JsonKey(name: "firstname") this.firstName,
       @JsonKey(name: "lastname") this.lastName,
@@ -227,12 +255,15 @@ class _$_UserDto extends _UserDto {
       this.city,
       @JsonKey(name: "postal_code") this.postalCode,
       this.district,
-      this.province})
+      this.province,
+      this.verified})
       : super._();
 
-  factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserDtoFromJson(json);
+  factory _$UserDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserDtoImplFromJson(json);
 
+  @override
+  final int id;
   @override
   final String email;
   @override
@@ -258,17 +289,20 @@ class _$_UserDto extends _UserDto {
   final String? district;
   @override
   final String? province;
+  @override
+  final bool? verified;
 
   @override
   String toString() {
-    return 'UserDto(email: $email, phone: $phone, firstName: $firstName, lastName: $lastName, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, postalCode: $postalCode, district: $district, province: $province)';
+    return 'UserDto(id: $id, email: $email, phone: $phone, firstName: $firstName, lastName: $lastName, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, postalCode: $postalCode, district: $district, province: $province, verified: $verified)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserDto &&
+            other is _$UserDtoImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.firstName, firstName) ||
@@ -285,13 +319,16 @@ class _$_UserDto extends _UserDto {
             (identical(other.district, district) ||
                 other.district == district) &&
             (identical(other.province, province) ||
-                other.province == province));
+                other.province == province) &&
+            (identical(other.verified, verified) ||
+                other.verified == verified));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       email,
       phone,
       firstName,
@@ -301,17 +338,18 @@ class _$_UserDto extends _UserDto {
       city,
       postalCode,
       district,
-      province);
+      province,
+      verified);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>
-      __$$_UserDtoCopyWithImpl<_$_UserDto>(this, _$identity);
+  _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>
+      __$$UserDtoImplCopyWithImpl<_$UserDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDtoToJson(
+    return _$$UserDtoImplToJson(
       this,
     );
   }
@@ -319,7 +357,8 @@ class _$_UserDto extends _UserDto {
 
 abstract class _UserDto extends UserDto {
   const factory _UserDto(
-      {required final String email,
+      {required final int id,
+      required final String email,
       required final String phone,
       @JsonKey(name: "firstname") final String? firstName,
       @JsonKey(name: "lastname") final String? lastName,
@@ -328,11 +367,14 @@ abstract class _UserDto extends UserDto {
       final String? city,
       @JsonKey(name: "postal_code") final int? postalCode,
       final String? district,
-      final String? province}) = _$_UserDto;
+      final String? province,
+      final bool? verified}) = _$UserDtoImpl;
   const _UserDto._() : super._();
 
-  factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
+  factory _UserDto.fromJson(Map<String, dynamic> json) = _$UserDtoImpl.fromJson;
 
+  @override
+  int get id;
   @override
   String get email;
   @override
@@ -359,7 +401,9 @@ abstract class _UserDto extends UserDto {
   @override
   String? get province;
   @override
+  bool? get verified;
+  @override
   @JsonKey(ignore: true)
-  _$$_UserDtoCopyWith<_$_UserDto> get copyWith =>
+  _$$UserDtoImplCopyWith<_$UserDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$User {
+  int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String? get firstName => throw _privateConstructorUsedError;
@@ -26,6 +27,7 @@ mixin _$User {
   int? get postalCode => throw _privateConstructorUsedError;
   String? get district => throw _privateConstructorUsedError;
   String? get province => throw _privateConstructorUsedError;
+  bool? get verified => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -37,7 +39,8 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {String email,
+      {int id,
+      String email,
       String phone,
       String? firstName,
       String? lastName,
@@ -46,7 +49,8 @@ abstract class $UserCopyWith<$Res> {
       String? city,
       int? postalCode,
       String? district,
-      String? province});
+      String? province,
+      bool? verified});
 }
 
 /// @nodoc
@@ -62,6 +66,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? email = null,
     Object? phone = null,
     Object? firstName = freezed,
@@ -72,8 +77,13 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? postalCode = freezed,
     Object? district = freezed,
     Object? province = freezed,
+    Object? verified = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -114,18 +124,24 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
+      verified: freezed == verified
+          ? _value.verified
+          : verified // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
-      __$$_UserCopyWithImpl<$Res>;
+abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$$UserImplCopyWith(
+          _$UserImpl value, $Res Function(_$UserImpl) then) =
+      __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String email,
+      {int id,
+      String email,
       String phone,
       String? firstName,
       String? lastName,
@@ -134,18 +150,21 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? city,
       int? postalCode,
       String? district,
-      String? province});
+      String? province,
+      bool? verified});
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
-    implements _$$_UserCopyWith<$Res> {
-  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
+class __$$UserImplCopyWithImpl<$Res>
+    extends _$UserCopyWithImpl<$Res, _$UserImpl>
+    implements _$$UserImplCopyWith<$Res> {
+  __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? email = null,
     Object? phone = null,
     Object? firstName = freezed,
@@ -156,8 +175,13 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? postalCode = freezed,
     Object? district = freezed,
     Object? province = freezed,
+    Object? verified = freezed,
   }) {
-    return _then(_$_User(
+    return _then(_$UserImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -198,15 +222,20 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
+      verified: freezed == verified
+          ? _value.verified
+          : verified // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_User implements _User {
-  const _$_User(
-      {required this.email,
+class _$UserImpl implements _User {
+  const _$UserImpl(
+      {required this.id,
+      required this.email,
       required this.phone,
       this.firstName,
       this.lastName,
@@ -215,8 +244,11 @@ class _$_User implements _User {
       this.city,
       this.postalCode,
       this.district,
-      this.province});
+      this.province,
+      this.verified});
 
+  @override
+  final int id;
   @override
   final String email;
   @override
@@ -237,17 +269,20 @@ class _$_User implements _User {
   final String? district;
   @override
   final String? province;
+  @override
+  final bool? verified;
 
   @override
   String toString() {
-    return 'User(email: $email, phone: $phone, firstName: $firstName, lastName: $lastName, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, postalCode: $postalCode, district: $district, province: $province)';
+    return 'User(id: $id, email: $email, phone: $phone, firstName: $firstName, lastName: $lastName, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, postalCode: $postalCode, district: $district, province: $province, verified: $verified)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_User &&
+            other is _$UserImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.firstName, firstName) ||
@@ -264,12 +299,15 @@ class _$_User implements _User {
             (identical(other.district, district) ||
                 other.district == district) &&
             (identical(other.province, province) ||
-                other.province == province));
+                other.province == province) &&
+            (identical(other.verified, verified) ||
+                other.verified == verified));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       email,
       phone,
       firstName,
@@ -279,18 +317,20 @@ class _$_User implements _User {
       city,
       postalCode,
       district,
-      province);
+      province,
+      verified);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserCopyWith<_$_User> get copyWith =>
-      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
+  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+      __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
 }
 
 abstract class _User implements User {
   const factory _User(
-      {required final String email,
+      {required final int id,
+      required final String email,
       required final String phone,
       final String? firstName,
       final String? lastName,
@@ -299,8 +339,11 @@ abstract class _User implements User {
       final String? city,
       final int? postalCode,
       final String? district,
-      final String? province}) = _$_User;
+      final String? province,
+      final bool? verified}) = _$UserImpl;
 
+  @override
+  int get id;
   @override
   String get email;
   @override
@@ -322,6 +365,9 @@ abstract class _User implements User {
   @override
   String? get province;
   @override
+  bool? get verified;
+  @override
   @JsonKey(ignore: true)
-  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
+  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -35,18 +35,8 @@ class ProductNotifier extends StateNotifier<ProductState> {
         (products) => ProductState.loadSuccess(products));
   }
 
-  // void getSellerProducts() async {
-  //   if (_hasFetchedProducts) return;
-  //   state = const ProductState.initial();
-  //   final failureOrProducts = await _iProductRepository.getSellerProduct();
-  //   productReceived(failureOrProducts);
-  //   _hasFetchedProducts = true;
-  // }
-
   @override
   void dispose() {
     super.dispose();
   }
 }
-
-

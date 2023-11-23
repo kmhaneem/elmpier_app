@@ -55,18 +55,21 @@ class _$AdminCopyWithImpl<$Res, $Val extends Admin>
 }
 
 /// @nodoc
-abstract class _$$_AdminCopyWith<$Res> implements $AdminCopyWith<$Res> {
-  factory _$$_AdminCopyWith(_$_Admin value, $Res Function(_$_Admin) then) =
-      __$$_AdminCopyWithImpl<$Res>;
+abstract class _$$AdminImplCopyWith<$Res> implements $AdminCopyWith<$Res> {
+  factory _$$AdminImplCopyWith(
+          _$AdminImpl value, $Res Function(_$AdminImpl) then) =
+      __$$AdminImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$_AdminCopyWithImpl<$Res> extends _$AdminCopyWithImpl<$Res, _$_Admin>
-    implements _$$_AdminCopyWith<$Res> {
-  __$$_AdminCopyWithImpl(_$_Admin _value, $Res Function(_$_Admin) _then)
+class __$$AdminImplCopyWithImpl<$Res>
+    extends _$AdminCopyWithImpl<$Res, _$AdminImpl>
+    implements _$$AdminImplCopyWith<$Res> {
+  __$$AdminImplCopyWithImpl(
+      _$AdminImpl _value, $Res Function(_$AdminImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -74,7 +77,7 @@ class __$$_AdminCopyWithImpl<$Res> extends _$AdminCopyWithImpl<$Res, _$_Admin>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_Admin(
+    return _then(_$AdminImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -85,8 +88,8 @@ class __$$_AdminCopyWithImpl<$Res> extends _$AdminCopyWithImpl<$Res, _$_Admin>
 
 /// @nodoc
 
-class _$_Admin implements _Admin {
-  const _$_Admin({required this.id});
+class _$AdminImpl implements _Admin {
+  const _$AdminImpl({required this.id});
 
   @override
   final int id;
@@ -100,7 +103,7 @@ class _$_Admin implements _Admin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Admin &&
+            other is _$AdminImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -110,17 +113,17 @@ class _$_Admin implements _Admin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminCopyWith<_$_Admin> get copyWith =>
-      __$$_AdminCopyWithImpl<_$_Admin>(this, _$identity);
+  _$$AdminImplCopyWith<_$AdminImpl> get copyWith =>
+      __$$AdminImplCopyWithImpl<_$AdminImpl>(this, _$identity);
 }
 
 abstract class _Admin implements Admin {
-  const factory _Admin({required final int id}) = _$_Admin;
+  const factory _Admin({required final int id}) = _$AdminImpl;
 
   @override
   int get id;
   @override
   @JsonKey(ignore: true)
-  _$$_AdminCopyWith<_$_Admin> get copyWith =>
+  _$$AdminImplCopyWith<_$AdminImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

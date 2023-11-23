@@ -4,12 +4,12 @@ import '../../../domain/user/user.dart';
 part 'user_dtos.freezed.dart';
 part 'user_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class UserDto with _$UserDto {
   const UserDto._();
 
   const factory UserDto({
+    required int id,
     required String email,
     required String phone,
     @JsonKey(name: "firstname") String? firstName,
@@ -20,6 +20,7 @@ class UserDto with _$UserDto {
     @JsonKey(name: "postal_code") int? postalCode,
     String? district,
     String? province,
+    bool? verified,
   }) = _UserDto;
 
   factory UserDto.fromJson(Map<String, dynamic> json) =>
@@ -27,6 +28,7 @@ class UserDto with _$UserDto {
 
   factory UserDto.fromDomain(User user) {
     return UserDto(
+      id: user.id,
       email: user.email,
       phone: user.phone,
       firstName: user.firstName,
@@ -36,12 +38,14 @@ class UserDto with _$UserDto {
       city: user.city,
       postalCode: user.postalCode,
       district: user.district,
-      province: user.province, 
+      province: user.province,
+      verified: user.verified,
     );
   }
 
   User toDomain() {
     return User(
+      id: id,
       email: email,
       phone: phone,
       firstName: firstName,
@@ -51,7 +55,8 @@ class UserDto with _$UserDto {
       city: city,
       postalCode: postalCode,
       district: district,
-      province: province, 
+      province: province,
+      verified: verified,
     );
   }
 }

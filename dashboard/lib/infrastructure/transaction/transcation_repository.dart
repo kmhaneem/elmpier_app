@@ -15,12 +15,14 @@ class TransactionRepository extends ITransactionRepository {
   @override
   Future<Either<TransactionFailure, List<Transaction>>>
       getAllTransaction() async {
+    final String? token = await secureStorage.read("token");
     try {
       final response = await _dio.get(
-        "$api/admin/transaction",
+        "$api/admin/transactions/all",
         options: Options(
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization': 'Bearer $token',
           },
         ),
       );
@@ -28,12 +30,14 @@ class TransactionRepository extends ITransactionRepository {
       if (response.statusCode == 200) {
         final transactionDto = (response.data['response'] as List)
             .map((json) => TransactionDto.fromJson(json));
-        final transaction = transactionDto.map((dto) => dto.toDomain()).toList();
+        final transaction =
+            transactionDto.map((dto) => dto.toDomain()).toList();
         return right(transaction);
       } else {
         return left(const TransactionFailure.serverError());
       }
     } catch (error) {
+      print(error);
       return left(const TransactionFailure.serverError());
     }
   }

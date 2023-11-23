@@ -6,7 +6,9 @@ part of 'user_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
+_$UserDtoImpl _$$UserDtoImplFromJson(Map<String, dynamic> json) =>
+    _$UserDtoImpl(
+      id: json['id'] as int,
       email: json['email'] as String,
       phone: json['phone'] as String,
       firstName: json['firstname'] as String?,
@@ -17,10 +19,12 @@ _$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
       postalCode: json['postal_code'] as int?,
       district: json['district'] as String?,
       province: json['province'] as String?,
+      verified: json['verified'] as bool?,
     );
 
-Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
+Map<String, dynamic> _$$UserDtoImplToJson(_$UserDtoImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'email': instance.email,
       'phone': instance.phone,
       'firstname': instance.firstName,
@@ -31,4 +35,5 @@ Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
       'postal_code': instance.postalCode,
       'district': instance.district,
       'province': instance.province,
+      'verified': instance.verified,
     };

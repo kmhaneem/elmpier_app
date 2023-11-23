@@ -8,7 +8,6 @@ class ProductStatusNotifier extends StateNotifier<ProductStatusState> {
 
   ProductStatusNotifier(this._iProductRepository)
       : super(const ProductStatusState.initial());
-  // ProductStatusNotifier(this._iProductRepository) : super(null);
 
   Future<void> productApprove(int id) async {
     state = const ProductStatusState.actionInProgress();

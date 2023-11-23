@@ -21,7 +21,7 @@ mixin _$SignInState {
     required TResult Function() initial,
     required TResult Function() signInProcess,
     required TResult Function() signInSuccess,
-    required TResult Function() signInFailure,
+    required TResult Function(AuthFailure failure) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$SignInState {
     TResult? Function()? initial,
     TResult? Function()? signInProcess,
     TResult? Function()? signInSuccess,
-    TResult? Function()? signInFailure,
+    TResult? Function(AuthFailure failure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$SignInState {
     TResult Function()? initial,
     TResult Function()? signInProcess,
     TResult Function()? signInSuccess,
-    TResult Function()? signInFailure,
+    TResult Function(AuthFailure failure)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ mixin _$SignInState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_SignInProcess value) signInProcess,
     required TResult Function(_SignInSuccess value) signInSuccess,
-    required TResult Function(_SignInFailure value) signInFailure,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +54,7 @@ mixin _$SignInState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_SignInProcess value)? signInProcess,
     TResult? Function(_SignInSuccess value)? signInSuccess,
-    TResult? Function(_SignInFailure value)? signInFailure,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +62,7 @@ mixin _$SignInState {
     TResult Function(_Initial value)? initial,
     TResult Function(_SignInProcess value)? signInProcess,
     TResult Function(_SignInSuccess value)? signInSuccess,
-    TResult Function(_SignInFailure value)? signInFailure,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,24 +87,25 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$SignInStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SignInStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -114,7 +115,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -126,7 +127,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() signInProcess,
     required TResult Function() signInSuccess,
-    required TResult Function() signInFailure,
+    required TResult Function(AuthFailure failure) loadFailure,
   }) {
     return initial();
   }
@@ -137,7 +138,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? signInProcess,
     TResult? Function()? signInSuccess,
-    TResult? Function()? signInFailure,
+    TResult? Function(AuthFailure failure)? loadFailure,
   }) {
     return initial?.call();
   }
@@ -148,7 +149,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? signInProcess,
     TResult Function()? signInSuccess,
-    TResult Function()? signInFailure,
+    TResult Function(AuthFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -163,7 +164,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_SignInProcess value) signInProcess,
     required TResult Function(_SignInSuccess value) signInSuccess,
-    required TResult Function(_SignInFailure value) signInFailure,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return initial(this);
   }
@@ -174,7 +175,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_SignInProcess value)? signInProcess,
     TResult? Function(_SignInSuccess value)? signInSuccess,
-    TResult? Function(_SignInFailure value)? signInFailure,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return initial?.call(this);
   }
@@ -185,7 +186,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_SignInProcess value)? signInProcess,
     TResult Function(_SignInSuccess value)? signInSuccess,
-    TResult Function(_SignInFailure value)? signInFailure,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -196,29 +197,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements SignInState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_SignInProcessCopyWith<$Res> {
-  factory _$$_SignInProcessCopyWith(
-          _$_SignInProcess value, $Res Function(_$_SignInProcess) then) =
-      __$$_SignInProcessCopyWithImpl<$Res>;
+abstract class _$$SignInProcessImplCopyWith<$Res> {
+  factory _$$SignInProcessImplCopyWith(
+          _$SignInProcessImpl value, $Res Function(_$SignInProcessImpl) then) =
+      __$$SignInProcessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SignInProcessCopyWithImpl<$Res>
-    extends _$SignInStateCopyWithImpl<$Res, _$_SignInProcess>
-    implements _$$_SignInProcessCopyWith<$Res> {
-  __$$_SignInProcessCopyWithImpl(
-      _$_SignInProcess _value, $Res Function(_$_SignInProcess) _then)
+class __$$SignInProcessImplCopyWithImpl<$Res>
+    extends _$SignInStateCopyWithImpl<$Res, _$SignInProcessImpl>
+    implements _$$SignInProcessImplCopyWith<$Res> {
+  __$$SignInProcessImplCopyWithImpl(
+      _$SignInProcessImpl _value, $Res Function(_$SignInProcessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SignInProcess implements _SignInProcess {
-  const _$_SignInProcess();
+class _$SignInProcessImpl implements _SignInProcess {
+  const _$SignInProcessImpl();
 
   @override
   String toString() {
@@ -228,7 +229,7 @@ class _$_SignInProcess implements _SignInProcess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SignInProcess);
+        (other.runtimeType == runtimeType && other is _$SignInProcessImpl);
   }
 
   @override
@@ -240,7 +241,7 @@ class _$_SignInProcess implements _SignInProcess {
     required TResult Function() initial,
     required TResult Function() signInProcess,
     required TResult Function() signInSuccess,
-    required TResult Function() signInFailure,
+    required TResult Function(AuthFailure failure) loadFailure,
   }) {
     return signInProcess();
   }
@@ -251,7 +252,7 @@ class _$_SignInProcess implements _SignInProcess {
     TResult? Function()? initial,
     TResult? Function()? signInProcess,
     TResult? Function()? signInSuccess,
-    TResult? Function()? signInFailure,
+    TResult? Function(AuthFailure failure)? loadFailure,
   }) {
     return signInProcess?.call();
   }
@@ -262,7 +263,7 @@ class _$_SignInProcess implements _SignInProcess {
     TResult Function()? initial,
     TResult Function()? signInProcess,
     TResult Function()? signInSuccess,
-    TResult Function()? signInFailure,
+    TResult Function(AuthFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
     if (signInProcess != null) {
@@ -277,7 +278,7 @@ class _$_SignInProcess implements _SignInProcess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_SignInProcess value) signInProcess,
     required TResult Function(_SignInSuccess value) signInSuccess,
-    required TResult Function(_SignInFailure value) signInFailure,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return signInProcess(this);
   }
@@ -288,7 +289,7 @@ class _$_SignInProcess implements _SignInProcess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_SignInProcess value)? signInProcess,
     TResult? Function(_SignInSuccess value)? signInSuccess,
-    TResult? Function(_SignInFailure value)? signInFailure,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return signInProcess?.call(this);
   }
@@ -299,7 +300,7 @@ class _$_SignInProcess implements _SignInProcess {
     TResult Function(_Initial value)? initial,
     TResult Function(_SignInProcess value)? signInProcess,
     TResult Function(_SignInSuccess value)? signInSuccess,
-    TResult Function(_SignInFailure value)? signInFailure,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
     if (signInProcess != null) {
@@ -310,29 +311,29 @@ class _$_SignInProcess implements _SignInProcess {
 }
 
 abstract class _SignInProcess implements SignInState {
-  const factory _SignInProcess() = _$_SignInProcess;
+  const factory _SignInProcess() = _$SignInProcessImpl;
 }
 
 /// @nodoc
-abstract class _$$_SignInSuccessCopyWith<$Res> {
-  factory _$$_SignInSuccessCopyWith(
-          _$_SignInSuccess value, $Res Function(_$_SignInSuccess) then) =
-      __$$_SignInSuccessCopyWithImpl<$Res>;
+abstract class _$$SignInSuccessImplCopyWith<$Res> {
+  factory _$$SignInSuccessImplCopyWith(
+          _$SignInSuccessImpl value, $Res Function(_$SignInSuccessImpl) then) =
+      __$$SignInSuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SignInSuccessCopyWithImpl<$Res>
-    extends _$SignInStateCopyWithImpl<$Res, _$_SignInSuccess>
-    implements _$$_SignInSuccessCopyWith<$Res> {
-  __$$_SignInSuccessCopyWithImpl(
-      _$_SignInSuccess _value, $Res Function(_$_SignInSuccess) _then)
+class __$$SignInSuccessImplCopyWithImpl<$Res>
+    extends _$SignInStateCopyWithImpl<$Res, _$SignInSuccessImpl>
+    implements _$$SignInSuccessImplCopyWith<$Res> {
+  __$$SignInSuccessImplCopyWithImpl(
+      _$SignInSuccessImpl _value, $Res Function(_$SignInSuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SignInSuccess implements _SignInSuccess {
-  const _$_SignInSuccess();
+class _$SignInSuccessImpl implements _SignInSuccess {
+  const _$SignInSuccessImpl();
 
   @override
   String toString() {
@@ -342,7 +343,7 @@ class _$_SignInSuccess implements _SignInSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SignInSuccess);
+        (other.runtimeType == runtimeType && other is _$SignInSuccessImpl);
   }
 
   @override
@@ -354,7 +355,7 @@ class _$_SignInSuccess implements _SignInSuccess {
     required TResult Function() initial,
     required TResult Function() signInProcess,
     required TResult Function() signInSuccess,
-    required TResult Function() signInFailure,
+    required TResult Function(AuthFailure failure) loadFailure,
   }) {
     return signInSuccess();
   }
@@ -365,7 +366,7 @@ class _$_SignInSuccess implements _SignInSuccess {
     TResult? Function()? initial,
     TResult? Function()? signInProcess,
     TResult? Function()? signInSuccess,
-    TResult? Function()? signInFailure,
+    TResult? Function(AuthFailure failure)? loadFailure,
   }) {
     return signInSuccess?.call();
   }
@@ -376,7 +377,7 @@ class _$_SignInSuccess implements _SignInSuccess {
     TResult Function()? initial,
     TResult Function()? signInProcess,
     TResult Function()? signInSuccess,
-    TResult Function()? signInFailure,
+    TResult Function(AuthFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
     if (signInSuccess != null) {
@@ -391,7 +392,7 @@ class _$_SignInSuccess implements _SignInSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_SignInProcess value) signInProcess,
     required TResult Function(_SignInSuccess value) signInSuccess,
-    required TResult Function(_SignInFailure value) signInFailure,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return signInSuccess(this);
   }
@@ -402,7 +403,7 @@ class _$_SignInSuccess implements _SignInSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_SignInProcess value)? signInProcess,
     TResult? Function(_SignInSuccess value)? signInSuccess,
-    TResult? Function(_SignInFailure value)? signInFailure,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return signInSuccess?.call(this);
   }
@@ -413,7 +414,7 @@ class _$_SignInSuccess implements _SignInSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_SignInProcess value)? signInProcess,
     TResult Function(_SignInSuccess value)? signInSuccess,
-    TResult Function(_SignInFailure value)? signInFailure,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
     if (signInSuccess != null) {
@@ -424,43 +425,79 @@ class _$_SignInSuccess implements _SignInSuccess {
 }
 
 abstract class _SignInSuccess implements SignInState {
-  const factory _SignInSuccess() = _$_SignInSuccess;
+  const factory _SignInSuccess() = _$SignInSuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$_SignInFailureCopyWith<$Res> {
-  factory _$$_SignInFailureCopyWith(
-          _$_SignInFailure value, $Res Function(_$_SignInFailure) then) =
-      __$$_SignInFailureCopyWithImpl<$Res>;
+abstract class _$$LoadFailureImplCopyWith<$Res> {
+  factory _$$LoadFailureImplCopyWith(
+          _$LoadFailureImpl value, $Res Function(_$LoadFailureImpl) then) =
+      __$$LoadFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AuthFailure failure});
+
+  $AuthFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
-class __$$_SignInFailureCopyWithImpl<$Res>
-    extends _$SignInStateCopyWithImpl<$Res, _$_SignInFailure>
-    implements _$$_SignInFailureCopyWith<$Res> {
-  __$$_SignInFailureCopyWithImpl(
-      _$_SignInFailure _value, $Res Function(_$_SignInFailure) _then)
+class __$$LoadFailureImplCopyWithImpl<$Res>
+    extends _$SignInStateCopyWithImpl<$Res, _$LoadFailureImpl>
+    implements _$$LoadFailureImplCopyWith<$Res> {
+  __$$LoadFailureImplCopyWithImpl(
+      _$LoadFailureImpl _value, $Res Function(_$LoadFailureImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$LoadFailureImpl(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as AuthFailure,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthFailureCopyWith<$Res> get failure {
+    return $AuthFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$_SignInFailure implements _SignInFailure {
-  const _$_SignInFailure();
+class _$LoadFailureImpl implements _LoadFailure {
+  const _$LoadFailureImpl(this.failure);
+
+  @override
+  final AuthFailure failure;
 
   @override
   String toString() {
-    return 'SignInState.signInFailure()';
+    return 'SignInState.loadFailure(failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SignInFailure);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadFailureImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadFailureImplCopyWith<_$LoadFailureImpl> get copyWith =>
+      __$$LoadFailureImplCopyWithImpl<_$LoadFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -468,9 +505,9 @@ class _$_SignInFailure implements _SignInFailure {
     required TResult Function() initial,
     required TResult Function() signInProcess,
     required TResult Function() signInSuccess,
-    required TResult Function() signInFailure,
+    required TResult Function(AuthFailure failure) loadFailure,
   }) {
-    return signInFailure();
+    return loadFailure(failure);
   }
 
   @override
@@ -479,9 +516,9 @@ class _$_SignInFailure implements _SignInFailure {
     TResult? Function()? initial,
     TResult? Function()? signInProcess,
     TResult? Function()? signInSuccess,
-    TResult? Function()? signInFailure,
+    TResult? Function(AuthFailure failure)? loadFailure,
   }) {
-    return signInFailure?.call();
+    return loadFailure?.call(failure);
   }
 
   @override
@@ -490,11 +527,11 @@ class _$_SignInFailure implements _SignInFailure {
     TResult Function()? initial,
     TResult Function()? signInProcess,
     TResult Function()? signInSuccess,
-    TResult Function()? signInFailure,
+    TResult Function(AuthFailure failure)? loadFailure,
     required TResult orElse(),
   }) {
-    if (signInFailure != null) {
-      return signInFailure();
+    if (loadFailure != null) {
+      return loadFailure(failure);
     }
     return orElse();
   }
@@ -505,9 +542,9 @@ class _$_SignInFailure implements _SignInFailure {
     required TResult Function(_Initial value) initial,
     required TResult Function(_SignInProcess value) signInProcess,
     required TResult Function(_SignInSuccess value) signInSuccess,
-    required TResult Function(_SignInFailure value) signInFailure,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
-    return signInFailure(this);
+    return loadFailure(this);
   }
 
   @override
@@ -516,9 +553,9 @@ class _$_SignInFailure implements _SignInFailure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_SignInProcess value)? signInProcess,
     TResult? Function(_SignInSuccess value)? signInSuccess,
-    TResult? Function(_SignInFailure value)? signInFailure,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
-    return signInFailure?.call(this);
+    return loadFailure?.call(this);
   }
 
   @override
@@ -527,16 +564,21 @@ class _$_SignInFailure implements _SignInFailure {
     TResult Function(_Initial value)? initial,
     TResult Function(_SignInProcess value)? signInProcess,
     TResult Function(_SignInSuccess value)? signInSuccess,
-    TResult Function(_SignInFailure value)? signInFailure,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
-    if (signInFailure != null) {
-      return signInFailure(this);
+    if (loadFailure != null) {
+      return loadFailure(this);
     }
     return orElse();
   }
 }
 
-abstract class _SignInFailure implements SignInState {
-  const factory _SignInFailure() = _$_SignInFailure;
+abstract class _LoadFailure implements SignInState {
+  const factory _LoadFailure(final AuthFailure failure) = _$LoadFailureImpl;
+
+  AuthFailure get failure;
+  @JsonKey(ignore: true)
+  _$$LoadFailureImplCopyWith<_$LoadFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

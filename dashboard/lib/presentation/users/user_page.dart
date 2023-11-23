@@ -10,13 +10,8 @@ class UserPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userNotifier = ref.read(userProvider.notifier);
     final userState = ref.watch(userProvider);
-    // Replace with a real function to get the logged-in user ID if necessary
-    // final userId = getLoggedInUserId(ref);
-    final userId = 1;
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      userNotifier.getAllUsers();
-    });
+    final userId = 1;
 
     return Scaffold(
       body: Column(
@@ -37,7 +32,7 @@ class UserPage extends ConsumerWidget {
                       horizontal: 20.0, vertical: 10),
                   child: Row(),
                 ),
-                userState.when(
+                userState.maybeWhen(
                   initial: () => Container(),
                   actionInProgress: () => CircularProgressIndicator(),
                   loaded: (users) => Column(
@@ -73,6 +68,7 @@ class UserPage extends ConsumerWidget {
                     }).toList(),
                   ),
                   actionFailure: (failure) => Text(failure.toString()),
+                  orElse: () => Text("Error"),
                 ),
               ],
             ),

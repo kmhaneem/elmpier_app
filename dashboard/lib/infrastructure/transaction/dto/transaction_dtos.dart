@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'transaction_dtos.freezed.dart';
 part 'transaction_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class TransactionDto with _$TransactionDto {
   const TransactionDto._();
@@ -14,6 +13,7 @@ class TransactionDto with _$TransactionDto {
     @JsonKey(name: "payment_method") required String paymentMethod,
     required String status,
     @JsonKey(name: "payment_id") required String paymentId,
+    String? username
   }) = _TransactionDto;
 
   factory TransactionDto.fromJson(Map<String, dynamic> json) =>
@@ -26,6 +26,7 @@ class TransactionDto with _$TransactionDto {
       paymentMethod: transaction.paymentMethod,
       status: transaction.status,
       paymentId: transaction.paymentId,
+      username: transaction.username
     );
   }
 
@@ -36,6 +37,7 @@ class TransactionDto with _$TransactionDto {
       paymentMethod: paymentMethod,
       status: status,
       paymentId: paymentId,
+      username: username
     );
   }
 }

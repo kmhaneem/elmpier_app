@@ -30,54 +30,39 @@ class AuthRepository implements IAuthRepository {
         await secureStorage.write(
             "admin_id", response.data['response']['id'].toString());
         await secureStorage.write("token", response.data['response']['token']);
-        
+
         return right(unit);
       } else {
-        return left(const AuthFailure.notFound());
+        return left(const AuthFailure.serverError());
       }
     } on DioException catch (e) {
       print("Failed TO GET $e");
-      return left(const AuthFailure.notFound());
+      return left(const AuthFailure.serverError());
     }
   }
 
-  // @override
-  // Future<Option<Admin>> getSignedInAdmin() async {
-  //   final String? authToken = await secureStorage.read("token");
-  //   print("Auth token: $authToken");
-  //   if (authToken != null) {
-  //     final String? adminId = await secureStorage.read("admin_id");
-  //     print("Admin ID: $adminId");
-  //     if (adminId != null) {
-  //       return optionOf(Admin(id: int.parse(adminId)));
-  //     }
-  //   }
-  // return none();
-  // }
-
   @override
-Future<Option<Admin>> getSignedInAdmin() async {
+  Future<Option<Admin>> getSignedInAdmin() async {
     final String? authToken = await secureStorage.read("token");
     print("Auth token: $authToken");
     if (authToken != null) {
-        final String? adminId = await secureStorage.read("admin_id");
-        print("Admin ID: $adminId");
-        if (adminId != null) {
-            print("Returning Admin Object");
-            return optionOf(Admin(id: int.parse(adminId)));
-        } else {
-            print("Admin ID is null");
-        }
+      final String? adminId = await secureStorage.read("admin_id");
+      print("Admin ID: $adminId");
+      if (adminId != null) {
+        print("Returning Admin Object");
+        return optionOf(Admin(id: int.parse(adminId)));
+      } else {
+        print("Admin ID is null");
+      }
     } else {
-        print("Auth token is null");
+      print("Auth token is null");
     }
     print("Returning none");
     return none();
-}
+  }
 
   @override
   Future<void> signOut() async {
     await secureStorage.delete("token");
   }
-
 }

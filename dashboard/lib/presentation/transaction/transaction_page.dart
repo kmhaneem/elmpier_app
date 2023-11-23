@@ -11,10 +11,6 @@ class TransactionPage extends ConsumerWidget {
     final transactionNotifier = ref.read(transactionProvider.notifier);
     final transactionState = ref.watch(transactionProvider);
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      transactionNotifier.getAllTransaction();
-    });
-
     return Scaffold(
       body: Column(
         children: [
