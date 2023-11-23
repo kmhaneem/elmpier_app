@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class PaymentOption extends StatefulWidget {
   final String selectedOption;
+  final int totalAmount;
   final Function(String) onOptionSelected;
 
   const PaymentOption({
     Key? key,
     required this.selectedOption,
+    required this.totalAmount,
     required this.onOptionSelected,
   }) : super(key: key);
 
@@ -25,6 +27,7 @@ class _PaymentOptionState extends State<PaymentOption> {
 
   @override
   Widget build(BuildContext context) {
+    bool isCashOnDeliveryEnabled = widget.totalAmount <= 10000;
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[100],
@@ -46,19 +49,25 @@ class _PaymentOptionState extends State<PaymentOption> {
               });
               widget.onOptionSelected(value!);
             },
-            // contentPadding: const EdgeInsets.symmetric(vertical: 1.0,),
             contentPadding: const EdgeInsets.only(left: 1.0, right: 1),
           ),
           RadioListTile<String>(
-            title: const Text("💵 Cash on Delivery"),
+            title: Text(
+              "💵 Cash on Delivery",
+              style: TextStyle(
+                color: isCashOnDeliveryEnabled ? Colors.black : Colors.grey,
+              ),
+            ),
             value: "Cash on Delivery",
             groupValue: _selectedPaymentOption,
-            onChanged: (value) {
-              setState(() {
-                _selectedPaymentOption = value;
-              });
-              widget.onOptionSelected(value!);
-            },
+            onChanged: isCashOnDeliveryEnabled
+                ? (value) {
+                    setState(() {
+                      _selectedPaymentOption = value;
+                    });
+                    widget.onOptionSelected(value!);
+                  }
+                : null,
             contentPadding: const EdgeInsets.symmetric(vertical: 1.0),
           ),
           RadioListTile<String>(

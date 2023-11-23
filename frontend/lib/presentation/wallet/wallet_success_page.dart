@@ -12,7 +12,6 @@ class WalletSuccessPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // You can define your custom color palette
     const Color successColor = Colors.green;
     const Color buttonColor = Colors.blueAccent;
 

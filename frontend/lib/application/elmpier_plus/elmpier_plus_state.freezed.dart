@@ -93,24 +93,25 @@ class _$ElmpierPlusStateCopyWithImpl<$Res, $Val extends ElmpierPlusState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -120,7 +121,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -208,29 +209,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements ElmpierPlusState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionInProgressCopyWith<$Res> {
-  factory _$$_ActionInProgressCopyWith(
-          _$_ActionInProgress value, $Res Function(_$_ActionInProgress) then) =
-      __$$_ActionInProgressCopyWithImpl<$Res>;
+abstract class _$$ActionInProgressImplCopyWith<$Res> {
+  factory _$$ActionInProgressImplCopyWith(_$ActionInProgressImpl value,
+          $Res Function(_$ActionInProgressImpl) then) =
+      __$$ActionInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$_ActionInProgress>
-    implements _$$_ActionInProgressCopyWith<$Res> {
-  __$$_ActionInProgressCopyWithImpl(
-      _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
+class __$$ActionInProgressImplCopyWithImpl<$Res>
+    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$ActionInProgressImpl>
+    implements _$$ActionInProgressImplCopyWith<$Res> {
+  __$$ActionInProgressImplCopyWithImpl(_$ActionInProgressImpl _value,
+      $Res Function(_$ActionInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+class _$ActionInProgressImpl implements _ActionInProgress {
+  const _$ActionInProgressImpl();
 
   @override
   String toString() {
@@ -240,7 +241,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionInProgress);
+        (other.runtimeType == runtimeType && other is _$ActionInProgressImpl);
   }
 
   @override
@@ -328,29 +329,29 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements ElmpierPlusState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress() = _$ActionInProgressImpl;
 }
 
 /// @nodoc
-abstract class _$$_CreateSuccessCopyWith<$Res> {
-  factory _$$_CreateSuccessCopyWith(
-          _$_CreateSuccess value, $Res Function(_$_CreateSuccess) then) =
-      __$$_CreateSuccessCopyWithImpl<$Res>;
+abstract class _$$CreateSuccessImplCopyWith<$Res> {
+  factory _$$CreateSuccessImplCopyWith(
+          _$CreateSuccessImpl value, $Res Function(_$CreateSuccessImpl) then) =
+      __$$CreateSuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_CreateSuccessCopyWithImpl<$Res>
-    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$_CreateSuccess>
-    implements _$$_CreateSuccessCopyWith<$Res> {
-  __$$_CreateSuccessCopyWithImpl(
-      _$_CreateSuccess _value, $Res Function(_$_CreateSuccess) _then)
+class __$$CreateSuccessImplCopyWithImpl<$Res>
+    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$CreateSuccessImpl>
+    implements _$$CreateSuccessImplCopyWith<$Res> {
+  __$$CreateSuccessImplCopyWithImpl(
+      _$CreateSuccessImpl _value, $Res Function(_$CreateSuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_CreateSuccess implements _CreateSuccess {
-  const _$_CreateSuccess();
+class _$CreateSuccessImpl implements _CreateSuccess {
+  const _$CreateSuccessImpl();
 
   @override
   String toString() {
@@ -360,7 +361,7 @@ class _$_CreateSuccess implements _CreateSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CreateSuccess);
+        (other.runtimeType == runtimeType && other is _$CreateSuccessImpl);
   }
 
   @override
@@ -448,14 +449,14 @@ class _$_CreateSuccess implements _CreateSuccess {
 }
 
 abstract class _CreateSuccess implements ElmpierPlusState {
-  const factory _CreateSuccess() = _$_CreateSuccess;
+  const factory _CreateSuccess() = _$CreateSuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionFailureCopyWith<$Res> {
-  factory _$$_ActionFailureCopyWith(
-          _$_ActionFailure value, $Res Function(_$_ActionFailure) then) =
-      __$$_ActionFailureCopyWithImpl<$Res>;
+abstract class _$$ActionFailureImplCopyWith<$Res> {
+  factory _$$ActionFailureImplCopyWith(
+          _$ActionFailureImpl value, $Res Function(_$ActionFailureImpl) then) =
+      __$$ActionFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ElmpierPlusError elmpierPlusError});
 
@@ -463,11 +464,11 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ActionFailureCopyWithImpl<$Res>
-    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$_ActionFailure>
-    implements _$$_ActionFailureCopyWith<$Res> {
-  __$$_ActionFailureCopyWithImpl(
-      _$_ActionFailure _value, $Res Function(_$_ActionFailure) _then)
+class __$$ActionFailureImplCopyWithImpl<$Res>
+    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$ActionFailureImpl>
+    implements _$$ActionFailureImplCopyWith<$Res> {
+  __$$ActionFailureImplCopyWithImpl(
+      _$ActionFailureImpl _value, $Res Function(_$ActionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -475,7 +476,7 @@ class __$$_ActionFailureCopyWithImpl<$Res>
   $Res call({
     Object? elmpierPlusError = null,
   }) {
-    return _then(_$_ActionFailure(
+    return _then(_$ActionFailureImpl(
       null == elmpierPlusError
           ? _value.elmpierPlusError
           : elmpierPlusError // ignore: cast_nullable_to_non_nullable
@@ -494,8 +495,8 @@ class __$$_ActionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionFailure implements _ActionFailure {
-  const _$_ActionFailure(this.elmpierPlusError);
+class _$ActionFailureImpl implements _ActionFailure {
+  const _$ActionFailureImpl(this.elmpierPlusError);
 
   @override
   final ElmpierPlusError elmpierPlusError;
@@ -509,7 +510,7 @@ class _$_ActionFailure implements _ActionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActionFailure &&
+            other is _$ActionFailureImpl &&
             (identical(other.elmpierPlusError, elmpierPlusError) ||
                 other.elmpierPlusError == elmpierPlusError));
   }
@@ -520,8 +521,8 @@ class _$_ActionFailure implements _ActionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
-      __$$_ActionFailureCopyWithImpl<_$_ActionFailure>(this, _$identity);
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      __$$ActionFailureImplCopyWithImpl<_$ActionFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -606,19 +607,19 @@ class _$_ActionFailure implements _ActionFailure {
 
 abstract class _ActionFailure implements ElmpierPlusState {
   const factory _ActionFailure(final ElmpierPlusError elmpierPlusError) =
-      _$_ActionFailure;
+      _$ActionFailureImpl;
 
   ElmpierPlusError get elmpierPlusError;
   @JsonKey(ignore: true)
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PlusUserLoadedCopyWith<$Res> {
-  factory _$$_PlusUserLoadedCopyWith(
-          _$_PlusUserLoaded value, $Res Function(_$_PlusUserLoaded) then) =
-      __$$_PlusUserLoadedCopyWithImpl<$Res>;
+abstract class _$$PlusUserLoadedImplCopyWith<$Res> {
+  factory _$$PlusUserLoadedImplCopyWith(_$PlusUserLoadedImpl value,
+          $Res Function(_$PlusUserLoadedImpl) then) =
+      __$$PlusUserLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PlusUser plusUser});
 
@@ -626,11 +627,11 @@ abstract class _$$_PlusUserLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PlusUserLoadedCopyWithImpl<$Res>
-    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$_PlusUserLoaded>
-    implements _$$_PlusUserLoadedCopyWith<$Res> {
-  __$$_PlusUserLoadedCopyWithImpl(
-      _$_PlusUserLoaded _value, $Res Function(_$_PlusUserLoaded) _then)
+class __$$PlusUserLoadedImplCopyWithImpl<$Res>
+    extends _$ElmpierPlusStateCopyWithImpl<$Res, _$PlusUserLoadedImpl>
+    implements _$$PlusUserLoadedImplCopyWith<$Res> {
+  __$$PlusUserLoadedImplCopyWithImpl(
+      _$PlusUserLoadedImpl _value, $Res Function(_$PlusUserLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -638,7 +639,7 @@ class __$$_PlusUserLoadedCopyWithImpl<$Res>
   $Res call({
     Object? plusUser = null,
   }) {
-    return _then(_$_PlusUserLoaded(
+    return _then(_$PlusUserLoadedImpl(
       null == plusUser
           ? _value.plusUser
           : plusUser // ignore: cast_nullable_to_non_nullable
@@ -657,8 +658,8 @@ class __$$_PlusUserLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlusUserLoaded implements _PlusUserLoaded {
-  const _$_PlusUserLoaded(this.plusUser);
+class _$PlusUserLoadedImpl implements _PlusUserLoaded {
+  const _$PlusUserLoadedImpl(this.plusUser);
 
   @override
   final PlusUser plusUser;
@@ -672,7 +673,7 @@ class _$_PlusUserLoaded implements _PlusUserLoaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlusUserLoaded &&
+            other is _$PlusUserLoadedImpl &&
             (identical(other.plusUser, plusUser) ||
                 other.plusUser == plusUser));
   }
@@ -683,8 +684,9 @@ class _$_PlusUserLoaded implements _PlusUserLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlusUserLoadedCopyWith<_$_PlusUserLoaded> get copyWith =>
-      __$$_PlusUserLoadedCopyWithImpl<_$_PlusUserLoaded>(this, _$identity);
+  _$$PlusUserLoadedImplCopyWith<_$PlusUserLoadedImpl> get copyWith =>
+      __$$PlusUserLoadedImplCopyWithImpl<_$PlusUserLoadedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -768,10 +770,10 @@ class _$_PlusUserLoaded implements _PlusUserLoaded {
 }
 
 abstract class _PlusUserLoaded implements ElmpierPlusState {
-  const factory _PlusUserLoaded(final PlusUser plusUser) = _$_PlusUserLoaded;
+  const factory _PlusUserLoaded(final PlusUser plusUser) = _$PlusUserLoadedImpl;
 
   PlusUser get plusUser;
   @JsonKey(ignore: true)
-  _$$_PlusUserLoadedCopyWith<_$_PlusUserLoaded> get copyWith =>
+  _$$PlusUserLoadedImplCopyWith<_$PlusUserLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,6 @@ class ProvinceNotifier extends StateNotifier<ProvinceState> {
     final failureOrProvice = await _iUserRepository.getProvince();
     failureOrProvice.fold(
       (failure) {
-        print("Province Error: $failure");
         state = ProvinceState.loadFailure(failure); 
       },
       (province) => state = ProvinceState.loadSuccess(province), 

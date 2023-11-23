@@ -69,22 +69,22 @@ class _$ProductBrandCopyWithImpl<$Res, $Val extends ProductBrand>
 }
 
 /// @nodoc
-abstract class _$$_ProductBrandCopyWith<$Res>
+abstract class _$$ProductBrandImplCopyWith<$Res>
     implements $ProductBrandCopyWith<$Res> {
-  factory _$$_ProductBrandCopyWith(
-          _$_ProductBrand value, $Res Function(_$_ProductBrand) then) =
-      __$$_ProductBrandCopyWithImpl<$Res>;
+  factory _$$ProductBrandImplCopyWith(
+          _$ProductBrandImpl value, $Res Function(_$ProductBrandImpl) then) =
+      __$$ProductBrandImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name, int categoryId});
 }
 
 /// @nodoc
-class __$$_ProductBrandCopyWithImpl<$Res>
-    extends _$ProductBrandCopyWithImpl<$Res, _$_ProductBrand>
-    implements _$$_ProductBrandCopyWith<$Res> {
-  __$$_ProductBrandCopyWithImpl(
-      _$_ProductBrand _value, $Res Function(_$_ProductBrand) _then)
+class __$$ProductBrandImplCopyWithImpl<$Res>
+    extends _$ProductBrandCopyWithImpl<$Res, _$ProductBrandImpl>
+    implements _$$ProductBrandImplCopyWith<$Res> {
+  __$$ProductBrandImplCopyWithImpl(
+      _$ProductBrandImpl _value, $Res Function(_$ProductBrandImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_ProductBrandCopyWithImpl<$Res>
     Object? name = null,
     Object? categoryId = null,
   }) {
-    return _then(_$_ProductBrand(
+    return _then(_$ProductBrandImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_ProductBrandCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProductBrand implements _ProductBrand {
-  const _$_ProductBrand(
+class _$ProductBrandImpl implements _ProductBrand {
+  const _$ProductBrandImpl(
       {required this.id, required this.name, required this.categoryId});
 
   @override
@@ -133,7 +133,7 @@ class _$_ProductBrand implements _ProductBrand {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductBrand &&
+            other is _$ProductBrandImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.categoryId, categoryId) ||
@@ -146,15 +146,15 @@ class _$_ProductBrand implements _ProductBrand {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductBrandCopyWith<_$_ProductBrand> get copyWith =>
-      __$$_ProductBrandCopyWithImpl<_$_ProductBrand>(this, _$identity);
+  _$$ProductBrandImplCopyWith<_$ProductBrandImpl> get copyWith =>
+      __$$ProductBrandImplCopyWithImpl<_$ProductBrandImpl>(this, _$identity);
 }
 
 abstract class _ProductBrand implements ProductBrand {
   const factory _ProductBrand(
       {required final int id,
       required final String name,
-      required final int categoryId}) = _$_ProductBrand;
+      required final int categoryId}) = _$ProductBrandImpl;
 
   @override
   int get id;
@@ -164,6 +164,6 @@ abstract class _ProductBrand implements ProductBrand {
   int get categoryId;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductBrandCopyWith<_$_ProductBrand> get copyWith =>
+  _$$ProductBrandImplCopyWith<_$ProductBrandImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

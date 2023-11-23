@@ -5,19 +5,18 @@ import 'package:frontend/domain/orders/i_order_item_repository.dart';
 import 'package:frontend/domain/orders/model/order_item.dart';
 import 'package:frontend/domain/orders/model/order_item_failure.dart';
 
-import '../../domain/product/model/product.dart';
-import '../../domain/product/product_failure.dart';
-
-class OrderItemNotifier extends StateNotifier<OrderItemStates> {
+class OrderItemNotifier extends StateNotifier<OrderItemState> {
   final IOrderItemRepository _iOrderItemRepository;
   bool _hasFetchedOrderItems = false;
 
   OrderItemNotifier(this._iOrderItemRepository)
-      : super(const OrderItemStates.initial());
+      : super(const OrderItemState.initial()) {
+    watchAllStarted();
+  }
 
   void watchAllStarted() async {
     if (_hasFetchedOrderItems) return;
-    state = const OrderItemStates.initial();
+    state = const OrderItemState.initial();
     final failureOrProducts = await _iOrderItemRepository.getOrderItems();
     orderItemsReceived(failureOrProducts);
     _hasFetchedOrderItems = true;
@@ -26,8 +25,8 @@ class OrderItemNotifier extends StateNotifier<OrderItemStates> {
   void orderItemsReceived(
       Either<OrderItemFailure, List<OrderItem>> failureOrProduct) {
     state = failureOrProduct.fold(
-      (f) => OrderItemStates.loadFailure(f),
-      (products) => OrderItemStates.loadSuccess(products),
+      (f) => OrderItemState.loadFailure(f),
+      (products) => OrderItemState.loadSuccess(products),
     );
   }
 }

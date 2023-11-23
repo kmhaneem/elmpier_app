@@ -55,19 +55,21 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
 }
 
 /// @nodoc
-abstract class _$$_WalletCopyWith<$Res> implements $WalletCopyWith<$Res> {
-  factory _$$_WalletCopyWith(_$_Wallet value, $Res Function(_$_Wallet) then) =
-      __$$_WalletCopyWithImpl<$Res>;
+abstract class _$$WalletImplCopyWith<$Res> implements $WalletCopyWith<$Res> {
+  factory _$$WalletImplCopyWith(
+          _$WalletImpl value, $Res Function(_$WalletImpl) then) =
+      __$$WalletImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int amount});
 }
 
 /// @nodoc
-class __$$_WalletCopyWithImpl<$Res>
-    extends _$WalletCopyWithImpl<$Res, _$_Wallet>
-    implements _$$_WalletCopyWith<$Res> {
-  __$$_WalletCopyWithImpl(_$_Wallet _value, $Res Function(_$_Wallet) _then)
+class __$$WalletImplCopyWithImpl<$Res>
+    extends _$WalletCopyWithImpl<$Res, _$WalletImpl>
+    implements _$$WalletImplCopyWith<$Res> {
+  __$$WalletImplCopyWithImpl(
+      _$WalletImpl _value, $Res Function(_$WalletImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -75,7 +77,7 @@ class __$$_WalletCopyWithImpl<$Res>
   $Res call({
     Object? amount = null,
   }) {
-    return _then(_$_Wallet(
+    return _then(_$WalletImpl(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -86,8 +88,8 @@ class __$$_WalletCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Wallet implements _Wallet {
-  const _$_Wallet({required this.amount});
+class _$WalletImpl implements _Wallet {
+  const _$WalletImpl({required this.amount});
 
   @override
   final int amount;
@@ -101,7 +103,7 @@ class _$_Wallet implements _Wallet {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Wallet &&
+            other is _$WalletImpl &&
             (identical(other.amount, amount) || other.amount == amount));
   }
 
@@ -111,17 +113,17 @@ class _$_Wallet implements _Wallet {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WalletCopyWith<_$_Wallet> get copyWith =>
-      __$$_WalletCopyWithImpl<_$_Wallet>(this, _$identity);
+  _$$WalletImplCopyWith<_$WalletImpl> get copyWith =>
+      __$$WalletImplCopyWithImpl<_$WalletImpl>(this, _$identity);
 }
 
 abstract class _Wallet implements Wallet {
-  const factory _Wallet({required final int amount}) = _$_Wallet;
+  const factory _Wallet({required final int amount}) = _$WalletImpl;
 
   @override
   int get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_WalletCopyWith<_$_Wallet> get copyWith =>
+  _$$WalletImplCopyWith<_$WalletImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

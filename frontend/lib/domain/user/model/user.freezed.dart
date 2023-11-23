@@ -23,9 +23,11 @@ mixin _$UserModel {
   String get addressLine1 => throw _privateConstructorUsedError;
   String get addressLine2 => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
-  int get postalCode => throw _privateConstructorUsedError;
-  String get district => throw _privateConstructorUsedError;
-  String get province => throw _privateConstructorUsedError;
+  String get postalCode => throw _privateConstructorUsedError;
+  String? get district => throw _privateConstructorUsedError;
+  String? get province => throw _privateConstructorUsedError;
+  int? get districtId => throw _privateConstructorUsedError;
+  int? get provinceId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserModelCopyWith<UserModel> get copyWith =>
@@ -45,9 +47,11 @@ abstract class $UserModelCopyWith<$Res> {
       String addressLine1,
       String addressLine2,
       String city,
-      int postalCode,
-      String district,
-      String province});
+      String postalCode,
+      String? district,
+      String? province,
+      int? districtId,
+      int? provinceId});
 }
 
 /// @nodoc
@@ -71,8 +75,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? addressLine2 = null,
     Object? city = null,
     Object? postalCode = null,
-    Object? district = null,
-    Object? province = null,
+    Object? district = freezed,
+    Object? province = freezed,
+    Object? districtId = freezed,
+    Object? provinceId = freezed,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -106,24 +112,33 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       postalCode: null == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      district: null == district
+              as String,
+      district: freezed == district
           ? _value.district
           : district // ignore: cast_nullable_to_non_nullable
-              as String,
-      province: null == province
+              as String?,
+      province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      districtId: freezed == districtId
+          ? _value.districtId
+          : districtId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      provinceId: freezed == provinceId
+          ? _value.provinceId
+          : provinceId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
-  factory _$$_UserModelCopyWith(
-          _$_UserModel value, $Res Function(_$_UserModel) then) =
-      __$$_UserModelCopyWithImpl<$Res>;
+abstract class _$$UserModelImplCopyWith<$Res>
+    implements $UserModelCopyWith<$Res> {
+  factory _$$UserModelImplCopyWith(
+          _$UserModelImpl value, $Res Function(_$UserModelImpl) then) =
+      __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -134,17 +149,19 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String addressLine1,
       String addressLine2,
       String city,
-      int postalCode,
-      String district,
-      String province});
+      String postalCode,
+      String? district,
+      String? province,
+      int? districtId,
+      int? provinceId});
 }
 
 /// @nodoc
-class __$$_UserModelCopyWithImpl<$Res>
-    extends _$UserModelCopyWithImpl<$Res, _$_UserModel>
-    implements _$$_UserModelCopyWith<$Res> {
-  __$$_UserModelCopyWithImpl(
-      _$_UserModel _value, $Res Function(_$_UserModel) _then)
+class __$$UserModelImplCopyWithImpl<$Res>
+    extends _$UserModelCopyWithImpl<$Res, _$UserModelImpl>
+    implements _$$UserModelImplCopyWith<$Res> {
+  __$$UserModelImplCopyWithImpl(
+      _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -158,10 +175,12 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? addressLine2 = null,
     Object? city = null,
     Object? postalCode = null,
-    Object? district = null,
-    Object? province = null,
+    Object? district = freezed,
+    Object? province = freezed,
+    Object? districtId = freezed,
+    Object? provinceId = freezed,
   }) {
-    return _then(_$_UserModel(
+    return _then(_$UserModelImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -193,23 +212,31 @@ class __$$_UserModelCopyWithImpl<$Res>
       postalCode: null == postalCode
           ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      district: null == district
+              as String,
+      district: freezed == district
           ? _value.district
           : district // ignore: cast_nullable_to_non_nullable
-              as String,
-      province: null == province
+              as String?,
+      province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      districtId: freezed == districtId
+          ? _value.districtId
+          : districtId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      provinceId: freezed == provinceId
+          ? _value.provinceId
+          : provinceId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_UserModel implements _UserModel {
-  const _$_UserModel(
+class _$UserModelImpl implements _UserModel {
+  const _$UserModelImpl(
       {required this.email,
       required this.phone,
       required this.firstName,
@@ -218,8 +245,10 @@ class _$_UserModel implements _UserModel {
       required this.addressLine2,
       required this.city,
       required this.postalCode,
-      required this.district,
-      required this.province});
+      this.district,
+      this.province,
+      this.districtId,
+      this.provinceId});
 
   @override
   final String email;
@@ -236,22 +265,26 @@ class _$_UserModel implements _UserModel {
   @override
   final String city;
   @override
-  final int postalCode;
+  final String postalCode;
   @override
-  final String district;
+  final String? district;
   @override
-  final String province;
+  final String? province;
+  @override
+  final int? districtId;
+  @override
+  final int? provinceId;
 
   @override
   String toString() {
-    return 'UserModel(email: $email, phone: $phone, firstName: $firstName, lastName: $lastName, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, postalCode: $postalCode, district: $district, province: $province)';
+    return 'UserModel(email: $email, phone: $phone, firstName: $firstName, lastName: $lastName, addressLine1: $addressLine1, addressLine2: $addressLine2, city: $city, postalCode: $postalCode, district: $district, province: $province, districtId: $districtId, provinceId: $provinceId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserModel &&
+            other is _$UserModelImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.firstName, firstName) ||
@@ -268,7 +301,11 @@ class _$_UserModel implements _UserModel {
             (identical(other.district, district) ||
                 other.district == district) &&
             (identical(other.province, province) ||
-                other.province == province));
+                other.province == province) &&
+            (identical(other.districtId, districtId) ||
+                other.districtId == districtId) &&
+            (identical(other.provinceId, provinceId) ||
+                other.provinceId == provinceId));
   }
 
   @override
@@ -283,13 +320,15 @@ class _$_UserModel implements _UserModel {
       city,
       postalCode,
       district,
-      province);
+      province,
+      districtId,
+      provinceId);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserModelCopyWith<_$_UserModel> get copyWith =>
-      __$$_UserModelCopyWithImpl<_$_UserModel>(this, _$identity);
+  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
+      __$$UserModelImplCopyWithImpl<_$UserModelImpl>(this, _$identity);
 }
 
 abstract class _UserModel implements UserModel {
@@ -301,9 +340,11 @@ abstract class _UserModel implements UserModel {
       required final String addressLine1,
       required final String addressLine2,
       required final String city,
-      required final int postalCode,
-      required final String district,
-      required final String province}) = _$_UserModel;
+      required final String postalCode,
+      final String? district,
+      final String? province,
+      final int? districtId,
+      final int? provinceId}) = _$UserModelImpl;
 
   @override
   String get email;
@@ -320,13 +361,17 @@ abstract class _UserModel implements UserModel {
   @override
   String get city;
   @override
-  int get postalCode;
+  String get postalCode;
   @override
-  String get district;
+  String? get district;
   @override
-  String get province;
+  String? get province;
+  @override
+  int? get districtId;
+  @override
+  int? get provinceId;
   @override
   @JsonKey(ignore: true)
-  _$$_UserModelCopyWith<_$_UserModel> get copyWith =>
+  _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

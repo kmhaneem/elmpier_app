@@ -12,4 +12,5 @@ class UserProfileState with _$UserProfileState {
   const factory UserProfileState.success() = _Success;
   const factory UserProfileState.actionFailure(UserFailure userFailure) =
       _ActionFailure;
+  const factory UserProfileState.loaded(UserModel user) = _Loaded;
 }

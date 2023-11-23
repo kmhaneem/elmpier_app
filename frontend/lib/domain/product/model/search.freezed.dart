@@ -57,22 +57,22 @@ class _$SearchProductCopyWithImpl<$Res, $Val extends SearchProduct>
 }
 
 /// @nodoc
-abstract class _$$_SearchProductCopyWith<$Res>
+abstract class _$$SearchProductImplCopyWith<$Res>
     implements $SearchProductCopyWith<$Res> {
-  factory _$$_SearchProductCopyWith(
-          _$_SearchProduct value, $Res Function(_$_SearchProduct) then) =
-      __$$_SearchProductCopyWithImpl<$Res>;
+  factory _$$SearchProductImplCopyWith(
+          _$SearchProductImpl value, $Res Function(_$SearchProductImpl) then) =
+      __$$SearchProductImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String query});
 }
 
 /// @nodoc
-class __$$_SearchProductCopyWithImpl<$Res>
-    extends _$SearchProductCopyWithImpl<$Res, _$_SearchProduct>
-    implements _$$_SearchProductCopyWith<$Res> {
-  __$$_SearchProductCopyWithImpl(
-      _$_SearchProduct _value, $Res Function(_$_SearchProduct) _then)
+class __$$SearchProductImplCopyWithImpl<$Res>
+    extends _$SearchProductCopyWithImpl<$Res, _$SearchProductImpl>
+    implements _$$SearchProductImplCopyWith<$Res> {
+  __$$SearchProductImplCopyWithImpl(
+      _$SearchProductImpl _value, $Res Function(_$SearchProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_SearchProductCopyWithImpl<$Res>
   $Res call({
     Object? query = null,
   }) {
-    return _then(_$_SearchProduct(
+    return _then(_$SearchProductImpl(
       query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_SearchProductCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchProduct implements _SearchProduct {
-  const _$_SearchProduct({required this.query});
+class _$SearchProductImpl implements _SearchProduct {
+  const _$SearchProductImpl({required this.query});
 
   @override
   final String query;
@@ -106,7 +106,7 @@ class _$_SearchProduct implements _SearchProduct {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchProduct &&
+            other is _$SearchProductImpl &&
             (identical(other.query, query) || other.query == query));
   }
 
@@ -116,18 +116,18 @@ class _$_SearchProduct implements _SearchProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchProductCopyWith<_$_SearchProduct> get copyWith =>
-      __$$_SearchProductCopyWithImpl<_$_SearchProduct>(this, _$identity);
+  _$$SearchProductImplCopyWith<_$SearchProductImpl> get copyWith =>
+      __$$SearchProductImplCopyWithImpl<_$SearchProductImpl>(this, _$identity);
 }
 
 abstract class _SearchProduct implements SearchProduct {
   const factory _SearchProduct({required final String query}) =
-      _$_SearchProduct;
+      _$SearchProductImpl;
 
   @override
   String get query;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchProductCopyWith<_$_SearchProduct> get copyWith =>
+  _$$SearchProductImplCopyWith<_$SearchProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

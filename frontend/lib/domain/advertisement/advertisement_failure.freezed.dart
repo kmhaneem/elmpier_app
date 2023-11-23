@@ -82,25 +82,25 @@ class _$AdvertisementFailureCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UnExpectedCopyWith<$Res> {
-  factory _$$_UnExpectedCopyWith(
-          _$_UnExpected value, $Res Function(_$_UnExpected) then) =
-      __$$_UnExpectedCopyWithImpl<$Res>;
+abstract class _$$UnExpectedImplCopyWith<$Res> {
+  factory _$$UnExpectedImplCopyWith(
+          _$UnExpectedImpl value, $Res Function(_$UnExpectedImpl) then) =
+      __$$UnExpectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UnExpectedCopyWithImpl<$Res>
-    extends _$AdvertisementFailureCopyWithImpl<$Res, _$_UnExpected>
-    implements _$$_UnExpectedCopyWith<$Res> {
-  __$$_UnExpectedCopyWithImpl(
-      _$_UnExpected _value, $Res Function(_$_UnExpected) _then)
+class __$$UnExpectedImplCopyWithImpl<$Res>
+    extends _$AdvertisementFailureCopyWithImpl<$Res, _$UnExpectedImpl>
+    implements _$$UnExpectedImplCopyWith<$Res> {
+  __$$UnExpectedImplCopyWithImpl(
+      _$UnExpectedImpl _value, $Res Function(_$UnExpectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_UnExpected implements _UnExpected {
-  const _$_UnExpected();
+class _$UnExpectedImpl implements _UnExpected {
+  const _$UnExpectedImpl();
 
   @override
   String toString() {
@@ -110,7 +110,7 @@ class _$_UnExpected implements _UnExpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UnExpected);
+        (other.runtimeType == runtimeType && other is _$UnExpectedImpl);
   }
 
   @override
@@ -186,29 +186,29 @@ class _$_UnExpected implements _UnExpected {
 }
 
 abstract class _UnExpected implements AdvertisementFailure {
-  const factory _UnExpected() = _$_UnExpected;
+  const factory _UnExpected() = _$UnExpectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NotFoundCopyWith<$Res> {
-  factory _$$_NotFoundCopyWith(
-          _$_NotFound value, $Res Function(_$_NotFound) then) =
-      __$$_NotFoundCopyWithImpl<$Res>;
+abstract class _$$NotFoundImplCopyWith<$Res> {
+  factory _$$NotFoundImplCopyWith(
+          _$NotFoundImpl value, $Res Function(_$NotFoundImpl) then) =
+      __$$NotFoundImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NotFoundCopyWithImpl<$Res>
-    extends _$AdvertisementFailureCopyWithImpl<$Res, _$_NotFound>
-    implements _$$_NotFoundCopyWith<$Res> {
-  __$$_NotFoundCopyWithImpl(
-      _$_NotFound _value, $Res Function(_$_NotFound) _then)
+class __$$NotFoundImplCopyWithImpl<$Res>
+    extends _$AdvertisementFailureCopyWithImpl<$Res, _$NotFoundImpl>
+    implements _$$NotFoundImplCopyWith<$Res> {
+  __$$NotFoundImplCopyWithImpl(
+      _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NotFound implements _NotFound {
-  const _$_NotFound();
+class _$NotFoundImpl implements _NotFound {
+  const _$NotFoundImpl();
 
   @override
   String toString() {
@@ -218,7 +218,7 @@ class _$_NotFound implements _NotFound {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NotFound);
+        (other.runtimeType == runtimeType && other is _$NotFoundImpl);
   }
 
   @override
@@ -294,29 +294,29 @@ class _$_NotFound implements _NotFound {
 }
 
 abstract class _NotFound implements AdvertisementFailure {
-  const factory _NotFound() = _$_NotFound;
+  const factory _NotFound() = _$NotFoundImpl;
 }
 
 /// @nodoc
-abstract class _$$_ServerErrorCopyWith<$Res> {
-  factory _$$_ServerErrorCopyWith(
-          _$_ServerError value, $Res Function(_$_ServerError) then) =
-      __$$_ServerErrorCopyWithImpl<$Res>;
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ServerErrorCopyWithImpl<$Res>
-    extends _$AdvertisementFailureCopyWithImpl<$Res, _$_ServerError>
-    implements _$$_ServerErrorCopyWith<$Res> {
-  __$$_ServerErrorCopyWithImpl(
-      _$_ServerError _value, $Res Function(_$_ServerError) _then)
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$AdvertisementFailureCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ServerError implements _ServerError {
-  const _$_ServerError();
+class _$ServerErrorImpl implements _ServerError {
+  const _$ServerErrorImpl();
 
   @override
   String toString() {
@@ -326,7 +326,7 @@ class _$_ServerError implements _ServerError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ServerError);
+        (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
 
   @override
@@ -402,5 +402,5 @@ class _$_ServerError implements _ServerError {
 }
 
 abstract class _ServerError implements AdvertisementFailure {
-  const factory _ServerError() = _$_ServerError;
+  const factory _ServerError() = _$ServerErrorImpl;
 }

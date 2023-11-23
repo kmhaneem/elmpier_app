@@ -20,6 +20,7 @@ OrderItemDto _$OrderItemDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderItemDto {
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "order_id")
   int get orderId => throw _privateConstructorUsedError;
   @JsonKey(name: "product_id")
@@ -28,7 +29,7 @@ mixin _$OrderItemDto {
   int get price => throw _privateConstructorUsedError;
   @JsonKey(name: "image_url")
   String get imageUrl => throw _privateConstructorUsedError;
-  @JsonKey(name: "image_qty")
+  @JsonKey(name: "item_qty")
   int get itemQty => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,12 +45,13 @@ abstract class $OrderItemDtoCopyWith<$Res> {
       _$OrderItemDtoCopyWithImpl<$Res, OrderItemDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: "order_id") int orderId,
+      {int id,
+      @JsonKey(name: "order_id") int orderId,
       @JsonKey(name: "product_id") int productId,
       String name,
       int price,
       @JsonKey(name: "image_url") String imageUrl,
-      @JsonKey(name: "image_qty") int itemQty});
+      @JsonKey(name: "item_qty") int itemQty});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? orderId = null,
     Object? productId = null,
     Object? name = null,
@@ -73,6 +76,10 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
     Object? itemQty = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -102,33 +109,35 @@ class _$OrderItemDtoCopyWithImpl<$Res, $Val extends OrderItemDto>
 }
 
 /// @nodoc
-abstract class _$$_OrderItemDtoCopyWith<$Res>
+abstract class _$$OrderItemDtoImplCopyWith<$Res>
     implements $OrderItemDtoCopyWith<$Res> {
-  factory _$$_OrderItemDtoCopyWith(
-          _$_OrderItemDto value, $Res Function(_$_OrderItemDto) then) =
-      __$$_OrderItemDtoCopyWithImpl<$Res>;
+  factory _$$OrderItemDtoImplCopyWith(
+          _$OrderItemDtoImpl value, $Res Function(_$OrderItemDtoImpl) then) =
+      __$$OrderItemDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "order_id") int orderId,
+      {int id,
+      @JsonKey(name: "order_id") int orderId,
       @JsonKey(name: "product_id") int productId,
       String name,
       int price,
       @JsonKey(name: "image_url") String imageUrl,
-      @JsonKey(name: "image_qty") int itemQty});
+      @JsonKey(name: "item_qty") int itemQty});
 }
 
 /// @nodoc
-class __$$_OrderItemDtoCopyWithImpl<$Res>
-    extends _$OrderItemDtoCopyWithImpl<$Res, _$_OrderItemDto>
-    implements _$$_OrderItemDtoCopyWith<$Res> {
-  __$$_OrderItemDtoCopyWithImpl(
-      _$_OrderItemDto _value, $Res Function(_$_OrderItemDto) _then)
+class __$$OrderItemDtoImplCopyWithImpl<$Res>
+    extends _$OrderItemDtoCopyWithImpl<$Res, _$OrderItemDtoImpl>
+    implements _$$OrderItemDtoImplCopyWith<$Res> {
+  __$$OrderItemDtoImplCopyWithImpl(
+      _$OrderItemDtoImpl _value, $Res Function(_$OrderItemDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? orderId = null,
     Object? productId = null,
     Object? name = null,
@@ -136,7 +145,11 @@ class __$$_OrderItemDtoCopyWithImpl<$Res>
     Object? imageUrl = null,
     Object? itemQty = null,
   }) {
-    return _then(_$_OrderItemDto(
+    return _then(_$OrderItemDtoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -167,19 +180,22 @@ class __$$_OrderItemDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderItemDto extends _OrderItemDto {
-  const _$_OrderItemDto(
-      {@JsonKey(name: "order_id") required this.orderId,
+class _$OrderItemDtoImpl extends _OrderItemDto {
+  const _$OrderItemDtoImpl(
+      {required this.id,
+      @JsonKey(name: "order_id") required this.orderId,
       @JsonKey(name: "product_id") required this.productId,
       required this.name,
       required this.price,
       @JsonKey(name: "image_url") required this.imageUrl,
-      @JsonKey(name: "image_qty") required this.itemQty})
+      @JsonKey(name: "item_qty") required this.itemQty})
       : super._();
 
-  factory _$_OrderItemDto.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderItemDtoFromJson(json);
+  factory _$OrderItemDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemDtoImplFromJson(json);
 
+  @override
+  final int id;
   @override
   @JsonKey(name: "order_id")
   final int orderId;
@@ -194,19 +210,20 @@ class _$_OrderItemDto extends _OrderItemDto {
   @JsonKey(name: "image_url")
   final String imageUrl;
   @override
-  @JsonKey(name: "image_qty")
+  @JsonKey(name: "item_qty")
   final int itemQty;
 
   @override
   String toString() {
-    return 'OrderItemDto(orderId: $orderId, productId: $productId, name: $name, price: $price, imageUrl: $imageUrl, itemQty: $itemQty)';
+    return 'OrderItemDto(id: $id, orderId: $orderId, productId: $productId, name: $name, price: $price, imageUrl: $imageUrl, itemQty: $itemQty)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderItemDto &&
+            other is _$OrderItemDtoImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
@@ -220,17 +237,17 @@ class _$_OrderItemDto extends _OrderItemDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, orderId, productId, name, price, imageUrl, itemQty);
+      runtimeType, id, orderId, productId, name, price, imageUrl, itemQty);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderItemDtoCopyWith<_$_OrderItemDto> get copyWith =>
-      __$$_OrderItemDtoCopyWithImpl<_$_OrderItemDto>(this, _$identity);
+  _$$OrderItemDtoImplCopyWith<_$OrderItemDtoImpl> get copyWith =>
+      __$$OrderItemDtoImplCopyWithImpl<_$OrderItemDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderItemDtoToJson(
+    return _$$OrderItemDtoImplToJson(
       this,
     );
   }
@@ -238,18 +255,21 @@ class _$_OrderItemDto extends _OrderItemDto {
 
 abstract class _OrderItemDto extends OrderItemDto {
   const factory _OrderItemDto(
-          {@JsonKey(name: "order_id") required final int orderId,
+          {required final int id,
+          @JsonKey(name: "order_id") required final int orderId,
           @JsonKey(name: "product_id") required final int productId,
           required final String name,
           required final int price,
           @JsonKey(name: "image_url") required final String imageUrl,
-          @JsonKey(name: "image_qty") required final int itemQty}) =
-      _$_OrderItemDto;
+          @JsonKey(name: "item_qty") required final int itemQty}) =
+      _$OrderItemDtoImpl;
   const _OrderItemDto._() : super._();
 
   factory _OrderItemDto.fromJson(Map<String, dynamic> json) =
-      _$_OrderItemDto.fromJson;
+      _$OrderItemDtoImpl.fromJson;
 
+  @override
+  int get id;
   @override
   @JsonKey(name: "order_id")
   int get orderId;
@@ -264,10 +284,10 @@ abstract class _OrderItemDto extends OrderItemDto {
   @JsonKey(name: "image_url")
   String get imageUrl;
   @override
-  @JsonKey(name: "image_qty")
+  @JsonKey(name: "item_qty")
   int get itemQty;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderItemDtoCopyWith<_$_OrderItemDto> get copyWith =>
+  _$$OrderItemDtoImplCopyWith<_$OrderItemDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

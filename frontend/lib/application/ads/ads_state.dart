@@ -10,4 +10,5 @@ class AdsState with _$AdsState {
   const factory AdsState.createSuccess() = _CreateSuccess;
   const factory AdsState.actionFailure(AdsFailure adsFailure) = _ActionFailure;
   const factory AdsState.loaded(Product product) = _Loaded;
+  const factory AdsState.topAdsloaded(List<Product> product) = _TopAdsloaded;
 }

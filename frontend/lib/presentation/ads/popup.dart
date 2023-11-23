@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/presentation/products/widget/core/constant.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
+import 'package:frontend/presentation/widget/custom_elevated_button.dart';
 import 'package:frontend/shared/providers.dart';
 
 import '../core/widget/colors.dart';
@@ -37,8 +38,8 @@ class _PopupAdsState extends ConsumerState<PopupAds> {
                   Container(
                     width: double.infinity,
                     color: customColor,
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
+                    padding: const EdgeInsets.all(16.0),
+                    child: const Text(
                       'FEATURED AD',
                       style: TextStyle(
                         color: Colors.white,
@@ -48,7 +49,7 @@ class _PopupAdsState extends ConsumerState<PopupAds> {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.close),
+                    icon: const Icon(Icons.close),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -56,7 +57,7 @@ class _PopupAdsState extends ConsumerState<PopupAds> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: <Widget>[
                     Image(
@@ -65,21 +66,12 @@ class _PopupAdsState extends ConsumerState<PopupAds> {
                             NetworkImage(product.imageUrls.first),
                         orElse: () => const AssetImage(
                           "lib/assets/images/elmpier-logo.png",
-
                         ),
                       ),
                       width: 400,
                       height: 200,
                     ),
-
-                    SizedBox(height: 20),
-                    // Text(adsState.when(
-                    //   initial: () => "Initial",
-                    //   actionInProgress: () => "Progres",
-                    //   loaded: ((product) => product.name.getOrCrash()),
-                    //   actionFailure: (adsFailure) => "Failed",
-                    //   createSuccess: () => "Create Success",
-                    // )),
+                    const SizedBox(height: 20),
                     Text(
                       adsState.maybeWhen(
                         loaded: (product) {
@@ -93,7 +85,7 @@ class _PopupAdsState extends ConsumerState<PopupAds> {
                         color: Colors.grey[700],
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       adsState.maybeWhen(
                         loaded: (product) =>
@@ -105,34 +97,21 @@ class _PopupAdsState extends ConsumerState<PopupAds> {
                         color: Colors.grey[700],
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
-                      'Condition: Brand New\nSpec: Iphone, 14 Pro Max',
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Brand New",
                       style: TextStyle(
                         fontSize: 16.0,
                       ),
                     ),
-                    SizedBox(height: 20),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.green,
-                        onPrimary: Colors.white,
-                        padding: EdgeInsets.symmetric(
-                            vertical: 12.0, horizontal: 70.0),
-                      ),
-                      // onPressed: () {
-                      //   AutoRouter.of(context).replace(ProductRoute(product: _product));
-                      // },
+                    const SizedBox(height: 20),
+                    CustomElevatedButton(
                       onPressed: () {
                         AutoRouter.of(context)
                             .push(ProductRoute(product: _product));
                         Navigator.of(context).pop();
                       },
-
-                      child: Text(
-                        'View Details',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
+                      text: "View Details",
                     ),
                   ],
                 ),
@@ -145,11 +124,10 @@ class _PopupAdsState extends ConsumerState<PopupAds> {
   }
 }
 
-// To display the PopupAds widget as a dialog:
 void showPopupAds(BuildContext context) {
   showDialog(
     context: context,
     barrierDismissible: true,
-    builder: (BuildContext context) => PopupAds(),
+    builder: (BuildContext context) => const PopupAds(),
   );
 }

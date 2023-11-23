@@ -113,25 +113,25 @@ class _$PaymentFailureCopyWithImpl<$Res, $Val extends PaymentFailure>
 }
 
 /// @nodoc
-abstract class _$$_ServerErrorCopyWith<$Res> {
-  factory _$$_ServerErrorCopyWith(
-          _$_ServerError value, $Res Function(_$_ServerError) then) =
-      __$$_ServerErrorCopyWithImpl<$Res>;
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ServerErrorCopyWithImpl<$Res>
-    extends _$PaymentFailureCopyWithImpl<$Res, _$_ServerError>
-    implements _$$_ServerErrorCopyWith<$Res> {
-  __$$_ServerErrorCopyWithImpl(
-      _$_ServerError _value, $Res Function(_$_ServerError) _then)
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$PaymentFailureCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ServerError implements _ServerError {
-  const _$_ServerError();
+class _$ServerErrorImpl implements _ServerError {
+  const _$ServerErrorImpl();
 
   @override
   String toString() {
@@ -141,7 +141,7 @@ class _$_ServerError implements _ServerError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ServerError);
+        (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
 
   @override
@@ -249,29 +249,30 @@ class _$_ServerError implements _ServerError {
 }
 
 abstract class _ServerError implements PaymentFailure {
-  const factory _ServerError() = _$_ServerError;
+  const factory _ServerError() = _$ServerErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_InvalidPaymentDetailsCopyWith<$Res> {
-  factory _$$_InvalidPaymentDetailsCopyWith(_$_InvalidPaymentDetails value,
-          $Res Function(_$_InvalidPaymentDetails) then) =
-      __$$_InvalidPaymentDetailsCopyWithImpl<$Res>;
+abstract class _$$InvalidPaymentDetailsImplCopyWith<$Res> {
+  factory _$$InvalidPaymentDetailsImplCopyWith(
+          _$InvalidPaymentDetailsImpl value,
+          $Res Function(_$InvalidPaymentDetailsImpl) then) =
+      __$$InvalidPaymentDetailsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InvalidPaymentDetailsCopyWithImpl<$Res>
-    extends _$PaymentFailureCopyWithImpl<$Res, _$_InvalidPaymentDetails>
-    implements _$$_InvalidPaymentDetailsCopyWith<$Res> {
-  __$$_InvalidPaymentDetailsCopyWithImpl(_$_InvalidPaymentDetails _value,
-      $Res Function(_$_InvalidPaymentDetails) _then)
+class __$$InvalidPaymentDetailsImplCopyWithImpl<$Res>
+    extends _$PaymentFailureCopyWithImpl<$Res, _$InvalidPaymentDetailsImpl>
+    implements _$$InvalidPaymentDetailsImplCopyWith<$Res> {
+  __$$InvalidPaymentDetailsImplCopyWithImpl(_$InvalidPaymentDetailsImpl _value,
+      $Res Function(_$InvalidPaymentDetailsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InvalidPaymentDetails implements _InvalidPaymentDetails {
-  const _$_InvalidPaymentDetails();
+class _$InvalidPaymentDetailsImpl implements _InvalidPaymentDetails {
+  const _$InvalidPaymentDetailsImpl();
 
   @override
   String toString() {
@@ -281,7 +282,8 @@ class _$_InvalidPaymentDetails implements _InvalidPaymentDetails {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InvalidPaymentDetails);
+        (other.runtimeType == runtimeType &&
+            other is _$InvalidPaymentDetailsImpl);
   }
 
   @override
@@ -389,29 +391,29 @@ class _$_InvalidPaymentDetails implements _InvalidPaymentDetails {
 }
 
 abstract class _InvalidPaymentDetails implements PaymentFailure {
-  const factory _InvalidPaymentDetails() = _$_InvalidPaymentDetails;
+  const factory _InvalidPaymentDetails() = _$InvalidPaymentDetailsImpl;
 }
 
 /// @nodoc
-abstract class _$$_InsufficientFundsCopyWith<$Res> {
-  factory _$$_InsufficientFundsCopyWith(_$_InsufficientFunds value,
-          $Res Function(_$_InsufficientFunds) then) =
-      __$$_InsufficientFundsCopyWithImpl<$Res>;
+abstract class _$$InsufficientFundsImplCopyWith<$Res> {
+  factory _$$InsufficientFundsImplCopyWith(_$InsufficientFundsImpl value,
+          $Res Function(_$InsufficientFundsImpl) then) =
+      __$$InsufficientFundsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InsufficientFundsCopyWithImpl<$Res>
-    extends _$PaymentFailureCopyWithImpl<$Res, _$_InsufficientFunds>
-    implements _$$_InsufficientFundsCopyWith<$Res> {
-  __$$_InsufficientFundsCopyWithImpl(
-      _$_InsufficientFunds _value, $Res Function(_$_InsufficientFunds) _then)
+class __$$InsufficientFundsImplCopyWithImpl<$Res>
+    extends _$PaymentFailureCopyWithImpl<$Res, _$InsufficientFundsImpl>
+    implements _$$InsufficientFundsImplCopyWith<$Res> {
+  __$$InsufficientFundsImplCopyWithImpl(_$InsufficientFundsImpl _value,
+      $Res Function(_$InsufficientFundsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InsufficientFunds implements _InsufficientFunds {
-  const _$_InsufficientFunds();
+class _$InsufficientFundsImpl implements _InsufficientFunds {
+  const _$InsufficientFundsImpl();
 
   @override
   String toString() {
@@ -421,7 +423,7 @@ class _$_InsufficientFunds implements _InsufficientFunds {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InsufficientFunds);
+        (other.runtimeType == runtimeType && other is _$InsufficientFundsImpl);
   }
 
   @override
@@ -529,29 +531,29 @@ class _$_InsufficientFunds implements _InsufficientFunds {
 }
 
 abstract class _InsufficientFunds implements PaymentFailure {
-  const factory _InsufficientFunds() = _$_InsufficientFunds;
+  const factory _InsufficientFunds() = _$InsufficientFundsImpl;
 }
 
 /// @nodoc
-abstract class _$$_TransactionTimeoutCopyWith<$Res> {
-  factory _$$_TransactionTimeoutCopyWith(_$_TransactionTimeout value,
-          $Res Function(_$_TransactionTimeout) then) =
-      __$$_TransactionTimeoutCopyWithImpl<$Res>;
+abstract class _$$TransactionTimeoutImplCopyWith<$Res> {
+  factory _$$TransactionTimeoutImplCopyWith(_$TransactionTimeoutImpl value,
+          $Res Function(_$TransactionTimeoutImpl) then) =
+      __$$TransactionTimeoutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_TransactionTimeoutCopyWithImpl<$Res>
-    extends _$PaymentFailureCopyWithImpl<$Res, _$_TransactionTimeout>
-    implements _$$_TransactionTimeoutCopyWith<$Res> {
-  __$$_TransactionTimeoutCopyWithImpl(
-      _$_TransactionTimeout _value, $Res Function(_$_TransactionTimeout) _then)
+class __$$TransactionTimeoutImplCopyWithImpl<$Res>
+    extends _$PaymentFailureCopyWithImpl<$Res, _$TransactionTimeoutImpl>
+    implements _$$TransactionTimeoutImplCopyWith<$Res> {
+  __$$TransactionTimeoutImplCopyWithImpl(_$TransactionTimeoutImpl _value,
+      $Res Function(_$TransactionTimeoutImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_TransactionTimeout implements _TransactionTimeout {
-  const _$_TransactionTimeout();
+class _$TransactionTimeoutImpl implements _TransactionTimeout {
+  const _$TransactionTimeoutImpl();
 
   @override
   String toString() {
@@ -561,7 +563,7 @@ class _$_TransactionTimeout implements _TransactionTimeout {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TransactionTimeout);
+        (other.runtimeType == runtimeType && other is _$TransactionTimeoutImpl);
   }
 
   @override
@@ -669,29 +671,29 @@ class _$_TransactionTimeout implements _TransactionTimeout {
 }
 
 abstract class _TransactionTimeout implements PaymentFailure {
-  const factory _TransactionTimeout() = _$_TransactionTimeout;
+  const factory _TransactionTimeout() = _$TransactionTimeoutImpl;
 }
 
 /// @nodoc
-abstract class _$$_PaymentDeniedCopyWith<$Res> {
-  factory _$$_PaymentDeniedCopyWith(
-          _$_PaymentDenied value, $Res Function(_$_PaymentDenied) then) =
-      __$$_PaymentDeniedCopyWithImpl<$Res>;
+abstract class _$$PaymentDeniedImplCopyWith<$Res> {
+  factory _$$PaymentDeniedImplCopyWith(
+          _$PaymentDeniedImpl value, $Res Function(_$PaymentDeniedImpl) then) =
+      __$$PaymentDeniedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PaymentDeniedCopyWithImpl<$Res>
-    extends _$PaymentFailureCopyWithImpl<$Res, _$_PaymentDenied>
-    implements _$$_PaymentDeniedCopyWith<$Res> {
-  __$$_PaymentDeniedCopyWithImpl(
-      _$_PaymentDenied _value, $Res Function(_$_PaymentDenied) _then)
+class __$$PaymentDeniedImplCopyWithImpl<$Res>
+    extends _$PaymentFailureCopyWithImpl<$Res, _$PaymentDeniedImpl>
+    implements _$$PaymentDeniedImplCopyWith<$Res> {
+  __$$PaymentDeniedImplCopyWithImpl(
+      _$PaymentDeniedImpl _value, $Res Function(_$PaymentDeniedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PaymentDenied implements _PaymentDenied {
-  const _$_PaymentDenied();
+class _$PaymentDeniedImpl implements _PaymentDenied {
+  const _$PaymentDeniedImpl();
 
   @override
   String toString() {
@@ -701,7 +703,7 @@ class _$_PaymentDenied implements _PaymentDenied {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PaymentDenied);
+        (other.runtimeType == runtimeType && other is _$PaymentDeniedImpl);
   }
 
   @override
@@ -809,29 +811,29 @@ class _$_PaymentDenied implements _PaymentDenied {
 }
 
 abstract class _PaymentDenied implements PaymentFailure {
-  const factory _PaymentDenied() = _$_PaymentDenied;
+  const factory _PaymentDenied() = _$PaymentDeniedImpl;
 }
 
 /// @nodoc
-abstract class _$$_PaymentLimitExceededCopyWith<$Res> {
-  factory _$$_PaymentLimitExceededCopyWith(_$_PaymentLimitExceeded value,
-          $Res Function(_$_PaymentLimitExceeded) then) =
-      __$$_PaymentLimitExceededCopyWithImpl<$Res>;
+abstract class _$$PaymentLimitExceededImplCopyWith<$Res> {
+  factory _$$PaymentLimitExceededImplCopyWith(_$PaymentLimitExceededImpl value,
+          $Res Function(_$PaymentLimitExceededImpl) then) =
+      __$$PaymentLimitExceededImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PaymentLimitExceededCopyWithImpl<$Res>
-    extends _$PaymentFailureCopyWithImpl<$Res, _$_PaymentLimitExceeded>
-    implements _$$_PaymentLimitExceededCopyWith<$Res> {
-  __$$_PaymentLimitExceededCopyWithImpl(_$_PaymentLimitExceeded _value,
-      $Res Function(_$_PaymentLimitExceeded) _then)
+class __$$PaymentLimitExceededImplCopyWithImpl<$Res>
+    extends _$PaymentFailureCopyWithImpl<$Res, _$PaymentLimitExceededImpl>
+    implements _$$PaymentLimitExceededImplCopyWith<$Res> {
+  __$$PaymentLimitExceededImplCopyWithImpl(_$PaymentLimitExceededImpl _value,
+      $Res Function(_$PaymentLimitExceededImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PaymentLimitExceeded implements _PaymentLimitExceeded {
-  const _$_PaymentLimitExceeded();
+class _$PaymentLimitExceededImpl implements _PaymentLimitExceeded {
+  const _$PaymentLimitExceededImpl();
 
   @override
   String toString() {
@@ -841,7 +843,8 @@ class _$_PaymentLimitExceeded implements _PaymentLimitExceeded {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PaymentLimitExceeded);
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentLimitExceededImpl);
   }
 
   @override
@@ -949,29 +952,29 @@ class _$_PaymentLimitExceeded implements _PaymentLimitExceeded {
 }
 
 abstract class _PaymentLimitExceeded implements PaymentFailure {
-  const factory _PaymentLimitExceeded() = _$_PaymentLimitExceeded;
+  const factory _PaymentLimitExceeded() = _$PaymentLimitExceededImpl;
 }
 
 /// @nodoc
-abstract class _$$_NetworkErrorCopyWith<$Res> {
-  factory _$$_NetworkErrorCopyWith(
-          _$_NetworkError value, $Res Function(_$_NetworkError) then) =
-      __$$_NetworkErrorCopyWithImpl<$Res>;
+abstract class _$$NetworkErrorImplCopyWith<$Res> {
+  factory _$$NetworkErrorImplCopyWith(
+          _$NetworkErrorImpl value, $Res Function(_$NetworkErrorImpl) then) =
+      __$$NetworkErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NetworkErrorCopyWithImpl<$Res>
-    extends _$PaymentFailureCopyWithImpl<$Res, _$_NetworkError>
-    implements _$$_NetworkErrorCopyWith<$Res> {
-  __$$_NetworkErrorCopyWithImpl(
-      _$_NetworkError _value, $Res Function(_$_NetworkError) _then)
+class __$$NetworkErrorImplCopyWithImpl<$Res>
+    extends _$PaymentFailureCopyWithImpl<$Res, _$NetworkErrorImpl>
+    implements _$$NetworkErrorImplCopyWith<$Res> {
+  __$$NetworkErrorImplCopyWithImpl(
+      _$NetworkErrorImpl _value, $Res Function(_$NetworkErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NetworkError implements _NetworkError {
-  const _$_NetworkError();
+class _$NetworkErrorImpl implements _NetworkError {
+  const _$NetworkErrorImpl();
 
   @override
   String toString() {
@@ -981,7 +984,7 @@ class _$_NetworkError implements _NetworkError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NetworkError);
+        (other.runtimeType == runtimeType && other is _$NetworkErrorImpl);
   }
 
   @override
@@ -1089,29 +1092,31 @@ class _$_NetworkError implements _NetworkError {
 }
 
 abstract class _NetworkError implements PaymentFailure {
-  const factory _NetworkError() = _$_NetworkError;
+  const factory _NetworkError() = _$NetworkErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_InvalidMerchantDetailsCopyWith<$Res> {
-  factory _$$_InvalidMerchantDetailsCopyWith(_$_InvalidMerchantDetails value,
-          $Res Function(_$_InvalidMerchantDetails) then) =
-      __$$_InvalidMerchantDetailsCopyWithImpl<$Res>;
+abstract class _$$InvalidMerchantDetailsImplCopyWith<$Res> {
+  factory _$$InvalidMerchantDetailsImplCopyWith(
+          _$InvalidMerchantDetailsImpl value,
+          $Res Function(_$InvalidMerchantDetailsImpl) then) =
+      __$$InvalidMerchantDetailsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InvalidMerchantDetailsCopyWithImpl<$Res>
-    extends _$PaymentFailureCopyWithImpl<$Res, _$_InvalidMerchantDetails>
-    implements _$$_InvalidMerchantDetailsCopyWith<$Res> {
-  __$$_InvalidMerchantDetailsCopyWithImpl(_$_InvalidMerchantDetails _value,
-      $Res Function(_$_InvalidMerchantDetails) _then)
+class __$$InvalidMerchantDetailsImplCopyWithImpl<$Res>
+    extends _$PaymentFailureCopyWithImpl<$Res, _$InvalidMerchantDetailsImpl>
+    implements _$$InvalidMerchantDetailsImplCopyWith<$Res> {
+  __$$InvalidMerchantDetailsImplCopyWithImpl(
+      _$InvalidMerchantDetailsImpl _value,
+      $Res Function(_$InvalidMerchantDetailsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InvalidMerchantDetails implements _InvalidMerchantDetails {
-  const _$_InvalidMerchantDetails();
+class _$InvalidMerchantDetailsImpl implements _InvalidMerchantDetails {
+  const _$InvalidMerchantDetailsImpl();
 
   @override
   String toString() {
@@ -1122,7 +1127,7 @@ class _$_InvalidMerchantDetails implements _InvalidMerchantDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InvalidMerchantDetails);
+            other is _$InvalidMerchantDetailsImpl);
   }
 
   @override
@@ -1230,5 +1235,5 @@ class _$_InvalidMerchantDetails implements _InvalidMerchantDetails {
 }
 
 abstract class _InvalidMerchantDetails implements PaymentFailure {
-  const factory _InvalidMerchantDetails() = _$_InvalidMerchantDetails;
+  const factory _InvalidMerchantDetails() = _$InvalidMerchantDetailsImpl;
 }

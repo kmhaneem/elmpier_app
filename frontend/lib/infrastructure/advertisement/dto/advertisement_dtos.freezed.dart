@@ -33,9 +33,9 @@ mixin _$AdvertisementDto {
   @JsonKey(name: "model_id")
   int get modelId => throw _privateConstructorUsedError;
   @JsonKey(name: "province_id")
-  int get provinceId => throw _privateConstructorUsedError;
+  int? get provinceId => throw _privateConstructorUsedError;
   @JsonKey(name: "district_id")
-  int get districtId => throw _privateConstructorUsedError;
+  int? get districtId => throw _privateConstructorUsedError;
   String? get province => throw _privateConstructorUsedError;
   String? get district => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
@@ -73,8 +73,8 @@ abstract class $AdvertisementDtoCopyWith<$Res> {
       @JsonKey(name: "category_id") int categoryId,
       @JsonKey(name: "brand_id") int brandId,
       @JsonKey(name: "model_id") int modelId,
-      @JsonKey(name: "province_id") int provinceId,
-      @JsonKey(name: "district_id") int districtId,
+      @JsonKey(name: "province_id") int? provinceId,
+      @JsonKey(name: "district_id") int? districtId,
       String? province,
       String? district,
       String? category,
@@ -109,8 +109,8 @@ class _$AdvertisementDtoCopyWithImpl<$Res, $Val extends AdvertisementDto>
     Object? categoryId = null,
     Object? brandId = null,
     Object? modelId = null,
-    Object? provinceId = null,
-    Object? districtId = null,
+    Object? provinceId = freezed,
+    Object? districtId = freezed,
     Object? province = freezed,
     Object? district = freezed,
     Object? category = freezed,
@@ -156,14 +156,14 @@ class _$AdvertisementDtoCopyWithImpl<$Res, $Val extends AdvertisementDto>
           ? _value.modelId
           : modelId // ignore: cast_nullable_to_non_nullable
               as int,
-      provinceId: null == provinceId
+      provinceId: freezed == provinceId
           ? _value.provinceId
           : provinceId // ignore: cast_nullable_to_non_nullable
-              as int,
-      districtId: null == districtId
+              as int?,
+      districtId: freezed == districtId
           ? _value.districtId
           : districtId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
@@ -213,11 +213,11 @@ class _$AdvertisementDtoCopyWithImpl<$Res, $Val extends AdvertisementDto>
 }
 
 /// @nodoc
-abstract class _$$_AdvertisementDtoCopyWith<$Res>
+abstract class _$$AdvertisementDtoImplCopyWith<$Res>
     implements $AdvertisementDtoCopyWith<$Res> {
-  factory _$$_AdvertisementDtoCopyWith(
-          _$_AdvertisementDto value, $Res Function(_$_AdvertisementDto) then) =
-      __$$_AdvertisementDtoCopyWithImpl<$Res>;
+  factory _$$AdvertisementDtoImplCopyWith(_$AdvertisementDtoImpl value,
+          $Res Function(_$AdvertisementDtoImpl) then) =
+      __$$AdvertisementDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -229,8 +229,8 @@ abstract class _$$_AdvertisementDtoCopyWith<$Res>
       @JsonKey(name: "category_id") int categoryId,
       @JsonKey(name: "brand_id") int brandId,
       @JsonKey(name: "model_id") int modelId,
-      @JsonKey(name: "province_id") int provinceId,
-      @JsonKey(name: "district_id") int districtId,
+      @JsonKey(name: "province_id") int? provinceId,
+      @JsonKey(name: "district_id") int? districtId,
       String? province,
       String? district,
       String? category,
@@ -245,11 +245,11 @@ abstract class _$$_AdvertisementDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AdvertisementDtoCopyWithImpl<$Res>
-    extends _$AdvertisementDtoCopyWithImpl<$Res, _$_AdvertisementDto>
-    implements _$$_AdvertisementDtoCopyWith<$Res> {
-  __$$_AdvertisementDtoCopyWithImpl(
-      _$_AdvertisementDto _value, $Res Function(_$_AdvertisementDto) _then)
+class __$$AdvertisementDtoImplCopyWithImpl<$Res>
+    extends _$AdvertisementDtoCopyWithImpl<$Res, _$AdvertisementDtoImpl>
+    implements _$$AdvertisementDtoImplCopyWith<$Res> {
+  __$$AdvertisementDtoImplCopyWithImpl(_$AdvertisementDtoImpl _value,
+      $Res Function(_$AdvertisementDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -263,8 +263,8 @@ class __$$_AdvertisementDtoCopyWithImpl<$Res>
     Object? categoryId = null,
     Object? brandId = null,
     Object? modelId = null,
-    Object? provinceId = null,
-    Object? districtId = null,
+    Object? provinceId = freezed,
+    Object? districtId = freezed,
     Object? province = freezed,
     Object? district = freezed,
     Object? category = freezed,
@@ -277,7 +277,7 @@ class __$$_AdvertisementDtoCopyWithImpl<$Res>
     Object? createDate = freezed,
     Object? imageUrls = null,
   }) {
-    return _then(_$_AdvertisementDto(
+    return _then(_$AdvertisementDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -310,14 +310,14 @@ class __$$_AdvertisementDtoCopyWithImpl<$Res>
           ? _value.modelId
           : modelId // ignore: cast_nullable_to_non_nullable
               as int,
-      provinceId: null == provinceId
+      provinceId: freezed == provinceId
           ? _value.provinceId
           : provinceId // ignore: cast_nullable_to_non_nullable
-              as int,
-      districtId: null == districtId
+              as int?,
+      districtId: freezed == districtId
           ? _value.districtId
           : districtId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
@@ -368,8 +368,8 @@ class __$$_AdvertisementDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AdvertisementDto extends _AdvertisementDto {
-  const _$_AdvertisementDto(
+class _$AdvertisementDtoImpl extends _AdvertisementDto {
+  const _$AdvertisementDtoImpl(
       {required this.id,
       required this.name,
       required this.description,
@@ -378,8 +378,8 @@ class _$_AdvertisementDto extends _AdvertisementDto {
       @JsonKey(name: "category_id") required this.categoryId,
       @JsonKey(name: "brand_id") required this.brandId,
       @JsonKey(name: "model_id") required this.modelId,
-      @JsonKey(name: "province_id") required this.provinceId,
-      @JsonKey(name: "district_id") required this.districtId,
+      @JsonKey(name: "province_id") this.provinceId,
+      @JsonKey(name: "district_id") this.districtId,
       this.province,
       this.district,
       this.category,
@@ -394,8 +394,8 @@ class _$_AdvertisementDto extends _AdvertisementDto {
       : _imageUrls = imageUrls,
         super._();
 
-  factory _$_AdvertisementDto.fromJson(Map<String, dynamic> json) =>
-      _$$_AdvertisementDtoFromJson(json);
+  factory _$AdvertisementDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AdvertisementDtoImplFromJson(json);
 
   @override
   final int id;
@@ -419,10 +419,10 @@ class _$_AdvertisementDto extends _AdvertisementDto {
   final int modelId;
   @override
   @JsonKey(name: "province_id")
-  final int provinceId;
+  final int? provinceId;
   @override
   @JsonKey(name: "district_id")
-  final int districtId;
+  final int? districtId;
   @override
   final String? province;
   @override
@@ -464,7 +464,7 @@ class _$_AdvertisementDto extends _AdvertisementDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AdvertisementDto &&
+            other is _$AdvertisementDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -530,12 +530,13 @@ class _$_AdvertisementDto extends _AdvertisementDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdvertisementDtoCopyWith<_$_AdvertisementDto> get copyWith =>
-      __$$_AdvertisementDtoCopyWithImpl<_$_AdvertisementDto>(this, _$identity);
+  _$$AdvertisementDtoImplCopyWith<_$AdvertisementDtoImpl> get copyWith =>
+      __$$AdvertisementDtoImplCopyWithImpl<_$AdvertisementDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AdvertisementDtoToJson(
+    return _$$AdvertisementDtoImplToJson(
       this,
     );
   }
@@ -551,8 +552,8 @@ abstract class _AdvertisementDto extends AdvertisementDto {
           @JsonKey(name: "category_id") required final int categoryId,
           @JsonKey(name: "brand_id") required final int brandId,
           @JsonKey(name: "model_id") required final int modelId,
-          @JsonKey(name: "province_id") required final int provinceId,
-          @JsonKey(name: "district_id") required final int districtId,
+          @JsonKey(name: "province_id") final int? provinceId,
+          @JsonKey(name: "district_id") final int? districtId,
           final String? province,
           final String? district,
           final String? category,
@@ -564,11 +565,11 @@ abstract class _AdvertisementDto extends AdvertisementDto {
           @JsonKey(name: "advertiser_name") final String? advertiserName,
           @JsonKey(name: "create_date") final String? createDate,
           @JsonKey(name: "image_urls") required final List<String> imageUrls}) =
-      _$_AdvertisementDto;
+      _$AdvertisementDtoImpl;
   const _AdvertisementDto._() : super._();
 
   factory _AdvertisementDto.fromJson(Map<String, dynamic> json) =
-      _$_AdvertisementDto.fromJson;
+      _$AdvertisementDtoImpl.fromJson;
 
   @override
   int get id;
@@ -592,10 +593,10 @@ abstract class _AdvertisementDto extends AdvertisementDto {
   int get modelId;
   @override
   @JsonKey(name: "province_id")
-  int get provinceId;
+  int? get provinceId;
   @override
   @JsonKey(name: "district_id")
-  int get districtId;
+  int? get districtId;
   @override
   String? get province;
   @override
@@ -624,6 +625,6 @@ abstract class _AdvertisementDto extends AdvertisementDto {
   List<String> get imageUrls;
   @override
   @JsonKey(ignore: true)
-  _$$_AdvertisementDtoCopyWith<_$_AdvertisementDto> get copyWith =>
+  _$$AdvertisementDtoImplCopyWith<_$AdvertisementDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

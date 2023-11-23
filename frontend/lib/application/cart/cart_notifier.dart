@@ -9,7 +9,7 @@ class CartNotifier extends StateNotifier<CartState> {
   final ICartRepository _iCartRepository;
 
   CartNotifier(this._iCartRepository) : super(const CartState.initial()) {
-    loadCartItems(); 
+    loadCartItems();
   }
 
   Future<void> addToCart(Cart cart) async {
@@ -34,7 +34,7 @@ class CartNotifier extends StateNotifier<CartState> {
 
     state = failureOrItems.fold(
       (failure) => CartState.actionFailure(failure),
-      (items) => CartState.loaded(items), // Set the loaded state
+      (items) => CartState.loaded(items),
     );
   }
 
@@ -47,28 +47,23 @@ class CartNotifier extends StateNotifier<CartState> {
     state = failureOrSuccess.fold(
       (failure) => CartState.actionFailure(failure),
       (_) {
-        // Clear the cart items from the state
         return CartState.loaded([]);
       },
     );
   }
 
   Future<void> removeFromCart(int userId, Cart cartItem) async {
-  Either<CartFailure, Unit> failureOrSuccess;
-  state = CartState.actionInProgress();
+    Either<CartFailure, Unit> failureOrSuccess;
+    state = CartState.actionInProgress();
 
-  // Call your repository function to remove the item
-  failureOrSuccess = await _iCartRepository.removeFromCart(userId, cartItem);
+    failureOrSuccess = await _iCartRepository.removeFromCart(userId, cartItem);
 
-  state = failureOrSuccess.fold(
-    (failure) => CartState.actionFailure(failure),
-    (_) {
-      // Load the updated cart items after removing an item
-      loadCartItems();
-      return CartState.createSuccess();
-    },
-  );
-}
-
-
+    state = failureOrSuccess.fold(
+      (failure) => CartState.actionFailure(failure),
+      (_) {
+        loadCartItems();
+        return CartState.createSuccess();
+      },
+    );
+  }
 }

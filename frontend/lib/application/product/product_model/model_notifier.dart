@@ -10,7 +10,6 @@ class ModelNotifier extends StateNotifier<ModelState> {
     state = const ModelState.loadInProgress();
     final failureOrModels = await _iProductRepository.getAllModels();
     state = failureOrModels.fold((f) {
-      print("Error fetching models: $f");
       return ModelState.loadFailure(f);
     }, (models) => ModelState.loadSuccess(models));
   }

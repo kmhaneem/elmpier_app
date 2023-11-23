@@ -1,9 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/application/cart/cart_state.dart';
 import 'package:frontend/domain/core/user.dart';
+import 'package:frontend/domain/product/model/product.dart';
 import 'package:frontend/presentation/advertisements/advertisement_card.dart';
+import 'package:frontend/presentation/core/widget/colors.dart';
 import 'package:frontend/presentation/products/product/product_card.dart';
+import 'package:frontend/presentation/products/widget/cart_item.dart';
+import 'package:frontend/presentation/products/widget/core/constant.dart';
 import 'package:frontend/presentation/products/widget/top_advertisement.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
 import 'package:frontend/shared/providers.dart';
@@ -34,9 +39,9 @@ class _ViewProductState extends ConsumerState<ViewProduct> {
   void initState() {
     super.initState();
     final productNotifier = ref.read(productProvider.notifier);
+
     final advertisementNotifier = ref.read(advertisementProvider.notifier);
     productNotifier.watchAllStarted();
-    // WidgetsBinding.instance.addPostFrameCallback((_) => _showDialog());
     Future(() {
       advertisementNotifier.getAllAdvertisements();
     });
@@ -47,64 +52,71 @@ class _ViewProductState extends ConsumerState<ViewProduct> {
     final productState = ref.watch(productProvider);
     final advertisementState = ref.watch(advertisementProvider);
     final elmpierPlusState = ref.watch(elmpierPlusProvider);
+    final topAdsState = ref.watch(topAdsProvider);
 
     return Column(
       children: [
         SizedBox(height: 50),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              elmpierPlusState.maybeWhen(
-                plusUserLoaded: (plusUser) {
-                  if (plusUser.isPlusUser == true) {
-                    return "lib/assets/images/elmpier-plus-logo.png";
-                  } else {
-                    return "lib/assets/images/elmpier-logo.png";
-                  }
-                },
-                orElse: () => "lib/assets/images/elmpier-logo.png",
+            Expanded(
+              flex: 3,
+              child: Image.asset(
+                elmpierPlusState.maybeWhen(
+                  plusUserLoaded: (plusUser) => plusUser.isPlusUser
+                      ? "lib/assets/images/elmpier-plus-logo.png"
+                      : "lib/assets/images/elmpier-logo.png",
+                  orElse: () => "lib/assets/images/elmpier-logo.png",
+                ),
               ),
-              width: 130,
             ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    // ref.refresh(elmpierPlusProvider);
-                    AutoRouter.of(context).push(const WalletRoute());
-                  },
-                  icon: Icon(Icons.wallet_outlined),
-                ),
-                IconButton(
-                  onPressed: () {
-                    ref.refresh(elmpierPlusProvider);
-                    AutoRouter.of(context).push(const ElmpierPlusRoute());
-                  },
-                  icon: Icon(Icons.workspace_premium),
-                ),
-                IconButton(
-                  onPressed: () async {
-                    String? userId = await getLoggedInUserIdFromStorage();
-                    print("USer ID is *****#### $userId");
-                    AutoRouter.of(context).push(AllChatRoute(
-                      userId: userId!,
-                      // otherUserId: 2.toString(),
-                    ));
-                  },
-                  icon: Icon(Icons.chat_bubble_outlined),
-                ),
-                IconButton(
-                  onPressed: () {
-                    AutoRouter.of(context).push(SellerRoute());
-                  },
-                  icon: Icon(Icons.attach_money),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.shopping_cart),
-                ),
-              ],
+            Expanded(
+              flex: 7,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      AutoRouter.of(context).push(const WalletRoute());
+                    },
+                    icon: Icon(Icons.wallet_outlined),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      ref.refresh(elmpierPlusProvider);
+                      AutoRouter.of(context).push(const ElmpierPlusRoute());
+                    },
+                    icon: Icon(Icons.workspace_premium),
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      String? userId = await getLoggedInUserIdFromStorage();
+                      print("USer ID is *****#### $userId");
+                      AutoRouter.of(context).push(AllChatRoute(
+                        userId: userId!,
+                      ));
+                    },
+                    icon: Icon(Icons.chat_bubble_outlined),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      AutoRouter.of(context).push(SellerActivityRoute());
+                    },
+                    icon: Icon(Icons.attach_money),
+                  ),
+                  IconButton(
+                    icon: Consumer(
+                      builder: (context, WidgetRef ref, child) {
+                        final cartCount = ref.watch(cartProvider).itemsCount;
+                        return cartIconWithBadge(cartCount);
+                      },
+                    ),
+                    onPressed: () {
+                      context.router.push(const CartRoute());
+                    },
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -112,8 +124,39 @@ class _ViewProductState extends ConsumerState<ViewProduct> {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              CategoryDisplay(),
-              TopAdvertisement(),
+              Divider(
+                color: customColor,
+              ),
+              topAdsState.maybeMap(
+                topAdsloaded: (val) {
+                  List<String> imageUrls = val.product
+                      .map((pro) =>
+                          pro.imageUrls.isNotEmpty ? pro.imageUrls.first : null)
+                      .where((url) => url != null)
+                      .map((url) => url!)
+                      .toList();
+
+                  void handleImageTap(String imageUrl) {
+                    Product tappedProduct = val.product.firstWhere(
+                      (pro) => pro.imageUrls.contains(imageUrl),
+                      orElse: () => Product.empty(),
+                    );
+
+                    if (tappedProduct.id != 0) {
+                      AutoRouter.of(context)
+                          .push(ProductRoute(product: tappedProduct));
+                    } else {}
+                  }
+
+                  return TopAdvertisement(
+                    imageUrls: imageUrls,
+                    onImageTap: handleImageTap,
+                  );
+                },
+                orElse: () {
+                  return Text('Loading or No Ads Available');
+                },
+              ),
               ValueListenableBuilder<TabSelection>(
                 valueListenable: selectedTabNotifier,
                 builder: (context, selectedTab, child) {

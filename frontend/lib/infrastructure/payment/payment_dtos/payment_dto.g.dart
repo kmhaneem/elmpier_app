@@ -6,8 +6,8 @@ part of 'payment_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaymentDto _$$_PaymentDtoFromJson(Map<String, dynamic> json) =>
-    _$_PaymentDto(
+_$PaymentDtoImpl _$$PaymentDtoImplFromJson(Map<String, dynamic> json) =>
+    _$PaymentDtoImpl(
       sandbox: json['sandbox'] as bool,
       merchantId: json['merchant_id'] as String,
       merchantSecret: json['merchant_secret'] as String,
@@ -28,7 +28,7 @@ _$_PaymentDto _$$_PaymentDtoFromJson(Map<String, dynamic> json) =>
       deliveryCountry: json['delivery_country'] as String,
     );
 
-Map<String, dynamic> _$$_PaymentDtoToJson(_$_PaymentDto instance) =>
+Map<String, dynamic> _$$PaymentDtoImplToJson(_$PaymentDtoImpl instance) =>
     <String, dynamic>{
       'sandbox': instance.sandbox,
       'merchant_id': instance.merchantId,

@@ -76,11 +76,11 @@ class _$DistrictDtoCopyWithImpl<$Res, $Val extends DistrictDto>
 }
 
 /// @nodoc
-abstract class _$$_DistrictDtoCopyWith<$Res>
+abstract class _$$DistrictDtoImplCopyWith<$Res>
     implements $DistrictDtoCopyWith<$Res> {
-  factory _$$_DistrictDtoCopyWith(
-          _$_DistrictDto value, $Res Function(_$_DistrictDto) then) =
-      __$$_DistrictDtoCopyWithImpl<$Res>;
+  factory _$$DistrictDtoImplCopyWith(
+          _$DistrictDtoImpl value, $Res Function(_$DistrictDtoImpl) then) =
+      __$$DistrictDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -88,11 +88,11 @@ abstract class _$$_DistrictDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DistrictDtoCopyWithImpl<$Res>
-    extends _$DistrictDtoCopyWithImpl<$Res, _$_DistrictDto>
-    implements _$$_DistrictDtoCopyWith<$Res> {
-  __$$_DistrictDtoCopyWithImpl(
-      _$_DistrictDto _value, $Res Function(_$_DistrictDto) _then)
+class __$$DistrictDtoImplCopyWithImpl<$Res>
+    extends _$DistrictDtoCopyWithImpl<$Res, _$DistrictDtoImpl>
+    implements _$$DistrictDtoImplCopyWith<$Res> {
+  __$$DistrictDtoImplCopyWithImpl(
+      _$DistrictDtoImpl _value, $Res Function(_$DistrictDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$_DistrictDtoCopyWithImpl<$Res>
     Object? name = null,
     Object? provinceId = null,
   }) {
-    return _then(_$_DistrictDto(
+    return _then(_$DistrictDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -121,15 +121,15 @@ class __$$_DistrictDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DistrictDto extends _DistrictDto {
-  const _$_DistrictDto(
+class _$DistrictDtoImpl extends _DistrictDto {
+  const _$DistrictDtoImpl(
       {required this.id,
       required this.name,
       @JsonKey(name: "province_id") required this.provinceId})
       : super._();
 
-  factory _$_DistrictDto.fromJson(Map<String, dynamic> json) =>
-      _$$_DistrictDtoFromJson(json);
+  factory _$DistrictDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DistrictDtoImplFromJson(json);
 
   @override
   final int id;
@@ -148,7 +148,7 @@ class _$_DistrictDto extends _DistrictDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DistrictDto &&
+            other is _$DistrictDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.provinceId, provinceId) ||
@@ -162,12 +162,12 @@ class _$_DistrictDto extends _DistrictDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DistrictDtoCopyWith<_$_DistrictDto> get copyWith =>
-      __$$_DistrictDtoCopyWithImpl<_$_DistrictDto>(this, _$identity);
+  _$$DistrictDtoImplCopyWith<_$DistrictDtoImpl> get copyWith =>
+      __$$DistrictDtoImplCopyWithImpl<_$DistrictDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DistrictDtoToJson(
+    return _$$DistrictDtoImplToJson(
       this,
     );
   }
@@ -178,11 +178,11 @@ abstract class _DistrictDto extends DistrictDto {
           {required final int id,
           required final String name,
           @JsonKey(name: "province_id") required final int provinceId}) =
-      _$_DistrictDto;
+      _$DistrictDtoImpl;
   const _DistrictDto._() : super._();
 
   factory _DistrictDto.fromJson(Map<String, dynamic> json) =
-      _$_DistrictDto.fromJson;
+      _$DistrictDtoImpl.fromJson;
 
   @override
   int get id;
@@ -193,6 +193,6 @@ abstract class _DistrictDto extends DistrictDto {
   int get provinceId;
   @override
   @JsonKey(ignore: true)
-  _$$_DistrictDtoCopyWith<_$_DistrictDto> get copyWith =>
+  _$$DistrictDtoImplCopyWith<_$DistrictDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

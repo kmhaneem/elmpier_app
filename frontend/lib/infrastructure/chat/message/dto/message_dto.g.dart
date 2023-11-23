@@ -6,8 +6,8 @@ part of 'message_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MessageDto _$$_MessageDtoFromJson(Map<String, dynamic> json) =>
-    _$_MessageDto(
+_$MessageDtoImpl _$$MessageDtoImplFromJson(Map<String, dynamic> json) =>
+    _$MessageDtoImpl(
       senderId: json['senderId'] as String,
       senderEmail: json['senderEmail'] as String,
       receiverId: json['receiverId'] as String,
@@ -16,7 +16,7 @@ _$_MessageDto _$$_MessageDtoFromJson(Map<String, dynamic> json) =>
           const TimestampConverter().fromJson(json['timestamp'] as Object),
     );
 
-Map<String, dynamic> _$$_MessageDtoToJson(_$_MessageDto instance) =>
+Map<String, dynamic> _$$MessageDtoImplToJson(_$MessageDtoImpl instance) =>
     <String, dynamic>{
       'senderId': instance.senderId,
       'senderEmail': instance.senderEmail,

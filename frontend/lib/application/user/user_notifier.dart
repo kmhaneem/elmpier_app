@@ -25,7 +25,6 @@ class UserNotifier extends StateNotifier<UserState> {
   }
 
   void resetState() {
-    print("Resetting User State...");
     state = const UserState.initial();
   }
 }

@@ -93,24 +93,25 @@ class _$MessageStateCopyWithImpl<$Res, $Val extends MessageState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$MessageStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$MessageStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -120,7 +121,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -208,29 +209,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements MessageState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionInProgressCopyWith<$Res> {
-  factory _$$_ActionInProgressCopyWith(
-          _$_ActionInProgress value, $Res Function(_$_ActionInProgress) then) =
-      __$$_ActionInProgressCopyWithImpl<$Res>;
+abstract class _$$ActionInProgressImplCopyWith<$Res> {
+  factory _$$ActionInProgressImplCopyWith(_$ActionInProgressImpl value,
+          $Res Function(_$ActionInProgressImpl) then) =
+      __$$ActionInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$MessageStateCopyWithImpl<$Res, _$_ActionInProgress>
-    implements _$$_ActionInProgressCopyWith<$Res> {
-  __$$_ActionInProgressCopyWithImpl(
-      _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
+class __$$ActionInProgressImplCopyWithImpl<$Res>
+    extends _$MessageStateCopyWithImpl<$Res, _$ActionInProgressImpl>
+    implements _$$ActionInProgressImplCopyWith<$Res> {
+  __$$ActionInProgressImplCopyWithImpl(_$ActionInProgressImpl _value,
+      $Res Function(_$ActionInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+class _$ActionInProgressImpl implements _ActionInProgress {
+  const _$ActionInProgressImpl();
 
   @override
   String toString() {
@@ -240,7 +241,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionInProgress);
+        (other.runtimeType == runtimeType && other is _$ActionInProgressImpl);
   }
 
   @override
@@ -328,29 +329,29 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements MessageState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress() = _$ActionInProgressImpl;
 }
 
 /// @nodoc
-abstract class _$$_SendSuccessCopyWith<$Res> {
-  factory _$$_SendSuccessCopyWith(
-          _$_SendSuccess value, $Res Function(_$_SendSuccess) then) =
-      __$$_SendSuccessCopyWithImpl<$Res>;
+abstract class _$$SendSuccessImplCopyWith<$Res> {
+  factory _$$SendSuccessImplCopyWith(
+          _$SendSuccessImpl value, $Res Function(_$SendSuccessImpl) then) =
+      __$$SendSuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SendSuccessCopyWithImpl<$Res>
-    extends _$MessageStateCopyWithImpl<$Res, _$_SendSuccess>
-    implements _$$_SendSuccessCopyWith<$Res> {
-  __$$_SendSuccessCopyWithImpl(
-      _$_SendSuccess _value, $Res Function(_$_SendSuccess) _then)
+class __$$SendSuccessImplCopyWithImpl<$Res>
+    extends _$MessageStateCopyWithImpl<$Res, _$SendSuccessImpl>
+    implements _$$SendSuccessImplCopyWith<$Res> {
+  __$$SendSuccessImplCopyWithImpl(
+      _$SendSuccessImpl _value, $Res Function(_$SendSuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SendSuccess implements _SendSuccess {
-  const _$_SendSuccess();
+class _$SendSuccessImpl implements _SendSuccess {
+  const _$SendSuccessImpl();
 
   @override
   String toString() {
@@ -360,7 +361,7 @@ class _$_SendSuccess implements _SendSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SendSuccess);
+        (other.runtimeType == runtimeType && other is _$SendSuccessImpl);
   }
 
   @override
@@ -448,14 +449,14 @@ class _$_SendSuccess implements _SendSuccess {
 }
 
 abstract class _SendSuccess implements MessageState {
-  const factory _SendSuccess() = _$_SendSuccess;
+  const factory _SendSuccess() = _$SendSuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionFailureCopyWith<$Res> {
-  factory _$$_ActionFailureCopyWith(
-          _$_ActionFailure value, $Res Function(_$_ActionFailure) then) =
-      __$$_ActionFailureCopyWithImpl<$Res>;
+abstract class _$$ActionFailureImplCopyWith<$Res> {
+  factory _$$ActionFailureImplCopyWith(
+          _$ActionFailureImpl value, $Res Function(_$ActionFailureImpl) then) =
+      __$$ActionFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MessageFailure messageFailure});
 
@@ -463,11 +464,11 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ActionFailureCopyWithImpl<$Res>
-    extends _$MessageStateCopyWithImpl<$Res, _$_ActionFailure>
-    implements _$$_ActionFailureCopyWith<$Res> {
-  __$$_ActionFailureCopyWithImpl(
-      _$_ActionFailure _value, $Res Function(_$_ActionFailure) _then)
+class __$$ActionFailureImplCopyWithImpl<$Res>
+    extends _$MessageStateCopyWithImpl<$Res, _$ActionFailureImpl>
+    implements _$$ActionFailureImplCopyWith<$Res> {
+  __$$ActionFailureImplCopyWithImpl(
+      _$ActionFailureImpl _value, $Res Function(_$ActionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -475,7 +476,7 @@ class __$$_ActionFailureCopyWithImpl<$Res>
   $Res call({
     Object? messageFailure = null,
   }) {
-    return _then(_$_ActionFailure(
+    return _then(_$ActionFailureImpl(
       null == messageFailure
           ? _value.messageFailure
           : messageFailure // ignore: cast_nullable_to_non_nullable
@@ -494,8 +495,8 @@ class __$$_ActionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionFailure implements _ActionFailure {
-  const _$_ActionFailure(this.messageFailure);
+class _$ActionFailureImpl implements _ActionFailure {
+  const _$ActionFailureImpl(this.messageFailure);
 
   @override
   final MessageFailure messageFailure;
@@ -509,7 +510,7 @@ class _$_ActionFailure implements _ActionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActionFailure &&
+            other is _$ActionFailureImpl &&
             (identical(other.messageFailure, messageFailure) ||
                 other.messageFailure == messageFailure));
   }
@@ -520,8 +521,8 @@ class _$_ActionFailure implements _ActionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
-      __$$_ActionFailureCopyWithImpl<_$_ActionFailure>(this, _$identity);
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      __$$ActionFailureImplCopyWithImpl<_$ActionFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -606,27 +607,29 @@ class _$_ActionFailure implements _ActionFailure {
 
 abstract class _ActionFailure implements MessageState {
   const factory _ActionFailure(final MessageFailure messageFailure) =
-      _$_ActionFailure;
+      _$ActionFailureImpl;
 
   MessageFailure get messageFailure;
   @JsonKey(ignore: true)
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Message> messages});
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$MessageStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$MessageStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -634,7 +637,7 @@ class __$$_LoadedCopyWithImpl<$Res>
   $Res call({
     Object? messages = null,
   }) {
-    return _then(_$_Loaded(
+    return _then(_$LoadedImpl(
       null == messages
           ? _value._messages
           : messages // ignore: cast_nullable_to_non_nullable
@@ -645,8 +648,8 @@ class __$$_LoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<Message> messages) : _messages = messages;
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(final List<Message> messages) : _messages = messages;
 
   final List<Message> _messages;
   @override
@@ -665,7 +668,7 @@ class _$_Loaded implements _Loaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
+            other is _$LoadedImpl &&
             const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
@@ -676,8 +679,8 @@ class _$_Loaded implements _Loaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -761,10 +764,10 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements MessageState {
-  const factory _Loaded(final List<Message> messages) = _$_Loaded;
+  const factory _Loaded(final List<Message> messages) = _$LoadedImpl;
 
   List<Message> get messages;
   @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

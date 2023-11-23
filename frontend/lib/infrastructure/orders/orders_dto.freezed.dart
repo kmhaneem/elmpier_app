@@ -101,10 +101,11 @@ class _$OrderDtoCopyWithImpl<$Res, $Val extends OrderDto>
 }
 
 /// @nodoc
-abstract class _$$_OrderDtoCopyWith<$Res> implements $OrderDtoCopyWith<$Res> {
-  factory _$$_OrderDtoCopyWith(
-          _$_OrderDto value, $Res Function(_$_OrderDto) then) =
-      __$$_OrderDtoCopyWithImpl<$Res>;
+abstract class _$$OrderDtoImplCopyWith<$Res>
+    implements $OrderDtoCopyWith<$Res> {
+  factory _$$OrderDtoImplCopyWith(
+          _$OrderDtoImpl value, $Res Function(_$OrderDtoImpl) then) =
+      __$$OrderDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,11 +118,11 @@ abstract class _$$_OrderDtoCopyWith<$Res> implements $OrderDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OrderDtoCopyWithImpl<$Res>
-    extends _$OrderDtoCopyWithImpl<$Res, _$_OrderDto>
-    implements _$$_OrderDtoCopyWith<$Res> {
-  __$$_OrderDtoCopyWithImpl(
-      _$_OrderDto _value, $Res Function(_$_OrderDto) _then)
+class __$$OrderDtoImplCopyWithImpl<$Res>
+    extends _$OrderDtoCopyWithImpl<$Res, _$OrderDtoImpl>
+    implements _$$OrderDtoImplCopyWith<$Res> {
+  __$$OrderDtoImplCopyWithImpl(
+      _$OrderDtoImpl _value, $Res Function(_$OrderDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -134,7 +135,7 @@ class __$$_OrderDtoCopyWithImpl<$Res>
     Object? statusId = null,
     Object? amount = null,
   }) {
-    return _then(_$_OrderDto(
+    return _then(_$OrderDtoImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -165,8 +166,8 @@ class __$$_OrderDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderDto extends _OrderDto {
-  const _$_OrderDto(
+class _$OrderDtoImpl extends _OrderDto {
+  const _$OrderDtoImpl(
       {@JsonKey(name: "user_id") required this.userId,
       @JsonKey(name: "payment_method") required this.paymentMethod,
       required this.status,
@@ -175,8 +176,8 @@ class _$_OrderDto extends _OrderDto {
       required this.amount})
       : super._();
 
-  factory _$_OrderDto.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderDtoFromJson(json);
+  factory _$OrderDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "user_id")
@@ -204,7 +205,7 @@ class _$_OrderDto extends _OrderDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderDto &&
+            other is _$OrderDtoImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
@@ -224,12 +225,12 @@ class _$_OrderDto extends _OrderDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderDtoCopyWith<_$_OrderDto> get copyWith =>
-      __$$_OrderDtoCopyWithImpl<_$_OrderDto>(this, _$identity);
+  _$$OrderDtoImplCopyWith<_$OrderDtoImpl> get copyWith =>
+      __$$OrderDtoImplCopyWithImpl<_$OrderDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderDtoToJson(
+    return _$$OrderDtoImplToJson(
       this,
     );
   }
@@ -242,10 +243,11 @@ abstract class _OrderDto extends OrderDto {
       required final String status,
       @JsonKey(name: "payment_id") required final String paymentId,
       @JsonKey(name: "status_id") required final int statusId,
-      required final int amount}) = _$_OrderDto;
+      required final int amount}) = _$OrderDtoImpl;
   const _OrderDto._() : super._();
 
-  factory _OrderDto.fromJson(Map<String, dynamic> json) = _$_OrderDto.fromJson;
+  factory _OrderDto.fromJson(Map<String, dynamic> json) =
+      _$OrderDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "user_id")
@@ -265,6 +267,6 @@ abstract class _OrderDto extends OrderDto {
   int get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderDtoCopyWith<_$_OrderDto> get copyWith =>
+  _$$OrderDtoImplCopyWith<_$OrderDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

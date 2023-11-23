@@ -18,12 +18,16 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
   @override
   void initState() {
     super.initState();
-    ref.refresh(userProvider);
+    Future.delayed(Duration.zero, () {
+      ref.read(userProfileXProvider.notifier).fetchUserDetails();
+    });
+
   }
 
   @override
   Widget build(BuildContext context) {
-    final userState = ref.watch(userProvider);
+    final userState = ref.watch(userProfileXProvider);
+    final userProfileNotifier = ref.watch(userProfileXProvider.notifier);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -38,8 +42,6 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
               actionInProgress: () =>
                   const Center(child: LinearProgressIndicator()),
               loaded: ((user) {
-                final userName = user.firstName;
-                print("USER NAME IS ######## $userName");
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -50,7 +52,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                         controller: TextEditingController(
                             text: "${user.firstName} ${user.lastName}"),
                         enabled: false,
-                        textColor: Colors.grey,
+                        textColor: Colors.black54,
                         obscureText: false,
                         labelText: "Name",
                       ),
@@ -58,7 +60,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                       CustomTextFormField(
                         controller: TextEditingController(text: user.email),
                         enabled: false,
-                        textColor: Colors.grey,
+                        textColor: Colors.black54,
                         labelText: "Email",
                         obscureText: false,
                       ),
@@ -66,7 +68,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                       CustomTextFormField(
                         controller: TextEditingController(text: user.phone),
                         enabled: false,
-                        textColor: Colors.grey,
+                        textColor: Colors.black54,
                         obscureText: false,
                         labelText: "Phone",
                       ),
@@ -77,16 +79,16 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                               "${user.addressLine1},\n${user.addressLine2},\n${user.city}, ${user.postalCode},\n${user.district},\n${user.province} Province",
                         ),
                         enabled: false,
-                        textColor: Colors.grey,
+                        textColor: Colors.black54,
                         maxLines: 6,
                         labelText: "Address",
                         obscureText: false,
                       ),
                       const SizedBox(height: 30),
                       SizedBox(
-                        width: double.infinity, // Take full width
+                        width: double.infinity, 
                         child: CustomElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             AutoRouter.of(context).replace(UserProfileAddRoute(
                                 previousPage: "UserProfilePage"));
                           },
@@ -104,6 +106,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                   orElse: () => "An error occurred.",
                 )),
               ),
+              success: () => Text(""),
             ),
           ],
         ));

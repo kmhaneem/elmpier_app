@@ -1,12 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frontend/domain/core/value_objects.dart';
 import 'package:frontend/domain/product/model/product.dart';
 import 'package:frontend/domain/product/value_object.dart';
 
 part 'product_dtos.freezed.dart';
 part 'product_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class ProductDto with _$ProductDto {
   const ProductDto._();

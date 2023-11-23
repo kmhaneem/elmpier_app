@@ -35,8 +35,17 @@ class AuthRepository implements IAuthFacade {
 
   @override
   Future<void> signOut() async {
+    await secureStorage.delete("user-id");
     await secureStorage.delete("token");
-    print(await secureStorage.read("auth-token"));
+    await secureStorage.delete("auth-token");
+
+    final String? userId = await secureStorage.read("user-id");
+    final String? token = await secureStorage.read("token");
+    final String? authToken = await secureStorage.read("auth-token");
+
+    print("AFTER LOGOUT User ID: $userId");
+    print("AFTER LOGOUT Token: $token");
+    print("AFTER LOGOUT Auth Token: $authToken");
   }
 
   @override
@@ -47,7 +56,6 @@ class AuthRepository implements IAuthFacade {
         "phone": signUpData.phone.getOrCrash(),
         "password": signUpData.password.getOrCrash(),
       });
-      print("Sending data: ${formData.fields}");
 
       final response = await Dio().post(
         "$api2/user/signup",
@@ -67,18 +75,17 @@ class AuthRepository implements IAuthFacade {
             .doc(userId)
             .set({'uid': userId, 'email': userEmail});
 
-        print("Token to write: ${response.data['response']['token']}");
         await secureStorage.write(
             "unverified-token", response.data['response']['token']);
-        print(await secureStorage.read("unverified-token"));
+        await secureStorage.write(
+            "user-id", response.data['response']['id'].toString());
 
         return right(unit);
       } else {
         return left(const AuthFailure.unExpectedError());
       }
     } on DioException catch (e) {
-      // print("Error details: ${e.response?.data}");
-      // print("Error in create: $e");
+      print("Error in create: $e");
       return left(const AuthFailure.serverError());
     }
   }
@@ -86,7 +93,6 @@ class AuthRepository implements IAuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> signInUser(SignInDto signInData) async {
     try {
-
       final response = await Dio().post(
         "$api2/user/signin",
         data: {
@@ -100,15 +106,15 @@ class AuthRepository implements IAuthFacade {
         ),
       );
 
-
       if (response.statusCode == 200) {
         final userId = response.data['response']['id'].toString();
+
         final userEmail = response.data['response']['email'];
         await _firestore.collection('users').doc(userId).set({
           'uid': userId,
           'email': userEmail,
         }, SetOptions(merge: true));
-        
+
         await secureStorage.write(
             "user-id", response.data['response']['id'].toString());
         await secureStorage.write("token", response.data['response']['token']);
@@ -129,7 +135,6 @@ class AuthRepository implements IAuthFacade {
   Future<Either<AuthFailure, Unit>> verifyOtp(OtpDto otpData) async {
     try {
       final token = await secureStorage.read("unverified-token");
-      print("Token is reading $token");
       final response = await Dio().patch(
         "$api2/user/verify",
         data: {
@@ -144,14 +149,12 @@ class AuthRepository implements IAuthFacade {
       );
       if (response.statusCode == 200) {
         await secureStorage.delete("unverified-token");
-        await secureStorage.write(
-            "token", response.data['response']['token']);
+        await secureStorage.write("token", response.data['response']['token']);
         return right(unit);
       } else {
         return left(const AuthFailure.unExpectedError());
       }
     } on DioException catch (e) {
-      print("Error details: ${e.response?.data}");
       print("Error in otp verify: $e");
       return left(const AuthFailure.serverError());
     }

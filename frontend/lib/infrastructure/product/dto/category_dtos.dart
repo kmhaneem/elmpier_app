@@ -5,7 +5,6 @@ import '../../../domain/product/model/category.dart';
 part 'category_dtos.freezed.dart';
 part 'category_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class ProductCategoryDto with _$ProductCategoryDto {
   const factory ProductCategoryDto({

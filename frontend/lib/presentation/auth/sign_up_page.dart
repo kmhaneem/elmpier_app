@@ -32,7 +32,6 @@ class SignUpPage extends ConsumerWidget {
                             "Phone Number Already In Use",
                         invalidOtp: (_) => "Invalid OTP",
                         unExpectedError: (_) => "UnExpected Error",
-                        // orElse: () => "",
                       ),
                     ).show(context);
                   },
@@ -91,6 +90,7 @@ class SignUpPage extends ConsumerWidget {
                     )),
                 obscureText: false,
                 keyboardType: TextInputType.phone,
+                maxLength: 10,
               ),
               const SizedBox(height: 15),
               CustomTextFormField(
@@ -120,7 +120,6 @@ class SignUpPage extends ConsumerWidget {
                   onPressed: () {
                     signUpNotifier.signUpButtonPressed();
                     print("Button pressed");
-                    // ref.refresh(userProvider);
                   },
                   text: "Sign Up",
                 ),
@@ -134,7 +133,7 @@ class SignUpPage extends ConsumerWidget {
                     TextButton(
                       onPressed: () {
                         signUpNotifier.clearInputs();
-                        AutoRouter.of(context).replace(HomeRoute());
+                        AutoRouter.of(context).replace(SignInRoute());
                       },
                       child: const Text(
                         "Sign In",

@@ -9,7 +9,6 @@ import '../../shared/providers.dart';
 import '../routes/app_router.gr.dart';
 
 class SignInPage extends ConsumerWidget {
-  // final VoidCallback onSignUpTap;
   const SignInPage({super.key});
 
   @override
@@ -25,7 +24,7 @@ class SignInPage extends ConsumerWidget {
                   (failure) {
                     FlushbarHelper.createError(
                       message: failure.map(
-                        serverError: (_) => "Server Error",
+                        serverError: (_) => "Invalid Email or Password",
                         invalidEmailOrPassword: (_) =>
                             "Invalid Email or Password",
                         emailAlreadyInUse: (_) => "Email Already In Use",
@@ -115,9 +114,7 @@ class SignInPage extends ConsumerWidget {
                       TextButton(
                           onPressed: () {
                             signInNotifier.clearInputs();
-                            // AutoRouter.of(context).replace(const SignUpRoute());
                             AutoRouter.of(context).replace(const SignUpRoute());
-                            // ref.refresh(userProvider);
                           },
                           child: const Text(
                             key: Key('signUpButton'),

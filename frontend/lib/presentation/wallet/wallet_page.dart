@@ -34,13 +34,11 @@ class _WalletPageState extends ConsumerState<WalletPage> {
   @override
   void initState() {
     super.initState();
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   ref.read(walletProvider.notifier).getWalletAmount();
-    // });
     ref.refresh(userProvider);
   }
 
   var _currentUser;
+  var _userName;
 
   Future<void> initiatePayment(PaymentDto paymentDetails) async {
     final userId = await ref.read(userIdProvider.future);
@@ -53,7 +51,6 @@ class _WalletPageState extends ConsumerState<WalletPage> {
     PayHere.startPayment(
       paymentDetails.toJson(),
       (paymentId) async {
-        // final userId = getLoggedInUserId(ref);
         print("One Time Payment Success. Payment Id: $paymentId");
 
         try {
@@ -92,6 +89,7 @@ class _WalletPageState extends ConsumerState<WalletPage> {
     final walletState = ref.watch(walletProvider);
     final walletNotifier = ref.watch(walletProvider.notifier);
     final userState = ref.watch(userProvider);
+    final userProfile = ref.watch(userProfileXProvider);
 
     userState.when(
       actionInProgress: () => const CircularProgressIndicator(),
@@ -102,100 +100,103 @@ class _WalletPageState extends ConsumerState<WalletPage> {
       },
     );
 
+    userProfile.maybeWhen(
+        loaded: (user) {
+          _userName = user.firstName + " " + user.lastName;
+        },
+        orElse: (() {}));
+
     List<String> names = ["Haneem Mohamed"];
     final random = Random();
     String name = names[random.nextInt(names.length)];
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text("ELMPIER Wallet"),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
       body: Column(
         children: [
           const SizedBox(
-            height: 100,
+            height: 50,
           ),
-          walletState.maybeWhen(
-            walletLoaded: (wallet) => Center(
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                elevation: 4.0,
-                child: Container(
-                  width: 350.0,
-                  height: 200.0,
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
+          SingleChildScrollView(
+            child: walletState.maybeWhen(
+              walletLoaded: (wallet) => Center(
+                child: Card(
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0),
-                    gradient: LinearGradient(
-                      // colors: [Colors.blueAccent, Colors.lightBlueAccent],
-                      colors: [customColor[900]!, customColor[500]!],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      // Align(
-                      //   alignment: Alignment.topLeft,
-                      //   child: Image.asset(
-                      //     "lib/assets/images/elmpier-logo.png",
-                      //     width: 50,
-                      //     height: 50,
-                      //   ),
-                      // ),
-                      const Align(
-                        alignment: Alignment.topRight,
-                        child: Icon(
-                          Icons.wifi,
-                          color: Colors.white,
-                          size: 24.0,
+                  elevation: 4.0,
+                  child: Container(
+                    width: 350.0,
+                    height: 200.0,
+                    padding: const EdgeInsets.all(20.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.0),
+                      gradient: LinearGradient(
+                        colors: [customColor[900]!, customColor[500]!],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                       
+                        const Align(
+                          alignment: Alignment.topRight,
+                          child: Icon(
+                            Icons.wifi,
+                            color: Colors.white,
+                            size: 24.0,
+                          ),
                         ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          const Text(
-                            'CARDHOLDER',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 10.0),
-                          ),
-                          Text(
-                            name,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          const Text(
-                            'BALANCE',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 10.0),
-                          ),
-                          Text(
-                            'Rs.${wallet.amount.toString()}.00',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      // Text(
-                      //   '1234 5678 9101 1121', // Dummy card number
-                      //   style: TextStyle(color: Colors.white, fontSize: 18.0, letterSpacing: 2.0),
-                      // ),
-                    ],
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const Text(
+                              'CARDHOLDER',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10.0),
+                            ),
+                            Text(
+                              _userName ?? "Your Name",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const Text(
+                              'BALANCE',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10.0),
+                            ),
+                            Text(
+                              'Rs.${wallet.amount.toString()}.00',
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        
+                      ],
+                    ),
                   ),
                 ),
               ),
+              orElse: () => const Text("No Amount"),
             ),
-            orElse: () => const Text("No Amount"),
           ),
           SizedBox(
             height: 100,
@@ -256,10 +257,7 @@ class _WalletPageState extends ConsumerState<WalletPage> {
                           orElse: () => "",
                         );
 
-                        // walletNotifier.addWalletAmount(wallet);
-                        // ref.refresh(walletProvider);
-                        // Future.delayed(Duration(seconds: 2), () {
-                        // });
+                        
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: customColor[800],
@@ -279,6 +277,20 @@ class _WalletPageState extends ConsumerState<WalletPage> {
                         "Add Amount",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                      child: Text(
+                        "You can use wallet amount to buy products. \n You have to keep minimum RS.1000.00 to sell products in this platform",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                          
+                        ),
                       ),
                     )
                   ],

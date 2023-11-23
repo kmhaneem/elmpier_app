@@ -1,23 +1,21 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'core/constant.dart';
 
 class TopAdvertisement extends StatefulWidget {
-  const TopAdvertisement({Key? key}) : super(key: key);
+  final List<String> imageUrls;
+  final Function(String) onImageTap; 
+
+  const TopAdvertisement({
+    Key? key,
+    required this.imageUrls,
+    required this.onImageTap,
+  }) : super(key: key);
 
   @override
   _TopAdvertisementState createState() => _TopAdvertisementState();
 }
 
 class _TopAdvertisementState extends State<TopAdvertisement> {
-  final List<String> imageUrls = [
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-  ]; 
-
   final PageController _pageController = PageController();
   int _currentPage = 0;
   late Timer _timer;
@@ -27,7 +25,7 @@ class _TopAdvertisementState extends State<TopAdvertisement> {
     super.initState();
 
     _timer = Timer.periodic(Duration(seconds: 4), (timer) {
-      if (_currentPage < imageUrls.length - 1) {
+      if (_currentPage < widget.imageUrls.length - 1) {
         _pageController.nextPage(
             duration: const Duration(seconds: 1), curve: Curves.easeInOutCubic);
       } else {
@@ -59,14 +57,16 @@ class _TopAdvertisementState extends State<TopAdvertisement> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(4),
             child: SizedBox(
-                width: double.infinity,
-                height: 200,
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: imageUrls.length,
-                  itemBuilder: (context, index) {
-                    return Image.network(
-                      imageUrls[index],
+              width: double.infinity,
+              height: 200,
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: widget.imageUrls.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () => widget.onImageTap(widget.imageUrls[index]),
+                    child: Image.network(
+                      widget.imageUrls[index],
                       fit: BoxFit.cover,
                       loadingBuilder: (BuildContext context, Widget child,
                           ImageChunkEvent? loadingProgress) {
@@ -82,9 +82,11 @@ class _TopAdvertisementState extends State<TopAdvertisement> {
                       },
                       errorBuilder: (context, error, stackTrace) =>
                           Center(child: Text('Error loading image')),
-                    );
-                  },
-                )),
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ),
         Container(
@@ -92,7 +94,7 @@ class _TopAdvertisementState extends State<TopAdvertisement> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
-              imageUrls.length,
+              widget.imageUrls.length,
               (index) => Container(
                 margin: const EdgeInsets.symmetric(horizontal: 2),
                 width: 5,
@@ -111,4 +113,3 @@ class _TopAdvertisementState extends State<TopAdvertisement> {
     );
   }
 }
-

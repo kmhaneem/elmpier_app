@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/application/auth/auth_state.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
 
 import '../shared/providers.dart';
@@ -18,13 +19,13 @@ class AppWidget extends ConsumerWidget {
     authNotifier.authCheckRequested();
 
     Future.delayed(const Duration(seconds: 2), () {
-      // appRouter.replace(HomeRoute());
       authState.map(
         initial: (_) {
           print("Initial");
         },
         authenticated: (_) {
           appRouter.replace(HomeRoute());
+          ref.refresh(productProvider);
           print("Authenticated");
         },
         unauthenticated: (_) {
@@ -46,3 +47,4 @@ class AppWidget extends ConsumerWidget {
     );
   }
 }
+

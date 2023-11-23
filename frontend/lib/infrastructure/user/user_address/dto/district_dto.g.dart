@@ -6,14 +6,14 @@ part of 'district_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DistrictDto _$$_DistrictDtoFromJson(Map<String, dynamic> json) =>
-    _$_DistrictDto(
+_$DistrictDtoImpl _$$DistrictDtoImplFromJson(Map<String, dynamic> json) =>
+    _$DistrictDtoImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       provinceId: json['province_id'] as int,
     );
 
-Map<String, dynamic> _$$_DistrictDtoToJson(_$_DistrictDto instance) =>
+Map<String, dynamic> _$$DistrictDtoImplToJson(_$DistrictDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

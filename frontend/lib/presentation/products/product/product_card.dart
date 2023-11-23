@@ -14,12 +14,6 @@ class ProductCardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // IconButton(
-        //   onPressed: () {
-        //     AutoRouter.of(context).push(ProductFilterRoute());
-        //   },
-        //   icon: Icon(Icons.filter_list_outlined),
-        // ),
         productState.when(
           initial: () => Container(),
           loadInProgress: () => CircularProgressIndicator(),
@@ -31,63 +25,56 @@ class ProductCardPage extends StatelessWidget {
                 },
                 child: Card(
                   elevation: 1,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 5,
-                    horizontal: 10,
+                  margin: EdgeInsets.all(10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  child: IntrinsicHeight(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              ((e.value.imageUrls.isNotEmpty) &&
-                                      e.value.imageUrls.first.isNotEmpty)
-                                  ? e.value.imageUrls.first
-                                  : 'lib/assets/images/elmpier-logo.png',
-                              width: 80,
-                              height: 80,
-                              fit: BoxFit.cover,
-                            ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            ((e.value.imageUrls.isNotEmpty) &&
+                                    e.value.imageUrls.first.isNotEmpty)
+                                ? e.value.imageUrls.first
+                                : 'lib/assets/images/elmpier-logo.png',
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 15),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8.0, bottom: 4),
-                                child: Text(
-                                  e.value.name.getOrCrash(),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              Text(
+                                e.value.name.getOrCrash(),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              SizedBox(height: 8),
                               Text(
                                 e.value.condition!,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 18,
                                   color: Colors.grey,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 4.0),
-                                child: Text(
-                                  "Rs. ${NumberFormat('#,##0').format(e.value.price.getOrCrash())}.00",
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey,
-                                  ),
+                              SizedBox(height: 8),
+                              Text(
+                                "Rs. ${NumberFormat('#,##0').format(e.value.price.getOrCrash())}.00",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
                                 ),
                               ),
                             ],

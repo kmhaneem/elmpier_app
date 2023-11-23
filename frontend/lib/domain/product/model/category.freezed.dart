@@ -63,22 +63,22 @@ class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
 }
 
 /// @nodoc
-abstract class _$$_ProductCategoryCopyWith<$Res>
+abstract class _$$ProductCategoryImplCopyWith<$Res>
     implements $ProductCategoryCopyWith<$Res> {
-  factory _$$_ProductCategoryCopyWith(
-          _$_ProductCategory value, $Res Function(_$_ProductCategory) then) =
-      __$$_ProductCategoryCopyWithImpl<$Res>;
+  factory _$$ProductCategoryImplCopyWith(_$ProductCategoryImpl value,
+          $Res Function(_$ProductCategoryImpl) then) =
+      __$$ProductCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class __$$_ProductCategoryCopyWithImpl<$Res>
-    extends _$ProductCategoryCopyWithImpl<$Res, _$_ProductCategory>
-    implements _$$_ProductCategoryCopyWith<$Res> {
-  __$$_ProductCategoryCopyWithImpl(
-      _$_ProductCategory _value, $Res Function(_$_ProductCategory) _then)
+class __$$ProductCategoryImplCopyWithImpl<$Res>
+    extends _$ProductCategoryCopyWithImpl<$Res, _$ProductCategoryImpl>
+    implements _$$ProductCategoryImplCopyWith<$Res> {
+  __$$ProductCategoryImplCopyWithImpl(
+      _$ProductCategoryImpl _value, $Res Function(_$ProductCategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ProductCategoryCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_ProductCategory(
+    return _then(_$ProductCategoryImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_ProductCategoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProductCategory implements _ProductCategory {
-  const _$_ProductCategory({required this.id, required this.name});
+class _$ProductCategoryImpl implements _ProductCategory {
+  const _$ProductCategoryImpl({required this.id, required this.name});
 
   @override
   final int id;
@@ -119,7 +119,7 @@ class _$_ProductCategory implements _ProductCategory {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductCategory &&
+            other is _$ProductCategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -130,13 +130,15 @@ class _$_ProductCategory implements _ProductCategory {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductCategoryCopyWith<_$_ProductCategory> get copyWith =>
-      __$$_ProductCategoryCopyWithImpl<_$_ProductCategory>(this, _$identity);
+  _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>
+      __$$ProductCategoryImplCopyWithImpl<_$ProductCategoryImpl>(
+          this, _$identity);
 }
 
 abstract class _ProductCategory implements ProductCategory {
   const factory _ProductCategory(
-      {required final int id, required final String name}) = _$_ProductCategory;
+      {required final int id,
+      required final String name}) = _$ProductCategoryImpl;
 
   @override
   int get id;
@@ -144,6 +146,6 @@ abstract class _ProductCategory implements ProductCategory {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductCategoryCopyWith<_$_ProductCategory> get copyWith =>
+  _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

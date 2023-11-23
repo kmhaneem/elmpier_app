@@ -6,12 +6,14 @@ part of 'search_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SearchProductDto _$$_SearchProductDtoFromJson(Map<String, dynamic> json) =>
-    _$_SearchProductDto(
+_$SearchProductDtoImpl _$$SearchProductDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SearchProductDtoImpl(
       query: json['query'] as String,
     );
 
-Map<String, dynamic> _$$_SearchProductDtoToJson(_$_SearchProductDto instance) =>
+Map<String, dynamic> _$$SearchProductDtoImplToJson(
+        _$SearchProductDtoImpl instance) =>
     <String, dynamic>{
       'query': instance.query,
     };

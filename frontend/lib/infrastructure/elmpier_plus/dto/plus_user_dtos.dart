@@ -3,7 +3,6 @@ import 'package:frontend/domain/elmpier_plus/model/plus_user.dart';
 part 'plus_user_dtos.freezed.dart';
 part 'plus_user_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class PlusUserDto with _$PlusUserDto {
   const PlusUserDto._();

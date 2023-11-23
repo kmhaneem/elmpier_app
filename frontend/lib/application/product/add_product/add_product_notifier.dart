@@ -25,4 +25,28 @@ class AddProductNotifier extends StateNotifier<AddProductState> {
       (_) => AddProductState.createSuccess(),
     );
   }
+
+  Future<void> updateProduct(Product product, List<XFile> images) async {
+    Either<ProductFailure, Unit> failureOrSuccess;
+
+    state = AddProductState.actionInProgress();
+    failureOrSuccess = await _iProductRepository.update(product, images);
+
+    state = failureOrSuccess.fold(
+      (failure) => AddProductState.actionFailure(failure),
+      (_) => AddProductState.createSuccess(),
+    );
+  }
+
+  Future<void> deleteProduct(int id) async {
+    Either<ProductFailure, Unit> failureOrSuccess;
+
+    state = AddProductState.actionInProgress();
+    failureOrSuccess = await _iProductRepository.delete(id);
+
+    state = failureOrSuccess.fold(
+      (failure) => AddProductState.actionFailure(failure),
+      (_) => AddProductState.createSuccess(),
+    );
+  }
 }

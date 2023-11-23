@@ -1,47 +1,3 @@
-// import 'package:auto_route/auto_route.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-// import '../shared/providers.dart';
-// import 'routes/app_router.gr.dart';
-
-// class ProfilePage extends ConsumerWidget {
-//   const ProfilePage({super.key});
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final signInNotifier = ref.watch(signInProvider.notifier);
-
-//     return Scaffold(
-//       body: Column(
-//         children: [
-//           SizedBox(height: 100), // Adjust as per your needs
-//           ListTile(
-//             leading: Icon(Icons.account_box), // Icon for Settings
-//             title: Text('User Info'),
-//             trailing: Icon(Icons.arrow_forward_ios),
-//             onTap: () {
-//               AutoRouter.of(context).push(const UserProfileRoute());
-//             },
-//           ),
-//           ListTile(
-//             leading: Icon(Icons.logout),
-//             title: Text('Logout'),
-//             trailing: Icon(Icons.arrow_forward_ios),
-//             onTap: () {
-//               signInNotifier.signOut();
-//               AutoRouter.of(context).replace(SignInRoute());
-//             },
-//           ),
-//         ],
-//       ),
-//       // bottomNavigationBar: BottomNavigationBar(
-//       //   // ... your bottom navigation bar items here
-//       // ),
-//     );
-//   }
-// }
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -55,15 +11,14 @@ class ProfilePage extends ConsumerWidget {
 
   Future<void> _logout(
       BuildContext context, SignInNotifier signInNotifier) async {
-    // Show a modal with a CircularProgressIndicator for 1 second
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
+        return const AlertDialog(
           content: Row(
             mainAxisSize: MainAxisSize.min,
-            children: const [
+            children: [
               CircularProgressIndicator(),
               SizedBox(width: 15),
               Text("Logging out..."),
@@ -84,23 +39,79 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final signInNotifier = ref.watch(signInProvider.notifier);
+    final userProfileState = ref.watch(userProfileXProvider);
+
+    var _name;
+    var _email;
+
+    userProfileState.maybeWhen(
+      loaded: (user) {
+        _email = user.email;
+        if (user.firstName!.isEmpty && user.lastName!.isEmpty) {
+          _name = _email.split('@').first;
+        } else {
+          _name = user.firstName! + " " + user.lastName!;
+        }
+      },
+      orElse: () => {},
+    );
+
+    final String userName = _name ?? 'Unknown';
+    final String userEmail = _email ?? 'No email';
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Profile"),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
       body: Column(
         children: [
-          SizedBox(height: 100),
+          const SizedBox(height: 20),
+          const CircleAvatar(
+            radius: 50,
+            backgroundImage:
+                AssetImage("lib/assets/images/userpro.png"), // Corrected
+            backgroundColor: Colors.transparent,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            userName,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            userEmail,
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
+          ),
+          const SizedBox(height: 20),
+          const Divider(),
           ListTile(
-            leading: Icon(Icons.account_box),
-            title: Text('User Info'),
-            trailing: Icon(Icons.arrow_forward_ios),
+            leading: const Icon(Icons.account_box),
+            title: const Text('User Info'),
+            trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               AutoRouter.of(context).push(const UserProfileRoute());
             },
           ),
           ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Logout'),
-            trailing: Icon(Icons.arrow_forward_ios),
+            leading: const Icon(Icons.settings),
+            title: const Text('Settings'),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              AutoRouter.of(context).push(const SettingsRoute());
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Logout'),
+            trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () async {
               await _logout(context, signInNotifier);
               ref.refresh(authProvider);

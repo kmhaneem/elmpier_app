@@ -3,7 +3,6 @@ import 'package:frontend/domain/orders/model/orders.dart';
 part 'orders_dto.freezed.dart';
 part 'orders_dto.g.dart';
 
-// @JsonSerializable()
 @freezed
 class OrderDto with _$OrderDto {
   const OrderDto._();

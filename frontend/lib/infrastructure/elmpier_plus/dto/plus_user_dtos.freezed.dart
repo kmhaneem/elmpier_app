@@ -63,22 +63,22 @@ class _$PlusUserDtoCopyWithImpl<$Res, $Val extends PlusUserDto>
 }
 
 /// @nodoc
-abstract class _$$_PlusUserDtoCopyWith<$Res>
+abstract class _$$PlusUserDtoImplCopyWith<$Res>
     implements $PlusUserDtoCopyWith<$Res> {
-  factory _$$_PlusUserDtoCopyWith(
-          _$_PlusUserDto value, $Res Function(_$_PlusUserDto) then) =
-      __$$_PlusUserDtoCopyWithImpl<$Res>;
+  factory _$$PlusUserDtoImplCopyWith(
+          _$PlusUserDtoImpl value, $Res Function(_$PlusUserDtoImpl) then) =
+      __$$PlusUserDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: "is_plus_user") bool isPlusUser});
 }
 
 /// @nodoc
-class __$$_PlusUserDtoCopyWithImpl<$Res>
-    extends _$PlusUserDtoCopyWithImpl<$Res, _$_PlusUserDto>
-    implements _$$_PlusUserDtoCopyWith<$Res> {
-  __$$_PlusUserDtoCopyWithImpl(
-      _$_PlusUserDto _value, $Res Function(_$_PlusUserDto) _then)
+class __$$PlusUserDtoImplCopyWithImpl<$Res>
+    extends _$PlusUserDtoCopyWithImpl<$Res, _$PlusUserDtoImpl>
+    implements _$$PlusUserDtoImplCopyWith<$Res> {
+  __$$PlusUserDtoImplCopyWithImpl(
+      _$PlusUserDtoImpl _value, $Res Function(_$PlusUserDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +86,7 @@ class __$$_PlusUserDtoCopyWithImpl<$Res>
   $Res call({
     Object? isPlusUser = null,
   }) {
-    return _then(_$_PlusUserDto(
+    return _then(_$PlusUserDtoImpl(
       isPlusUser: null == isPlusUser
           ? _value.isPlusUser
           : isPlusUser // ignore: cast_nullable_to_non_nullable
@@ -97,13 +97,13 @@ class __$$_PlusUserDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PlusUserDto extends _PlusUserDto {
-  const _$_PlusUserDto(
+class _$PlusUserDtoImpl extends _PlusUserDto {
+  const _$PlusUserDtoImpl(
       {@JsonKey(name: "is_plus_user") required this.isPlusUser})
       : super._();
 
-  factory _$_PlusUserDto.fromJson(Map<String, dynamic> json) =>
-      _$$_PlusUserDtoFromJson(json);
+  factory _$PlusUserDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlusUserDtoImplFromJson(json);
 
   @override
   @JsonKey(name: "is_plus_user")
@@ -118,7 +118,7 @@ class _$_PlusUserDto extends _PlusUserDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlusUserDto &&
+            other is _$PlusUserDtoImpl &&
             (identical(other.isPlusUser, isPlusUser) ||
                 other.isPlusUser == isPlusUser));
   }
@@ -130,12 +130,12 @@ class _$_PlusUserDto extends _PlusUserDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlusUserDtoCopyWith<_$_PlusUserDto> get copyWith =>
-      __$$_PlusUserDtoCopyWithImpl<_$_PlusUserDto>(this, _$identity);
+  _$$PlusUserDtoImplCopyWith<_$PlusUserDtoImpl> get copyWith =>
+      __$$PlusUserDtoImplCopyWithImpl<_$PlusUserDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlusUserDtoToJson(
+    return _$$PlusUserDtoImplToJson(
       this,
     );
   }
@@ -144,17 +144,17 @@ class _$_PlusUserDto extends _PlusUserDto {
 abstract class _PlusUserDto extends PlusUserDto {
   const factory _PlusUserDto(
           {@JsonKey(name: "is_plus_user") required final bool isPlusUser}) =
-      _$_PlusUserDto;
+      _$PlusUserDtoImpl;
   const _PlusUserDto._() : super._();
 
   factory _PlusUserDto.fromJson(Map<String, dynamic> json) =
-      _$_PlusUserDto.fromJson;
+      _$PlusUserDtoImpl.fromJson;
 
   @override
   @JsonKey(name: "is_plus_user")
   bool get isPlusUser;
   @override
   @JsonKey(ignore: true)
-  _$$_PlusUserDtoCopyWith<_$_PlusUserDto> get copyWith =>
+  _$$PlusUserDtoImplCopyWith<_$PlusUserDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

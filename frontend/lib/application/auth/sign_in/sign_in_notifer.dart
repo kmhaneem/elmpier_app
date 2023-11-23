@@ -124,10 +124,10 @@ class SignInNotifier extends StateNotifier<SignInState> {
     }
   }
 
-  Future<void> signOut() async {
+  void signOut() async {
     state = state.copyWith(isSubmitting: true);
     if (true) {
-      await _iAuthFacade.signOut();
+      _iAuthFacade.signOut();
       state = SignInState.initial();
     }
   }

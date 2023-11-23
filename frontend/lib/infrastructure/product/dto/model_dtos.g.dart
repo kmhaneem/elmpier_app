@@ -6,14 +6,16 @@ part of 'model_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductModelDto _$$_ProductModelDtoFromJson(Map<String, dynamic> json) =>
-    _$_ProductModelDto(
+_$ProductModelDtoImpl _$$ProductModelDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ProductModelDtoImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       brandId: json['brand_id'] as int,
     );
 
-Map<String, dynamic> _$$_ProductModelDtoToJson(_$_ProductModelDto instance) =>
+Map<String, dynamic> _$$ProductModelDtoImplToJson(
+        _$ProductModelDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

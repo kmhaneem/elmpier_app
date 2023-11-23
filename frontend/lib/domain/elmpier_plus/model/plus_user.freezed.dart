@@ -56,21 +56,22 @@ class _$PlusUserCopyWithImpl<$Res, $Val extends PlusUser>
 }
 
 /// @nodoc
-abstract class _$$_PlusUserCopyWith<$Res> implements $PlusUserCopyWith<$Res> {
-  factory _$$_PlusUserCopyWith(
-          _$_PlusUser value, $Res Function(_$_PlusUser) then) =
-      __$$_PlusUserCopyWithImpl<$Res>;
+abstract class _$$PlusUserImplCopyWith<$Res>
+    implements $PlusUserCopyWith<$Res> {
+  factory _$$PlusUserImplCopyWith(
+          _$PlusUserImpl value, $Res Function(_$PlusUserImpl) then) =
+      __$$PlusUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isPlusUser});
 }
 
 /// @nodoc
-class __$$_PlusUserCopyWithImpl<$Res>
-    extends _$PlusUserCopyWithImpl<$Res, _$_PlusUser>
-    implements _$$_PlusUserCopyWith<$Res> {
-  __$$_PlusUserCopyWithImpl(
-      _$_PlusUser _value, $Res Function(_$_PlusUser) _then)
+class __$$PlusUserImplCopyWithImpl<$Res>
+    extends _$PlusUserCopyWithImpl<$Res, _$PlusUserImpl>
+    implements _$$PlusUserImplCopyWith<$Res> {
+  __$$PlusUserImplCopyWithImpl(
+      _$PlusUserImpl _value, $Res Function(_$PlusUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -78,7 +79,7 @@ class __$$_PlusUserCopyWithImpl<$Res>
   $Res call({
     Object? isPlusUser = null,
   }) {
-    return _then(_$_PlusUser(
+    return _then(_$PlusUserImpl(
       isPlusUser: null == isPlusUser
           ? _value.isPlusUser
           : isPlusUser // ignore: cast_nullable_to_non_nullable
@@ -89,8 +90,8 @@ class __$$_PlusUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlusUser implements _PlusUser {
-  const _$_PlusUser({required this.isPlusUser});
+class _$PlusUserImpl implements _PlusUser {
+  const _$PlusUserImpl({required this.isPlusUser});
 
   @override
   final bool isPlusUser;
@@ -104,7 +105,7 @@ class _$_PlusUser implements _PlusUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlusUser &&
+            other is _$PlusUserImpl &&
             (identical(other.isPlusUser, isPlusUser) ||
                 other.isPlusUser == isPlusUser));
   }
@@ -115,17 +116,17 @@ class _$_PlusUser implements _PlusUser {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlusUserCopyWith<_$_PlusUser> get copyWith =>
-      __$$_PlusUserCopyWithImpl<_$_PlusUser>(this, _$identity);
+  _$$PlusUserImplCopyWith<_$PlusUserImpl> get copyWith =>
+      __$$PlusUserImplCopyWithImpl<_$PlusUserImpl>(this, _$identity);
 }
 
 abstract class _PlusUser implements PlusUser {
-  const factory _PlusUser({required final bool isPlusUser}) = _$_PlusUser;
+  const factory _PlusUser({required final bool isPlusUser}) = _$PlusUserImpl;
 
   @override
   bool get isPlusUser;
   @override
   @JsonKey(ignore: true)
-  _$$_PlusUserCopyWith<_$_PlusUser> get copyWith =>
+  _$$PlusUserImplCopyWith<_$PlusUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

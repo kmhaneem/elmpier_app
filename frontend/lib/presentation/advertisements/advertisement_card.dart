@@ -29,10 +29,7 @@ class AdvertisementCardPage extends StatelessWidget {
       } else if (difference.inDays < 30) {
         return '${difference.inDays} days';
       } else {
-        // If it's been more than 30 days, you might want to return the formatted date
-        // or some other default message.
-        return formatDate(
-            createDate); // You can write this function to format date as needed.
+        return formatDate(createDate);
       }
     }
 
@@ -49,7 +46,7 @@ class AdvertisementCardPage extends StatelessWidget {
       }
     }
 
-    return advertisementState.when(
+    return advertisementState.maybeWhen(
         initial: () => Container(),
         loadInProgress: () => CircularProgressIndicator(),
         loadSuccess: (advertisements) => Column(
@@ -154,6 +151,7 @@ class AdvertisementCardPage extends StatelessWidget {
               }).toList(),
             ),
         loadFailure: (failure) => Text(failure.toString()),
-        searchLoaded: ((advertisement) => Text("Hello")));
+        searchLoaded: ((advertisement) => Text("Hello")),
+        orElse: () => Text("Hello"));
   }
 }

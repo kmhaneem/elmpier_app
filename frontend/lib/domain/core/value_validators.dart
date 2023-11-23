@@ -14,7 +14,7 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
 }
 
 Either<ValueFailure<String>, String> validateUrl(String input) {
-  final urlPattern =
+  const urlPattern =
       r'^http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+$';
   final urlRegex = RegExp(urlPattern);
   if (urlRegex.hasMatch(input)) {
@@ -96,9 +96,6 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
 }
 
 Either<ValueFailure<String>, String> validatePassword(String input) {
-  // print("validatePassword called with input: $input");
-  // print(input.length);
-  // print(input.length >= 5);
   if (input.length >= 5) {
     return right(input);
   } else {
@@ -116,7 +113,6 @@ Either<ValueFailure<String>, String> validatePhone(String input) {
 }
 
 Either<ValueFailure<int>, int> validateOtp(int input) {
-  // print(input.toString().length == 6);
   if (input.toString().length == 6) {
     return right(input);
   } else {

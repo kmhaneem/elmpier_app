@@ -21,19 +21,18 @@ class UserRepository implements IUserRepository {
   Future<Either<UserFailure, UserModel>> getUserProfile() async {
     final String? token = await secureStorage.read("token");
     try {
-      final response = await _dio.get("$api2/user/profile",
-          options: Options(headers: <String, String>{
-            'Authorization': 'Bearer $token',
-          }));
-
-      print('API Response for GET USER: ${response.data}');
+      final response = await _dio.get(
+        "$api2/user/profile",
+        options: Options(headers: <String, String>{
+          'Authorization': 'Bearer $token',
+        }),
+      );
+      print("PROFILE TOKEN $token");
 
       if (response.statusCode == 200) {
         final userDto = UserDto.fromJson(response.data['response']);
         final user = userDto.toDomain();
-        print(userDto);
-        print(user);
-        print("USER DATA RETURINING *********+++++++++******* $user");
+
         return right(user);
       } else {
         return left(const UserFailure.notFound());
@@ -71,7 +70,6 @@ class UserRepository implements IUserRepository {
         final districtDto = (response.data["response"] as List)
             .map((e) => DistrictDto.fromJson(e));
         final district = districtDto.map((dto) => dto.toDomain()).toList();
-        // print("district details $district");
         return right(district);
       } else {
         return left(const UserFailure.notFound());

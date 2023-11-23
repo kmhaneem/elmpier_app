@@ -60,8 +60,6 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
     _addressLine2Controller = TextEditingController();
     _postalCodeController = TextEditingController();
     _cityController = TextEditingController();
-    // _provinceController = TextEditingController();
-    // _districtController = TextEditingController();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(provinceProvider.notifier).fetchProvinces();
@@ -78,26 +76,24 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final userState = ref.watch(userProvider);
+    final userState = ref.watch(userProfileXProvider);
     userState.maybeWhen(
         loaded: (user) {
           _firstNameController.text = user.firstName;
           _lastNameController.text = user.lastName;
           _addressLine1Controller.text = user.addressLine1;
           _addressLine2Controller.text = user.addressLine2;
-          _postalCodeController.text = user.postalCode.toString();
+          _postalCodeController.text = user.postalCode;
           _cityController.text = user.city;
-          // _provinceController.text = user.province;
-          // _districtController.text = user.district;
         },
         orElse: () {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final userProfileNotifier = ref.watch(userProfileProvider.notifier);
+    final userProfileNotifier = ref.watch(userProfileXProvider.notifier);
     final provinceState = ref.watch(provinceProvider);
-    final brandState = ref.watch(districtProvider);
+    final districtState = ref.watch(districtProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -135,9 +131,8 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                 obscureText: false,
               ),
               const SizedBox(height: 15),
-              provinceState.when(
+              provinceState.maybeWhen(
                 initial: () => Text('Select a province.'),
-                loadInProgress: () => CircularProgressIndicator(),
                 loadSuccess: (provinces) {
                   return CustomDropdownButtonFormField<Province>(
                     value: _selectedProvince,
@@ -152,22 +147,16 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                         _selectedDistrict = null;
                         _selectedProvince = newValue;
                       });
-                      _provinceController.text = newValue!.name;
+                      _provinceController.text = newValue!.id.toString();
                     },
                     labelText: 'Province',
-                    // Add prefixIcon if needed, for example:
-                    // prefixIcon: Icon(Icons.location_city),
                   );
                 },
-                loadFailure: (err) {
-                  print('Error Detail: $err');
-                  return Text('Error loading province');
-                },
+                orElse: () => Text(""),
               ),
               const SizedBox(height: 15),
-              brandState.when(
+              districtState.maybeWhen(
                 initial: () => _buildDisabledDistrictDropdown(),
-                loadInProgress: () => CircularProgressIndicator(),
                 loadSuccess: (districts) {
                   if (_selectedProvince == null) {
                     return _buildDisabledDistrictDropdown();
@@ -188,17 +177,13 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                       setState(() {
                         _selectedDistrict = newValue;
                       });
-                      _districtController.text = newValue!.name;
+                      _districtController.text = newValue!.id.toString();
                     },
                     labelText: 'District',
                   );
                 },
-                loadFailure: (err) {
-                  print('Error Detail: $err');
-                  return Text('Error loading district');
-                },
+                orElse: () => Text(""),
               ),
-
               const SizedBox(height: 15),
               CustomTextFormField(
                 controller: _cityController,
@@ -210,6 +195,7 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                 controller: _postalCodeController,
                 labelText: "Postal Code",
                 obscureText: false,
+                maxLength: 5,
               ),
               const SizedBox(height: 20),
               CustomElevatedButton(
@@ -230,16 +216,12 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                       addressLine1: _addressLine1Controller.text,
                       addressLine2: _addressLine2Controller.text,
                       city: _cityController.text,
-                      postalCode: int.parse(_postalCodeController.text),
-                      district: _districtController.text,
-                      province: _provinceController.text,
+                      postalCode: _postalCodeController.text,
+                      districtId: int.parse(_districtController.text),
+                      provinceId: int.parse(_provinceController.text),
                     );
 
                     await userProfileNotifier.updateUserDetails(user);
-
-                    final userNotifier =
-                        ref.read(userNotifierProvider.notifier);
-                    await userNotifier.fetchUserDetails();
 
                     if (widget.previousPage == "CheckoutPage") {
                       AutoRouter.of(context).replace(CheckoutRoute());
@@ -251,7 +233,6 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                       AutoRouter.of(context).replace(UserProfileRoute());
                     }
                   } else {
-                    // Using Flushbar:
                     FlushbarHelper.createError(
                       message: 'Please fill all fields!',
                     ).show(context);
@@ -259,19 +240,6 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
                 },
                 text: 'Update User',
               ),
-              Consumer(
-                builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                  final userProfileState = ref.watch(userProfileProvider);
-
-                  return userProfileState.maybeMap(
-                    actionInProgress: (_) =>
-                        const LinearProgressIndicator(value: null),
-                    actionFailure: (_) =>
-                        const LinearProgressIndicator(value: null),
-                    orElse: () => const SizedBox.shrink(),
-                  );
-                },
-              )
             ],
           ),
         ),
@@ -282,10 +250,9 @@ class _UserProfileAddPageState extends ConsumerState<UserProfileAddPage> {
 
 Widget _buildDisabledDistrictDropdown() {
   return CustomDropdownButtonFormField<District>(
-    items: [], 
-    onChanged: null, 
+    items: [],
+    onChanged: null,
     labelText: 'District',
-    hintText: 'Please select a province first', 
+    hintText: 'Please select a province first',
   );
 }
-

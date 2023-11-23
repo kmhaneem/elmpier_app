@@ -4,8 +4,10 @@ import 'package:frontend/domain/orders/model/order_item_failure.dart';
 import 'package:frontend/domain/orders/model/order_item.dart';
 
 import 'package:dartz/dartz.dart';
+import 'package:frontend/domain/orders/model/order_status.dart';
 import 'package:frontend/infrastructure/core/api.dart';
 import 'package:frontend/infrastructure/orders/order_item_dto.dart';
+import 'package:frontend/infrastructure/orders/order_status_dtos.dart';
 
 import '../../domain/orders/i_order_item_repository.dart';
 import '../auth/secure_storage/secure_storage_service.dart';
@@ -38,9 +40,32 @@ class OrderItemRepository implements IOrderItemRepository {
         return left(const OrderItemFailure.serverError());
       }
 
-      //   return right(products);
     } catch (e) {
       print("Error Is in order repo $e");
+      return left(const OrderItemFailure.serverError());
+    }
+  }
+  
+  @override
+  Future<Either<OrderItemFailure, OrderStatus>> getOrderItemsStatus(int id) async {
+    try {
+      final response = await _dio.get(
+        "$api2/orders/order-item/status",
+        data: {"id": id},
+        options: Options(
+          headers: <String, String>{
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        final orderStatusDto =
+            OrderStatusDto.fromJson(response.data["response"][0]);
+        final orderItemStatus = orderStatusDto.toDomain();
+        return right(orderItemStatus);
+      } else {
+        return left(const OrderItemFailure.serverError());
+      }
+    } catch (error) {
       return left(const OrderItemFailure.serverError());
     }
   }

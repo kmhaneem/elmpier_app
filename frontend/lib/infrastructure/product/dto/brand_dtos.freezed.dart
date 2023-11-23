@@ -76,11 +76,11 @@ class _$ProductBrandDtoCopyWithImpl<$Res, $Val extends ProductBrandDto>
 }
 
 /// @nodoc
-abstract class _$$_ProductBrandDtoCopyWith<$Res>
+abstract class _$$ProductBrandDtoImplCopyWith<$Res>
     implements $ProductBrandDtoCopyWith<$Res> {
-  factory _$$_ProductBrandDtoCopyWith(
-          _$_ProductBrandDto value, $Res Function(_$_ProductBrandDto) then) =
-      __$$_ProductBrandDtoCopyWithImpl<$Res>;
+  factory _$$ProductBrandDtoImplCopyWith(_$ProductBrandDtoImpl value,
+          $Res Function(_$ProductBrandDtoImpl) then) =
+      __$$ProductBrandDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -88,11 +88,11 @@ abstract class _$$_ProductBrandDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProductBrandDtoCopyWithImpl<$Res>
-    extends _$ProductBrandDtoCopyWithImpl<$Res, _$_ProductBrandDto>
-    implements _$$_ProductBrandDtoCopyWith<$Res> {
-  __$$_ProductBrandDtoCopyWithImpl(
-      _$_ProductBrandDto _value, $Res Function(_$_ProductBrandDto) _then)
+class __$$ProductBrandDtoImplCopyWithImpl<$Res>
+    extends _$ProductBrandDtoCopyWithImpl<$Res, _$ProductBrandDtoImpl>
+    implements _$$ProductBrandDtoImplCopyWith<$Res> {
+  __$$ProductBrandDtoImplCopyWithImpl(
+      _$ProductBrandDtoImpl _value, $Res Function(_$ProductBrandDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$_ProductBrandDtoCopyWithImpl<$Res>
     Object? name = null,
     Object? categoryId = null,
   }) {
-    return _then(_$_ProductBrandDto(
+    return _then(_$ProductBrandDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -121,14 +121,14 @@ class __$$_ProductBrandDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductBrandDto implements _ProductBrandDto {
-  const _$_ProductBrandDto(
+class _$ProductBrandDtoImpl implements _ProductBrandDto {
+  const _$ProductBrandDtoImpl(
       {required this.id,
       required this.name,
       @JsonKey(name: 'category_id') required this.categoryId});
 
-  factory _$_ProductBrandDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductBrandDtoFromJson(json);
+  factory _$ProductBrandDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductBrandDtoImplFromJson(json);
 
   @override
   final int id;
@@ -147,7 +147,7 @@ class _$_ProductBrandDto implements _ProductBrandDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductBrandDto &&
+            other is _$ProductBrandDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.categoryId, categoryId) ||
@@ -161,12 +161,13 @@ class _$_ProductBrandDto implements _ProductBrandDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductBrandDtoCopyWith<_$_ProductBrandDto> get copyWith =>
-      __$$_ProductBrandDtoCopyWithImpl<_$_ProductBrandDto>(this, _$identity);
+  _$$ProductBrandDtoImplCopyWith<_$ProductBrandDtoImpl> get copyWith =>
+      __$$ProductBrandDtoImplCopyWithImpl<_$ProductBrandDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductBrandDtoToJson(
+    return _$$ProductBrandDtoImplToJson(
       this,
     );
   }
@@ -177,10 +178,10 @@ abstract class _ProductBrandDto implements ProductBrandDto {
           {required final int id,
           required final String name,
           @JsonKey(name: 'category_id') required final int categoryId}) =
-      _$_ProductBrandDto;
+      _$ProductBrandDtoImpl;
 
   factory _ProductBrandDto.fromJson(Map<String, dynamic> json) =
-      _$_ProductBrandDto.fromJson;
+      _$ProductBrandDtoImpl.fromJson;
 
   @override
   int get id;
@@ -191,6 +192,6 @@ abstract class _ProductBrandDto implements ProductBrandDto {
   int get categoryId;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductBrandDtoCopyWith<_$_ProductBrandDto> get copyWith =>
+  _$$ProductBrandDtoImplCopyWith<_$ProductBrandDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

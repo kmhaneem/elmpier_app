@@ -91,9 +91,10 @@ class _$OrdersCopyWithImpl<$Res, $Val extends Orders>
 }
 
 /// @nodoc
-abstract class _$$_OrdersCopyWith<$Res> implements $OrdersCopyWith<$Res> {
-  factory _$$_OrdersCopyWith(_$_Orders value, $Res Function(_$_Orders) then) =
-      __$$_OrdersCopyWithImpl<$Res>;
+abstract class _$$OrdersImplCopyWith<$Res> implements $OrdersCopyWith<$Res> {
+  factory _$$OrdersImplCopyWith(
+          _$OrdersImpl value, $Res Function(_$OrdersImpl) then) =
+      __$$OrdersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -106,10 +107,11 @@ abstract class _$$_OrdersCopyWith<$Res> implements $OrdersCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OrdersCopyWithImpl<$Res>
-    extends _$OrdersCopyWithImpl<$Res, _$_Orders>
-    implements _$$_OrdersCopyWith<$Res> {
-  __$$_OrdersCopyWithImpl(_$_Orders _value, $Res Function(_$_Orders) _then)
+class __$$OrdersImplCopyWithImpl<$Res>
+    extends _$OrdersCopyWithImpl<$Res, _$OrdersImpl>
+    implements _$$OrdersImplCopyWith<$Res> {
+  __$$OrdersImplCopyWithImpl(
+      _$OrdersImpl _value, $Res Function(_$OrdersImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +124,7 @@ class __$$_OrdersCopyWithImpl<$Res>
     Object? statusId = null,
     Object? amount = null,
   }) {
-    return _then(_$_Orders(
+    return _then(_$OrdersImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -153,8 +155,8 @@ class __$$_OrdersCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Orders implements _Orders {
-  const _$_Orders(
+class _$OrdersImpl implements _Orders {
+  const _$OrdersImpl(
       {required this.userId,
       required this.paymentMethod,
       required this.status,
@@ -184,7 +186,7 @@ class _$_Orders implements _Orders {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Orders &&
+            other is _$OrdersImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.paymentMethod, paymentMethod) ||
                 other.paymentMethod == paymentMethod) &&
@@ -203,8 +205,8 @@ class _$_Orders implements _Orders {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrdersCopyWith<_$_Orders> get copyWith =>
-      __$$_OrdersCopyWithImpl<_$_Orders>(this, _$identity);
+  _$$OrdersImplCopyWith<_$OrdersImpl> get copyWith =>
+      __$$OrdersImplCopyWithImpl<_$OrdersImpl>(this, _$identity);
 }
 
 abstract class _Orders implements Orders {
@@ -214,7 +216,7 @@ abstract class _Orders implements Orders {
       required final String status,
       required final String paymentId,
       required final int statusId,
-      required final int amount}) = _$_Orders;
+      required final int amount}) = _$OrdersImpl;
 
   @override
   int get userId;
@@ -230,6 +232,6 @@ abstract class _Orders implements Orders {
   int get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_OrdersCopyWith<_$_Orders> get copyWith =>
+  _$$OrdersImplCopyWith<_$OrdersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

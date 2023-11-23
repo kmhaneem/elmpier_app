@@ -73,8 +73,6 @@ class AdsRepository implements IAdsRepository {
       );
 
       if (response.statusCode == 200) {
-        final data = response.data['response'];
-        // print("POP ADS IS $data");
         final productDto = ProductDto.fromJson(response.data['response'][0]);
         final product = productDto.toDomain();
         return right(product);
@@ -82,7 +80,27 @@ class AdsRepository implements IAdsRepository {
         return left(const AdsFailure.notFound());
       }
     } catch (error) {
-      // print("Pop Ads error is $error");
+      return left(const AdsFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AdsFailure, List<Product>>> getProductTopAds() async {
+    try {
+      final response = await _dio.get(
+        "$api2/product/ads/top",
+      );
+
+      if (response.statusCode == 200) {
+        final productDto = (response.data['response'] as List)
+            .map((e) => ProductDto.fromJson(e));
+        final products = productDto.map((dto) => dto.toDomain()).toList();
+
+        return right(products);
+      } else {
+        return left(const AdsFailure.notFound());
+      }
+    } catch (error) {
       return left(const AdsFailure.serverError());
     }
   }

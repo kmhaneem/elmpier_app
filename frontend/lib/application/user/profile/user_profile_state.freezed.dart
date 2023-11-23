@@ -22,6 +22,7 @@ mixin _$UserProfileState {
     required TResult Function() actionInProgress,
     required TResult Function() success,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(UserModel user) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$UserProfileState {
     TResult? Function()? actionInProgress,
     TResult? Function()? success,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(UserModel user)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$UserProfileState {
     TResult Function()? actionInProgress,
     TResult Function()? success,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$UserProfileState {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Success value) success,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$UserProfileState {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Success value)? success,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$UserProfileState {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Success value)? success,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,24 +93,25 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$UserProfileStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -114,7 +121,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -127,6 +134,7 @@ class _$_Initial implements _Initial {
     required TResult Function() actionInProgress,
     required TResult Function() success,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(UserModel user) loaded,
   }) {
     return initial();
   }
@@ -138,6 +146,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? actionInProgress,
     TResult? Function()? success,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(UserModel user)? loaded,
   }) {
     return initial?.call();
   }
@@ -149,6 +158,7 @@ class _$_Initial implements _Initial {
     TResult Function()? actionInProgress,
     TResult Function()? success,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,6 +174,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Success value) success,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_Loaded value) loaded,
   }) {
     return initial(this);
   }
@@ -175,6 +186,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Success value)? success,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Loaded value)? loaded,
   }) {
     return initial?.call(this);
   }
@@ -186,6 +198,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Success value)? success,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -196,29 +209,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements UserProfileState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionInProgressCopyWith<$Res> {
-  factory _$$_ActionInProgressCopyWith(
-          _$_ActionInProgress value, $Res Function(_$_ActionInProgress) then) =
-      __$$_ActionInProgressCopyWithImpl<$Res>;
+abstract class _$$ActionInProgressImplCopyWith<$Res> {
+  factory _$$ActionInProgressImplCopyWith(_$ActionInProgressImpl value,
+          $Res Function(_$ActionInProgressImpl) then) =
+      __$$ActionInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$UserProfileStateCopyWithImpl<$Res, _$_ActionInProgress>
-    implements _$$_ActionInProgressCopyWith<$Res> {
-  __$$_ActionInProgressCopyWithImpl(
-      _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
+class __$$ActionInProgressImplCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res, _$ActionInProgressImpl>
+    implements _$$ActionInProgressImplCopyWith<$Res> {
+  __$$ActionInProgressImplCopyWithImpl(_$ActionInProgressImpl _value,
+      $Res Function(_$ActionInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+class _$ActionInProgressImpl implements _ActionInProgress {
+  const _$ActionInProgressImpl();
 
   @override
   String toString() {
@@ -228,7 +241,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionInProgress);
+        (other.runtimeType == runtimeType && other is _$ActionInProgressImpl);
   }
 
   @override
@@ -241,6 +254,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     required TResult Function() actionInProgress,
     required TResult Function() success,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(UserModel user) loaded,
   }) {
     return actionInProgress();
   }
@@ -252,6 +266,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult? Function()? actionInProgress,
     TResult? Function()? success,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(UserModel user)? loaded,
   }) {
     return actionInProgress?.call();
   }
@@ -263,6 +278,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult Function()? actionInProgress,
     TResult Function()? success,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) {
     if (actionInProgress != null) {
@@ -278,6 +294,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Success value) success,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_Loaded value) loaded,
   }) {
     return actionInProgress(this);
   }
@@ -289,6 +306,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Success value)? success,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Loaded value)? loaded,
   }) {
     return actionInProgress?.call(this);
   }
@@ -300,6 +318,7 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Success value)? success,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
     if (actionInProgress != null) {
@@ -310,28 +329,29 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements UserProfileState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress() = _$ActionInProgressImpl;
 }
 
 /// @nodoc
-abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
-      __$$_SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$UserProfileStateCopyWithImpl<$Res, _$_Success>
-    implements _$$_SuccessCopyWith<$Res> {
-  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Success implements _Success {
-  const _$_Success();
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl();
 
   @override
   String toString() {
@@ -341,7 +361,7 @@ class _$_Success implements _Success {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Success);
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
@@ -354,6 +374,7 @@ class _$_Success implements _Success {
     required TResult Function() actionInProgress,
     required TResult Function() success,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(UserModel user) loaded,
   }) {
     return success();
   }
@@ -365,6 +386,7 @@ class _$_Success implements _Success {
     TResult? Function()? actionInProgress,
     TResult? Function()? success,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(UserModel user)? loaded,
   }) {
     return success?.call();
   }
@@ -376,6 +398,7 @@ class _$_Success implements _Success {
     TResult Function()? actionInProgress,
     TResult Function()? success,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -391,6 +414,7 @@ class _$_Success implements _Success {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Success value) success,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_Loaded value) loaded,
   }) {
     return success(this);
   }
@@ -402,6 +426,7 @@ class _$_Success implements _Success {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Success value)? success,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Loaded value)? loaded,
   }) {
     return success?.call(this);
   }
@@ -413,6 +438,7 @@ class _$_Success implements _Success {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Success value)? success,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -423,14 +449,14 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements UserProfileState {
-  const factory _Success() = _$_Success;
+  const factory _Success() = _$SuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionFailureCopyWith<$Res> {
-  factory _$$_ActionFailureCopyWith(
-          _$_ActionFailure value, $Res Function(_$_ActionFailure) then) =
-      __$$_ActionFailureCopyWithImpl<$Res>;
+abstract class _$$ActionFailureImplCopyWith<$Res> {
+  factory _$$ActionFailureImplCopyWith(
+          _$ActionFailureImpl value, $Res Function(_$ActionFailureImpl) then) =
+      __$$ActionFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UserFailure userFailure});
 
@@ -438,11 +464,11 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ActionFailureCopyWithImpl<$Res>
-    extends _$UserProfileStateCopyWithImpl<$Res, _$_ActionFailure>
-    implements _$$_ActionFailureCopyWith<$Res> {
-  __$$_ActionFailureCopyWithImpl(
-      _$_ActionFailure _value, $Res Function(_$_ActionFailure) _then)
+class __$$ActionFailureImplCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res, _$ActionFailureImpl>
+    implements _$$ActionFailureImplCopyWith<$Res> {
+  __$$ActionFailureImplCopyWithImpl(
+      _$ActionFailureImpl _value, $Res Function(_$ActionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -450,7 +476,7 @@ class __$$_ActionFailureCopyWithImpl<$Res>
   $Res call({
     Object? userFailure = null,
   }) {
-    return _then(_$_ActionFailure(
+    return _then(_$ActionFailureImpl(
       null == userFailure
           ? _value.userFailure
           : userFailure // ignore: cast_nullable_to_non_nullable
@@ -469,8 +495,8 @@ class __$$_ActionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionFailure implements _ActionFailure {
-  const _$_ActionFailure(this.userFailure);
+class _$ActionFailureImpl implements _ActionFailure {
+  const _$ActionFailureImpl(this.userFailure);
 
   @override
   final UserFailure userFailure;
@@ -484,7 +510,7 @@ class _$_ActionFailure implements _ActionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActionFailure &&
+            other is _$ActionFailureImpl &&
             (identical(other.userFailure, userFailure) ||
                 other.userFailure == userFailure));
   }
@@ -495,8 +521,8 @@ class _$_ActionFailure implements _ActionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
-      __$$_ActionFailureCopyWithImpl<_$_ActionFailure>(this, _$identity);
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      __$$ActionFailureImplCopyWithImpl<_$ActionFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -505,6 +531,7 @@ class _$_ActionFailure implements _ActionFailure {
     required TResult Function() actionInProgress,
     required TResult Function() success,
     required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(UserModel user) loaded,
   }) {
     return actionFailure(userFailure);
   }
@@ -516,6 +543,7 @@ class _$_ActionFailure implements _ActionFailure {
     TResult? Function()? actionInProgress,
     TResult? Function()? success,
     TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(UserModel user)? loaded,
   }) {
     return actionFailure?.call(userFailure);
   }
@@ -527,6 +555,7 @@ class _$_ActionFailure implements _ActionFailure {
     TResult Function()? actionInProgress,
     TResult Function()? success,
     TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(UserModel user)? loaded,
     required TResult orElse(),
   }) {
     if (actionFailure != null) {
@@ -542,6 +571,7 @@ class _$_ActionFailure implements _ActionFailure {
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_Success value) success,
     required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_Loaded value) loaded,
   }) {
     return actionFailure(this);
   }
@@ -553,6 +583,7 @@ class _$_ActionFailure implements _ActionFailure {
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_Success value)? success,
     TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Loaded value)? loaded,
   }) {
     return actionFailure?.call(this);
   }
@@ -564,6 +595,7 @@ class _$_ActionFailure implements _ActionFailure {
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_Success value)? success,
     TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
     if (actionFailure != null) {
@@ -575,10 +607,171 @@ class _$_ActionFailure implements _ActionFailure {
 
 abstract class _ActionFailure implements UserProfileState {
   const factory _ActionFailure(final UserFailure userFailure) =
-      _$_ActionFailure;
+      _$ActionFailureImpl;
 
   UserFailure get userFailure;
   @JsonKey(ignore: true)
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user});
+
+  $UserModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$UserProfileStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$LoadedImpl(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get user {
+    return $UserModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(this.user);
+
+  @override
+  final UserModel user;
+
+  @override
+  String toString() {
+    return 'UserProfileState.loaded(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() actionInProgress,
+    required TResult Function() success,
+    required TResult Function(UserFailure userFailure) actionFailure,
+    required TResult Function(UserModel user) loaded,
+  }) {
+    return loaded(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function()? success,
+    TResult? Function(UserFailure userFailure)? actionFailure,
+    TResult? Function(UserModel user)? loaded,
+  }) {
+    return loaded?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function()? success,
+    TResult Function(UserFailure userFailure)? actionFailure,
+    TResult Function(UserModel user)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_Success value) success,
+    required TResult Function(_ActionFailure value) actionFailure,
+    required TResult Function(_Loaded value) loaded,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_ActionFailure value)? actionFailure,
+    TResult? Function(_Loaded value)? loaded,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_Success value)? success,
+    TResult Function(_ActionFailure value)? actionFailure,
+    TResult Function(_Loaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loaded implements UserProfileState {
+  const factory _Loaded(final UserModel user) = _$LoadedImpl;
+
+  UserModel get user;
+  @JsonKey(ignore: true)
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

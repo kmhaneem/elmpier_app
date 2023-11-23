@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool enabled;
   final Color textColor;
   final int maxLines;
+  final int? maxLength; 
 
   CustomTextFormField({
     super.key,
@@ -24,6 +25,7 @@ class CustomTextFormField extends StatelessWidget {
     this.enabled = true,
     this.textColor = Colors.black,
     this.maxLines = 1,
+    this.maxLength, 
   });
 
   @override
@@ -47,6 +49,7 @@ class CustomTextFormField extends StatelessWidget {
         color: textColor,
       ),
       maxLines: maxLines,
+      maxLength: maxLength, 
     );
   }
 }

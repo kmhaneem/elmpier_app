@@ -21,6 +21,8 @@ mixin _$AddProductState {
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function() createSuccess,
+    required TResult Function() updateSuccess,
+    required TResult Function() deleteSuccess,
     required TResult Function(ProductFailure productFailure) actionFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +31,8 @@ mixin _$AddProductState {
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
     TResult? Function()? createSuccess,
+    TResult? Function()? updateSuccess,
+    TResult? Function()? deleteSuccess,
     TResult? Function(ProductFailure productFailure)? actionFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +41,8 @@ mixin _$AddProductState {
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function()? createSuccess,
+    TResult Function()? updateSuccess,
+    TResult Function()? deleteSuccess,
     TResult Function(ProductFailure productFailure)? actionFailure,
     required TResult orElse(),
   }) =>
@@ -46,6 +52,8 @@ mixin _$AddProductState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_CreateSuccess value) createSuccess,
+    required TResult Function(_UpdateSuccess value) updateSuccess,
+    required TResult Function(_DeleteSuccess value) deleteSuccess,
     required TResult Function(_ActionFailure value) actionFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +62,8 @@ mixin _$AddProductState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_CreateSuccess value)? createSuccess,
+    TResult? Function(_UpdateSuccess value)? updateSuccess,
+    TResult? Function(_DeleteSuccess value)? deleteSuccess,
     TResult? Function(_ActionFailure value)? actionFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +72,8 @@ mixin _$AddProductState {
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_CreateSuccess value)? createSuccess,
+    TResult Function(_UpdateSuccess value)? updateSuccess,
+    TResult Function(_DeleteSuccess value)? deleteSuccess,
     TResult Function(_ActionFailure value)? actionFailure,
     required TResult orElse(),
   }) =>
@@ -87,24 +99,25 @@ class _$AddProductStateCopyWithImpl<$Res, $Val extends AddProductState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AddProductStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AddProductStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -114,7 +127,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -126,6 +139,8 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function() createSuccess,
+    required TResult Function() updateSuccess,
+    required TResult Function() deleteSuccess,
     required TResult Function(ProductFailure productFailure) actionFailure,
   }) {
     return initial();
@@ -137,6 +152,8 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
     TResult? Function()? createSuccess,
+    TResult? Function()? updateSuccess,
+    TResult? Function()? deleteSuccess,
     TResult? Function(ProductFailure productFailure)? actionFailure,
   }) {
     return initial?.call();
@@ -148,6 +165,8 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function()? createSuccess,
+    TResult Function()? updateSuccess,
+    TResult Function()? deleteSuccess,
     TResult Function(ProductFailure productFailure)? actionFailure,
     required TResult orElse(),
   }) {
@@ -163,6 +182,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_CreateSuccess value) createSuccess,
+    required TResult Function(_UpdateSuccess value) updateSuccess,
+    required TResult Function(_DeleteSuccess value) deleteSuccess,
     required TResult Function(_ActionFailure value) actionFailure,
   }) {
     return initial(this);
@@ -174,6 +195,8 @@ class _$_Initial implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_CreateSuccess value)? createSuccess,
+    TResult? Function(_UpdateSuccess value)? updateSuccess,
+    TResult? Function(_DeleteSuccess value)? deleteSuccess,
     TResult? Function(_ActionFailure value)? actionFailure,
   }) {
     return initial?.call(this);
@@ -185,6 +208,8 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_CreateSuccess value)? createSuccess,
+    TResult Function(_UpdateSuccess value)? updateSuccess,
+    TResult Function(_DeleteSuccess value)? deleteSuccess,
     TResult Function(_ActionFailure value)? actionFailure,
     required TResult orElse(),
   }) {
@@ -196,29 +221,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AddProductState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionInProgressCopyWith<$Res> {
-  factory _$$_ActionInProgressCopyWith(
-          _$_ActionInProgress value, $Res Function(_$_ActionInProgress) then) =
-      __$$_ActionInProgressCopyWithImpl<$Res>;
+abstract class _$$ActionInProgressImplCopyWith<$Res> {
+  factory _$$ActionInProgressImplCopyWith(_$ActionInProgressImpl value,
+          $Res Function(_$ActionInProgressImpl) then) =
+      __$$ActionInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$AddProductStateCopyWithImpl<$Res, _$_ActionInProgress>
-    implements _$$_ActionInProgressCopyWith<$Res> {
-  __$$_ActionInProgressCopyWithImpl(
-      _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
+class __$$ActionInProgressImplCopyWithImpl<$Res>
+    extends _$AddProductStateCopyWithImpl<$Res, _$ActionInProgressImpl>
+    implements _$$ActionInProgressImplCopyWith<$Res> {
+  __$$ActionInProgressImplCopyWithImpl(_$ActionInProgressImpl _value,
+      $Res Function(_$ActionInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+class _$ActionInProgressImpl implements _ActionInProgress {
+  const _$ActionInProgressImpl();
 
   @override
   String toString() {
@@ -228,7 +253,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionInProgress);
+        (other.runtimeType == runtimeType && other is _$ActionInProgressImpl);
   }
 
   @override
@@ -240,6 +265,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function() createSuccess,
+    required TResult Function() updateSuccess,
+    required TResult Function() deleteSuccess,
     required TResult Function(ProductFailure productFailure) actionFailure,
   }) {
     return actionInProgress();
@@ -251,6 +278,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
     TResult? Function()? createSuccess,
+    TResult? Function()? updateSuccess,
+    TResult? Function()? deleteSuccess,
     TResult? Function(ProductFailure productFailure)? actionFailure,
   }) {
     return actionInProgress?.call();
@@ -262,6 +291,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function()? createSuccess,
+    TResult Function()? updateSuccess,
+    TResult Function()? deleteSuccess,
     TResult Function(ProductFailure productFailure)? actionFailure,
     required TResult orElse(),
   }) {
@@ -277,6 +308,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_CreateSuccess value) createSuccess,
+    required TResult Function(_UpdateSuccess value) updateSuccess,
+    required TResult Function(_DeleteSuccess value) deleteSuccess,
     required TResult Function(_ActionFailure value) actionFailure,
   }) {
     return actionInProgress(this);
@@ -288,6 +321,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_CreateSuccess value)? createSuccess,
+    TResult? Function(_UpdateSuccess value)? updateSuccess,
+    TResult? Function(_DeleteSuccess value)? deleteSuccess,
     TResult? Function(_ActionFailure value)? actionFailure,
   }) {
     return actionInProgress?.call(this);
@@ -299,6 +334,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_CreateSuccess value)? createSuccess,
+    TResult Function(_UpdateSuccess value)? updateSuccess,
+    TResult Function(_DeleteSuccess value)? deleteSuccess,
     TResult Function(_ActionFailure value)? actionFailure,
     required TResult orElse(),
   }) {
@@ -310,29 +347,29 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements AddProductState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress() = _$ActionInProgressImpl;
 }
 
 /// @nodoc
-abstract class _$$_CreateSuccessCopyWith<$Res> {
-  factory _$$_CreateSuccessCopyWith(
-          _$_CreateSuccess value, $Res Function(_$_CreateSuccess) then) =
-      __$$_CreateSuccessCopyWithImpl<$Res>;
+abstract class _$$CreateSuccessImplCopyWith<$Res> {
+  factory _$$CreateSuccessImplCopyWith(
+          _$CreateSuccessImpl value, $Res Function(_$CreateSuccessImpl) then) =
+      __$$CreateSuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_CreateSuccessCopyWithImpl<$Res>
-    extends _$AddProductStateCopyWithImpl<$Res, _$_CreateSuccess>
-    implements _$$_CreateSuccessCopyWith<$Res> {
-  __$$_CreateSuccessCopyWithImpl(
-      _$_CreateSuccess _value, $Res Function(_$_CreateSuccess) _then)
+class __$$CreateSuccessImplCopyWithImpl<$Res>
+    extends _$AddProductStateCopyWithImpl<$Res, _$CreateSuccessImpl>
+    implements _$$CreateSuccessImplCopyWith<$Res> {
+  __$$CreateSuccessImplCopyWithImpl(
+      _$CreateSuccessImpl _value, $Res Function(_$CreateSuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_CreateSuccess implements _CreateSuccess {
-  const _$_CreateSuccess();
+class _$CreateSuccessImpl implements _CreateSuccess {
+  const _$CreateSuccessImpl();
 
   @override
   String toString() {
@@ -342,7 +379,7 @@ class _$_CreateSuccess implements _CreateSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CreateSuccess);
+        (other.runtimeType == runtimeType && other is _$CreateSuccessImpl);
   }
 
   @override
@@ -354,6 +391,8 @@ class _$_CreateSuccess implements _CreateSuccess {
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function() createSuccess,
+    required TResult Function() updateSuccess,
+    required TResult Function() deleteSuccess,
     required TResult Function(ProductFailure productFailure) actionFailure,
   }) {
     return createSuccess();
@@ -365,6 +404,8 @@ class _$_CreateSuccess implements _CreateSuccess {
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
     TResult? Function()? createSuccess,
+    TResult? Function()? updateSuccess,
+    TResult? Function()? deleteSuccess,
     TResult? Function(ProductFailure productFailure)? actionFailure,
   }) {
     return createSuccess?.call();
@@ -376,6 +417,8 @@ class _$_CreateSuccess implements _CreateSuccess {
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function()? createSuccess,
+    TResult Function()? updateSuccess,
+    TResult Function()? deleteSuccess,
     TResult Function(ProductFailure productFailure)? actionFailure,
     required TResult orElse(),
   }) {
@@ -391,6 +434,8 @@ class _$_CreateSuccess implements _CreateSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_CreateSuccess value) createSuccess,
+    required TResult Function(_UpdateSuccess value) updateSuccess,
+    required TResult Function(_DeleteSuccess value) deleteSuccess,
     required TResult Function(_ActionFailure value) actionFailure,
   }) {
     return createSuccess(this);
@@ -402,6 +447,8 @@ class _$_CreateSuccess implements _CreateSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_CreateSuccess value)? createSuccess,
+    TResult? Function(_UpdateSuccess value)? updateSuccess,
+    TResult? Function(_DeleteSuccess value)? deleteSuccess,
     TResult? Function(_ActionFailure value)? actionFailure,
   }) {
     return createSuccess?.call(this);
@@ -413,6 +460,8 @@ class _$_CreateSuccess implements _CreateSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_CreateSuccess value)? createSuccess,
+    TResult Function(_UpdateSuccess value)? updateSuccess,
+    TResult Function(_DeleteSuccess value)? deleteSuccess,
     TResult Function(_ActionFailure value)? actionFailure,
     required TResult orElse(),
   }) {
@@ -424,14 +473,266 @@ class _$_CreateSuccess implements _CreateSuccess {
 }
 
 abstract class _CreateSuccess implements AddProductState {
-  const factory _CreateSuccess() = _$_CreateSuccess;
+  const factory _CreateSuccess() = _$CreateSuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionFailureCopyWith<$Res> {
-  factory _$$_ActionFailureCopyWith(
-          _$_ActionFailure value, $Res Function(_$_ActionFailure) then) =
-      __$$_ActionFailureCopyWithImpl<$Res>;
+abstract class _$$UpdateSuccessImplCopyWith<$Res> {
+  factory _$$UpdateSuccessImplCopyWith(
+          _$UpdateSuccessImpl value, $Res Function(_$UpdateSuccessImpl) then) =
+      __$$UpdateSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateSuccessImplCopyWithImpl<$Res>
+    extends _$AddProductStateCopyWithImpl<$Res, _$UpdateSuccessImpl>
+    implements _$$UpdateSuccessImplCopyWith<$Res> {
+  __$$UpdateSuccessImplCopyWithImpl(
+      _$UpdateSuccessImpl _value, $Res Function(_$UpdateSuccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UpdateSuccessImpl implements _UpdateSuccess {
+  const _$UpdateSuccessImpl();
+
+  @override
+  String toString() {
+    return 'AddProductState.updateSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() actionInProgress,
+    required TResult Function() createSuccess,
+    required TResult Function() updateSuccess,
+    required TResult Function() deleteSuccess,
+    required TResult Function(ProductFailure productFailure) actionFailure,
+  }) {
+    return updateSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function()? createSuccess,
+    TResult? Function()? updateSuccess,
+    TResult? Function()? deleteSuccess,
+    TResult? Function(ProductFailure productFailure)? actionFailure,
+  }) {
+    return updateSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function()? createSuccess,
+    TResult Function()? updateSuccess,
+    TResult Function()? deleteSuccess,
+    TResult Function(ProductFailure productFailure)? actionFailure,
+    required TResult orElse(),
+  }) {
+    if (updateSuccess != null) {
+      return updateSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_CreateSuccess value) createSuccess,
+    required TResult Function(_UpdateSuccess value) updateSuccess,
+    required TResult Function(_DeleteSuccess value) deleteSuccess,
+    required TResult Function(_ActionFailure value) actionFailure,
+  }) {
+    return updateSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_CreateSuccess value)? createSuccess,
+    TResult? Function(_UpdateSuccess value)? updateSuccess,
+    TResult? Function(_DeleteSuccess value)? deleteSuccess,
+    TResult? Function(_ActionFailure value)? actionFailure,
+  }) {
+    return updateSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_CreateSuccess value)? createSuccess,
+    TResult Function(_UpdateSuccess value)? updateSuccess,
+    TResult Function(_DeleteSuccess value)? deleteSuccess,
+    TResult Function(_ActionFailure value)? actionFailure,
+    required TResult orElse(),
+  }) {
+    if (updateSuccess != null) {
+      return updateSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateSuccess implements AddProductState {
+  const factory _UpdateSuccess() = _$UpdateSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteSuccessImplCopyWith<$Res> {
+  factory _$$DeleteSuccessImplCopyWith(
+          _$DeleteSuccessImpl value, $Res Function(_$DeleteSuccessImpl) then) =
+      __$$DeleteSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteSuccessImplCopyWithImpl<$Res>
+    extends _$AddProductStateCopyWithImpl<$Res, _$DeleteSuccessImpl>
+    implements _$$DeleteSuccessImplCopyWith<$Res> {
+  __$$DeleteSuccessImplCopyWithImpl(
+      _$DeleteSuccessImpl _value, $Res Function(_$DeleteSuccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteSuccessImpl implements _DeleteSuccess {
+  const _$DeleteSuccessImpl();
+
+  @override
+  String toString() {
+    return 'AddProductState.deleteSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() actionInProgress,
+    required TResult Function() createSuccess,
+    required TResult Function() updateSuccess,
+    required TResult Function() deleteSuccess,
+    required TResult Function(ProductFailure productFailure) actionFailure,
+  }) {
+    return deleteSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? actionInProgress,
+    TResult? Function()? createSuccess,
+    TResult? Function()? updateSuccess,
+    TResult? Function()? deleteSuccess,
+    TResult? Function(ProductFailure productFailure)? actionFailure,
+  }) {
+    return deleteSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionInProgress,
+    TResult Function()? createSuccess,
+    TResult Function()? updateSuccess,
+    TResult Function()? deleteSuccess,
+    TResult Function(ProductFailure productFailure)? actionFailure,
+    required TResult orElse(),
+  }) {
+    if (deleteSuccess != null) {
+      return deleteSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionInProgress value) actionInProgress,
+    required TResult Function(_CreateSuccess value) createSuccess,
+    required TResult Function(_UpdateSuccess value) updateSuccess,
+    required TResult Function(_DeleteSuccess value) deleteSuccess,
+    required TResult Function(_ActionFailure value) actionFailure,
+  }) {
+    return deleteSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ActionInProgress value)? actionInProgress,
+    TResult? Function(_CreateSuccess value)? createSuccess,
+    TResult? Function(_UpdateSuccess value)? updateSuccess,
+    TResult? Function(_DeleteSuccess value)? deleteSuccess,
+    TResult? Function(_ActionFailure value)? actionFailure,
+  }) {
+    return deleteSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionInProgress value)? actionInProgress,
+    TResult Function(_CreateSuccess value)? createSuccess,
+    TResult Function(_UpdateSuccess value)? updateSuccess,
+    TResult Function(_DeleteSuccess value)? deleteSuccess,
+    TResult Function(_ActionFailure value)? actionFailure,
+    required TResult orElse(),
+  }) {
+    if (deleteSuccess != null) {
+      return deleteSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteSuccess implements AddProductState {
+  const factory _DeleteSuccess() = _$DeleteSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$ActionFailureImplCopyWith<$Res> {
+  factory _$$ActionFailureImplCopyWith(
+          _$ActionFailureImpl value, $Res Function(_$ActionFailureImpl) then) =
+      __$$ActionFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ProductFailure productFailure});
 
@@ -439,11 +740,11 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ActionFailureCopyWithImpl<$Res>
-    extends _$AddProductStateCopyWithImpl<$Res, _$_ActionFailure>
-    implements _$$_ActionFailureCopyWith<$Res> {
-  __$$_ActionFailureCopyWithImpl(
-      _$_ActionFailure _value, $Res Function(_$_ActionFailure) _then)
+class __$$ActionFailureImplCopyWithImpl<$Res>
+    extends _$AddProductStateCopyWithImpl<$Res, _$ActionFailureImpl>
+    implements _$$ActionFailureImplCopyWith<$Res> {
+  __$$ActionFailureImplCopyWithImpl(
+      _$ActionFailureImpl _value, $Res Function(_$ActionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -451,7 +752,7 @@ class __$$_ActionFailureCopyWithImpl<$Res>
   $Res call({
     Object? productFailure = null,
   }) {
-    return _then(_$_ActionFailure(
+    return _then(_$ActionFailureImpl(
       null == productFailure
           ? _value.productFailure
           : productFailure // ignore: cast_nullable_to_non_nullable
@@ -470,8 +771,8 @@ class __$$_ActionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionFailure implements _ActionFailure {
-  const _$_ActionFailure(this.productFailure);
+class _$ActionFailureImpl implements _ActionFailure {
+  const _$ActionFailureImpl(this.productFailure);
 
   @override
   final ProductFailure productFailure;
@@ -485,7 +786,7 @@ class _$_ActionFailure implements _ActionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActionFailure &&
+            other is _$ActionFailureImpl &&
             (identical(other.productFailure, productFailure) ||
                 other.productFailure == productFailure));
   }
@@ -496,8 +797,8 @@ class _$_ActionFailure implements _ActionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
-      __$$_ActionFailureCopyWithImpl<_$_ActionFailure>(this, _$identity);
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      __$$ActionFailureImplCopyWithImpl<_$ActionFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -505,6 +806,8 @@ class _$_ActionFailure implements _ActionFailure {
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function() createSuccess,
+    required TResult Function() updateSuccess,
+    required TResult Function() deleteSuccess,
     required TResult Function(ProductFailure productFailure) actionFailure,
   }) {
     return actionFailure(productFailure);
@@ -516,6 +819,8 @@ class _$_ActionFailure implements _ActionFailure {
     TResult? Function()? initial,
     TResult? Function()? actionInProgress,
     TResult? Function()? createSuccess,
+    TResult? Function()? updateSuccess,
+    TResult? Function()? deleteSuccess,
     TResult? Function(ProductFailure productFailure)? actionFailure,
   }) {
     return actionFailure?.call(productFailure);
@@ -527,6 +832,8 @@ class _$_ActionFailure implements _ActionFailure {
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function()? createSuccess,
+    TResult Function()? updateSuccess,
+    TResult Function()? deleteSuccess,
     TResult Function(ProductFailure productFailure)? actionFailure,
     required TResult orElse(),
   }) {
@@ -542,6 +849,8 @@ class _$_ActionFailure implements _ActionFailure {
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionInProgress value) actionInProgress,
     required TResult Function(_CreateSuccess value) createSuccess,
+    required TResult Function(_UpdateSuccess value) updateSuccess,
+    required TResult Function(_DeleteSuccess value) deleteSuccess,
     required TResult Function(_ActionFailure value) actionFailure,
   }) {
     return actionFailure(this);
@@ -553,6 +862,8 @@ class _$_ActionFailure implements _ActionFailure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_ActionInProgress value)? actionInProgress,
     TResult? Function(_CreateSuccess value)? createSuccess,
+    TResult? Function(_UpdateSuccess value)? updateSuccess,
+    TResult? Function(_DeleteSuccess value)? deleteSuccess,
     TResult? Function(_ActionFailure value)? actionFailure,
   }) {
     return actionFailure?.call(this);
@@ -564,6 +875,8 @@ class _$_ActionFailure implements _ActionFailure {
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionInProgress value)? actionInProgress,
     TResult Function(_CreateSuccess value)? createSuccess,
+    TResult Function(_UpdateSuccess value)? updateSuccess,
+    TResult Function(_DeleteSuccess value)? deleteSuccess,
     TResult Function(_ActionFailure value)? actionFailure,
     required TResult orElse(),
   }) {
@@ -576,10 +889,10 @@ class _$_ActionFailure implements _ActionFailure {
 
 abstract class _ActionFailure implements AddProductState {
   const factory _ActionFailure(final ProductFailure productFailure) =
-      _$_ActionFailure;
+      _$ActionFailureImpl;
 
   ProductFailure get productFailure;
   @JsonKey(ignore: true)
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

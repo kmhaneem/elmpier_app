@@ -3,7 +3,6 @@ import 'package:frontend/domain/product/model/search.dart';
 part 'search_dtos.freezed.dart';
 part 'search_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class SearchProductDto with _$SearchProductDto {
   const factory SearchProductDto({

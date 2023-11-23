@@ -92,11 +92,11 @@ class _$MessageDtoCopyWithImpl<$Res, $Val extends MessageDto>
 }
 
 /// @nodoc
-abstract class _$$_MessageDtoCopyWith<$Res>
+abstract class _$$MessageDtoImplCopyWith<$Res>
     implements $MessageDtoCopyWith<$Res> {
-  factory _$$_MessageDtoCopyWith(
-          _$_MessageDto value, $Res Function(_$_MessageDto) then) =
-      __$$_MessageDtoCopyWithImpl<$Res>;
+  factory _$$MessageDtoImplCopyWith(
+          _$MessageDtoImpl value, $Res Function(_$MessageDtoImpl) then) =
+      __$$MessageDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -108,11 +108,11 @@ abstract class _$$_MessageDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MessageDtoCopyWithImpl<$Res>
-    extends _$MessageDtoCopyWithImpl<$Res, _$_MessageDto>
-    implements _$$_MessageDtoCopyWith<$Res> {
-  __$$_MessageDtoCopyWithImpl(
-      _$_MessageDto _value, $Res Function(_$_MessageDto) _then)
+class __$$MessageDtoImplCopyWithImpl<$Res>
+    extends _$MessageDtoCopyWithImpl<$Res, _$MessageDtoImpl>
+    implements _$$MessageDtoImplCopyWith<$Res> {
+  __$$MessageDtoImplCopyWithImpl(
+      _$MessageDtoImpl _value, $Res Function(_$MessageDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,7 +124,7 @@ class __$$_MessageDtoCopyWithImpl<$Res>
     Object? content = null,
     Object? timestamp = null,
   }) {
-    return _then(_$_MessageDto(
+    return _then(_$MessageDtoImpl(
       senderId: null == senderId
           ? _value.senderId
           : senderId // ignore: cast_nullable_to_non_nullable
@@ -151,8 +151,8 @@ class __$$_MessageDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MessageDto extends _MessageDto {
-  const _$_MessageDto(
+class _$MessageDtoImpl extends _MessageDto {
+  const _$MessageDtoImpl(
       {required this.senderId,
       required this.senderEmail,
       required this.receiverId,
@@ -160,8 +160,8 @@ class _$_MessageDto extends _MessageDto {
       @TimestampConverter() required this.timestamp})
       : super._();
 
-  factory _$_MessageDto.fromJson(Map<String, dynamic> json) =>
-      _$$_MessageDtoFromJson(json);
+  factory _$MessageDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageDtoImplFromJson(json);
 
   @override
   final String senderId;
@@ -184,7 +184,7 @@ class _$_MessageDto extends _MessageDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MessageDto &&
+            other is _$MessageDtoImpl &&
             (identical(other.senderId, senderId) ||
                 other.senderId == senderId) &&
             (identical(other.senderEmail, senderEmail) ||
@@ -204,12 +204,12 @@ class _$_MessageDto extends _MessageDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MessageDtoCopyWith<_$_MessageDto> get copyWith =>
-      __$$_MessageDtoCopyWithImpl<_$_MessageDto>(this, _$identity);
+  _$$MessageDtoImplCopyWith<_$MessageDtoImpl> get copyWith =>
+      __$$MessageDtoImplCopyWithImpl<_$MessageDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MessageDtoToJson(
+    return _$$MessageDtoImplToJson(
       this,
     );
   }
@@ -222,11 +222,11 @@ abstract class _MessageDto extends MessageDto {
           required final String receiverId,
           required final String content,
           @TimestampConverter() required final Timestamp timestamp}) =
-      _$_MessageDto;
+      _$MessageDtoImpl;
   const _MessageDto._() : super._();
 
   factory _MessageDto.fromJson(Map<String, dynamic> json) =
-      _$_MessageDto.fromJson;
+      _$MessageDtoImpl.fromJson;
 
   @override
   String get senderId;
@@ -241,6 +241,6 @@ abstract class _MessageDto extends MessageDto {
   Timestamp get timestamp;
   @override
   @JsonKey(ignore: true)
-  _$$_MessageDtoCopyWith<_$_MessageDto> get copyWith =>
+  _$$MessageDtoImplCopyWith<_$MessageDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

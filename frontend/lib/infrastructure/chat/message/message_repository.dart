@@ -33,24 +33,20 @@ class MessageRepository implements IMessageRepository {
     ids.sort();
     String chatRoomId = ids.join("_");
 
-    // Check if the chat room exists
     final chatRoomDoc =
         await _fireStore.collection('chat_rooms').doc(chatRoomId).get();
     if (!chatRoomDoc.exists) {
-      // If the chat room doesn't exist, create it with the participants field
       await _fireStore.collection('chat_rooms').doc(chatRoomId).set({
         'participants': ids,
       });
     }
 
-    // Add the new message to the messages collection
     await _fireStore
         .collection('chat_rooms')
         .doc(chatRoomId)
         .collection('messages')
         .add(newMessageDto.toJson());
 
-    // Update the lastMessage field in the chat_rooms document
     await _fireStore.collection('chat_rooms').doc(chatRoomId).update({
       'lastMessage': {
         'content': message,

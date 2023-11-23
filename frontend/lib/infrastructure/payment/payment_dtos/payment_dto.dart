@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'payment_dto.freezed.dart';
 part 'payment_dto.g.dart';
 
-// @JsonSerializable()
 @freezed
 class PaymentDto with _$PaymentDto {
   const PaymentDto._();

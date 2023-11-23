@@ -14,7 +14,6 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
     state = const CategoryState.loadInProgress();
     final failureOrCategories = await _iProductRepository.getAllCategories();
     state = failureOrCategories.fold((f) {
-      print("Error fetching categories: $f");
       return CategoryState.loadFailure(f);
     }, (categories) => CategoryState.loadSuccess(categories));
   }

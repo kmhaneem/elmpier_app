@@ -68,21 +68,22 @@ class _$DistrictCopyWithImpl<$Res, $Val extends District>
 }
 
 /// @nodoc
-abstract class _$$_DistrictCopyWith<$Res> implements $DistrictCopyWith<$Res> {
-  factory _$$_DistrictCopyWith(
-          _$_District value, $Res Function(_$_District) then) =
-      __$$_DistrictCopyWithImpl<$Res>;
+abstract class _$$DistrictImplCopyWith<$Res>
+    implements $DistrictCopyWith<$Res> {
+  factory _$$DistrictImplCopyWith(
+          _$DistrictImpl value, $Res Function(_$DistrictImpl) then) =
+      __$$DistrictImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name, int provinceId});
 }
 
 /// @nodoc
-class __$$_DistrictCopyWithImpl<$Res>
-    extends _$DistrictCopyWithImpl<$Res, _$_District>
-    implements _$$_DistrictCopyWith<$Res> {
-  __$$_DistrictCopyWithImpl(
-      _$_District _value, $Res Function(_$_District) _then)
+class __$$DistrictImplCopyWithImpl<$Res>
+    extends _$DistrictCopyWithImpl<$Res, _$DistrictImpl>
+    implements _$$DistrictImplCopyWith<$Res> {
+  __$$DistrictImplCopyWithImpl(
+      _$DistrictImpl _value, $Res Function(_$DistrictImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +93,7 @@ class __$$_DistrictCopyWithImpl<$Res>
     Object? name = null,
     Object? provinceId = null,
   }) {
-    return _then(_$_District(
+    return _then(_$DistrictImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -111,8 +112,8 @@ class __$$_DistrictCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_District implements _District {
-  const _$_District(
+class _$DistrictImpl implements _District {
+  const _$DistrictImpl(
       {required this.id, required this.name, required this.provinceId});
 
   @override
@@ -131,7 +132,7 @@ class _$_District implements _District {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_District &&
+            other is _$DistrictImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.provinceId, provinceId) ||
@@ -144,15 +145,15 @@ class _$_District implements _District {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DistrictCopyWith<_$_District> get copyWith =>
-      __$$_DistrictCopyWithImpl<_$_District>(this, _$identity);
+  _$$DistrictImplCopyWith<_$DistrictImpl> get copyWith =>
+      __$$DistrictImplCopyWithImpl<_$DistrictImpl>(this, _$identity);
 }
 
 abstract class _District implements District {
   const factory _District(
       {required final int id,
       required final String name,
-      required final int provinceId}) = _$_District;
+      required final int provinceId}) = _$DistrictImpl;
 
   @override
   int get id;
@@ -162,6 +163,6 @@ abstract class _District implements District {
   int get provinceId;
   @override
   @JsonKey(ignore: true)
-  _$$_DistrictCopyWith<_$_District> get copyWith =>
+  _$$DistrictImplCopyWith<_$DistrictImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -93,24 +93,25 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$WalletStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$WalletStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -120,7 +121,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -208,29 +209,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements WalletState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionInProgressCopyWith<$Res> {
-  factory _$$_ActionInProgressCopyWith(
-          _$_ActionInProgress value, $Res Function(_$_ActionInProgress) then) =
-      __$$_ActionInProgressCopyWithImpl<$Res>;
+abstract class _$$ActionInProgressImplCopyWith<$Res> {
+  factory _$$ActionInProgressImplCopyWith(_$ActionInProgressImpl value,
+          $Res Function(_$ActionInProgressImpl) then) =
+      __$$ActionInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$WalletStateCopyWithImpl<$Res, _$_ActionInProgress>
-    implements _$$_ActionInProgressCopyWith<$Res> {
-  __$$_ActionInProgressCopyWithImpl(
-      _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
+class __$$ActionInProgressImplCopyWithImpl<$Res>
+    extends _$WalletStateCopyWithImpl<$Res, _$ActionInProgressImpl>
+    implements _$$ActionInProgressImplCopyWith<$Res> {
+  __$$ActionInProgressImplCopyWithImpl(_$ActionInProgressImpl _value,
+      $Res Function(_$ActionInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+class _$ActionInProgressImpl implements _ActionInProgress {
+  const _$ActionInProgressImpl();
 
   @override
   String toString() {
@@ -240,7 +241,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionInProgress);
+        (other.runtimeType == runtimeType && other is _$ActionInProgressImpl);
   }
 
   @override
@@ -328,14 +329,14 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements WalletState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress() = _$ActionInProgressImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionFailureCopyWith<$Res> {
-  factory _$$_ActionFailureCopyWith(
-          _$_ActionFailure value, $Res Function(_$_ActionFailure) then) =
-      __$$_ActionFailureCopyWithImpl<$Res>;
+abstract class _$$ActionFailureImplCopyWith<$Res> {
+  factory _$$ActionFailureImplCopyWith(
+          _$ActionFailureImpl value, $Res Function(_$ActionFailureImpl) then) =
+      __$$ActionFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WalletFailure walletFailure});
 
@@ -343,11 +344,11 @@ abstract class _$$_ActionFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ActionFailureCopyWithImpl<$Res>
-    extends _$WalletStateCopyWithImpl<$Res, _$_ActionFailure>
-    implements _$$_ActionFailureCopyWith<$Res> {
-  __$$_ActionFailureCopyWithImpl(
-      _$_ActionFailure _value, $Res Function(_$_ActionFailure) _then)
+class __$$ActionFailureImplCopyWithImpl<$Res>
+    extends _$WalletStateCopyWithImpl<$Res, _$ActionFailureImpl>
+    implements _$$ActionFailureImplCopyWith<$Res> {
+  __$$ActionFailureImplCopyWithImpl(
+      _$ActionFailureImpl _value, $Res Function(_$ActionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -355,7 +356,7 @@ class __$$_ActionFailureCopyWithImpl<$Res>
   $Res call({
     Object? walletFailure = null,
   }) {
-    return _then(_$_ActionFailure(
+    return _then(_$ActionFailureImpl(
       null == walletFailure
           ? _value.walletFailure
           : walletFailure // ignore: cast_nullable_to_non_nullable
@@ -374,8 +375,8 @@ class __$$_ActionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActionFailure implements _ActionFailure {
-  const _$_ActionFailure(this.walletFailure);
+class _$ActionFailureImpl implements _ActionFailure {
+  const _$ActionFailureImpl(this.walletFailure);
 
   @override
   final WalletFailure walletFailure;
@@ -389,7 +390,7 @@ class _$_ActionFailure implements _ActionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActionFailure &&
+            other is _$ActionFailureImpl &&
             (identical(other.walletFailure, walletFailure) ||
                 other.walletFailure == walletFailure));
   }
@@ -400,8 +401,8 @@ class _$_ActionFailure implements _ActionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
-      __$$_ActionFailureCopyWithImpl<_$_ActionFailure>(this, _$identity);
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
+      __$$ActionFailureImplCopyWithImpl<_$ActionFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -486,19 +487,19 @@ class _$_ActionFailure implements _ActionFailure {
 
 abstract class _ActionFailure implements WalletState {
   const factory _ActionFailure(final WalletFailure walletFailure) =
-      _$_ActionFailure;
+      _$ActionFailureImpl;
 
   WalletFailure get walletFailure;
   @JsonKey(ignore: true)
-  _$$_ActionFailureCopyWith<_$_ActionFailure> get copyWith =>
+  _$$ActionFailureImplCopyWith<_$ActionFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WalletLoadedCopyWith<$Res> {
-  factory _$$_WalletLoadedCopyWith(
-          _$_WalletLoaded value, $Res Function(_$_WalletLoaded) then) =
-      __$$_WalletLoadedCopyWithImpl<$Res>;
+abstract class _$$WalletLoadedImplCopyWith<$Res> {
+  factory _$$WalletLoadedImplCopyWith(
+          _$WalletLoadedImpl value, $Res Function(_$WalletLoadedImpl) then) =
+      __$$WalletLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Wallet wallet});
 
@@ -506,11 +507,11 @@ abstract class _$$_WalletLoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_WalletLoadedCopyWithImpl<$Res>
-    extends _$WalletStateCopyWithImpl<$Res, _$_WalletLoaded>
-    implements _$$_WalletLoadedCopyWith<$Res> {
-  __$$_WalletLoadedCopyWithImpl(
-      _$_WalletLoaded _value, $Res Function(_$_WalletLoaded) _then)
+class __$$WalletLoadedImplCopyWithImpl<$Res>
+    extends _$WalletStateCopyWithImpl<$Res, _$WalletLoadedImpl>
+    implements _$$WalletLoadedImplCopyWith<$Res> {
+  __$$WalletLoadedImplCopyWithImpl(
+      _$WalletLoadedImpl _value, $Res Function(_$WalletLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -518,7 +519,7 @@ class __$$_WalletLoadedCopyWithImpl<$Res>
   $Res call({
     Object? wallet = null,
   }) {
-    return _then(_$_WalletLoaded(
+    return _then(_$WalletLoadedImpl(
       null == wallet
           ? _value.wallet
           : wallet // ignore: cast_nullable_to_non_nullable
@@ -537,8 +538,8 @@ class __$$_WalletLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WalletLoaded implements _WalletLoaded {
-  const _$_WalletLoaded(this.wallet);
+class _$WalletLoadedImpl implements _WalletLoaded {
+  const _$WalletLoadedImpl(this.wallet);
 
   @override
   final Wallet wallet;
@@ -552,7 +553,7 @@ class _$_WalletLoaded implements _WalletLoaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WalletLoaded &&
+            other is _$WalletLoadedImpl &&
             (identical(other.wallet, wallet) || other.wallet == wallet));
   }
 
@@ -562,8 +563,8 @@ class _$_WalletLoaded implements _WalletLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WalletLoadedCopyWith<_$_WalletLoaded> get copyWith =>
-      __$$_WalletLoadedCopyWithImpl<_$_WalletLoaded>(this, _$identity);
+  _$$WalletLoadedImplCopyWith<_$WalletLoadedImpl> get copyWith =>
+      __$$WalletLoadedImplCopyWithImpl<_$WalletLoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -647,34 +648,34 @@ class _$_WalletLoaded implements _WalletLoaded {
 }
 
 abstract class _WalletLoaded implements WalletState {
-  const factory _WalletLoaded(final Wallet wallet) = _$_WalletLoaded;
+  const factory _WalletLoaded(final Wallet wallet) = _$WalletLoadedImpl;
 
   Wallet get wallet;
   @JsonKey(ignore: true)
-  _$$_WalletLoadedCopyWith<_$_WalletLoaded> get copyWith =>
+  _$$WalletLoadedImplCopyWith<_$WalletLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WalledAmountAddedCopyWith<$Res> {
-  factory _$$_WalledAmountAddedCopyWith(_$_WalledAmountAdded value,
-          $Res Function(_$_WalledAmountAdded) then) =
-      __$$_WalledAmountAddedCopyWithImpl<$Res>;
+abstract class _$$WalledAmountAddedImplCopyWith<$Res> {
+  factory _$$WalledAmountAddedImplCopyWith(_$WalledAmountAddedImpl value,
+          $Res Function(_$WalledAmountAddedImpl) then) =
+      __$$WalledAmountAddedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WalledAmountAddedCopyWithImpl<$Res>
-    extends _$WalletStateCopyWithImpl<$Res, _$_WalledAmountAdded>
-    implements _$$_WalledAmountAddedCopyWith<$Res> {
-  __$$_WalledAmountAddedCopyWithImpl(
-      _$_WalledAmountAdded _value, $Res Function(_$_WalledAmountAdded) _then)
+class __$$WalledAmountAddedImplCopyWithImpl<$Res>
+    extends _$WalletStateCopyWithImpl<$Res, _$WalledAmountAddedImpl>
+    implements _$$WalledAmountAddedImplCopyWith<$Res> {
+  __$$WalledAmountAddedImplCopyWithImpl(_$WalledAmountAddedImpl _value,
+      $Res Function(_$WalledAmountAddedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_WalledAmountAdded implements _WalledAmountAdded {
-  const _$_WalledAmountAdded();
+class _$WalledAmountAddedImpl implements _WalledAmountAdded {
+  const _$WalledAmountAddedImpl();
 
   @override
   String toString() {
@@ -684,7 +685,7 @@ class _$_WalledAmountAdded implements _WalledAmountAdded {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WalledAmountAdded);
+        (other.runtimeType == runtimeType && other is _$WalledAmountAddedImpl);
   }
 
   @override
@@ -772,5 +773,5 @@ class _$_WalledAmountAdded implements _WalledAmountAdded {
 }
 
 abstract class _WalledAmountAdded implements WalletState {
-  const factory _WalledAmountAdded() = _$_WalledAmountAdded;
+  const factory _WalledAmountAdded() = _$WalledAmountAddedImpl;
 }

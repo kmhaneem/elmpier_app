@@ -119,9 +119,10 @@ class _$AuthCopyWithImpl<$Res, $Val extends Auth>
 }
 
 /// @nodoc
-abstract class _$$_AuthCopyWith<$Res> implements $AuthCopyWith<$Res> {
-  factory _$$_AuthCopyWith(_$_Auth value, $Res Function(_$_Auth) then) =
-      __$$_AuthCopyWithImpl<$Res>;
+abstract class _$$AuthImplCopyWith<$Res> implements $AuthCopyWith<$Res> {
+  factory _$$AuthImplCopyWith(
+          _$AuthImpl value, $Res Function(_$AuthImpl) then) =
+      __$$AuthImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -138,9 +139,10 @@ abstract class _$$_AuthCopyWith<$Res> implements $AuthCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AuthCopyWithImpl<$Res> extends _$AuthCopyWithImpl<$Res, _$_Auth>
-    implements _$$_AuthCopyWith<$Res> {
-  __$$_AuthCopyWithImpl(_$_Auth _value, $Res Function(_$_Auth) _then)
+class __$$AuthImplCopyWithImpl<$Res>
+    extends _$AuthCopyWithImpl<$Res, _$AuthImpl>
+    implements _$$AuthImplCopyWith<$Res> {
+  __$$AuthImplCopyWithImpl(_$AuthImpl _value, $Res Function(_$AuthImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,7 +159,7 @@ class __$$_AuthCopyWithImpl<$Res> extends _$AuthCopyWithImpl<$Res, _$_Auth>
     Object? profile = null,
     Object? verified = null,
   }) {
-    return _then(_$_Auth(
+    return _then(_$AuthImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -204,8 +206,8 @@ class __$$_AuthCopyWithImpl<$Res> extends _$AuthCopyWithImpl<$Res, _$_Auth>
 
 /// @nodoc
 
-class _$_Auth extends _Auth {
-  const _$_Auth(
+class _$AuthImpl extends _Auth {
+  const _$AuthImpl(
       {required this.id,
       required this.email,
       required this.phone,
@@ -248,7 +250,7 @@ class _$_Auth extends _Auth {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Auth &&
+            other is _$AuthImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
@@ -272,8 +274,8 @@ class _$_Auth extends _Auth {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthCopyWith<_$_Auth> get copyWith =>
-      __$$_AuthCopyWithImpl<_$_Auth>(this, _$identity);
+  _$$AuthImplCopyWith<_$AuthImpl> get copyWith =>
+      __$$AuthImplCopyWithImpl<_$AuthImpl>(this, _$identity);
 }
 
 abstract class _Auth extends Auth {
@@ -287,7 +289,7 @@ abstract class _Auth extends Auth {
       required final FirstName firstname,
       required final LastName lastname,
       required final String profile,
-      required final bool verified}) = _$_Auth;
+      required final bool verified}) = _$AuthImpl;
   const _Auth._() : super._();
 
   @override
@@ -312,5 +314,6 @@ abstract class _Auth extends Auth {
   bool get verified;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthCopyWith<_$_Auth> get copyWith => throw _privateConstructorUsedError;
+  _$$AuthImplCopyWith<_$AuthImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

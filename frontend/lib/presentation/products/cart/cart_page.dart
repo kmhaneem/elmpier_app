@@ -86,7 +86,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment
-                                .spaceBetween, // Ensure widgets are spaced out
+                                .spaceBetween, 
                             children: [
                               Padding(
                                 padding:
@@ -110,7 +110,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                 padding:
                                     const EdgeInsets.only(top: 20, bottom: 20),
                                 child: Text(
-                                  "Total: Rs.${NumberFormat('#,##0').format(cartItem.price)* cartItem.itemQty}.00",
+                                  "Total: Rs.${NumberFormat('#,##0').format(cartItem.price) * cartItem.itemQty}.00",
                                   style: const TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey,
@@ -168,18 +168,6 @@ class _CartPageState extends ConsumerState<CartPage> {
             ),
           ),
         ),
-        // child: ElevatedButton(
-        //   onPressed: () {
-        //     context.router.push(CheckoutRoute());
-        //   },
-        // child: Text("Checkout (${numberOfItemsInCart()})"),
-        //   style: ElevatedButton.styleFrom(
-        //     primary: Theme.of(context).primaryColor,
-        //     onPrimary: Colors.white,
-        //     padding: EdgeInsets.symmetric(vertical: 12),
-        //     textStyle: TextStyle(fontSize: 20),
-        //   ),
-        // ),
       ),
     );
   }

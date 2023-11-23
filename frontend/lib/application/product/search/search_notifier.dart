@@ -13,7 +13,6 @@ class SearchNotifier extends StateNotifier<SearchState> {
         await _iProductRepository.getAllSearchedProducts(query, userId);
     state = failureOrProducts.fold(
       (f) {
-        print("Error fetching products: $f");
         return SearchState.loadFailure(f);
       },
       (products) => SearchState.loadSuccess(products),

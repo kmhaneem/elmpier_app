@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OrderItem {
+  int get id => throw _privateConstructorUsedError;
   int get orderId => throw _privateConstructorUsedError;
   int get productId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -34,7 +35,8 @@ abstract class $OrderItemCopyWith<$Res> {
       _$OrderItemCopyWithImpl<$Res, OrderItem>;
   @useResult
   $Res call(
-      {int orderId,
+      {int id,
+      int orderId,
       int productId,
       String name,
       int price,
@@ -55,6 +57,7 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? orderId = null,
     Object? productId = null,
     Object? name = null,
@@ -63,6 +66,10 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
     Object? itemQty = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -92,14 +99,16 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
 }
 
 /// @nodoc
-abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
-  factory _$$_OrderItemCopyWith(
-          _$_OrderItem value, $Res Function(_$_OrderItem) then) =
-      __$$_OrderItemCopyWithImpl<$Res>;
+abstract class _$$OrderItemImplCopyWith<$Res>
+    implements $OrderItemCopyWith<$Res> {
+  factory _$$OrderItemImplCopyWith(
+          _$OrderItemImpl value, $Res Function(_$OrderItemImpl) then) =
+      __$$OrderItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int orderId,
+      {int id,
+      int orderId,
       int productId,
       String name,
       int price,
@@ -108,16 +117,17 @@ abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OrderItemCopyWithImpl<$Res>
-    extends _$OrderItemCopyWithImpl<$Res, _$_OrderItem>
-    implements _$$_OrderItemCopyWith<$Res> {
-  __$$_OrderItemCopyWithImpl(
-      _$_OrderItem _value, $Res Function(_$_OrderItem) _then)
+class __$$OrderItemImplCopyWithImpl<$Res>
+    extends _$OrderItemCopyWithImpl<$Res, _$OrderItemImpl>
+    implements _$$OrderItemImplCopyWith<$Res> {
+  __$$OrderItemImplCopyWithImpl(
+      _$OrderItemImpl _value, $Res Function(_$OrderItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? orderId = null,
     Object? productId = null,
     Object? name = null,
@@ -125,7 +135,11 @@ class __$$_OrderItemCopyWithImpl<$Res>
     Object? imageUrl = null,
     Object? itemQty = null,
   }) {
-    return _then(_$_OrderItem(
+    return _then(_$OrderItemImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       orderId: null == orderId
           ? _value.orderId
           : orderId // ignore: cast_nullable_to_non_nullable
@@ -156,15 +170,18 @@ class __$$_OrderItemCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OrderItem implements _OrderItem {
-  const _$_OrderItem(
-      {required this.orderId,
+class _$OrderItemImpl implements _OrderItem {
+  const _$OrderItemImpl(
+      {required this.id,
+      required this.orderId,
       required this.productId,
       required this.name,
       required this.price,
       required this.imageUrl,
       required this.itemQty});
 
+  @override
+  final int id;
   @override
   final int orderId;
   @override
@@ -180,14 +197,15 @@ class _$_OrderItem implements _OrderItem {
 
   @override
   String toString() {
-    return 'OrderItem(orderId: $orderId, productId: $productId, name: $name, price: $price, imageUrl: $imageUrl, itemQty: $itemQty)';
+    return 'OrderItem(id: $id, orderId: $orderId, productId: $productId, name: $name, price: $price, imageUrl: $imageUrl, itemQty: $itemQty)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderItem &&
+            other is _$OrderItemImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.orderId, orderId) || other.orderId == orderId) &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
@@ -200,24 +218,27 @@ class _$_OrderItem implements _OrderItem {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, orderId, productId, name, price, imageUrl, itemQty);
+      runtimeType, id, orderId, productId, name, price, imageUrl, itemQty);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderItemCopyWith<_$_OrderItem> get copyWith =>
-      __$$_OrderItemCopyWithImpl<_$_OrderItem>(this, _$identity);
+  _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
+      __$$OrderItemImplCopyWithImpl<_$OrderItemImpl>(this, _$identity);
 }
 
 abstract class _OrderItem implements OrderItem {
   const factory _OrderItem(
-      {required final int orderId,
+      {required final int id,
+      required final int orderId,
       required final int productId,
       required final String name,
       required final int price,
       required final String imageUrl,
-      required final int itemQty}) = _$_OrderItem;
+      required final int itemQty}) = _$OrderItemImpl;
 
+  @override
+  int get id;
   @override
   int get orderId;
   @override
@@ -232,6 +253,6 @@ abstract class _OrderItem implements OrderItem {
   int get itemQty;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderItemCopyWith<_$_OrderItem> get copyWith =>
+  _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

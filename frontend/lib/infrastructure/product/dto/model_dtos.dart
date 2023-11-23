@@ -3,7 +3,6 @@ import 'package:frontend/domain/product/model/model.dart';
 part 'model_dtos.freezed.dart';
 part 'model_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class ProductModelDto with _$ProductModelDto {
   const factory ProductModelDto(

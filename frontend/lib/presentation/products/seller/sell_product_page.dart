@@ -1,9 +1,15 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/domain/advertisement/model/advertisement_condition.dart';
 import 'package:frontend/domain/product/model/brand.dart';
 import 'package:frontend/domain/product/model/product.dart';
+import 'package:frontend/domain/product/model/product_condition.dart';
 import 'package:frontend/domain/product/value_object.dart';
+import 'package:frontend/presentation/widget/custom_dropdown_button_form_field.dart';
+import 'package:frontend/presentation/widget/custom_elevated_button.dart';
+import 'package:frontend/presentation/widget/custom_multiple_text_form_field.dart';
+import 'package:frontend/presentation/widget/custom_textform_field.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../application/product/add_product/add_product_state.dart';
@@ -26,14 +32,16 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
   final _modelController = TextEditingController();
   final _stockController = TextEditingController();
   final _priceController = TextEditingController();
+  final _conditionController = TextEditingController();
+
   final ImagePicker _picker = ImagePicker();
   ProductCategory? _selectedCategory;
   ProductBrand? _selectedBrand;
   ProductModel? _selectedModel;
+  AdvertisementCondition? _condition;
 
   @override
   void dispose() {
-    // _userIdController.dispose();
     _nameController.dispose();
     _descriptionController.dispose();
     _categoryController.dispose();
@@ -41,6 +49,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
     _modelController.dispose();
     _stockController.dispose();
     _priceController.dispose();
+    _conditionController.dispose();
     super.dispose();
   }
 
@@ -51,6 +60,11 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
       ref.read(categoryProvider.notifier).fetchCategories();
       ref.read(brandProvider.notifier).fetchBrands();
       ref.read(modelProvider.notifier).fetchModels();
+      ref.read(provinceProvider.notifier).fetchProvinces();
+      ref.read(districtProvider.notifier).fetchDistricts();
+      ref
+          .read(advertisementConditionProvider.notifier)
+          .getAllAdvertisementConditions();
     });
   }
 
@@ -59,38 +73,13 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
     final addProductNotifier = ref.read(addProductProvider.notifier);
     final addProductState = ref.read(addProductProvider);
     final productState = ref.watch(addProductProvider);
+    final categoryState = ref.watch(categoryProvider);
+    final modelState = ref.watch(modelProvider);
     final brandState = ref.watch(brandProvider);
+    final conditionState = ref.watch(advertisementConditionProvider);
 
     final selectedImagesController = ref.watch(selectedImagesProvider.notifier);
     var _selectedImages = ref.watch(selectedImagesProvider);
-
-    // ref.listen<AddProductState>(addProductProvider, (prevState, nextState) {
-    //   print("State change detected: $nextState");
-    //   nextState.maybeWhen(
-    //     actionInProgress: () {},
-    //     actionFailure: (failure) {
-    //       FlushbarHelper.createError(
-    //         message: failure.toString(),
-    //       ).show(context);
-    //     },
-    //     createSuccess: () {
-    //       FlushbarHelper.createSuccess(message: 'Product created successfully!')
-    //           .show(context);
-    //       _nameController.clear();
-    //       _descriptionController.clear();
-    //       _categoryController.clear();
-    //       _brandController.clear();
-    //       _modelController.clear();
-    //       _stockController.clear();
-    //       _priceController.clear();
-    //       ref.read(selectedImagesProvider.notifier).state = [];
-    //       setState(() {
-    //         _selectedCategory = null;
-    //       });
-    //     },
-    //     orElse: () {},
-    //   );
-    // });
 
     ref.listen<AddProductState>(addProductProvider, (prevState, nextState) {
       print("State change detected: $nextState");
@@ -116,6 +105,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
           _modelController.clear();
           _stockController.clear();
           _priceController.clear();
+          _conditionController.clear();
           ref.read(selectedImagesProvider.notifier).state = [];
           setState(() {
             _selectedCategory = null;
@@ -126,7 +116,12 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
     });
 
     return Scaffold(
-      appBar: AppBar(title: Text("Sell Product")),
+      appBar: AppBar(
+        title: Text("Sell Product"),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -134,93 +129,41 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
             children: [
               const SizedBox(height: 1),
               const SizedBox(height: 1),
-              TextFormField(
+              CustomTextFormField(
                 controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Product Name',
-                ),
+                labelText: "Product Name",
+                obscureText: false,
               ),
-              const SizedBox(height: 1),
-              TextFormField(
+              const SizedBox(height: 10),
+              CustomMultipleTextFormField(
                 controller: _descriptionController,
-                decoration: const InputDecoration(
-                  labelText: 'Product Description',
-                ),
+                labelText: "Product Description",
               ),
-              const SizedBox(height: 1),
-              Consumer(
-                builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                  final categoryState = ref.watch(categoryProvider);
-                  return categoryState.when(
-                    initial: () => Text('Select a category.'),
-                    loadInProgress: () => CircularProgressIndicator(),
-                    loadSuccess: (categories) {
-                      return DropdownButtonFormField<ProductCategory>(
-                        value: _selectedCategory,
-                        items: categories.map((ProductCategory category) {
-                          return DropdownMenuItem<ProductCategory>(
-                            value: category,
-                            child: Text(category.name),
-                          );
-                        }).toList(),
-                        onChanged: (ProductCategory? newValue) {
-                          setState(() {
-                            _selectedBrand = null;
-                            _selectedCategory = newValue;
-                          });
-                          _categoryController.text = newValue!.id.toString();
-                        },
-                        decoration: const InputDecoration(
-                          labelText: 'Product Category',
-                        ),
+              const SizedBox(height: 10),
+              categoryState.maybeWhen(
+                initial: () => const Text('Select a category.'),
+                loadSuccess: (categories) {
+                  return CustomDropdownButtonFormField<ProductCategory>(
+                    value: _selectedCategory,
+                    items: categories.map((ProductCategory category) {
+                      return DropdownMenuItem<ProductCategory>(
+                        value: category,
+                        child: Text(category.name),
                       );
+                    }).toList(),
+                    onChanged: (ProductCategory? newValue) {
+                      setState(() {
+                        _selectedBrand = null;
+                        _selectedCategory = newValue;
+                      });
+                      _categoryController.text = newValue!.id.toString();
                     },
-                    loadFailure: (err) {
-                      print('Error Detail: $err');
-                      return Text('Error loading categories');
-                    },
+                    labelText: "Product Category",
                   );
                 },
+                orElse: () => CircularProgressIndicator(),
               ),
-              // Consumer(builder:
-              //     (BuildContext context, WidgetRef ref, Widget? child) {
-              //   final brandState = ref.watch(brandProvider);
-              //   return brandState.when(
-              //     initial: () => _buildDisabledBrandDropdown(),
-              //     loadInProgress: () => CircularProgressIndicator(),
-              //     loadSuccess: (brands) {
-              //       if (_selectedCategory == null) {
-              //         return _buildDisabledBrandDropdown();
-              //       }
-              //       final filteredBrands = brands
-              //           .where((brand) =>
-              //               brand.categoryId == _selectedCategory!.id)
-              //           .toList();
-              //       return DropdownButtonFormField<ProductBrand>(
-              //         value: _selectedBrand,
-              //         items: filteredBrands.map((ProductBrand brand) {
-              //           return DropdownMenuItem<ProductBrand>(
-              //             value: brand,
-              //             child: Text(brand.name),
-              //           );
-              //         }).toList(),
-              //         onChanged: (ProductBrand? newValue) {
-              //           setState(() {
-              //             _selectedBrand = newValue;
-              //           });
-              //           _brandController.text = newValue!.id.toString();
-              //         },
-              //         decoration: const InputDecoration(
-              //           labelText: 'Product Brand',
-              //         ),
-              //       );
-              //     },
-              //     loadFailure: (err) {
-              //       print('Error Detail: $err');
-              //       return Text('Error loading brands');
-              //     },
-              //   );
-              // }),
+              const SizedBox(height: 10),
               brandState.maybeWhen(
                 loadSuccess: (brands) {
                   if (_selectedCategory == null) {
@@ -230,7 +173,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                       .where(
                           (brand) => brand.categoryId == _selectedCategory!.id)
                       .toList();
-                  return DropdownButtonFormField<ProductBrand>(
+                  return CustomDropdownButtonFormField<ProductBrand>(
                     value: _selectedBrand,
                     items: filteredBrands.map((ProductBrand brand) {
                       return DropdownMenuItem<ProductBrand>(
@@ -244,129 +187,107 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                       });
                       _brandController.text = newValue!.id.toString();
                     },
-                    decoration: const InputDecoration(
-                      labelText: 'Product Brand',
-                    ),
+                    labelText: "Product Brand",
                   );
                 },
                 orElse: () => CircularProgressIndicator(),
               ),
-              // Consumer(builder:
-              //     (BuildContext context, WidgetRef ref, Widget? child) {
-              //   final brandState = ref.watch(brandProvider);
-              //   return brandState.when(
-              //     initial: () => _buildDisabledBrandDropdown(),
-              //     loadInProgress: () => CircularProgressIndicator(),
-              //     loadSuccess: (brands) {
-              //       if (_selectedCategory == null) {
-              //         return _buildDisabledBrandDropdown();
-              //       }
-              //       final filteredBrands = brands
-              //           .where((brand) =>
-              //               brand.categoryId == _selectedCategory!.id)
-              //           .toList();
-              //       return DropdownButtonFormField<ProductBrand>(
-              //         value: _selectedBrand,
-              //         items: filteredBrands.map((ProductBrand brand) {
-              //           return DropdownMenuItem<ProductBrand>(
-              //             value: brand,
-              //             child: Text(brand.name),
-              //           );
-              //         }).toList(),
-              //         onChanged: (ProductBrand? newValue) {
-              //           setState(() {
-              //             _selectedBrand = newValue;
-              //           });
-              //           _brandController.text = newValue!.id.toString();
-              //         },
-              //         decoration: const InputDecoration(
-              //           labelText: 'Product Brand',
-              //         ),
-              //       );
-              //     },
-              //     loadFailure: (err) {
-              //       print('Error Detail: $err');
-              //       return Text('Error loading brands');
-              //     },
-              //   );
-              // }),
-              Consumer(builder:
-                  (BuildContext context, WidgetRef ref, Widget? child) {
-                final modelState = ref.watch(modelProvider);
-                return modelState.when(
-                  initial: () => _buildDisabledModelDropdown(),
-                  loadInProgress: () => CircularProgressIndicator(),
-                  loadSuccess: (models) {
-                    if (_selectedCategory == null) {
-                      return _buildDisabledBrandDropdown();
-                    }
-                    if (_selectedBrand == null) {
-                      return _buildDisabledModelDropdown();
-                    }
-                    final filteredModels = models
-                        .where((model) => model.brandId == _selectedBrand!.id)
-                        .toList();
-                    return DropdownButtonFormField<ProductModel>(
-                      value: _selectedModel,
-                      items: filteredModels.map((ProductModel model) {
-                        return DropdownMenuItem<ProductModel>(
-                          value: model,
-                          child: Text(model.name),
-                        );
-                      }).toList(),
-                      onChanged: (ProductModel? newValue) {
-                        setState(() {
-                          _selectedModel = newValue;
-                        });
-                        _modelController.text = newValue!.id.toString();
-                      },
-                      decoration: const InputDecoration(
-                        labelText: 'Product Model',
-                      ),
-                    );
-                  },
-                  loadFailure: (err) {
-                    print('Error Detail: $err');
-                    return Text('Error loading models');
-                  },
-                );
-              }),
-              const SizedBox(height: 1),
-              TextFormField(
-                controller: _stockController,
-                decoration: const InputDecoration(
-                  labelText: 'Product Stock',
-                ),
-              ),
-              const SizedBox(height: 1),
-              TextFormField(
-                controller: _priceController,
-                decoration: const InputDecoration(
-                  labelText: 'Product Price',
-                ),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                '${ref.watch(selectedImagesProvider.notifier).state.length} images selected',
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  final pickedFiles = await _picker.pickMultiImage();
-                  if (pickedFiles != null && pickedFiles is List<XFile>) {
-                    selectedImagesController.state = pickedFiles;
-
-                    print(
-                        "Updated _selectedImages Count: ${ref.read(selectedImagesProvider.notifier).state.length}");
+              const SizedBox(height: 10),
+              modelState.maybeWhen(
+                initial: () => _buildDisabledModelDropdown(),
+                loadSuccess: (models) {
+                  if (_selectedCategory == null) {
+                    return _buildDisabledBrandDropdown();
                   }
+                  if (_selectedBrand == null) {
+                    return _buildDisabledModelDropdown();
+                  }
+                  final filteredModels = models
+                      .where((model) => model.brandId == _selectedBrand!.id)
+                      .toList();
+                  return CustomDropdownButtonFormField<ProductModel>(
+                    value: _selectedModel,
+                    items: filteredModels.map((ProductModel model) {
+                      return DropdownMenuItem<ProductModel>(
+                        value: model,
+                        child: Text(model.name),
+                      );
+                    }).toList(),
+                    onChanged: (ProductModel? newValue) {
+                      setState(() {
+                        _selectedModel = newValue;
+                      });
+                      _modelController.text = newValue!.id.toString();
+                    },
+                    labelText: "Product Model",
+                  );
                 },
-                child: Text('Select Product Images'),
+                orElse: () => CircularProgressIndicator(),
+              ),
+              const SizedBox(height: 10),
+              conditionState.maybeWhen(
+                initial: () => const Text('Select a condition.'),
+                loadSuccess: (adConditions) {
+                  return CustomDropdownButtonFormField<AdvertisementCondition>(
+                    value: _condition,
+                    items: adConditions
+                        .map((AdvertisementCondition advertisementCondition) {
+                      return DropdownMenuItem<AdvertisementCondition>(
+                        value: advertisementCondition,
+                        child: Text(advertisementCondition.name),
+                      );
+                    }).toList(),
+                    onChanged: (AdvertisementCondition? newValue) {
+                      setState(() {
+                        _condition = newValue;
+                      });
+                      _conditionController.text = newValue!.id.toString();
+                    },
+                    labelText: "Condition",
+                  );
+                },
+                orElse: () => CircularProgressIndicator(),
+              ),
+              const SizedBox(height: 10),
+              CustomTextFormField(
+                controller: _stockController,
+                labelText: "Product Stock",
+                obscureText: false,
+              ),
+              const SizedBox(height: 10),
+              CustomTextFormField(
+                controller: _priceController,
+                labelText: "Product Price",
+                obscureText: false,
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
+              Row(
+                children: [
+                  CustomElevatedButton(
+                    onPressed: () async {
+                      final pickedFiles = await _picker.pickMultiImage();
+                      if (pickedFiles != null && pickedFiles is List<XFile>) {
+                        selectedImagesController.state = pickedFiles;
+
+                        print(
+                            "Updated _selectedImages Count: ${ref.read(selectedImagesProvider.notifier).state.length}");
+                      }
+                    },
+                    text: 'Select',
+                    fixedSize: Size(double.infinity, 30),
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    '${ref.watch(selectedImagesProvider.notifier).state.length} images selected',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              CustomElevatedButton(
                 onPressed: () {
                   if (_nameController.text.isNotEmpty &&
                       _descriptionController.text.isNotEmpty &&
@@ -376,7 +297,6 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                       _stockController.text.isNotEmpty &&
                       _priceController.text.isNotEmpty) {
                     final product = Product(
-                      // id: UniqueId(),
                       id: 0,
                       name: Name(_nameController.text),
                       description: Description(_descriptionController.text),
@@ -386,7 +306,7 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                       stock: Stock(int.parse(_stockController.text)),
                       price: Price(int.parse(_priceController.text)),
                       imageUrls: [],
-                      conditionId: 0,
+                      conditionId: int.parse(_conditionController.text),
                     );
 
                     addProductNotifier.createProduct(product, _selectedImages);
@@ -396,8 +316,9 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
                     ).show(context);
                   }
                 },
-                child: Text('Create Product'),
+                text: 'Create Product',
               ),
+              SizedBox(height: 10,),
               Consumer(
                 builder: (BuildContext context, WidgetRef ref, Widget? child) {
                   final addProductState = ref.watch(addProductProvider);
@@ -418,23 +339,19 @@ class _SellProductPageState extends ConsumerState<SellProductPage> {
 }
 
 Widget _buildDisabledBrandDropdown() {
-  return DropdownButtonFormField<ProductBrand>(
+  return CustomDropdownButtonFormField<ProductBrand>(
     items: [],
     onChanged: null,
-    decoration: const InputDecoration(
-      labelText: 'Product Brand',
-      hintText: 'Please select a category first',
-    ),
+    labelText: 'Product Brand',
+    hintText: 'Please select a category first',
   );
 }
 
 Widget _buildDisabledModelDropdown() {
-  return DropdownButtonFormField<ProductModel>(
+  return CustomDropdownButtonFormField<ProductModel>(
     items: [],
     onChanged: null,
-    decoration: const InputDecoration(
-      labelText: 'Product Model',
-      hintText: 'Please select a brand first',
-    ),
+    labelText: 'Product Model',
+    hintText: 'Please select a brand first',
   );
 }

@@ -3,7 +3,6 @@ import 'package:frontend/domain/user/user_address/model/province.dart';
 part 'province_dto.freezed.dart';
 part 'province_dto.g.dart';
 
-// @JsonSerializable()
 @freezed
 class ProvinceDto with _$ProvinceDto {
   const ProvinceDto._();

@@ -5,7 +5,6 @@ import '../../../domain/auth/model/auth.dart';
 part 'auth_dtos.freezed.dart';
 part 'auth_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class AuthDto with _$AuthDto {
   const AuthDto._();

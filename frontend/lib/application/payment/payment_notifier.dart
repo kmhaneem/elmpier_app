@@ -21,11 +21,9 @@ class PaymentNotifier extends StateNotifier<PaymentState> {
 
     state = failureOrSuccess.fold(
       (failure) {
-        print("Failed to notify backend: $failure");
         return PaymentState.paymentFailure(failure);
       },
       (r) {
-        print("Successfully notified backend");
         return const PaymentState.createSuccess();
       },
     );

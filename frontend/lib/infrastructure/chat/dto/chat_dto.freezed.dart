@@ -36,7 +36,7 @@ abstract class $ChatDtoCopyWith<$Res> {
       String otherUserId,
       String otherUserEmail,
       @JsonKey(fromJson: _messageDtoFromJson, toJson: _messageDtoToJson)
-          MessageDto lastMessage});
+      MessageDto lastMessage});
 
   $MessageDtoCopyWith<$Res> get lastMessage;
 }
@@ -89,10 +89,10 @@ class _$ChatDtoCopyWithImpl<$Res, $Val extends ChatDto>
 }
 
 /// @nodoc
-abstract class _$$_ChatDtoCopyWith<$Res> implements $ChatDtoCopyWith<$Res> {
-  factory _$$_ChatDtoCopyWith(
-          _$_ChatDto value, $Res Function(_$_ChatDto) then) =
-      __$$_ChatDtoCopyWithImpl<$Res>;
+abstract class _$$ChatDtoImplCopyWith<$Res> implements $ChatDtoCopyWith<$Res> {
+  factory _$$ChatDtoImplCopyWith(
+          _$ChatDtoImpl value, $Res Function(_$ChatDtoImpl) then) =
+      __$$ChatDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,17 +100,18 @@ abstract class _$$_ChatDtoCopyWith<$Res> implements $ChatDtoCopyWith<$Res> {
       String otherUserId,
       String otherUserEmail,
       @JsonKey(fromJson: _messageDtoFromJson, toJson: _messageDtoToJson)
-          MessageDto lastMessage});
+      MessageDto lastMessage});
 
   @override
   $MessageDtoCopyWith<$Res> get lastMessage;
 }
 
 /// @nodoc
-class __$$_ChatDtoCopyWithImpl<$Res>
-    extends _$ChatDtoCopyWithImpl<$Res, _$_ChatDto>
-    implements _$$_ChatDtoCopyWith<$Res> {
-  __$$_ChatDtoCopyWithImpl(_$_ChatDto _value, $Res Function(_$_ChatDto) _then)
+class __$$ChatDtoImplCopyWithImpl<$Res>
+    extends _$ChatDtoCopyWithImpl<$Res, _$ChatDtoImpl>
+    implements _$$ChatDtoImplCopyWith<$Res> {
+  __$$ChatDtoImplCopyWithImpl(
+      _$ChatDtoImpl _value, $Res Function(_$ChatDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,7 +122,7 @@ class __$$_ChatDtoCopyWithImpl<$Res>
     Object? otherUserEmail = null,
     Object? lastMessage = null,
   }) {
-    return _then(_$_ChatDto(
+    return _then(_$ChatDtoImpl(
       chatId: null == chatId
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
@@ -144,13 +145,13 @@ class __$$_ChatDtoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatDto extends _ChatDto {
-  const _$_ChatDto(
+class _$ChatDtoImpl extends _ChatDto {
+  const _$ChatDtoImpl(
       {required this.chatId,
       required this.otherUserId,
       required this.otherUserEmail,
       @JsonKey(fromJson: _messageDtoFromJson, toJson: _messageDtoToJson)
-          required this.lastMessage})
+      required this.lastMessage})
       : super._();
 
   @override
@@ -172,7 +173,7 @@ class _$_ChatDto extends _ChatDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChatDto &&
+            other is _$ChatDtoImpl &&
             (identical(other.chatId, chatId) || other.chatId == chatId) &&
             (identical(other.otherUserId, otherUserId) ||
                 other.otherUserId == otherUserId) &&
@@ -189,8 +190,8 @@ class _$_ChatDto extends _ChatDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatDtoCopyWith<_$_ChatDto> get copyWith =>
-      __$$_ChatDtoCopyWithImpl<_$_ChatDto>(this, _$identity);
+  _$$ChatDtoImplCopyWith<_$ChatDtoImpl> get copyWith =>
+      __$$ChatDtoImplCopyWithImpl<_$ChatDtoImpl>(this, _$identity);
 }
 
 abstract class _ChatDto extends ChatDto {
@@ -199,7 +200,7 @@ abstract class _ChatDto extends ChatDto {
       required final String otherUserId,
       required final String otherUserEmail,
       @JsonKey(fromJson: _messageDtoFromJson, toJson: _messageDtoToJson)
-          required final MessageDto lastMessage}) = _$_ChatDto;
+      required final MessageDto lastMessage}) = _$ChatDtoImpl;
   const _ChatDto._() : super._();
 
   @override
@@ -213,6 +214,6 @@ abstract class _ChatDto extends ChatDto {
   MessageDto get lastMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_ChatDtoCopyWith<_$_ChatDto> get copyWith =>
+  _$$ChatDtoImplCopyWith<_$ChatDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

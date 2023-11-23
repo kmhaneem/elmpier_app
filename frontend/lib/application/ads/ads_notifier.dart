@@ -42,7 +42,6 @@ class AdsNotifier extends StateNotifier<AdsState> {
     state = const AdsState.actionInProgress();
 
     failureOrAds = await _adsRepository.getProductPopAds();
-    // print('Received data: $failureOrAds');
 
     state = failureOrAds.fold(
       (l) => AdsState.actionFailure(l),

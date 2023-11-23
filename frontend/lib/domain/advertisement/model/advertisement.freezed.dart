@@ -24,8 +24,8 @@ mixin _$Advertisement {
   int get categoryId => throw _privateConstructorUsedError;
   int get brandId => throw _privateConstructorUsedError;
   int get modelId => throw _privateConstructorUsedError;
-  int get provinceId => throw _privateConstructorUsedError;
-  int get districtId => throw _privateConstructorUsedError;
+  int? get provinceId => throw _privateConstructorUsedError;
+  int? get districtId => throw _privateConstructorUsedError;
   List<String> get imageUrls => throw _privateConstructorUsedError;
   String? get province => throw _privateConstructorUsedError;
   String? get district => throw _privateConstructorUsedError;
@@ -58,8 +58,8 @@ abstract class $AdvertisementCopyWith<$Res> {
       int categoryId,
       int brandId,
       int modelId,
-      int provinceId,
-      int districtId,
+      int? provinceId,
+      int? districtId,
       List<String> imageUrls,
       String? province,
       String? district,
@@ -94,8 +94,8 @@ class _$AdvertisementCopyWithImpl<$Res, $Val extends Advertisement>
     Object? categoryId = null,
     Object? brandId = null,
     Object? modelId = null,
-    Object? provinceId = null,
-    Object? districtId = null,
+    Object? provinceId = freezed,
+    Object? districtId = freezed,
     Object? imageUrls = null,
     Object? province = freezed,
     Object? district = freezed,
@@ -141,14 +141,14 @@ class _$AdvertisementCopyWithImpl<$Res, $Val extends Advertisement>
           ? _value.modelId
           : modelId // ignore: cast_nullable_to_non_nullable
               as int,
-      provinceId: null == provinceId
+      provinceId: freezed == provinceId
           ? _value.provinceId
           : provinceId // ignore: cast_nullable_to_non_nullable
-              as int,
-      districtId: null == districtId
+              as int?,
+      districtId: freezed == districtId
           ? _value.districtId
           : districtId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       imageUrls: null == imageUrls
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -198,11 +198,11 @@ class _$AdvertisementCopyWithImpl<$Res, $Val extends Advertisement>
 }
 
 /// @nodoc
-abstract class _$$_AdvertisementCopyWith<$Res>
+abstract class _$$AdvertisementImplCopyWith<$Res>
     implements $AdvertisementCopyWith<$Res> {
-  factory _$$_AdvertisementCopyWith(
-          _$_Advertisement value, $Res Function(_$_Advertisement) then) =
-      __$$_AdvertisementCopyWithImpl<$Res>;
+  factory _$$AdvertisementImplCopyWith(
+          _$AdvertisementImpl value, $Res Function(_$AdvertisementImpl) then) =
+      __$$AdvertisementImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -214,8 +214,8 @@ abstract class _$$_AdvertisementCopyWith<$Res>
       int categoryId,
       int brandId,
       int modelId,
-      int provinceId,
-      int districtId,
+      int? provinceId,
+      int? districtId,
       List<String> imageUrls,
       String? province,
       String? district,
@@ -230,11 +230,11 @@ abstract class _$$_AdvertisementCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AdvertisementCopyWithImpl<$Res>
-    extends _$AdvertisementCopyWithImpl<$Res, _$_Advertisement>
-    implements _$$_AdvertisementCopyWith<$Res> {
-  __$$_AdvertisementCopyWithImpl(
-      _$_Advertisement _value, $Res Function(_$_Advertisement) _then)
+class __$$AdvertisementImplCopyWithImpl<$Res>
+    extends _$AdvertisementCopyWithImpl<$Res, _$AdvertisementImpl>
+    implements _$$AdvertisementImplCopyWith<$Res> {
+  __$$AdvertisementImplCopyWithImpl(
+      _$AdvertisementImpl _value, $Res Function(_$AdvertisementImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -248,8 +248,8 @@ class __$$_AdvertisementCopyWithImpl<$Res>
     Object? categoryId = null,
     Object? brandId = null,
     Object? modelId = null,
-    Object? provinceId = null,
-    Object? districtId = null,
+    Object? provinceId = freezed,
+    Object? districtId = freezed,
     Object? imageUrls = null,
     Object? province = freezed,
     Object? district = freezed,
@@ -262,7 +262,7 @@ class __$$_AdvertisementCopyWithImpl<$Res>
     Object? advertiserName = freezed,
     Object? createDate = freezed,
   }) {
-    return _then(_$_Advertisement(
+    return _then(_$AdvertisementImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -295,14 +295,14 @@ class __$$_AdvertisementCopyWithImpl<$Res>
           ? _value.modelId
           : modelId // ignore: cast_nullable_to_non_nullable
               as int,
-      provinceId: null == provinceId
+      provinceId: freezed == provinceId
           ? _value.provinceId
           : provinceId // ignore: cast_nullable_to_non_nullable
-              as int,
-      districtId: null == districtId
+              as int?,
+      districtId: freezed == districtId
           ? _value.districtId
           : districtId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       imageUrls: null == imageUrls
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
@@ -353,8 +353,8 @@ class __$$_AdvertisementCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Advertisement implements _Advertisement {
-  const _$_Advertisement(
+class _$AdvertisementImpl implements _Advertisement {
+  const _$AdvertisementImpl(
       {required this.id,
       required this.name,
       required this.description,
@@ -363,8 +363,8 @@ class _$_Advertisement implements _Advertisement {
       required this.categoryId,
       required this.brandId,
       required this.modelId,
-      required this.provinceId,
-      required this.districtId,
+      this.provinceId,
+      this.districtId,
       required final List<String> imageUrls,
       this.province,
       this.district,
@@ -395,9 +395,9 @@ class _$_Advertisement implements _Advertisement {
   @override
   final int modelId;
   @override
-  final int provinceId;
+  final int? provinceId;
   @override
-  final int districtId;
+  final int? districtId;
   final List<String> _imageUrls;
   @override
   List<String> get imageUrls {
@@ -436,7 +436,7 @@ class _$_Advertisement implements _Advertisement {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Advertisement &&
+            other is _$AdvertisementImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -501,8 +501,8 @@ class _$_Advertisement implements _Advertisement {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdvertisementCopyWith<_$_Advertisement> get copyWith =>
-      __$$_AdvertisementCopyWithImpl<_$_Advertisement>(this, _$identity);
+  _$$AdvertisementImplCopyWith<_$AdvertisementImpl> get copyWith =>
+      __$$AdvertisementImplCopyWithImpl<_$AdvertisementImpl>(this, _$identity);
 }
 
 abstract class _Advertisement implements Advertisement {
@@ -515,8 +515,8 @@ abstract class _Advertisement implements Advertisement {
       required final int categoryId,
       required final int brandId,
       required final int modelId,
-      required final int provinceId,
-      required final int districtId,
+      final int? provinceId,
+      final int? districtId,
       required final List<String> imageUrls,
       final String? province,
       final String? district,
@@ -527,7 +527,7 @@ abstract class _Advertisement implements Advertisement {
       final String? phone,
       final int? userId,
       final String? advertiserName,
-      final String? createDate}) = _$_Advertisement;
+      final String? createDate}) = _$AdvertisementImpl;
 
   @override
   int get id;
@@ -546,9 +546,9 @@ abstract class _Advertisement implements Advertisement {
   @override
   int get modelId;
   @override
-  int get provinceId;
+  int? get provinceId;
   @override
-  int get districtId;
+  int? get districtId;
   @override
   List<String> get imageUrls;
   @override
@@ -573,6 +573,6 @@ abstract class _Advertisement implements Advertisement {
   String? get createDate;
   @override
   @JsonKey(ignore: true)
-  _$$_AdvertisementCopyWith<_$_Advertisement> get copyWith =>
+  _$$AdvertisementImplCopyWith<_$AdvertisementImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

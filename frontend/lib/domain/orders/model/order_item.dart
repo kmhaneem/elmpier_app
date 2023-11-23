@@ -4,6 +4,7 @@ part 'order_item.freezed.dart';
 @freezed
 abstract class OrderItem with _$OrderItem {
   const factory OrderItem({
+    required int id,
     required int orderId,
     required int productId,
     required String name,

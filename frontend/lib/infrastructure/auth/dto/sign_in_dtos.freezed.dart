@@ -62,21 +62,22 @@ class _$SignInDtoCopyWithImpl<$Res, $Val extends SignInDto>
 }
 
 /// @nodoc
-abstract class _$$_SignInDtoCopyWith<$Res> implements $SignInDtoCopyWith<$Res> {
-  factory _$$_SignInDtoCopyWith(
-          _$_SignInDto value, $Res Function(_$_SignInDto) then) =
-      __$$_SignInDtoCopyWithImpl<$Res>;
+abstract class _$$SignInDtoImplCopyWith<$Res>
+    implements $SignInDtoCopyWith<$Res> {
+  factory _$$SignInDtoImplCopyWith(
+          _$SignInDtoImpl value, $Res Function(_$SignInDtoImpl) then) =
+      __$$SignInDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({EmailAddress email, Password password});
 }
 
 /// @nodoc
-class __$$_SignInDtoCopyWithImpl<$Res>
-    extends _$SignInDtoCopyWithImpl<$Res, _$_SignInDto>
-    implements _$$_SignInDtoCopyWith<$Res> {
-  __$$_SignInDtoCopyWithImpl(
-      _$_SignInDto _value, $Res Function(_$_SignInDto) _then)
+class __$$SignInDtoImplCopyWithImpl<$Res>
+    extends _$SignInDtoCopyWithImpl<$Res, _$SignInDtoImpl>
+    implements _$$SignInDtoImplCopyWith<$Res> {
+  __$$SignInDtoImplCopyWithImpl(
+      _$SignInDtoImpl _value, $Res Function(_$SignInDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +86,7 @@ class __$$_SignInDtoCopyWithImpl<$Res>
     Object? email = null,
     Object? password = null,
   }) {
-    return _then(_$_SignInDto(
+    return _then(_$SignInDtoImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -100,8 +101,8 @@ class __$$_SignInDtoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SignInDto implements _SignInDto {
-  const _$_SignInDto({required this.email, required this.password});
+class _$SignInDtoImpl implements _SignInDto {
+  const _$SignInDtoImpl({required this.email, required this.password});
 
   @override
   final EmailAddress email;
@@ -117,7 +118,7 @@ class _$_SignInDto implements _SignInDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignInDto &&
+            other is _$SignInDtoImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -129,14 +130,14 @@ class _$_SignInDto implements _SignInDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignInDtoCopyWith<_$_SignInDto> get copyWith =>
-      __$$_SignInDtoCopyWithImpl<_$_SignInDto>(this, _$identity);
+  _$$SignInDtoImplCopyWith<_$SignInDtoImpl> get copyWith =>
+      __$$SignInDtoImplCopyWithImpl<_$SignInDtoImpl>(this, _$identity);
 }
 
 abstract class _SignInDto implements SignInDto {
   const factory _SignInDto(
       {required final EmailAddress email,
-      required final Password password}) = _$_SignInDto;
+      required final Password password}) = _$SignInDtoImpl;
 
   @override
   EmailAddress get email;
@@ -144,6 +145,6 @@ abstract class _SignInDto implements SignInDto {
   Password get password;
   @override
   @JsonKey(ignore: true)
-  _$$_SignInDtoCopyWith<_$_SignInDto> get copyWith =>
+  _$$SignInDtoImplCopyWith<_$SignInDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

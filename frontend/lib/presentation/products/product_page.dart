@@ -28,7 +28,7 @@ class _ProductPageState extends ConsumerState<ProductPage> {
   final double imageHeight = 200.0;
 
   final TextEditingController _qtyController = TextEditingController(text: "1");
-  int _selectedQty = 1; // Start with 1 as default
+  int _selectedQty = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +161,6 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                     Container(
                       padding: EdgeInsets.all(10),
                       width: double.infinity,
-                      // height: double.infinity,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
@@ -296,7 +295,6 @@ class _ProductPageState extends ConsumerState<ProductPage> {
           children: [
             Row(
               children: [
-                // Quantity selector container
                 Container(
                   width: 120,
                   height: 50,
@@ -345,7 +343,6 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                         return;
                       }
                       final cartItem = Cart(
-                        // userId: userId,
                         productId: widget.product.id,
                         name: widget.product.name.getOrCrash(),
                         price: widget.product.price.getOrCrash(),

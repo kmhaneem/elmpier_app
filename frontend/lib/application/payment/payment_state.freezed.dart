@@ -87,24 +87,25 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -114,7 +115,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -196,29 +197,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements PaymentState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ActionInProgressCopyWith<$Res> {
-  factory _$$_ActionInProgressCopyWith(
-          _$_ActionInProgress value, $Res Function(_$_ActionInProgress) then) =
-      __$$_ActionInProgressCopyWithImpl<$Res>;
+abstract class _$$ActionInProgressImplCopyWith<$Res> {
+  factory _$$ActionInProgressImplCopyWith(_$ActionInProgressImpl value,
+          $Res Function(_$ActionInProgressImpl) then) =
+      __$$ActionInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ActionInProgressCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_ActionInProgress>
-    implements _$$_ActionInProgressCopyWith<$Res> {
-  __$$_ActionInProgressCopyWithImpl(
-      _$_ActionInProgress _value, $Res Function(_$_ActionInProgress) _then)
+class __$$ActionInProgressImplCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$ActionInProgressImpl>
+    implements _$$ActionInProgressImplCopyWith<$Res> {
+  __$$ActionInProgressImplCopyWithImpl(_$ActionInProgressImpl _value,
+      $Res Function(_$ActionInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ActionInProgress implements _ActionInProgress {
-  const _$_ActionInProgress();
+class _$ActionInProgressImpl implements _ActionInProgress {
+  const _$ActionInProgressImpl();
 
   @override
   String toString() {
@@ -228,7 +229,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ActionInProgress);
+        (other.runtimeType == runtimeType && other is _$ActionInProgressImpl);
   }
 
   @override
@@ -310,29 +311,29 @@ class _$_ActionInProgress implements _ActionInProgress {
 }
 
 abstract class _ActionInProgress implements PaymentState {
-  const factory _ActionInProgress() = _$_ActionInProgress;
+  const factory _ActionInProgress() = _$ActionInProgressImpl;
 }
 
 /// @nodoc
-abstract class _$$_CreateSuccessCopyWith<$Res> {
-  factory _$$_CreateSuccessCopyWith(
-          _$_CreateSuccess value, $Res Function(_$_CreateSuccess) then) =
-      __$$_CreateSuccessCopyWithImpl<$Res>;
+abstract class _$$CreateSuccessImplCopyWith<$Res> {
+  factory _$$CreateSuccessImplCopyWith(
+          _$CreateSuccessImpl value, $Res Function(_$CreateSuccessImpl) then) =
+      __$$CreateSuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_CreateSuccessCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_CreateSuccess>
-    implements _$$_CreateSuccessCopyWith<$Res> {
-  __$$_CreateSuccessCopyWithImpl(
-      _$_CreateSuccess _value, $Res Function(_$_CreateSuccess) _then)
+class __$$CreateSuccessImplCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$CreateSuccessImpl>
+    implements _$$CreateSuccessImplCopyWith<$Res> {
+  __$$CreateSuccessImplCopyWithImpl(
+      _$CreateSuccessImpl _value, $Res Function(_$CreateSuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_CreateSuccess implements _CreateSuccess {
-  const _$_CreateSuccess();
+class _$CreateSuccessImpl implements _CreateSuccess {
+  const _$CreateSuccessImpl();
 
   @override
   String toString() {
@@ -342,7 +343,7 @@ class _$_CreateSuccess implements _CreateSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CreateSuccess);
+        (other.runtimeType == runtimeType && other is _$CreateSuccessImpl);
   }
 
   @override
@@ -424,14 +425,14 @@ class _$_CreateSuccess implements _CreateSuccess {
 }
 
 abstract class _CreateSuccess implements PaymentState {
-  const factory _CreateSuccess() = _$_CreateSuccess;
+  const factory _CreateSuccess() = _$CreateSuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$_PaymentFailureCopyWith<$Res> {
-  factory _$$_PaymentFailureCopyWith(
-          _$_PaymentFailure value, $Res Function(_$_PaymentFailure) then) =
-      __$$_PaymentFailureCopyWithImpl<$Res>;
+abstract class _$$PaymentFailureImplCopyWith<$Res> {
+  factory _$$PaymentFailureImplCopyWith(_$PaymentFailureImpl value,
+          $Res Function(_$PaymentFailureImpl) then) =
+      __$$PaymentFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PaymentFailure failure});
 
@@ -439,11 +440,11 @@ abstract class _$$_PaymentFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PaymentFailureCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_PaymentFailure>
-    implements _$$_PaymentFailureCopyWith<$Res> {
-  __$$_PaymentFailureCopyWithImpl(
-      _$_PaymentFailure _value, $Res Function(_$_PaymentFailure) _then)
+class __$$PaymentFailureImplCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$PaymentFailureImpl>
+    implements _$$PaymentFailureImplCopyWith<$Res> {
+  __$$PaymentFailureImplCopyWithImpl(
+      _$PaymentFailureImpl _value, $Res Function(_$PaymentFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -451,7 +452,7 @@ class __$$_PaymentFailureCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$_PaymentFailure(
+    return _then(_$PaymentFailureImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -470,8 +471,8 @@ class __$$_PaymentFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PaymentFailure implements _PaymentFailure {
-  const _$_PaymentFailure(this.failure);
+class _$PaymentFailureImpl implements _PaymentFailure {
+  const _$PaymentFailureImpl(this.failure);
 
   @override
   final PaymentFailure failure;
@@ -485,7 +486,7 @@ class _$_PaymentFailure implements _PaymentFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentFailure &&
+            other is _$PaymentFailureImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -495,8 +496,9 @@ class _$_PaymentFailure implements _PaymentFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentFailureCopyWith<_$_PaymentFailure> get copyWith =>
-      __$$_PaymentFailureCopyWithImpl<_$_PaymentFailure>(this, _$identity);
+  _$$PaymentFailureImplCopyWith<_$PaymentFailureImpl> get copyWith =>
+      __$$PaymentFailureImplCopyWithImpl<_$PaymentFailureImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -575,10 +577,10 @@ class _$_PaymentFailure implements _PaymentFailure {
 
 abstract class _PaymentFailure implements PaymentState {
   const factory _PaymentFailure(final PaymentFailure failure) =
-      _$_PaymentFailure;
+      _$PaymentFailureImpl;
 
   PaymentFailure get failure;
   @JsonKey(ignore: true)
-  _$$_PaymentFailureCopyWith<_$_PaymentFailure> get copyWith =>
+  _$$PaymentFailureImplCopyWith<_$PaymentFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

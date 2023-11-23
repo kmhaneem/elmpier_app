@@ -6,6 +6,8 @@ class AdvertisementNotifier extends StateNotifier<AdvertisementState> {
   final IAdvertisementRepository _advertisementRepository;
   bool _hasFetchedAdvertisements = false;
   bool _hasFetchedSearchedAdvertisements = false;
+  bool _hasFetchActive = false;
+  bool _hasFetchExpired = false;
 
   AdvertisementNotifier(this._advertisementRepository)
       : super(const AdvertisementState.initial());
@@ -26,6 +28,38 @@ class AdvertisementNotifier extends StateNotifier<AdvertisementState> {
     _hasFetchedAdvertisements = true;
   }
 
+  Future<void> getAllActiveAdvertisements() async {
+    if (_hasFetchActive) return;
+
+    state = const AdvertisementState.loadInProgress();
+
+    final failureOrAdvertisement =
+        await _advertisementRepository.getAllActiveAdvertisement();
+
+    state = failureOrAdvertisement.fold(
+      (l) => AdvertisementState.loadFailure(l),
+      (r) => AdvertisementState.activeLoaded(r),
+    );
+
+    _hasFetchActive = true;
+  }
+
+  Future<void> getAllExpiredAdvertisements() async {
+    if (_hasFetchExpired) return;
+
+    state = const AdvertisementState.loadInProgress();
+
+    final failureOrAdvertisement =
+        await _advertisementRepository.getAllExpiredAdvertisement();
+
+    state = failureOrAdvertisement.fold(
+      (l) => AdvertisementState.loadFailure(l),
+      (r) => AdvertisementState.expiredLoaded(r),
+    );
+
+    _hasFetchExpired = true;
+  }
+
   Future<void> getSearchedAdvertisement(String query, int? userId) async {
     state = const AdvertisementState.loadInProgress();
 
@@ -41,5 +75,6 @@ class AdvertisementNotifier extends StateNotifier<AdvertisementState> {
   @override
   void dispose() {
     super.dispose();
+
   }
 }

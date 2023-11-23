@@ -87,9 +87,10 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
 }
 
 /// @nodoc
-abstract class _$$_ChatCopyWith<$Res> implements $ChatCopyWith<$Res> {
-  factory _$$_ChatCopyWith(_$_Chat value, $Res Function(_$_Chat) then) =
-      __$$_ChatCopyWithImpl<$Res>;
+abstract class _$$ChatImplCopyWith<$Res> implements $ChatCopyWith<$Res> {
+  factory _$$ChatImplCopyWith(
+          _$ChatImpl value, $Res Function(_$ChatImpl) then) =
+      __$$ChatImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,9 +104,10 @@ abstract class _$$_ChatCopyWith<$Res> implements $ChatCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
-    implements _$$_ChatCopyWith<$Res> {
-  __$$_ChatCopyWithImpl(_$_Chat _value, $Res Function(_$_Chat) _then)
+class __$$ChatImplCopyWithImpl<$Res>
+    extends _$ChatCopyWithImpl<$Res, _$ChatImpl>
+    implements _$$ChatImplCopyWith<$Res> {
+  __$$ChatImplCopyWithImpl(_$ChatImpl _value, $Res Function(_$ChatImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +118,7 @@ class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
     Object? otherUserEmail = null,
     Object? lastMessage = null,
   }) {
-    return _then(_$_Chat(
+    return _then(_$ChatImpl(
       chatId: null == chatId
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
@@ -139,8 +141,8 @@ class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
 
 /// @nodoc
 
-class _$_Chat implements _Chat {
-  const _$_Chat(
+class _$ChatImpl implements _Chat {
+  const _$ChatImpl(
       {required this.chatId,
       required this.otherUserId,
       required this.otherUserEmail,
@@ -164,7 +166,7 @@ class _$_Chat implements _Chat {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Chat &&
+            other is _$ChatImpl &&
             (identical(other.chatId, chatId) || other.chatId == chatId) &&
             (identical(other.otherUserId, otherUserId) ||
                 other.otherUserId == otherUserId) &&
@@ -181,8 +183,8 @@ class _$_Chat implements _Chat {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatCopyWith<_$_Chat> get copyWith =>
-      __$$_ChatCopyWithImpl<_$_Chat>(this, _$identity);
+  _$$ChatImplCopyWith<_$ChatImpl> get copyWith =>
+      __$$ChatImplCopyWithImpl<_$ChatImpl>(this, _$identity);
 }
 
 abstract class _Chat implements Chat {
@@ -190,7 +192,7 @@ abstract class _Chat implements Chat {
       {required final String chatId,
       required final String otherUserId,
       required final String otherUserEmail,
-      required final Message lastMessage}) = _$_Chat;
+      required final Message lastMessage}) = _$ChatImpl;
 
   @override
   String get chatId;
@@ -202,5 +204,6 @@ abstract class _Chat implements Chat {
   Message get lastMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_ChatCopyWith<_$_Chat> get copyWith => throw _privateConstructorUsedError;
+  _$$ChatImplCopyWith<_$ChatImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

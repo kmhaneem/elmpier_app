@@ -26,10 +26,7 @@ class SummarySection extends StatelessWidget {
         children: [
           Text(
             "Summery",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold
-            ),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 20.0),
           Row(
@@ -41,14 +38,6 @@ class SummarySection extends StatelessWidget {
             ],
           ),
           SizedBox(height: 16.0),
-
-          // // Promo Code (To be implemented later)
-          // Text("Promo Code: To be implemented",
-          //     style: TextStyle(color: Colors.red)),
-
-          // SizedBox(height: 16.0),
-
-          // Total Shipping
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

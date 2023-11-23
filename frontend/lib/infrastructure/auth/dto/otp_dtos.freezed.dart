@@ -55,19 +55,21 @@ class _$OtpDtoCopyWithImpl<$Res, $Val extends OtpDto>
 }
 
 /// @nodoc
-abstract class _$$_OtpDtoCopyWith<$Res> implements $OtpDtoCopyWith<$Res> {
-  factory _$$_OtpDtoCopyWith(_$_OtpDto value, $Res Function(_$_OtpDto) then) =
-      __$$_OtpDtoCopyWithImpl<$Res>;
+abstract class _$$OtpDtoImplCopyWith<$Res> implements $OtpDtoCopyWith<$Res> {
+  factory _$$OtpDtoImplCopyWith(
+          _$OtpDtoImpl value, $Res Function(_$OtpDtoImpl) then) =
+      __$$OtpDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({OtpNumber otp});
 }
 
 /// @nodoc
-class __$$_OtpDtoCopyWithImpl<$Res>
-    extends _$OtpDtoCopyWithImpl<$Res, _$_OtpDto>
-    implements _$$_OtpDtoCopyWith<$Res> {
-  __$$_OtpDtoCopyWithImpl(_$_OtpDto _value, $Res Function(_$_OtpDto) _then)
+class __$$OtpDtoImplCopyWithImpl<$Res>
+    extends _$OtpDtoCopyWithImpl<$Res, _$OtpDtoImpl>
+    implements _$$OtpDtoImplCopyWith<$Res> {
+  __$$OtpDtoImplCopyWithImpl(
+      _$OtpDtoImpl _value, $Res Function(_$OtpDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -75,7 +77,7 @@ class __$$_OtpDtoCopyWithImpl<$Res>
   $Res call({
     Object? otp = null,
   }) {
-    return _then(_$_OtpDto(
+    return _then(_$OtpDtoImpl(
       otp: null == otp
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
@@ -86,8 +88,8 @@ class __$$_OtpDtoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OtpDto implements _OtpDto {
-  const _$_OtpDto({required this.otp});
+class _$OtpDtoImpl implements _OtpDto {
+  const _$OtpDtoImpl({required this.otp});
 
   @override
   final OtpNumber otp;
@@ -101,7 +103,7 @@ class _$_OtpDto implements _OtpDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OtpDto &&
+            other is _$OtpDtoImpl &&
             (identical(other.otp, otp) || other.otp == otp));
   }
 
@@ -111,17 +113,17 @@ class _$_OtpDto implements _OtpDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OtpDtoCopyWith<_$_OtpDto> get copyWith =>
-      __$$_OtpDtoCopyWithImpl<_$_OtpDto>(this, _$identity);
+  _$$OtpDtoImplCopyWith<_$OtpDtoImpl> get copyWith =>
+      __$$OtpDtoImplCopyWithImpl<_$OtpDtoImpl>(this, _$identity);
 }
 
 abstract class _OtpDto implements OtpDto {
-  const factory _OtpDto({required final OtpNumber otp}) = _$_OtpDto;
+  const factory _OtpDto({required final OtpNumber otp}) = _$OtpDtoImpl;
 
   @override
   OtpNumber get otp;
   @override
   @JsonKey(ignore: true)
-  _$$_OtpDtoCopyWith<_$_OtpDto> get copyWith =>
+  _$$OtpDtoImplCopyWith<_$OtpDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

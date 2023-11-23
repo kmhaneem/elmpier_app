@@ -6,7 +6,8 @@ part of 'orders_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrderDto _$$_OrderDtoFromJson(Map<String, dynamic> json) => _$_OrderDto(
+_$OrderDtoImpl _$$OrderDtoImplFromJson(Map<String, dynamic> json) =>
+    _$OrderDtoImpl(
       userId: json['user_id'] as int,
       paymentMethod: json['payment_method'] as String,
       status: json['status'] as String,
@@ -15,7 +16,7 @@ _$_OrderDto _$$_OrderDtoFromJson(Map<String, dynamic> json) => _$_OrderDto(
       amount: json['amount'] as int,
     );
 
-Map<String, dynamic> _$$_OrderDtoToJson(_$_OrderDto instance) =>
+Map<String, dynamic> _$$OrderDtoImplToJson(_$OrderDtoImpl instance) =>
     <String, dynamic>{
       'user_id': instance.userId,
       'payment_method': instance.paymentMethod,

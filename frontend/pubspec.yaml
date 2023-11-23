@@ -85,6 +85,17 @@ flutter:
   assets:
     - lib/assets/images/elmpier-logo.png
     - lib/assets/images/elmpier-plus-logo.png
+    - lib/assets/images/products.png
+    - lib/assets/images/earnings.png
+    - lib/assets/images/soldout.png
+    - lib/assets/images/user.png
+    - lib/assets/images/userpro.png
+    - lib/assets/images/sell.png
+    - lib/assets/images/advertise.png
+    - lib/assets/images/activity-product.png
+    - lib/assets/images/activity-advertisement.png
+    - lib/assets/images/active-advertisement.png
+    - lib/assets/images/expired-advertisement.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

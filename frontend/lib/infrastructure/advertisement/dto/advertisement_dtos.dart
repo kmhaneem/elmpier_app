@@ -3,7 +3,6 @@ import 'package:frontend/domain/advertisement/model/advertisement.dart';
 part 'advertisement_dtos.freezed.dart';
 part 'advertisement_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class AdvertisementDto with _$AdvertisementDto {
   const AdvertisementDto._();
@@ -17,8 +16,8 @@ class AdvertisementDto with _$AdvertisementDto {
     @JsonKey(name: "category_id") required int categoryId,
     @JsonKey(name: "brand_id") required int brandId,
     @JsonKey(name: "model_id") required int modelId,
-    @JsonKey(name: "province_id") required int provinceId,
-    @JsonKey(name: "district_id") required int districtId,
+    @JsonKey(name: "province_id") int? provinceId,
+    @JsonKey(name: "district_id") int? districtId,
     String? province,
     String? district,
     String? category,

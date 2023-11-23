@@ -12,18 +12,27 @@ class AllChatPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final chatAsyncValue = ref.watch(allChatProvider(userId));
+    String _extractNameFromEmail(String email) {
+      return email.split('@').first;
+    }
 
     return Scaffold(
       appBar: AppBar(
         title: Text("Chats"),
         centerTitle: true,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: chatAsyncValue.when(
           data: (chats) {
             if (chats.isEmpty) {
-              return Center(child: Text("No chats yet.", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)));
+              return Center(
+                  child: Text("No chats yet.",
+                      style: TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold)));
             } else {
               return ListView.builder(
                 itemCount: chats.length,
@@ -32,7 +41,7 @@ class AllChatPage extends ConsumerWidget {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),
                     child: Card(
-                      elevation: 4,
+                      elevation: 2,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
@@ -47,13 +56,20 @@ class AllChatPage extends ConsumerWidget {
                           );
                         },
                         child: ListTile(
-                          leading: CircleAvatar( 
+                          leading: CircleAvatar(
                             backgroundColor: Colors.grey[300],
-                            child: Icon(Icons.person, color: Colors.white),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
                           ),
-                          title: Text(chat.otherUserEmail, style: TextStyle(fontWeight: FontWeight.bold)),
+                          title: Text(_extractNameFromEmail(chat.otherUserEmail),
+                              style: TextStyle(fontWeight: FontWeight.bold)),
                           subtitle: Text(chat.lastMessage.content),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 20.0,
+                            vertical: 10.0,
+                          ),
                         ),
                       ),
                     ),
@@ -63,7 +79,9 @@ class AllChatPage extends ConsumerWidget {
             }
           },
           loading: () => Center(child: CircularProgressIndicator()),
-          error: (error, stack) => Center(child: Text("Error occurred: $error", style: TextStyle(color: Colors.red, fontSize: 16))),
+          error: (error, stack) => Center(
+              child: Text("Error occurred: $error",
+                  style: TextStyle(color: Colors.red, fontSize: 16))),
         ),
       ),
     );

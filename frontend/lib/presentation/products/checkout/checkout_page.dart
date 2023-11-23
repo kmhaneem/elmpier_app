@@ -103,7 +103,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
             status: "Paid",
             amount: calculatedTotalItemCost + calculatedTotalShipping,
             paymentId: paymentId.toString(),
-            statusId: 1,
+            statusId: 2,
           );
           print("ORDER DETAILS ***** $order");
           await ref.read(paymentProvider.notifier).createPayment(order);
@@ -223,9 +223,9 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                 children: [
                   AddressSection(user: _currentUser),
                   const SizedBox(height: 16.0),
-                  // PaymentOption(),
                   PaymentOption(
                     selectedOption: _selectedPaymentMethod,
+                    totalAmount: calculatedTotalItemCost + calculatedTotalShipping,
                     onOptionSelected: (selectedOption) {
                       setState(() {
                         _selectedPaymentMethod = selectedOption;
@@ -296,7 +296,7 @@ class _CheckoutPageState extends ConsumerState<CheckoutPage> {
                       FlushbarHelper.createError(
                         message: 'Please enter address!',
                       ).show(context);
-                      return; // Exit the onPressed function
+                      return; 
                     }
                     final itemName = _cartItem.first.name;
 

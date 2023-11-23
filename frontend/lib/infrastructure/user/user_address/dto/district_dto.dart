@@ -3,7 +3,6 @@ import 'package:frontend/domain/user/user_address/model/district.dart';
 part 'district_dto.freezed.dart';
 part 'district_dto.g.dart';
 
-// @JsonSerializable()
 @freezed
 class DistrictDto with _$DistrictDto {
   const DistrictDto._();

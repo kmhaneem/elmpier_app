@@ -9,6 +9,8 @@ abstract class AdvertisementState with _$AdvertisementState {
   const factory AdvertisementState.initial() = _Initial;
   const factory AdvertisementState.loadInProgress() = _LoadInProgress;
   const factory AdvertisementState.loadSuccess(List<Advertisement> advertisement) = _LoadSuccess;
+  const factory AdvertisementState.activeLoaded(List<Advertisement> advertisement) = _ActiveLoaded;
+  const factory AdvertisementState.expiredLoaded(List<Advertisement> advertisement) = _ExpiredLoaded;
   const factory AdvertisementState.searchLoaded(List<Advertisement> advertisement) = _SearchLoaded;
   const factory AdvertisementState.loadFailure(AdvertisementFailure advertisementFailure) =
       _LoadFailure;

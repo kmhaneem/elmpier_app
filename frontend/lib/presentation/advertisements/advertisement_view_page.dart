@@ -181,9 +181,10 @@ class _AdvertisementViewPageState extends ConsumerState<AdvertisementViewPage> {
                       }
                       if (email != null) {
                         AutoRouter.of(context).push(ChatRoute(
-                            otherUserId: advertisement.userId.toString(),
-                            userId: userId!,
-                            email: email));
+                          otherUserId: advertisement.userId.toString(),
+                          userId: userId!,
+                          email: email,
+                        ));
                       } else {}
                     },
                     style: ElevatedButton.styleFrom(
@@ -215,34 +216,6 @@ class _AdvertisementViewPageState extends ConsumerState<AdvertisementViewPage> {
                     ),
                   ),
                 ),
-                // ElevatedButton(
-                //   onPressed: () => _makePhoneCall(advertisement.phone!),
-                //   child: Text("Call Now"),
-                // ),
-                // ElevatedButton(
-                // onPressed: () async {
-                //   String? userId = await getLoggedInUserIdFromStorage();
-                //   String? email;
-                //   if (userId != null) {
-                //     email = await getEmailByUserId(userId);
-                //   }
-                //   if (email != null) {
-                //     AutoRouter.of(context).push(ChatRoute(
-                //         otherUserId: advertisement.userId.toString(),
-                //         userId: userId!,
-                //         email: email));
-                //   } else {}
-                // },
-                //   child: Text("Chat"),
-                // ),
-                // const SizedBox(width: 8),
-                // Expanded(
-                //   child: ElevatedButton(
-                //     onPressed: () => _sendWhatsAppMessage(advertisement.phone!,
-                //         "Hello! I'm interested in your advertisement."),
-                //     child: const Text("WhatsApp"),
-                //   ),
-                // ),
               ],
             ),
           ],

@@ -47,7 +47,7 @@ class _AddressSectionState extends ConsumerState<AddressSection> {
                     Text(widget.user.addressLine1),
                     Text(widget.user.addressLine2),
                     Text(widget.user.city),
-                    Text("${widget.user.province}, ${widget.user.postalCode}"),
+                    Text("${widget.user.postalCode}"),
                   ],
                 ),
               ),

@@ -124,10 +124,10 @@ class _$AuthDtoCopyWithImpl<$Res, $Val extends AuthDto>
 }
 
 /// @nodoc
-abstract class _$$_AuthDtoCopyWith<$Res> implements $AuthDtoCopyWith<$Res> {
-  factory _$$_AuthDtoCopyWith(
-          _$_AuthDto value, $Res Function(_$_AuthDto) then) =
-      __$$_AuthDtoCopyWithImpl<$Res>;
+abstract class _$$AuthDtoImplCopyWith<$Res> implements $AuthDtoCopyWith<$Res> {
+  factory _$$AuthDtoImplCopyWith(
+          _$AuthDtoImpl value, $Res Function(_$AuthDtoImpl) then) =
+      __$$AuthDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -144,10 +144,11 @@ abstract class _$$_AuthDtoCopyWith<$Res> implements $AuthDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AuthDtoCopyWithImpl<$Res>
-    extends _$AuthDtoCopyWithImpl<$Res, _$_AuthDto>
-    implements _$$_AuthDtoCopyWith<$Res> {
-  __$$_AuthDtoCopyWithImpl(_$_AuthDto _value, $Res Function(_$_AuthDto) _then)
+class __$$AuthDtoImplCopyWithImpl<$Res>
+    extends _$AuthDtoCopyWithImpl<$Res, _$AuthDtoImpl>
+    implements _$$AuthDtoImplCopyWith<$Res> {
+  __$$AuthDtoImplCopyWithImpl(
+      _$AuthDtoImpl _value, $Res Function(_$AuthDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -164,7 +165,7 @@ class __$$_AuthDtoCopyWithImpl<$Res>
     Object? profile = null,
     Object? verified = null,
   }) {
-    return _then(_$_AuthDto(
+    return _then(_$AuthDtoImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -211,8 +212,8 @@ class __$$_AuthDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthDto extends _AuthDto {
-  const _$_AuthDto(
+class _$AuthDtoImpl extends _AuthDto {
+  const _$AuthDtoImpl(
       {required this.id,
       required this.email,
       required this.phone,
@@ -225,8 +226,8 @@ class _$_AuthDto extends _AuthDto {
       required this.verified})
       : super._();
 
-  factory _$_AuthDto.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthDtoFromJson(json);
+  factory _$AuthDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthDtoImplFromJson(json);
 
   @override
   final int id;
@@ -258,7 +259,7 @@ class _$_AuthDto extends _AuthDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthDto &&
+            other is _$AuthDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
@@ -283,12 +284,12 @@ class _$_AuthDto extends _AuthDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthDtoCopyWith<_$_AuthDto> get copyWith =>
-      __$$_AuthDtoCopyWithImpl<_$_AuthDto>(this, _$identity);
+  _$$AuthDtoImplCopyWith<_$AuthDtoImpl> get copyWith =>
+      __$$AuthDtoImplCopyWithImpl<_$AuthDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthDtoToJson(
+    return _$$AuthDtoImplToJson(
       this,
     );
   }
@@ -305,10 +306,10 @@ abstract class _AuthDto extends AuthDto {
       required final String firstname,
       required final String lastname,
       required final String profile,
-      required final bool verified}) = _$_AuthDto;
+      required final bool verified}) = _$AuthDtoImpl;
   const _AuthDto._() : super._();
 
-  factory _AuthDto.fromJson(Map<String, dynamic> json) = _$_AuthDto.fromJson;
+  factory _AuthDto.fromJson(Map<String, dynamic> json) = _$AuthDtoImpl.fromJson;
 
   @override
   int get id;
@@ -332,6 +333,6 @@ abstract class _AuthDto extends AuthDto {
   bool get verified;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthDtoCopyWith<_$_AuthDto> get copyWith =>
+  _$$AuthDtoImplCopyWith<_$AuthDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

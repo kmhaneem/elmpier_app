@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:frontend/presentation/core/widget/colors.dart';
 import 'package:tuple/tuple.dart';
 
 import '../../application/chat/message/message_state.dart';
@@ -54,14 +55,25 @@ class _ChatPageState extends ConsumerState<ChatPage> {
 
         return Align(
           alignment: isSentByMe ? Alignment.centerRight : Alignment.centerLeft,
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-            decoration: BoxDecoration(
-              color: isSentByMe ? Colors.blue : Colors.grey,
-              borderRadius: BorderRadius.circular(12),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.8,
             ),
-            child: Text(message.content),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              decoration: BoxDecoration(
+                color: isSentByMe ? customColor : Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                message.content,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
           ),
         );
       },
@@ -83,17 +95,26 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       );
     });
 
+    String _extractNameFromEmail(String email) {
+      return email.split('@').first;
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chat with ${widget.otherUserId}"),
+        title: Text(_extractNameFromEmail(widget.email)),
+        backgroundColor: Colors.grey[100],
+        foregroundColor: Colors.black,
+        elevation: 0,
       ),
+      backgroundColor: Colors.grey[100],
       body: Column(
         children: [
+          SizedBox(
+            height: 5,
+          ),
           Expanded(
-            child: messageState.when(
-              initial: () => Center(child: CircularProgressIndicator()),
-              actionInProgress: () =>
-                  Center(child: CircularProgressIndicator()),
+            child: messageState.maybeWhen(
+              initial: () => Center(child: LinearProgressIndicator()),
               loaded: (messages) {
                 List<Message> sortedMessages = List.from(messages);
                 sortedMessages.sort((a, b) =>
@@ -103,10 +124,11 @@ class _ChatPageState extends ConsumerState<ChatPage> {
               actionFailure: (failure) =>
                   Center(child: Text("Error occurred: ${failure}")),
               sendSuccess: () => Center(child: CircularProgressIndicator()),
+              orElse: () => Text(""),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: Row(
               children: [
                 Expanded(

@@ -3,7 +3,6 @@ import 'package:frontend/domain/cart/model/cart.dart';
 part 'cart_dtos.freezed.dart';
 part 'cart_dtos.g.dart';
 
-// @JsonSerializable()
 @freezed
 class CartDto with _$CartDto {
   const CartDto._();

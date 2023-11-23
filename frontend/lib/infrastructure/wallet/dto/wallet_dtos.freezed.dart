@@ -61,21 +61,22 @@ class _$WalletDtoCopyWithImpl<$Res, $Val extends WalletDto>
 }
 
 /// @nodoc
-abstract class _$$_WalletDtoCopyWith<$Res> implements $WalletDtoCopyWith<$Res> {
-  factory _$$_WalletDtoCopyWith(
-          _$_WalletDto value, $Res Function(_$_WalletDto) then) =
-      __$$_WalletDtoCopyWithImpl<$Res>;
+abstract class _$$WalletDtoImplCopyWith<$Res>
+    implements $WalletDtoCopyWith<$Res> {
+  factory _$$WalletDtoImplCopyWith(
+          _$WalletDtoImpl value, $Res Function(_$WalletDtoImpl) then) =
+      __$$WalletDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int amount});
 }
 
 /// @nodoc
-class __$$_WalletDtoCopyWithImpl<$Res>
-    extends _$WalletDtoCopyWithImpl<$Res, _$_WalletDto>
-    implements _$$_WalletDtoCopyWith<$Res> {
-  __$$_WalletDtoCopyWithImpl(
-      _$_WalletDto _value, $Res Function(_$_WalletDto) _then)
+class __$$WalletDtoImplCopyWithImpl<$Res>
+    extends _$WalletDtoCopyWithImpl<$Res, _$WalletDtoImpl>
+    implements _$$WalletDtoImplCopyWith<$Res> {
+  __$$WalletDtoImplCopyWithImpl(
+      _$WalletDtoImpl _value, $Res Function(_$WalletDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +84,7 @@ class __$$_WalletDtoCopyWithImpl<$Res>
   $Res call({
     Object? amount = null,
   }) {
-    return _then(_$_WalletDto(
+    return _then(_$WalletDtoImpl(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -94,11 +95,11 @@ class __$$_WalletDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WalletDto extends _WalletDto {
-  const _$_WalletDto({required this.amount}) : super._();
+class _$WalletDtoImpl extends _WalletDto {
+  const _$WalletDtoImpl({required this.amount}) : super._();
 
-  factory _$_WalletDto.fromJson(Map<String, dynamic> json) =>
-      _$$_WalletDtoFromJson(json);
+  factory _$WalletDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WalletDtoImplFromJson(json);
 
   @override
   final int amount;
@@ -112,7 +113,7 @@ class _$_WalletDto extends _WalletDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WalletDto &&
+            other is _$WalletDtoImpl &&
             (identical(other.amount, amount) || other.amount == amount));
   }
 
@@ -123,28 +124,28 @@ class _$_WalletDto extends _WalletDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WalletDtoCopyWith<_$_WalletDto> get copyWith =>
-      __$$_WalletDtoCopyWithImpl<_$_WalletDto>(this, _$identity);
+  _$$WalletDtoImplCopyWith<_$WalletDtoImpl> get copyWith =>
+      __$$WalletDtoImplCopyWithImpl<_$WalletDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WalletDtoToJson(
+    return _$$WalletDtoImplToJson(
       this,
     );
   }
 }
 
 abstract class _WalletDto extends WalletDto {
-  const factory _WalletDto({required final int amount}) = _$_WalletDto;
+  const factory _WalletDto({required final int amount}) = _$WalletDtoImpl;
   const _WalletDto._() : super._();
 
   factory _WalletDto.fromJson(Map<String, dynamic> json) =
-      _$_WalletDto.fromJson;
+      _$WalletDtoImpl.fromJson;
 
   @override
   int get amount;
   @override
   @JsonKey(ignore: true)
-  _$$_WalletDtoCopyWith<_$_WalletDto> get copyWith =>
+  _$$WalletDtoImplCopyWith<_$WalletDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

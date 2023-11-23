@@ -191,11 +191,11 @@ class _$PaymentDtoCopyWithImpl<$Res, $Val extends PaymentDto>
 }
 
 /// @nodoc
-abstract class _$$_PaymentDtoCopyWith<$Res>
+abstract class _$$PaymentDtoImplCopyWith<$Res>
     implements $PaymentDtoCopyWith<$Res> {
-  factory _$$_PaymentDtoCopyWith(
-          _$_PaymentDto value, $Res Function(_$_PaymentDto) then) =
-      __$$_PaymentDtoCopyWithImpl<$Res>;
+  factory _$$PaymentDtoImplCopyWith(
+          _$PaymentDtoImpl value, $Res Function(_$PaymentDtoImpl) then) =
+      __$$PaymentDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -220,11 +220,11 @@ abstract class _$$_PaymentDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentDtoCopyWithImpl<$Res>
-    extends _$PaymentDtoCopyWithImpl<$Res, _$_PaymentDto>
-    implements _$$_PaymentDtoCopyWith<$Res> {
-  __$$_PaymentDtoCopyWithImpl(
-      _$_PaymentDto _value, $Res Function(_$_PaymentDto) _then)
+class __$$PaymentDtoImplCopyWithImpl<$Res>
+    extends _$PaymentDtoCopyWithImpl<$Res, _$PaymentDtoImpl>
+    implements _$$PaymentDtoImplCopyWith<$Res> {
+  __$$PaymentDtoImplCopyWithImpl(
+      _$PaymentDtoImpl _value, $Res Function(_$PaymentDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -249,7 +249,7 @@ class __$$_PaymentDtoCopyWithImpl<$Res>
     Object? deliveryCity = null,
     Object? deliveryCountry = null,
   }) {
-    return _then(_$_PaymentDto(
+    return _then(_$PaymentDtoImpl(
       sandbox: null == sandbox
           ? _value.sandbox
           : sandbox // ignore: cast_nullable_to_non_nullable
@@ -328,8 +328,8 @@ class __$$_PaymentDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaymentDto extends _PaymentDto {
-  const _$_PaymentDto(
+class _$PaymentDtoImpl extends _PaymentDto {
+  const _$PaymentDtoImpl(
       {required this.sandbox,
       @JsonKey(name: "merchant_id") required this.merchantId,
       @JsonKey(name: "merchant_secret") required this.merchantSecret,
@@ -350,8 +350,8 @@ class _$_PaymentDto extends _PaymentDto {
       @JsonKey(name: "delivery_country") required this.deliveryCountry})
       : super._();
 
-  factory _$_PaymentDto.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentDtoFromJson(json);
+  factory _$PaymentDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentDtoImplFromJson(json);
 
   @override
   final bool sandbox;
@@ -408,7 +408,7 @@ class _$_PaymentDto extends _PaymentDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentDto &&
+            other is _$PaymentDtoImpl &&
             (identical(other.sandbox, sandbox) || other.sandbox == sandbox) &&
             (identical(other.merchantId, merchantId) ||
                 other.merchantId == merchantId) &&
@@ -464,12 +464,12 @@ class _$_PaymentDto extends _PaymentDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentDtoCopyWith<_$_PaymentDto> get copyWith =>
-      __$$_PaymentDtoCopyWithImpl<_$_PaymentDto>(this, _$identity);
+  _$$PaymentDtoImplCopyWith<_$PaymentDtoImpl> get copyWith =>
+      __$$PaymentDtoImplCopyWithImpl<_$PaymentDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentDtoToJson(
+    return _$$PaymentDtoImplToJson(
       this,
     );
   }
@@ -478,36 +478,28 @@ class _$_PaymentDto extends _PaymentDto {
 abstract class _PaymentDto extends PaymentDto {
   const factory _PaymentDto(
       {required final bool sandbox,
-      @JsonKey(name: "merchant_id")
-          required final String merchantId,
-      @JsonKey(name: "merchant_secret")
-          required final String merchantSecret,
-      @JsonKey(name: "notify_url")
-          required final String notifyUrl,
-      @JsonKey(name: "order_id")
-          required final String orderId,
+      @JsonKey(name: "merchant_id") required final String merchantId,
+      @JsonKey(name: "merchant_secret") required final String merchantSecret,
+      @JsonKey(name: "notify_url") required final String notifyUrl,
+      @JsonKey(name: "order_id") required final String orderId,
       required final String items,
       required final double amount,
       required final String currency,
-      @JsonKey(name: "first_name")
-          required final String firstName,
-      @JsonKey(name: "last_name")
-          required final String lastName,
+      @JsonKey(name: "first_name") required final String firstName,
+      @JsonKey(name: "last_name") required final String lastName,
       required final String email,
       required final String phone,
       required final String address,
       required final String city,
       required final String country,
-      @JsonKey(name: "delivery_address")
-          required final String deliveryAddress,
-      @JsonKey(name: "delivery_city")
-          required final String deliveryCity,
+      @JsonKey(name: "delivery_address") required final String deliveryAddress,
+      @JsonKey(name: "delivery_city") required final String deliveryCity,
       @JsonKey(name: "delivery_country")
-          required final String deliveryCountry}) = _$_PaymentDto;
+      required final String deliveryCountry}) = _$PaymentDtoImpl;
   const _PaymentDto._() : super._();
 
   factory _PaymentDto.fromJson(Map<String, dynamic> json) =
-      _$_PaymentDto.fromJson;
+      _$PaymentDtoImpl.fromJson;
 
   @override
   bool get sandbox;
@@ -556,6 +548,6 @@ abstract class _PaymentDto extends PaymentDto {
   String get deliveryCountry;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentDtoCopyWith<_$_PaymentDto> get copyWith =>
+  _$$PaymentDtoImplCopyWith<_$PaymentDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

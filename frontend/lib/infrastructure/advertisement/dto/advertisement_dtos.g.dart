@@ -6,8 +6,9 @@ part of 'advertisement_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AdvertisementDto _$$_AdvertisementDtoFromJson(Map<String, dynamic> json) =>
-    _$_AdvertisementDto(
+_$AdvertisementDtoImpl _$$AdvertisementDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AdvertisementDtoImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
@@ -16,8 +17,8 @@ _$_AdvertisementDto _$$_AdvertisementDtoFromJson(Map<String, dynamic> json) =>
       categoryId: json['category_id'] as int,
       brandId: json['brand_id'] as int,
       modelId: json['model_id'] as int,
-      provinceId: json['province_id'] as int,
-      districtId: json['district_id'] as int,
+      provinceId: json['province_id'] as int?,
+      districtId: json['district_id'] as int?,
       province: json['province'] as String?,
       district: json['district'] as String?,
       category: json['category'] as String?,
@@ -33,7 +34,8 @@ _$_AdvertisementDto _$$_AdvertisementDtoFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_AdvertisementDtoToJson(_$_AdvertisementDto instance) =>
+Map<String, dynamic> _$$AdvertisementDtoImplToJson(
+        _$AdvertisementDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

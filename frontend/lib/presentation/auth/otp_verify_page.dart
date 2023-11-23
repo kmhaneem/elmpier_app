@@ -86,7 +86,7 @@ class OtpVerifyPage extends ConsumerWidget {
                   onPressed: () async {
                     await signInNotifier.verifyOtpButtonPressed();
                   },
-                  text: "Sign In",
+                  text: "Verify",
                 ),
               ),
               if (signInState.isSubmitting) ...[

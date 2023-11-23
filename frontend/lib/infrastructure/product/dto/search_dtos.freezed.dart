@@ -62,22 +62,22 @@ class _$SearchProductDtoCopyWithImpl<$Res, $Val extends SearchProductDto>
 }
 
 /// @nodoc
-abstract class _$$_SearchProductDtoCopyWith<$Res>
+abstract class _$$SearchProductDtoImplCopyWith<$Res>
     implements $SearchProductDtoCopyWith<$Res> {
-  factory _$$_SearchProductDtoCopyWith(
-          _$_SearchProductDto value, $Res Function(_$_SearchProductDto) then) =
-      __$$_SearchProductDtoCopyWithImpl<$Res>;
+  factory _$$SearchProductDtoImplCopyWith(_$SearchProductDtoImpl value,
+          $Res Function(_$SearchProductDtoImpl) then) =
+      __$$SearchProductDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String query});
 }
 
 /// @nodoc
-class __$$_SearchProductDtoCopyWithImpl<$Res>
-    extends _$SearchProductDtoCopyWithImpl<$Res, _$_SearchProductDto>
-    implements _$$_SearchProductDtoCopyWith<$Res> {
-  __$$_SearchProductDtoCopyWithImpl(
-      _$_SearchProductDto _value, $Res Function(_$_SearchProductDto) _then)
+class __$$SearchProductDtoImplCopyWithImpl<$Res>
+    extends _$SearchProductDtoCopyWithImpl<$Res, _$SearchProductDtoImpl>
+    implements _$$SearchProductDtoImplCopyWith<$Res> {
+  __$$SearchProductDtoImplCopyWithImpl(_$SearchProductDtoImpl _value,
+      $Res Function(_$SearchProductDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_SearchProductDtoCopyWithImpl<$Res>
   $Res call({
     Object? query = null,
   }) {
-    return _then(_$_SearchProductDto(
+    return _then(_$SearchProductDtoImpl(
       query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_SearchProductDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SearchProductDto implements _SearchProductDto {
-  const _$_SearchProductDto({required this.query});
+class _$SearchProductDtoImpl implements _SearchProductDto {
+  const _$SearchProductDtoImpl({required this.query});
 
-  factory _$_SearchProductDto.fromJson(Map<String, dynamic> json) =>
-      _$$_SearchProductDtoFromJson(json);
+  factory _$SearchProductDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SearchProductDtoImplFromJson(json);
 
   @override
   final String query;
@@ -114,7 +114,7 @@ class _$_SearchProductDto implements _SearchProductDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchProductDto &&
+            other is _$SearchProductDtoImpl &&
             (identical(other.query, query) || other.query == query));
   }
 
@@ -125,12 +125,13 @@ class _$_SearchProductDto implements _SearchProductDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchProductDtoCopyWith<_$_SearchProductDto> get copyWith =>
-      __$$_SearchProductDtoCopyWithImpl<_$_SearchProductDto>(this, _$identity);
+  _$$SearchProductDtoImplCopyWith<_$SearchProductDtoImpl> get copyWith =>
+      __$$SearchProductDtoImplCopyWithImpl<_$SearchProductDtoImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchProductDtoToJson(
+    return _$$SearchProductDtoImplToJson(
       this,
     );
   }
@@ -138,15 +139,15 @@ class _$_SearchProductDto implements _SearchProductDto {
 
 abstract class _SearchProductDto implements SearchProductDto {
   const factory _SearchProductDto({required final String query}) =
-      _$_SearchProductDto;
+      _$SearchProductDtoImpl;
 
   factory _SearchProductDto.fromJson(Map<String, dynamic> json) =
-      _$_SearchProductDto.fromJson;
+      _$SearchProductDtoImpl.fromJson;
 
   @override
   String get query;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchProductDtoCopyWith<_$_SearchProductDto> get copyWith =>
+  _$$SearchProductDtoImplCopyWith<_$SearchProductDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

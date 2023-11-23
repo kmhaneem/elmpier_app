@@ -6,7 +6,8 @@ part of 'auth_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AuthDto _$$_AuthDtoFromJson(Map<String, dynamic> json) => _$_AuthDto(
+_$AuthDtoImpl _$$AuthDtoImplFromJson(Map<String, dynamic> json) =>
+    _$AuthDtoImpl(
       id: json['id'] as int,
       email: json['email'] as String,
       phone: json['phone'] as String,
@@ -19,7 +20,7 @@ _$_AuthDto _$$_AuthDtoFromJson(Map<String, dynamic> json) => _$_AuthDto(
       verified: json['verified'] as bool,
     );
 
-Map<String, dynamic> _$$_AuthDtoToJson(_$_AuthDto instance) =>
+Map<String, dynamic> _$$AuthDtoImplToJson(_$AuthDtoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'email': instance.email,

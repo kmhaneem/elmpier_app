@@ -80,9 +80,10 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
 }
 
 /// @nodoc
-abstract class _$$_CartCopyWith<$Res> implements $CartCopyWith<$Res> {
-  factory _$$_CartCopyWith(_$_Cart value, $Res Function(_$_Cart) then) =
-      __$$_CartCopyWithImpl<$Res>;
+abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
+  factory _$$CartImplCopyWith(
+          _$CartImpl value, $Res Function(_$CartImpl) then) =
+      __$$CartImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -90,9 +91,10 @@ abstract class _$$_CartCopyWith<$Res> implements $CartCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
-    implements _$$_CartCopyWith<$Res> {
-  __$$_CartCopyWithImpl(_$_Cart _value, $Res Function(_$_Cart) _then)
+class __$$CartImplCopyWithImpl<$Res>
+    extends _$CartCopyWithImpl<$Res, _$CartImpl>
+    implements _$$CartImplCopyWith<$Res> {
+  __$$CartImplCopyWithImpl(_$CartImpl _value, $Res Function(_$CartImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +106,7 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
     Object? itemQty = null,
     Object? imageUrl = null,
   }) {
-    return _then(_$_Cart(
+    return _then(_$CartImpl(
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -131,8 +133,8 @@ class __$$_CartCopyWithImpl<$Res> extends _$CartCopyWithImpl<$Res, _$_Cart>
 
 /// @nodoc
 
-class _$_Cart implements _Cart {
-  const _$_Cart(
+class _$CartImpl implements _Cart {
+  const _$CartImpl(
       {required this.productId,
       required this.name,
       required this.price,
@@ -159,7 +161,7 @@ class _$_Cart implements _Cart {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Cart &&
+            other is _$CartImpl &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.name, name) || other.name == name) &&
@@ -176,8 +178,8 @@ class _$_Cart implements _Cart {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartCopyWith<_$_Cart> get copyWith =>
-      __$$_CartCopyWithImpl<_$_Cart>(this, _$identity);
+  _$$CartImplCopyWith<_$CartImpl> get copyWith =>
+      __$$CartImplCopyWithImpl<_$CartImpl>(this, _$identity);
 }
 
 abstract class _Cart implements Cart {
@@ -186,7 +188,7 @@ abstract class _Cart implements Cart {
       required final String name,
       required final int price,
       required final int itemQty,
-      required final String imageUrl}) = _$_Cart;
+      required final String imageUrl}) = _$CartImpl;
 
   @override
   int get productId;
@@ -200,5 +202,6 @@ abstract class _Cart implements Cart {
   String get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_CartCopyWith<_$_Cart> get copyWith => throw _privateConstructorUsedError;
+  _$$CartImplCopyWith<_$CartImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

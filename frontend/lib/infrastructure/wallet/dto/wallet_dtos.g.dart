@@ -6,11 +6,12 @@ part of 'wallet_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WalletDto _$$_WalletDtoFromJson(Map<String, dynamic> json) => _$_WalletDto(
+_$WalletDtoImpl _$$WalletDtoImplFromJson(Map<String, dynamic> json) =>
+    _$WalletDtoImpl(
       amount: json['amount'] as int,
     );
 
-Map<String, dynamic> _$$_WalletDtoToJson(_$_WalletDto instance) =>
+Map<String, dynamic> _$$WalletDtoImplToJson(_$WalletDtoImpl instance) =>
     <String, dynamic>{
       'amount': instance.amount,
     };

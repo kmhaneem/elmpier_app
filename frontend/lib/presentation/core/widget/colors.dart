@@ -1,8 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-// #FF9666
-
 Map<int, Color> colorCodes = {
   50: Color.fromRGBO(255, 150, 102, .1),
   100: Color.fromRGBO(255, 150, 102, .2),

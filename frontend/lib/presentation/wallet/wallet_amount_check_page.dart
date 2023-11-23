@@ -8,12 +8,17 @@ class WalletAmountCheckPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Define your color scheme
     const Color primaryColor = Colors.orangeAccent;
     const Color secondaryColor = Colors.blueGrey;
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        title: Text("Low Balance"),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+      ),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(

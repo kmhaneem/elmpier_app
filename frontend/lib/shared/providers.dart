@@ -3,14 +3,25 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/application/ads/ads_notifier.dart';
 import 'package:frontend/application/ads/ads_state.dart';
+import 'package:frontend/application/ads/top_ads_notifier.dart';
+import 'package:frontend/application/advertisement/active_advertisement/active_advertisement_notifier.dart';
+import 'package:frontend/application/advertisement/active_advertisement/active_advertisment_state.dart';
+import 'package:frontend/application/advertisement/add_advertisement/add_advertisement_notifier.dart';
+import 'package:frontend/application/advertisement/add_advertisement/add_advertisement_state.dart';
+import 'package:frontend/application/advertisement/advertisement_condition/advertisement_condition_notifier.dart';
+import 'package:frontend/application/advertisement/advertisement_condition/advertisement_condition_state.dart';
 import 'package:frontend/application/advertisement/advertisement_notifier.dart';
 import 'package:frontend/application/advertisement/advertisement_state.dart';
+import 'package:frontend/application/advertisement/expired_advertisement/expired_advertisement_notifier.dart';
+import 'package:frontend/application/advertisement/expired_advertisement/expired_advertisement_state.dart';
 import 'package:frontend/application/cart/cart_notifier.dart';
 import 'package:frontend/application/cart/cart_state.dart';
 import 'package:frontend/application/elmpier_plus/elmpier_plus_notifier.dart';
 import 'package:frontend/application/elmpier_plus/elmpier_plus_state.dart';
 import 'package:frontend/application/order/order_item_notifier.dart';
 import 'package:frontend/application/order/order_item_state.dart';
+import 'package:frontend/application/order/order_status_notifier.dart';
+import 'package:frontend/application/order/order_status_state.dart';
 import 'package:frontend/application/payment/payment_notifier.dart';
 import 'package:frontend/application/payment/payment_state.dart';
 import 'package:frontend/application/product/add_product/add_product_notifier.dart';
@@ -18,10 +29,14 @@ import 'package:frontend/application/product/add_product/add_product_state.dart'
 import 'package:frontend/application/product/brand/brand_notifier.dart';
 import 'package:frontend/application/product/brand/brand_state.dart';
 import 'package:frontend/application/product/category/category_state.dart';
+import 'package:frontend/application/product/condition/product_condition_notifier.dart';
+import 'package:frontend/application/product/condition/product_condition_state.dart';
 import 'package:frontend/application/product/product_model/model_notifier.dart';
 import 'package:frontend/application/product/product_model/model_state.dart';
 import 'package:frontend/application/product/search/search_notifier.dart';
 import 'package:frontend/application/product/search/search_state.dart';
+import 'package:frontend/application/product/sold_product/sold_product_notifier.dart';
+import 'package:frontend/application/product/sold_product/sold_product_state.dart';
 import 'package:frontend/application/product/view_product/product_notifier.dart';
 import 'package:frontend/application/product/view_product/product_state.dart';
 import 'package:frontend/application/product/view_product/seller/seller_product_notifier.dart';
@@ -117,26 +132,62 @@ final sellerProductProvider =
         ((ref) => SellerProductNotifier(ref.watch(productRepositoryProvider))));
 
 final orderItemProvider =
-    StateNotifierProvider<OrderItemNotifier, OrderItemStates>(
+    StateNotifierProvider<OrderItemNotifier, OrderItemState>(
         ((ref) => OrderItemNotifier(ref.watch(orderItemRepositoryProvider))));
+
+final orderStatusProvider =
+    StateNotifierProvider<OrderStatusNotifier, OrderStatusState>(
+        ((ref) => OrderStatusNotifier(ref.watch(orderItemRepositoryProvider))));
 
 final addProductProvider =
     StateNotifierProvider<AddProductNotifier, AddProductState>(
         ((ref) => AddProductNotifier(ref.watch(productRepositoryProvider))));
+
+final soldProductProvider =
+    StateNotifierProvider<SoldProductNotifier, SoldProductState>(
+        ((ref) => SoldProductNotifier(ref.watch(productRepositoryProvider))));
+
+final addAdvertisementProvider = StateNotifierProvider<AddAdvertisementNotifier,
+        AddAdvertisementState>(
+    ((ref) =>
+        AddAdvertisementNotifier(ref.watch(advertisementRepositoryProvider))));
+
+final activeAdvertisementProvider = StateNotifierProvider<
+        ActiveAdvertisementNotifier, ActiveAdvertisementState>(
+    ((ref) => ActiveAdvertisementNotifier(
+        ref.watch(advertisementRepositoryProvider))));
+
+final expiredAdvertisementProvider = StateNotifierProvider<
+        ExpiredAdvertisementNotifier, ExpiredAdvertisementState>(
+    ((ref) => ExpiredAdvertisementNotifier(
+        ref.watch(advertisementRepositoryProvider))));
 
 final selectedImagesProvider = StateProvider<List<XFile>>((ref) => []);
 
 final categoryProvider = StateNotifierProvider<CategoryNotifier, CategoryState>(
     (ref) => CategoryNotifier(ref.watch(productRepositoryProvider)));
 
+final advertisementConditionProvider = StateNotifierProvider<
+        AdvertisementConditionNotifier, AdvertisementConditionState>(
+    (ref) => AdvertisementConditionNotifier(
+        ref.watch(advertisementRepositoryProvider)));
+
 final adsProvider = StateNotifierProvider<AdsNotifier, AdsState>(
     (ref) => AdsNotifier(ref.watch(adsRepositoryProvider)));
+
+final topAdsProvider = StateNotifierProvider<TopAdsNotifier, AdsState>(
+    (ref) => TopAdsNotifier(ref.watch(adsRepositoryProvider)));
 
 final brandProvider = StateNotifierProvider<BrandNotifier, BrandState>(
     (ref) => BrandNotifier(ref.watch(productRepositoryProvider)));
 
 final modelProvider = StateNotifierProvider<ModelNotifier, ModelState>(
     (ref) => ModelNotifier(ref.watch(productRepositoryProvider)));
+
+final productConditonProvider =
+    StateNotifierProvider<ProductConditionNotifier, ProductConditionState>(
+        (ref) =>
+            ProductConditionNotifier(ref.watch(productRepositoryProvider)));
 
 final productSearchProvider =
     StateNotifierProvider<SearchNotifier, SearchState>(
@@ -171,10 +222,9 @@ final userProvider = StateNotifierProvider<UserNotifier, UserState>(
 final userNotifierProvider = StateNotifierProvider<UserNotifier, UserState>(
     (ref) => UserNotifier(ref.watch(userRepositoryProvider)));
 
-final userProfileProvider =
-    StateNotifierProvider<UserProfileNotifier, UserProfileState>((ref) =>
-        UserProfileNotifier(ref.watch(userRepositoryProvider),
-            ref.watch(userNotifierProvider.notifier))); //
+final userProfileXProvider =
+    StateNotifierProvider<UserProfileNotifierX, UserProfileState>(
+        (ref) => UserProfileNotifierX(ref.watch(userRepositoryProvider)));
 
 final paymentProvider = StateNotifierProvider<PaymentNotifier, PaymentState>(
     ((ref) => PaymentNotifier(ref.watch(PaymentRepositoryProvider))));

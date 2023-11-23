@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:frontend/presentation/core/widget/colors.dart';
 import 'package:frontend/presentation/routes/app_router.gr.dart';
+import 'package:intl/intl.dart';
 
 import '../../../shared/providers.dart';
 
@@ -11,18 +13,24 @@ class SellerProductPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final productNotifier = ref.read(sellerProductProvider.notifier);
+    
     final productState = ref.watch(sellerProductProvider);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       productNotifier.getSellerProducts();
     });
 
+    
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Products'),
+        title: Text('Seller Products'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: productState.when(
           initial: () => Container(),
           loadInProgress: () => Center(child: CircularProgressIndicator()),
@@ -37,67 +45,80 @@ class SellerProductPage extends ConsumerWidget {
                 },
                 child: Card(
                   elevation: 1,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 5,
-                    horizontal: 10,
+                  margin: EdgeInsets.all(10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  child: IntrinsicHeight(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              ((product.imageUrls.isNotEmpty) &&
-                                      product.imageUrls.first.isNotEmpty)
-                                  ? product.imageUrls.first
-                                  : 'lib/assets/images/elmpier-logo.png',
-                              width: 80,
-                              height: 80,
-                              fit: BoxFit.cover,
-                            ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            (product.imageUrls.isNotEmpty &&
+                                    product.imageUrls.first.isNotEmpty)
+                                ? product.imageUrls.first
+                                : 'lib/assets/images/elmpier-logo.png',
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 15),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8.0, bottom: 4),
-                                child: Text(
-                                  product.name.getOrCrash(),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              const Text(
-                                "Used",
+                              Text(
+                                product.name.getOrCrash(),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 4.0),
-                                child: Text(
-                                  "RS.${product.price.getOrCrash()}",
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey,
-                                  ),
+                              SizedBox(height: 8),
+                              SizedBox(height: 8),
+                              Text(
+                                "Rs. ${NumberFormat('#,##0').format(product.price.getOrCrash())}.00",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
                                 ),
                               ),
                             ],
                           ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                AutoRouter.of(context)
+                                    .push(ProductUpdateRoute(product: product));
+                              },
+                              icon: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: customColor[50],
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: customColor,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            
+                          ],
                         ),
                       ],
                     ),
