@@ -17,13 +17,4 @@ export class OrderService {
             return error
         }
     }
-
-    async GetOrderItemStatus(id: number){
-        try {
-            const response = await this.repository.OrderItemStatusGet(id)
-            return response
-        } catch (error){
-            throw error
-        }
-    }
 }

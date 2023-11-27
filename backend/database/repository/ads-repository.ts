@@ -30,7 +30,8 @@ export class AdsRepository {
 
       setTimeout(() => {
         this.resetTopAds(productId);
-      }, 86400000);
+      }, 100000);
+      //   86400000
 
       return result.rows;
     } catch (error) {
@@ -65,7 +66,8 @@ export class AdsRepository {
 
       setTimeout(() => {
         this.resetPopAds(productId);
-      }, 86400000);
+      }, 100000);
+      //   86400000
 
       return result.rows;
     } catch (error) {
@@ -93,26 +95,6 @@ export class AdsRepository {
     }
   }
 
-  async TopAdsGet() {
-    try {
-      const sql = `
-            SELECT p.*, ARRAY_AGG(pi.image_url) as image_urls
-            FROM product p
-            LEFT JOIN product_image pi ON p.id = pi.product_id
-            WHERE p.is_top_ads = true
-            GROUP BY p.id
-            ORDER BY RANDOM()
-            LIMIT 5;
-        `;
-
-      const params = [];
-      const result = await writeQuery(sql, params);
-      return result.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
   async AdvertisementTopAdsCreate(advertisementId: number) {
     try {
       const sql = "UPDATE advertisement SET is_top_ads = true WHERE id = $1";
@@ -120,7 +102,7 @@ export class AdsRepository {
 
       setTimeout(() => {
         this.resetAdvertisementTopAds(advertisementId);
-      }, 5000);
+      }, 5000); 
 
       return result.rows;
     } catch (error) {

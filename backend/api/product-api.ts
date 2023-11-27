@@ -23,15 +23,16 @@ export default (app: Application) => {
 
   app.get(
     "/products",
-    Authenticate,
     validationMiddleware(Product),
+    OptionalAuthenticate,
     async (req: Request, res: Response, next: NextFunction) => {
       try {
-        const payload: UserPayload = req.user
-        const response = await productService.GetProducts(payload);
+        const userId = req.body.userId;
+
+        const response = await productService.GetProducts(userId);
+        console.log("USEr PRODUCT CALLED", userId);
         return res.status(200).json({ response });
       } catch (error) {
-        console.log(error)
         return res.status(400).json(new BadRequestError(error.message, error));
       }
     }
@@ -109,7 +110,17 @@ export default (app: Application) => {
           imageUrl: [],
         };
 
-       
+        // for (const file of req.files as Express.Multer.File[]) {
+        //   const { path } = file;
+
+        //   const uploadedImage = await cloudinary.v2.uploader.upload(path, {
+        //     folder: "elmpier_app",
+        //     allowed_formats: ["jpg", "jpeg", "png", "webp"],
+        //   });
+        //   imageUrlPayload.imageUrl.push(uploadedImage.url);
+
+        //   fs.unlinkSync(path);
+        // }
         for (const file of req.files as Express.Multer.File[]) {
           const { path } = file;
 
@@ -225,6 +236,7 @@ export default (app: Application) => {
     Authenticate,
     async (req: Request, res: Response, next: NextFunction) => {
       try {
+        // const admin: AdminPayload = req.admin
         const payload: Category = req.body;
         const response = await productService.CreateCategory(payload);
         return res.status(201).json({ response });
@@ -360,33 +372,6 @@ export default (app: Application) => {
           modelId: modelId,
         };
         const response = await productService.FilterProducts(payload);
-        return res.status(200).json({ response });
-      } catch (error) {
-        return res.status(400).json(new BadRequestError(error.message, error));
-      }
-    }
-  );
-
-  app.get(
-    "/product/sold",
-    Authenticate,
-    async (req: Request, res: Response, next: NextFunction) => {
-      try {
-        const payload: UserPayload = req.user;
-        console.log("PAYload", payload);
-        const response = await productService.GetSoldProducts(payload);
-        return res.status(200).json({ response });
-      } catch (error) {
-        return res.status(400).json(new BadRequestError(error.message, error));
-      }
-    }
-  );
-  app.get(
-    "/product/conditions",
-    Authenticate,
-    async (req: Request, res: Response, next: NextFunction) => {
-      try {
-        const response = await productService.GetProductConditons();
         return res.status(200).json({ response });
       } catch (error) {
         return res.status(400).json(new BadRequestError(error.message, error));

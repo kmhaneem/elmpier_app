@@ -81,7 +81,7 @@ export class AdvertisementRepository {
       }
 
       sql +=
-        " GROUP BY a.id, p.name, d.name, c.name, br.name, mo.name, con.name, u.phone, u.firstname, u.lastname, a.created_at";
+        " GROUP BY a.id, p.name, d.name, c.name, br.name, mo.name, con.name, u.phone, u.firstname, u.lastname, a.created_at"; // Added a.created_at here
 
       const result = await writeQuery(sql, params);
       return result.rows;
@@ -151,107 +151,6 @@ export class AdvertisementRepository {
       const result = await writeQuery(sql, params);
 
       return result.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async AdvetisementConditionGet() {
-    try {
-      const sql = "SELECT * FROM condition";
-      const params = [];
-      const result = await writeQuery(sql, params);
-      return result.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async ActiveAdvertisementGet(id: number) {
-    try {
-      const sql = `
-        SELECT 
-          a.*, 
-          ARRAY_AGG(ai.image_url) as image_urls
-        FROM advertisement a
-        LEFT JOIN advertisement_image ai ON a.id = ai.advertisement_id
-        WHERE a.user_id = $1 AND a.is_approved = TRUE
-        GROUP BY a.id
-      `;
-      const params = [id];
-      const result = await writeQuery(sql, params);
-      return result.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async ExpiredAdvertisementGet(id: number) {
-    try {
-      const sql = `
-            SELECT 
-                a.*, 
-                ARRAY_AGG(ai.image_url) AS image_urls
-            FROM advertisement a
-            LEFT JOIN advertisement_image ai ON a.id = ai.advertisement_id
-            WHERE a.user_id = $1 AND created_at < NOW() - INTERVAL '14 days'
-            GROUP BY a.id
-        `;
-      const params = [id];
-      const result = await writeQuery(sql, params);
-      return result.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async AdvertisementUpdate(
-    productId: number,
-    { name, description, price }: Advertisement,
-    imageUrls: string[],
-    userId: number
-  ) {
-    try {
-      let sql = `UPDATE advertisement SET name = $2, description = $3, price = $4, is_approved = false WHERE id = $1 AND user_id = $5 RETURNING *`;
-      const params = [productId, name, description, price, userId];
-      const result = await writeQuery(sql, params);
-
-      if (result.rows.length === 0) {
-        throw new Error(
-          "Unauthorized: You do not have permission to update this advertisement."
-        );
-      }
-
-      if (imageUrls.length > 0) {
-        sql = "DELETE FROM advertisement_image WHERE advertisement_id = $1";
-        await writeQuery(sql, [productId]);
-
-        for (const url of imageUrls) {
-          sql =
-            "INSERT INTO advertisement_image (advertisement_id, image_url) VALUES ($1, $2)";
-          await writeQuery(sql, [productId, url]);
-        }
-      }
-      return result.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async AdvertisementDelete(userId: number, advertisementId: number) {
-    try {
-      let sql = "DELETE FROM advertisement_image WHERE advertisement_id = $1";
-      await writeQuery(sql, [advertisementId]);
-
-      sql = "DELETE FROM advertisement WHERE id = $2 AND user_id = $1";
-      const params = [userId, advertisementId];
-      const result = await writeQuery(sql, params);
-
-      if (result.rowCount === 0) {
-        throw new Error("No advertisement found");
-      }
-
-      return { success: true, message: "advertisement deleted successfully" };
     } catch (error) {
       throw error;
     }

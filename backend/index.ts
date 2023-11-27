@@ -10,8 +10,6 @@ import advertisementRoutes from "./api/advertisement-api"
 import adsRoute from "./api/ads-api"
 import ePlusRoute from "./api/elmpierplus-api"
 import walletRoute from "./api/wallet-api"
-import deliveryPersonRoute from "./api/deliveryp_api"
-import demoRoute from "./api/demo-api"
 import { UserService } from "./service/user-service";
 import { ProductService } from "./service/product-service";
 
@@ -20,8 +18,6 @@ const userService = new UserService();
 const productService = new ProductService();
 app.use(express.json());
 
-demoRoute(app)
-deliveryPersonRoute(app)
 walletRoute(app)
 ePlusRoute(app)
 adsRoute(app)

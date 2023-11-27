@@ -26,7 +26,7 @@ export class UserAddress {
   addressLine1: string;
   addressLine2: string;
   city: string;
-  postalCode: string;
+  postalCode: number;
   district: string;
   province: string;
 }

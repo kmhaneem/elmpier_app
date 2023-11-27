@@ -35,7 +35,6 @@ export default (app: Application) => {
         const userData: UserPayload = req.user;
 
         const payload: Advertisement = req.body;
-        console.log("Payload Console", payload);
 
         const response = await advertisementService.CreateAdvertisement(userData, payload, imageUrlPayload);
         return res.status(201).json({response})
@@ -46,10 +45,10 @@ export default (app: Application) => {
     }
   );
 
-  app.get("/advertisement", Authenticate, async(req: Request, res: Response, next: NextFunction) => {
+  app.get("/advertisement", OptionalAuthenticate, async(req: Request, res: Response, next: NextFunction) => {
     try {
-        const payload: UserPayload = req.user
-        const response = await advertisementService.GetAdvertisement(payload)
+        const id = req.body.id
+        const response = await advertisementService.GetAdvertisement(id)
         console.log("ADS CALLED")
         return res.status(200).json({response})
     } catch (error){
@@ -71,79 +70,6 @@ export default (app: Application) => {
         console.log("SEAECH REQ.BODY", req.body);
 
         return res.status(200).json({response});
-      } catch (error) {
-        return res.status(400).json(new BadRequestError(error.message, error));
-      }
-    }
-  );
-
-  app.get("/advertisement/condition", async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const response = await advertisementService.GetAdvertisementCondition()
-      return res.status(200).json({response})
-    } catch (error){
-      return res.status(400).json(new BadRequestError(error.message, error));
-    }
-  })
-
-  app.get("/advertisement/active", Authenticate, async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const payload: UserPayload = req.user
-      console.log(payload)
-      const response = await advertisementService.GetActiveAdvertisement(payload)
-      return res .status(200).json({response})
-    } catch (error){
-      console.log(error)
-      return res.status(400).json(new BadRequestError(error.message, error));
-    }
-  })
-
-  app.get("/advertisement/expired", Authenticate, async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const payload: UserPayload = req.user
-      const response = await advertisementService.GetExpiredAdvertisement(payload)
-      return res .status(200).json({response})
-    } catch (error){
-      return res.status(400).json(new BadRequestError(error.message, error));
-    }
-  })
-
-  app.patch(
-    "/advertisements/advertisement/:id",
-    Authenticate,
-    productUpload,
-    async (req: Request, res: Response, next: NextFunction) => {
-      try {
-        const currentUser: UserPayload = req.user;
-        const productId = Number(req.params.id);
-        const payload: Advertisement = req.body;
-        const response = await advertisementService.UpdateAdvertisement(
-          productId,
-          payload,
-          req.files as Express.Multer.File[],
-          currentUser
-        );
-        console.log("RESPONSES ARE: ", response)
-        return res.status(200).json({ response });
-      } catch (error) {
-        return res.status(400).json(new BadRequestError(error.message, error));
-      }
-    }
-  );
-
-  app.delete(
-    "/advertisements/advertisement/:id",
-    Authenticate,
-    async (req: Request, res: Response, next: NextFunction) => {
-      try {
-        const currentUser: UserPayload = req.user;
-        const advertisementId = Number(req.params.id);
-        const response = await advertisementService.DeleteAdvertisement(
-          currentUser,
-          advertisementId
-        );
-        console.log("DELETE CALLED")
-        return res.status(200).json({ response });
       } catch (error) {
         return res.status(400).json(new BadRequestError(error.message, error));
       }

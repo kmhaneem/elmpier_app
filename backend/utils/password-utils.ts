@@ -5,7 +5,7 @@ import { UserPayload } from "../database/model/user.model";
 import dotenv from "dotenv";
 import path from "path";
 import { AdminPayload } from "../database/model/admin.model";
-import {  DeliveryPersonPayload } from "../database/model/deliveryp.model";
+import { DeliveryPersonPayload } from "../database/model/deliveryp.model";
 dotenv.config({ path: path.resolve(__dirname, "../config/.env") });
 
 export const GenerateSalt = async () => {
@@ -44,32 +44,6 @@ export const ValidateToken = async (req: Request) => {
       process.env.APP_SECRET
     )) as UserPayload;
     req.user = payload;
-    return true;
-  }
-  return false;
-};
-
-export const ValidateAdminToken = async (req: Request) => {
-  const token = req.get("Authorization");
-  if (token) {
-    const payload = (await jwt.verify(
-      token.split(" ")[1],
-      process.env.APP_SECRET
-    )) as AdminPayload;
-    req.admin = payload;
-    return true;
-  }
-  return false;
-};
-
-export const ValidatDeliveryPersonToken = async (req: Request) => {
-  const token = req.get("Authorization");
-  if (token) {
-    const payload = (await jwt.verify(
-      token.split(" ")[1],
-      process.env.APP_SECRET
-    )) as DeliveryPersonPayload;
-    req.delivery = payload;
     return true;
   }
   return false;

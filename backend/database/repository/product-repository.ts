@@ -20,13 +20,28 @@ export class ProductRepository {
       brandId,
       modelId,
       stockUnit,
-      conditionId,
     }: Product,
     { imageUrl }: ProductImage
   ) {
     try {
+      // const countProductSql = "SELECT COUNT(*) FROM product WHERE user_id = $1"
+      // const countResult = await writeQuery(countProductSql, [userId])
+      // const totalCount = parseInt(countResult.rows[0].count);
+
+      // const userSql = "SELECT is_plus_user FROM users WHERE id = $1"
+      // const userResult = await writeQuery(userSql, [userId])
+
+      // if(totalCount > 2 && userResult.rows[0].is_plus_user === false){
+      //   throw new Error("You are exceeded your limit of creation. Upgrade ELMPIER Plus to Unlimited Create")
+      // }
+
+      //   if (totalCount > 2 && userResult.rows[0].is_plus_user === false) {
+      //     res.status(403).send("You are exceeded your limit of creation. Upgrade ELMPIER Plus to Unlimited Create");
+      //     return; // to exit early and not continue with the rest of the function.
+      // }
+
       const sql =
-        "INSERT INTO product (user_id, name, description, price, category_id, brand_id, model_id, stock_unit, condition_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *";
+        "INSERT INTO product (user_id, name, description, price, category_id, brand_id, model_id, stock_unit) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *";
       const params = [
         userId,
         name,
@@ -36,7 +51,6 @@ export class ProductRepository {
         brandId,
         modelId,
         stockUnit,
-        categoryId,
       ];
 
       const result = await writeQuery(sql, params);
@@ -108,11 +122,10 @@ export class ProductRepository {
 
       let params = [];
       if (userId) {
-        sql += " WHERE p.user_id != $1 AND p.stock_unit > 0";
+        sql += " WHERE p.user_id != $1";
         params.push(userId);
       } else {
-        sql +=
-          " WHERE p.is_approved = true AND p.is_visible = true AND p.stock_unit > 0";
+        sql += " WHERE p.is_approved = true AND p.is_visible = true";
       }
 
       sql += " GROUP BY p.id, c.name";
@@ -130,7 +143,7 @@ export class ProductRepository {
         SELECT p.*, ARRAY_AGG(pi.image_url) as image_urls
         FROM product p
         LEFT JOIN product_image pi ON p.id = pi.product_id
-        WHERE p.user_id = $1 AND p.is_approved = true AND p.is_visible = TRUE AND p.stock_unit > 0 
+        WHERE p.user_id = $1 AND p.is_approved = true
         GROUP BY p.id
       `;
       const params = [userId];
@@ -151,18 +164,33 @@ export class ProductRepository {
       throw error;
     }
   }
-
- 
-
   async ProductUpdate(
     productId: number,
-    { name, description, price, stockUnit }: Product,
+    {
+      name,
+      description,
+      price,
+      categoryId,
+      brandId,
+      modelId,
+      stockUnit,
+    }: Product,
     imageUrls: string[],
     userId: number
   ) {
     try {
-      let sql = `UPDATE product SET name = $2, description = $3, price = $4, stock_unit = $5, is_approved = false WHERE id = $1 AND user_id = $6 RETURNING *`;
-      const params = [productId, name, description, price, stockUnit, userId];
+      let sql = `UPDATE product SET name = $2, description = $3, price = $4, category_id = $5, brand_id = $6, model_id = $7, stock_unit = $8 WHERE id = $1 AND user_id = $9 RETURNING *`;
+      const params = [
+        productId,
+        name,
+        description,
+        price,
+        categoryId,
+        brandId,
+        modelId,
+        stockUnit,
+        userId,
+      ];
       const result = await writeQuery(sql, params);
 
       if (result.rows.length === 0) {
@@ -186,16 +214,20 @@ export class ProductRepository {
       throw error;
     }
   }
-
-  
-
   async ProductDelete(userId: number, productId: number) {
     try {
-      const sql =
-        "UPDATE product SET stock_unit = 0 WHERE user_id = $1 AND id = $2";
+      let sql = "DELETE FROM product_image WHERE product_id = $1";
+      await writeQuery(sql, [productId]);
+
+      sql = "DELETE FROM product WHERE id = $2 AND user_id = $1";
       const params = [userId, productId];
       const result = await writeQuery(sql, params);
-      return result.rows;
+
+      if (result.rowCount === 0) {
+        throw new Error("No product found");
+      }
+
+      return { success: true, message: "Product deleted successfully" };
     } catch (error) {
       throw error;
     }
@@ -340,16 +372,6 @@ export class ProductRepository {
     }
   }
 
-  async ProductConditonsGet() {
-    try {
-      const sql = "SELECT * FROM condition";
-      const result = await writeQuery(sql, []);
-      return result.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
   async getCountOfProductsByUser(userId: number): Promise<number> {
     try {
       const countProductSql = "SELECT COUNT(*) FROM product WHERE user_id = $1";
@@ -397,35 +419,6 @@ export class ProductRepository {
         paramCounter++;
       }
 
-      const result = await writeQuery(sql, params);
-      return result.rows;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  async ProductSoldGet(id: number) {
-    try {
-     
-      const sql = `SELECT 
-      order_item.product_id, 
-      product.name, 
-      product.price, 
-      MIN(product_image.image_url) AS image_url,
-      SUM(order_item.item_qty)::int AS total_qty
-  FROM 
-      order_item 
-  JOIN 
-      product ON order_item.product_id = product.id
-  LEFT JOIN 
-      product_image ON product.id = product_image.product_id
-  WHERE 
-      product.user_id = $1
-  GROUP BY 
-      order_item.product_id, product.name, product.price;  
-  `;
-
-      const params = [id];
       const result = await writeQuery(sql, params);
       return result.rows;
     } catch (error) {

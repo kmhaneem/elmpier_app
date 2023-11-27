@@ -17,14 +17,4 @@ export default (app: Application) => {
             return res.status(400).json(new BadRequestError(error.message, error));
         }
     })
-
-    app.get("/orders/order-item/status", async(req: Request, res: Response, next: NextFunction) => {
-        try {
-            const id = req.body.id
-            const response = await orderService.GetOrderItemStatus(id)
-            return res.status(200).json({response})
-        } catch (error){
-            return res.status(400).json(new BadRequestError(error.message, error));
-        }
-    })
 }

@@ -66,16 +66,6 @@ export default (app: Application) => {
     }
   })
 
-  app.get("/product/ads/top", async(req: Request, res: Response, next: NextFunction) => {
-    try {
-      const response = await adsService.GetTopAds()
-      console.log("POP ADS CALLED")
-      return res.status(200).json({response})
-    } catch (error){
-      return res.status(400).json(new BadRequestError(error.message, error));
-    }
-  })
-
   app.post("/advertisement/ads", async (req: Request, res: Response, next: NextFunction) => {
     try {
       const id = req.body.id;
