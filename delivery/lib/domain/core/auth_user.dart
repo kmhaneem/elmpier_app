@@ -1,0 +1,8 @@
+import 'package:delivery/domain/core/value_object.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'auth_user.freezed.dart';
+
+@freezed
+abstract class AuthUser with _$AuthUser {
+  const factory AuthUser({required UniqueId id}) = _AuthUser;
+}

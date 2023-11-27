@@ -1,0 +1,352 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'product_dtos.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
+  return _ProductDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ProductDto {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'category_id')
+  int get category => throw _privateConstructorUsedError;
+  @JsonKey(name: 'brand_id')
+  int get brand => throw _privateConstructorUsedError;
+  @JsonKey(name: 'model_id')
+  int get model => throw _privateConstructorUsedError;
+  @JsonKey(name: 'stock_unit')
+  int get stock => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_urls')
+  List<String> get imageUrls => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ProductDtoCopyWith<ProductDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProductDtoCopyWith<$Res> {
+  factory $ProductDtoCopyWith(
+          ProductDto value, $Res Function(ProductDto) then) =
+      _$ProductDtoCopyWithImpl<$Res, ProductDto>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String description,
+      @JsonKey(name: 'category_id') int category,
+      @JsonKey(name: 'brand_id') int brand,
+      @JsonKey(name: 'model_id') int model,
+      @JsonKey(name: 'stock_unit') int stock,
+      @JsonKey(name: 'image_urls') List<String> imageUrls,
+      int price});
+}
+
+/// @nodoc
+class _$ProductDtoCopyWithImpl<$Res, $Val extends ProductDto>
+    implements $ProductDtoCopyWith<$Res> {
+  _$ProductDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? description = null,
+    Object? category = null,
+    Object? brand = null,
+    Object? model = null,
+    Object? stock = null,
+    Object? imageUrls = null,
+    Object? price = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as int,
+      brand: null == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as int,
+      model: null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as int,
+      stock: null == stock
+          ? _value.stock
+          : stock // ignore: cast_nullable_to_non_nullable
+              as int,
+      imageUrls: null == imageUrls
+          ? _value.imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ProductDtoImplCopyWith<$Res>
+    implements $ProductDtoCopyWith<$Res> {
+  factory _$$ProductDtoImplCopyWith(
+          _$ProductDtoImpl value, $Res Function(_$ProductDtoImpl) then) =
+      __$$ProductDtoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String description,
+      @JsonKey(name: 'category_id') int category,
+      @JsonKey(name: 'brand_id') int brand,
+      @JsonKey(name: 'model_id') int model,
+      @JsonKey(name: 'stock_unit') int stock,
+      @JsonKey(name: 'image_urls') List<String> imageUrls,
+      int price});
+}
+
+/// @nodoc
+class __$$ProductDtoImplCopyWithImpl<$Res>
+    extends _$ProductDtoCopyWithImpl<$Res, _$ProductDtoImpl>
+    implements _$$ProductDtoImplCopyWith<$Res> {
+  __$$ProductDtoImplCopyWithImpl(
+      _$ProductDtoImpl _value, $Res Function(_$ProductDtoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? description = null,
+    Object? category = null,
+    Object? brand = null,
+    Object? model = null,
+    Object? stock = null,
+    Object? imageUrls = null,
+    Object? price = null,
+  }) {
+    return _then(_$ProductDtoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as int,
+      brand: null == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as int,
+      model: null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as int,
+      stock: null == stock
+          ? _value.stock
+          : stock // ignore: cast_nullable_to_non_nullable
+              as int,
+      imageUrls: null == imageUrls
+          ? _value._imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ProductDtoImpl extends _ProductDto {
+  const _$ProductDtoImpl(
+      {required this.id,
+      required this.name,
+      required this.description,
+      @JsonKey(name: 'category_id') required this.category,
+      @JsonKey(name: 'brand_id') required this.brand,
+      @JsonKey(name: 'model_id') required this.model,
+      @JsonKey(name: 'stock_unit') required this.stock,
+      @JsonKey(name: 'image_urls') required final List<String> imageUrls,
+      required this.price})
+      : _imageUrls = imageUrls,
+        super._();
+
+  factory _$ProductDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductDtoImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  final String description;
+  @override
+  @JsonKey(name: 'category_id')
+  final int category;
+  @override
+  @JsonKey(name: 'brand_id')
+  final int brand;
+  @override
+  @JsonKey(name: 'model_id')
+  final int model;
+  @override
+  @JsonKey(name: 'stock_unit')
+  final int stock;
+  final List<String> _imageUrls;
+  @override
+  @JsonKey(name: 'image_urls')
+  List<String> get imageUrls {
+    if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imageUrls);
+  }
+
+  @override
+  final int price;
+
+  @override
+  String toString() {
+    return 'ProductDto(id: $id, name: $name, description: $description, category: $category, brand: $brand, model: $model, stock: $stock, imageUrls: $imageUrls, price: $price)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProductDtoImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.model, model) || other.model == model) &&
+            (identical(other.stock, stock) || other.stock == stock) &&
+            const DeepCollectionEquality()
+                .equals(other._imageUrls, _imageUrls) &&
+            (identical(other.price, price) || other.price == price));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      description,
+      category,
+      brand,
+      model,
+      stock,
+      const DeepCollectionEquality().hash(_imageUrls),
+      price);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProductDtoImplCopyWith<_$ProductDtoImpl> get copyWith =>
+      __$$ProductDtoImplCopyWithImpl<_$ProductDtoImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ProductDtoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ProductDto extends ProductDto {
+  const factory _ProductDto(
+      {required final int id,
+      required final String name,
+      required final String description,
+      @JsonKey(name: 'category_id') required final int category,
+      @JsonKey(name: 'brand_id') required final int brand,
+      @JsonKey(name: 'model_id') required final int model,
+      @JsonKey(name: 'stock_unit') required final int stock,
+      @JsonKey(name: 'image_urls') required final List<String> imageUrls,
+      required final int price}) = _$ProductDtoImpl;
+  const _ProductDto._() : super._();
+
+  factory _ProductDto.fromJson(Map<String, dynamic> json) =
+      _$ProductDtoImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  String get description;
+  @override
+  @JsonKey(name: 'category_id')
+  int get category;
+  @override
+  @JsonKey(name: 'brand_id')
+  int get brand;
+  @override
+  @JsonKey(name: 'model_id')
+  int get model;
+  @override
+  @JsonKey(name: 'stock_unit')
+  int get stock;
+  @override
+  @JsonKey(name: 'image_urls')
+  List<String> get imageUrls;
+  @override
+  int get price;
+  @override
+  @JsonKey(ignore: true)
+  _$$ProductDtoImplCopyWith<_$ProductDtoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
