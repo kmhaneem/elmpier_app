@@ -13,6 +13,7 @@ export class Product {
     brandId: number;
     modelId: number;
     stockUnit: number;
+    conditionId: number
 }
 
 export class ProductImage {

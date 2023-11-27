@@ -71,57 +71,273 @@ export class AdminService {
     }
   }
 
-  async GetUsers(){
+  async GetUsers() {
     try {
-      const response = await this.repository.UsersGet()
-      return response
-    } catch (error){
-      throw error
+      const response = await this.repository.UsersGet();
+      return response;
+    } catch (error) {
+      throw error;
     }
   }
 
-  async GetTransaction(){
+  async GetTransaction() {
     try {
-      const response = await this.repository.TransactionGet()
-      return response
-    } catch (error){
-      throw error
+      const response = await this.repository.TransactionGet();
+      return response;
+    } catch (error) {
+      throw error;
     }
   }
 
-  async GetProductsToReview(){
+  async GetProductsToReview() {
     try {
-      const response = await this.repository.ProductsToReviewGet()
-      return response
-    } catch (error){
-      throw error
+      const response = await this.repository.ProductsToReviewGet();
+      return response;
+    } catch (error) {
+      throw error;
     }
   }
 
-  async UpdateProductsToReview(id: number){
+  async UpdateProductsToReview(id: number) {
     try {
-       const response = await this.repository.ProductsToReviewUpdate(id)
-       return response
-    } catch (error){
-      throw error
+      const response = await this.repository.ProductsToReviewUpdate(id);
+      return response;
+    } catch (error) {
+      throw error;
     }
   }
 
-  async DeclineProduct(id: number){
+  async DeclineProduct(id: number) {
     try {
       const response = await this.repository.ProductDecline(id);
-      return response
-    } catch (error){
-      throw error
+      return response;
+    } catch (error) {
+      throw error;
     }
   }
 
-  async VisibleProduct(id: number){
+  async VisibleProduct(id: number) {
     try {
-      const response = await this.repository.ProductVisible(id)
-      return response
-    } catch(error){
-      throw error
+      const response = await this.repository.ProductVisible(id);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetAllOrders() {
+    try {
+      const response = await this.repository.AllOrdersGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetOrderItemById(id: string) {
+    try {
+      const response = await this.repository.OrderItemByIdGet(id);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetAllProducts() {
+    try {
+      const response = await this.repository.AllProductsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetApprovedProducts() {
+    try {
+      const response = await this.repository.ApprovedProductsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetPendingProducts() {
+    try {
+      const response = await this.repository.PendingProductsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetRejectedProducts() {
+    try {
+      const response = await this.repository.RejectedProductsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetAllAdvertisements() {
+    try {
+      const response = await this.repository.AllAdvertisementsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetApprovedAdvertisements() {
+    try {
+      const response = await this.repository.ApprovedAdvertisementsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetPendingAdvertisements() {
+    try {
+      const response = await this.repository.PendingAdvertisementsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetRejectedAdvertisements() {
+    try {
+      const response = await this.repository.RejectedAdvertisementsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetProductOrders() {
+    try {
+      const response = await this.repository.ProductOrdersGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetAdsOrders() {
+    try {
+      const response = await this.repository.AdsOrdersGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetAllTransactions() {
+    try {
+      const response = await this.repository.TransactionsGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetAllUsers() {
+    try {
+      const users = await this.repository.AllUsersGet();
+      const sanitizedUsers = users.map(
+        ({ password, salt, otp, is_plus_user, ...rest }) => rest
+      );
+      return sanitizedUsers;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetNormalUsers() {
+    try {
+      const users = await this.repository.NormalUsersGet();
+      const sanitizedUsers = users.map(
+        ({ password, salt, otp, is_plus_user, ...rest }) => rest
+      );
+      return sanitizedUsers;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetPlusUsers() {
+    try {
+      const users = await this.repository.PlusUsersGet();
+      const sanitizedUsers = users.map(
+        ({ password, salt, otp, is_plus_user, ...rest }) => rest
+      );
+      return sanitizedUsers;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetDeliveryUsers() {
+    try {
+      const delivery = await this.repository.DeliveryUsersGet();
+      const sanitizedUsers = delivery.map(
+        ({ password, salt, ...rest }) => rest
+      );
+      return sanitizedUsers;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetRejectedProductReviews() {
+    try {
+      const response = await this.repository.RejectProductsReviewGet();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async GetOrderStatus(id: number) {
+    try {
+      const response = await this.repository.OrderStatusGet(id);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async ApproveProduct(id: number) {
+    try {
+      const response = await this.repository.ProductApprove(id);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async RejectProduct(id: number) {
+    try {
+      const response = await this.repository.ProductReject(id);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async ApproveAdvertisement(id: number) {
+    try {
+      const response = await this.repository.AdvertisementApprove(id);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async RejectAdvertisement(id: number) {
+    try {
+      const response = await this.repository.AdvertisementReject(id);
+      return response;
+    } catch (error) {
+      throw error;
     }
   }
 }

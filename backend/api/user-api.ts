@@ -10,7 +10,6 @@ import { Authenticate } from "./middleware/common-auth";
 import multer from "multer";
 
 export default (app: Application, userService: UserService) => {
-  // const userService = new UserService();
   const upload = multer();
 
   app.get("/province", async(req: Request , res: Response, next: NextFunction) => {
@@ -24,7 +23,6 @@ export default (app: Application, userService: UserService) => {
 
   app.get("/district", async(req: Request , res: Response, next: NextFunction) => {
     try {
-      // const provinceId = req.body.provinceId;
       const response = await userService.GetDistrict()
       return res.status(200).json({response})
     } catch(error){
@@ -56,9 +54,7 @@ export default (app: Application, userService: UserService) => {
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const payload: User = req.body;
-        // console.log(payload);
         const response = await userService.LoginUser(payload);
-        // console.log("Sign In Success");
         return res.status(200).json({ response });
       } catch (error) {
         return res.status(400).json(new BadRequestError(error.message, error));
@@ -66,7 +62,6 @@ export default (app: Application, userService: UserService) => {
     }
   );
 
-  // app.use(Authenticate);
   app.patch(
     "/user/verify",
     Authenticate,
@@ -141,15 +136,5 @@ export default (app: Application, userService: UserService) => {
     }
   );
 
-  // const cartItemPayload: CartItem = {
-  //   productId: req.body.productId,
-  //   name: req.body.name,
-  //   price: req.body.price,
-  //   itemQty: req.body.itemQty,
-  //   imageUrl: req.body.imageUrl,
-  // };
-
-  // const cartPayload: Cart = {
-  //   userId: req.body.userId,
-  // };
+  
 };

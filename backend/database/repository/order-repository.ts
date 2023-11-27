@@ -18,4 +18,15 @@ export class OrdeRepository {
       throw error;
     }
   }
+
+  async OrderItemStatusGet(id: number){
+    try {
+      const sql = 'SELECT id, name, is_pickup, is_warehouse, is_delivered, image_url FROM order_item WHERE id = $1'
+      const params = [id]
+      const result = await writeQuery(sql, params)
+      return result.rows
+    } catch (error){
+      throw error
+    }
+  }
 }

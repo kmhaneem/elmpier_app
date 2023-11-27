@@ -50,10 +50,10 @@ export class ProductService {
     }
   }
 
-  async GetProducts(userId: number) {
+  async GetProducts(payload: UserPayload) {
     try {
-      const result = await this.repository.ProductsGet(userId);
-      console.log(userId);
+      const id = payload._id
+      const result = await this.repository.ProductsGet(id);
       return result;
     } catch (error) {
       throw error;
@@ -111,6 +111,7 @@ export class ProductService {
       throw error;
     }
   }
+
   async DeleteProduct(currentUser: UserPayload, productId: number) {
     try {
       const userId = currentUser._id;
@@ -226,6 +227,14 @@ export class ProductService {
     }
   }
 
+  async GetProductConditons() {
+    try {
+      return await this.repository.ProductConditonsGet();
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async FilterProducts(productFilter: ProductFilter){
     try {
       const response = await this.repository.ProductFilter(productFilter)
@@ -234,4 +243,15 @@ export class ProductService {
       throw error
     }
   }
+
+  async GetSoldProducts(payload: UserPayload){
+    try {
+      const id = payload._id;
+      const response = await this.repository.ProductSoldGet(id)
+      return response
+    } catch (error){
+      throw error
+    }
+  }
+
 }

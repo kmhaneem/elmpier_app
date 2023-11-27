@@ -1,3 +1,4 @@
+import axios from "axios";
 import { User, UserAddress, UserPayload } from "../database/model/user.model";
 import { UserRepository } from "../database/repository/user-repository";
 import {
@@ -6,6 +7,9 @@ import {
   GenerateToken,
   ValidatePassword,
 } from "../utils/password-utils";
+import dotenv from "dotenv";
+import path from "path";
+dotenv.config({ path: path.resolve(__dirname, "../config/.env") });
 
 export class UserService {
   private repository: UserRepository;
@@ -30,13 +34,30 @@ export class UserService {
         throw new Error(message);
       }
 
-      let otp = 123123;
+      const formatPhoneNumber = (userInputNumber) => {
+        if (userInputNumber.startsWith("0")) {
+          return "94" + userInputNumber.substring(1);
+        }
+        return userInputNumber;
+      };
+
+      let formattedNumber = formatPhoneNumber(userInputs.phone);
+      const generateOTP = () => {
+        const otp = Math.floor(100000 + Math.random() * 900000);
+        return otp.toString();
+      };
+
+      let otp = generateOTP();
+
+      let convOtp = parseInt(otp);
       const salt = await GenerateSalt();
       const hashedPassword = await GeneratePassword(userInputs.password, salt);
       userInputs.password = hashedPassword;
-      userInputs.otp = otp;
+      userInputs.otp = convOtp;
       userInputs.salt = salt;
       userInputs.verified = false;
+      userInputs.phone = formattedNumber;
+
       const token = await GenerateToken({
         _id: userInputs.id,
         email: userInputs.email,
@@ -48,6 +69,36 @@ export class UserService {
       }
 
       const userId = rowCount.rows[0];
+
+      const USER_ID = process.env.NOTIFY_USER_ID;
+      const API_KEY = process.env.NOTIFY_API_KEY;
+      const SENDER_ID = process.env.NOTIFY_SENDER_ID;
+
+      let message = `Hello! Your One-Time Password (OTP) for verifying your ELMPIER account is: ${otp}`;
+
+      try {
+        await axios.get(`https://app.notify.lk/api/v1/send`, {
+          params: {
+            user_id: USER_ID,
+            api_key: API_KEY,
+            sender_id: SENDER_ID,
+            to: formattedNumber,
+            message: message,
+          },
+        });
+        console.log("SENT MESSAGE: ", message);
+        console.log(`Message successfully sent to: ${formattedNumber}`);
+      } catch (error) {
+        console.error(`Failed to send message to: ${formattedNumber}`);
+
+        console.error("Error Message:", error.message);
+
+        if (error.response) {
+          console.error("Response Data:", error.response.data);
+          console.error("Response Status:", error.response.status);
+          console.error("Response Headers:", error.response.headers);
+        }
+      }
 
       return {
         id: userId.id,

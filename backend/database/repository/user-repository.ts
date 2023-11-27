@@ -24,8 +24,22 @@ export class UserRepository {
 
       if (result.rows && result.rows.length > 0) {
         const userId = result.rows[0].id;
-        const sql1 = `INSERT INTO user_address (user_id) VALUES ($1)`;
-        await writeQuery(sql1, [userId]);
+        const userAddressSql = `
+          INSERT INTO user_address (
+            user_id, 
+            address_line_1, 
+            address_line_2, 
+            city, 
+            postal_code, 
+            district, 
+            province,
+            province_id,
+            district_id
+          ) VALUES (
+            $1, '', '', '', '', '', '', 1, 1
+          )
+        `;
+        await writeQuery(userAddressSql, [userId]);
         const walletSql =
           "INSERT INTO wallet (user_id, amount) values ($1, $2)";
         await writeQuery(walletSql, [userId, 0]);
